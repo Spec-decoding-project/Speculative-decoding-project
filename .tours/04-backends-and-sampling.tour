@@ -1,0 +1,56 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "4 - Compare backends and sampling paths",
+  "description": "Locate platform boundaries, streaming, stochastic verification, and server calls. About 15 minutes.",
+  "steps": [
+    {
+      "file": "dflash/cli.py",
+      "pattern": "^def\\ _generate_transformers\\(args\\)\\ \\->\\ None:$",
+      "title": "Choose the implementation you are changing",
+      "description": "Goal: avoid assuming that every CLI backend uses the same generator. The Transformers route explicitly chooses `cuda:0`, loads models, applies the chat template, tokenizes once, and calls `model.dflash_generate`. It finally decodes the returned continuation. This is the route studied in tours 2 and 3.\n\nCheckpoint 4A: On an Apple Silicon Mac, does choosing the `transformers` backend automatically redirect execution to MLX? Point to the dispatch and device selection."
+    },
+    {
+      "file": "dflash/cli.py",
+      "pattern": "^def\\ _generate_mlx\\(args\\)\\ \\->\\ None:$",
+      "title": "The Mac route streams partial output",
+      "description": "This path uses MLX, loads its own model implementation, and iterates over `model_mlx.stream_generate`. Each response supplies text to print immediately. `_generate_transformers` instead waits for its returned token buffer. These UI differences follow the generator interfaces. The `draft_bits` option goes through the MLX loader; merely accepting a CLI flag does not mean every backend uses it."
+    },
+    {
+      "file": "dflash/model_mlx.py",
+      "pattern": "^def\\ _stream_generate\\($",
+      "title": "Find the same decoding idea in different machinery",
+      "description": "The MLX generator captures target hidden states, creates target and draft caches, prefills the prompt, and yields the target-selected first token. It then drafts and verifies blocks, yielding accepted tokens plus a correction/bonus. Its implementation includes model hooks and state handling beyond plain key/value-cache cropping. The conceptual loop matches tour 2, but the implementation is independent. Follow the `finally` block to see cleanup of special state-capture hooks."
+    },
+    {
+      "file": "dflash/model_mlx.py",
+      "pattern": "^\\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ trim\\ =\\ bs\\ \\-\\ accepted\\ \\-\\ 1$",
+      "title": "Rollback depends on the target state type",
+      "description": "After a round, rejected positions must be removed from the target state. Trimmable caches use `_trim_recent_cache`; other supported states use `_GDNStateCapture.rollback`. Hidden context is restricted to the accepted part. This is why a cache change that works for one model family may fail for another.\n\nCheckpoint 4B: Why is “leave the entire verified candidate in the cache” wrong after rejecting a proposal, even if the displayed text looks right this round?"
+    },
+    {
+      "file": "dflash/model.py",
+      "pattern": "^def\\ _sampling_probs\\($",
+      "title": "Temperature changes the verification problem",
+      "description": "Greedy decoding chooses `argmax`; positive temperature creates distributions, applies top-k/top-p filtering, and samples. The stochastic branch must account for both draft probabilities q and target probabilities p. The greedy equality rule is therefore not the whole algorithm. Follow `_rejection_sample` next: it decides which sampled draft proposals to accept and how to sample the correction after rejection."
+    },
+    {
+      "file": "dflash/model.py",
+      "pattern": "^\\ \\ \\ \\ residual\\ =\\ target_probs\\[0,\\ accepted\\]\\.clone\\(\\)$",
+      "title": "A rejected proposal needs a corrected distribution",
+      "description": "For each proposed token, stochastic acceptance implements a probability based on p/q and stops at the first rejection. At rejection, the correction is sampled from the normalized positive part of p−q, with a fallback for degenerate numerical mass. If all proposals pass, the bonus comes from the target distribution at the last row.\n\nCheckpoint 4C: Why is comparing a sampled draft token with the target’s argmax insufficient when the requested temperature is positive?"
+    },
+    {
+      "file": "dflash/model.py",
+      "pattern": "^class\\ CandidateSelector\\(nn\\.Module\\):$",
+      "title": "DFlash2 adds a predecessor-dependent selector",
+      "description": "The selector first keeps top-k candidate IDs from each position’s logits. It scores candidates using the hidden representation and predecessor/successor codebooks, then chooses a path position by position. Hidden computation is still block-based, while this lightweight selection introduces token dependencies. In stochastic mode it returns candidate IDs and probabilities needed by rejection sampling. Identify the `predecessor = anchor_ids` initialization and how each selected token becomes the next predecessor."
+    },
+    {
+      "file": "dflash/benchmark.py",
+      "pattern": "^def\\ send_openai\\($",
+      "title": "The server backend is a client boundary",
+      "description": "This function sends messages and generation parameters to `/v1/chat/completions`. It does not start a server or run the local DFlash model. The server must already be configured for the desired inference method. Response metadata may expose acceptance statistics, but that is server-dependent. Check 4A–4C in [the answer key](./docs/TOUR_CHECKPOINTS.md). Before editing, state whether the change belongs in local PyTorch, local MLX, the client, or the separate serving implementation."
+    }
+  ],
+  "nextTour": "5 - Read benchmarks and plan your first change"
+}

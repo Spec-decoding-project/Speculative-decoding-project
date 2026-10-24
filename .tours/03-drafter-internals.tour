@@ -1,0 +1,50 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "3 - Understand the draft model",
+  "description": "Connect tensor shapes, attention, and vocabulary predictions. Read tour 2 first. About 15 minutes.",
+  "steps": [
+    {
+      "file": "dflash/model.py",
+      "pattern": "^def\\ extract_context_feature\\($",
+      "title": "Collect target features",
+      "description": "Goal: explain what the drafter learns from the target without assuming it is a second full language model. Use B=batch size, P=context length, H=hidden width, K=selected target layers, and W=block width. Each chosen target state is `[B, P, H]`; concatenation on the last axis gives `[B, P, K*H]`. The offset accounts for the embedding output at hidden-state index 0.\n\nCheckpoint 3A: For B=1, P=10, H=16, K=2, what is the concatenated shape?"
+    },
+    {
+      "file": "dflash/model.py",
+      "pattern": "^\\ \\ \\ \\ \\ \\ \\ \\ target_hidden\\ =\\ self\\.hidden_norm\\(self\\.fc\\(target_hidden\\)\\)$",
+      "title": "Project context into the draft width",
+      "description": "The answer to 3A is `[1, 10, 32]`. `fc` compresses the concatenated feature width to the draft hidden width, followed by normalization. Separately, `noise_embedding` initializes the block states from the target anchor and mask-token embeddings. Thus the forward pass has two inputs with distinct roles: accepted-context features and a block to fill. The checkpoint configuration must make their widths compatible; arbitrary target and draft models are not interchangeable."
+    },
+    {
+      "file": "dflash/model.py",
+      "pattern": "^\\ \\ \\ \\ \\ \\ \\ \\ q\\ =\\ self\\.q_proj\\(hidden_states\\)$",
+      "title": "The block asks questions of context and block",
+      "description": "In attention, queries come from the block states. Keys and values come from both projected target context and the block states; they are concatenated along sequence length. For a cache-free call, queries cover W positions while keys/values cover P+W. Splitting into heads changes the tensor layout, not which tokens exist. This connection lets every draft position use target-derived context while the block is processed in parallel."
+    },
+    {
+      "file": "dflash/model.py",
+      "pattern": "^\\ \\ \\ \\ \\ \\ \\ \\ q,\\ k\\ =\\ apply_rotary_pos_emb\\(q,\\ k,\\ cos,\\ sin\\)$",
+      "title": "Positions and visibility are separate controls",
+      "description": "Rotary embeddings encode token positions in queries and keys. They do not decide which tokens may attend to which others. The following block creates a mask when causal or sliding-window restrictions are configured. Ordinary noncausal full attention allows interaction within the draft block; target verification still uses the target model’s causal attention.\n\nCheckpoint 3B: Would removing a causal mask from the target verifier be harmless because the drafter already uses parallel block attention?"
+    },
+    {
+      "file": "dflash/model.py",
+      "pattern": "^\\ \\ \\ \\ \\ \\ \\ \\ self\\.input_layernorm\\ =\\ Qwen3RMSNorm\\(config\\.hidden_size,\\ eps=config\\.rms_norm_eps\\)$",
+      "title": "Each layer mixes tokens, then transforms features",
+      "description": "Find the layer’s `forward` immediately below. It normalizes block states, applies attention, and adds a residual connection. A second normalization and an MLP transform each position’s features, followed by another residual. Residual means adding a transformation back to its input. Context states feed attention; the evolving block states pass through all draft layers. Optional convolution paths are used by DFlash2. Read this flow before diving into matrix implementation details."
+    },
+    {
+      "file": "dflash/model.py",
+      "pattern": "^\\ \\ \\ \\ def\\ compute_logits\\(self,\\ hidden,\\ output_head\\):$",
+      "title": "Turn hidden vectors into token scores",
+      "description": "The output head maps each final hidden vector to a score for every vocabulary token, with optional scaling and softcapping. For original DFlash in the greedy loop, `argmax` picks one proposal per non-anchor position. The generator passes the target’s output head to this method. The drafter’s hidden vectors are not token IDs, and the target’s later verification remains necessary even when these logits look confident."
+    },
+    {
+      "file": "dflash/model.py",
+      "pattern": "^class\\ DFlash2DraftModel\\(DFlashDraftModel\\):$",
+      "title": "Recognize the second architecture",
+      "description": "DFlash2 extends this model with grouped causal convolutions and a candidate selector whose choices depend on the predecessor token. Loading is chosen by checkpoint architecture, and generation has a separate `propose` branch. Changing original DFlash logits alone may not change DFlash2 as intended. For checkpoint 3B, explain why a noncausal target verifier would leak future candidate information, then check [the answer key](./docs/TOUR_CHECKPOINTS.md). Sketch: target features + block embeddings → attention/MLP layers → output head → proposals."
+    }
+  ],
+  "nextTour": "4 - Compare backends and sampling paths"
+}
