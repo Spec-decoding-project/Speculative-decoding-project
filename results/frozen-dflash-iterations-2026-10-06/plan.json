@@ -1,0 +1,309 @@
+{
+  "launch_authorized": true,
+  "cap_usd": 1.5,
+  "recovery_bytes": 67108864,
+  "download_backend": "hub_xet",
+  "image_packages": [
+    "huggingface_hub==1.31.0",
+    "hf-xet==1.6.0"
+  ],
+  "panels": [
+    {
+      "id": "gsm8k-1330",
+      "domain": "gsm8k"
+    },
+    {
+      "id": "gsm8k-1386",
+      "domain": "gsm8k"
+    },
+    {
+      "id": "gsm8k-1466",
+      "domain": "gsm8k"
+    },
+    {
+      "id": "gsm8k-1535",
+      "domain": "gsm8k"
+    },
+    {
+      "id": "gsm8k-157",
+      "domain": "gsm8k"
+    },
+    {
+      "id": "gsm8k-1696",
+      "domain": "gsm8k"
+    },
+    {
+      "id": "gsm8k-2368",
+      "domain": "gsm8k"
+    },
+    {
+      "id": "gsm8k-2519",
+      "domain": "gsm8k"
+    },
+    {
+      "id": "gsm8k-2541",
+      "domain": "gsm8k"
+    },
+    {
+      "id": "gsm8k-2643",
+      "domain": "gsm8k"
+    },
+    {
+      "id": "gsm8k-3117",
+      "domain": "gsm8k"
+    },
+    {
+      "id": "gsm8k-3387",
+      "domain": "gsm8k"
+    },
+    {
+      "id": "gsm8k-3527",
+      "domain": "gsm8k"
+    },
+    {
+      "id": "gsm8k-3863",
+      "domain": "gsm8k"
+    },
+    {
+      "id": "gsm8k-4627",
+      "domain": "gsm8k"
+    },
+    {
+      "id": "gsm8k-470",
+      "domain": "gsm8k"
+    },
+    {
+      "id": "gsm8k-4924",
+      "domain": "gsm8k"
+    },
+    {
+      "id": "gsm8k-5091",
+      "domain": "gsm8k"
+    },
+    {
+      "id": "gsm8k-5128",
+      "domain": "gsm8k"
+    },
+    {
+      "id": "gsm8k-5274",
+      "domain": "gsm8k"
+    },
+    {
+      "id": "gsm8k-5575",
+      "domain": "gsm8k"
+    },
+    {
+      "id": "gsm8k-6119",
+      "domain": "gsm8k"
+    },
+    {
+      "id": "gsm8k-6150",
+      "domain": "gsm8k"
+    },
+    {
+      "id": "gsm8k-631",
+      "domain": "gsm8k"
+    },
+    {
+      "id": "gsm8k-6409",
+      "domain": "gsm8k"
+    },
+    {
+      "id": "gsm8k-6494",
+      "domain": "gsm8k"
+    },
+    {
+      "id": "gsm8k-6745",
+      "domain": "gsm8k"
+    },
+    {
+      "id": "gsm8k-678",
+      "domain": "gsm8k"
+    },
+    {
+      "id": "gsm8k-6953",
+      "domain": "gsm8k"
+    },
+    {
+      "id": "gsm8k-7323",
+      "domain": "gsm8k"
+    },
+    {
+      "id": "gsm8k-7354",
+      "domain": "gsm8k"
+    },
+    {
+      "id": "gsm8k-7454",
+      "domain": "gsm8k"
+    },
+    {
+      "id": "ultrachat-12035",
+      "domain": "ultrachat"
+    },
+    {
+      "id": "ultrachat-12067",
+      "domain": "ultrachat"
+    },
+    {
+      "id": "ultrachat-12117",
+      "domain": "ultrachat"
+    },
+    {
+      "id": "ultrachat-12144",
+      "domain": "ultrachat"
+    },
+    {
+      "id": "ultrachat-12154",
+      "domain": "ultrachat"
+    },
+    {
+      "id": "ultrachat-12156",
+      "domain": "ultrachat"
+    },
+    {
+      "id": "ultrachat-12222",
+      "domain": "ultrachat"
+    },
+    {
+      "id": "ultrachat-12242",
+      "domain": "ultrachat"
+    },
+    {
+      "id": "ultrachat-12244",
+      "domain": "ultrachat"
+    },
+    {
+      "id": "ultrachat-12248",
+      "domain": "ultrachat"
+    },
+    {
+      "id": "ultrachat-12255",
+      "domain": "ultrachat"
+    },
+    {
+      "id": "ultrachat-12281",
+      "domain": "ultrachat"
+    },
+    {
+      "id": "ultrachat-12330",
+      "domain": "ultrachat"
+    },
+    {
+      "id": "ultrachat-12334",
+      "domain": "ultrachat"
+    },
+    {
+      "id": "ultrachat-12373",
+      "domain": "ultrachat"
+    },
+    {
+      "id": "ultrachat-12378",
+      "domain": "ultrachat"
+    },
+    {
+      "id": "ultrachat-12383",
+      "domain": "ultrachat"
+    },
+    {
+      "id": "ultrachat-12415",
+      "domain": "ultrachat"
+    },
+    {
+      "id": "ultrachat-12436",
+      "domain": "ultrachat"
+    },
+    {
+      "id": "ultrachat-12459",
+      "domain": "ultrachat"
+    },
+    {
+      "id": "ultrachat-12468",
+      "domain": "ultrachat"
+    },
+    {
+      "id": "ultrachat-12501",
+      "domain": "ultrachat"
+    },
+    {
+      "id": "ultrachat-12507",
+      "domain": "ultrachat"
+    },
+    {
+      "id": "ultrachat-12514",
+      "domain": "ultrachat"
+    },
+    {
+      "id": "ultrachat-12567",
+      "domain": "ultrachat"
+    },
+    {
+      "id": "ultrachat-12568",
+      "domain": "ultrachat"
+    },
+    {
+      "id": "ultrachat-12577",
+      "domain": "ultrachat"
+    },
+    {
+      "id": "ultrachat-12609",
+      "domain": "ultrachat"
+    },
+    {
+      "id": "ultrachat-12633",
+      "domain": "ultrachat"
+    },
+    {
+      "id": "ultrachat-12644",
+      "domain": "ultrachat"
+    },
+    {
+      "id": "ultrachat-12677",
+      "domain": "ultrachat"
+    },
+    {
+      "id": "ultrachat-12684",
+      "domain": "ultrachat"
+    }
+  ],
+  "anchor_indices": [
+    4,
+    12,
+    20,
+    28
+  ],
+  "passes": 10,
+  "timing_repetitions": 3,
+  "draft": {
+    "repo": "z-lab/Qwen3-4B-DFlash-b16",
+    "revision": "b74e3a329c4d963783143b1e970d95b002be72bd",
+    "folder": "",
+    "bytes": 1074860568,
+    "sha256": "a21d0ffe5970c84e9a0710ccb12087d1a4bcbedf979e623476c92c9d005a9cd4",
+    "config_source": "notes/drafter-branching-research-2026-09-17/sources/zlab_4b_b16__config.json"
+  },
+  "question": "Can frozen released DFlash improve its own proposal through ten full passes?",
+  "conditions": [
+    "rolling previous-proposal input",
+    "reset first-proposal input"
+  ],
+  "fixed_prefix": "Known target-supplied anchor only. Every guessed token may change.",
+  "training": false,
+  "target_generation": false,
+  "limits": {
+    "stage_seconds": 900,
+    "gpu_seconds": 600,
+    "gpu_shutdown_reserve": 120,
+    "retries": 0
+  },
+  "metrics": "Latest matching prefix primary; hindsight best of proposals separately; repairs, regressions, cycles and synchronized drafter timing. Target verification not timed, no speedup claim.",
+  "panel_status": "64 previously exposed development prompts; four fixed anchors each. No unseen-test claim.",
+  "strongest_counterargument": "Released DFlash was trained on masked inputs, not repeatedly filled proposals; self-copy or harmful distribution shift can prevent useful editing.",
+  "cost": {
+    "resource_maximum_usd": 0.5726519999999999,
+    "storage_egress_build_recovery_reserve_usd": 0.6,
+    "pricing_url": "https://modal.com/pricing",
+    "pricing_checked": "2026-10-06"
+  },
+  "funding": "Explicit approval recorded in authorization.json; one $1.50 attempt, no retries.",
+  "expected_wall_time": "Preparation complete after checks; forecast 10-20 minutes execution/recovery, staging/network and model loading uncertain. Hard remote function limits preserve bounded spending."
+}
