@@ -50,6 +50,11 @@ Models = "https://huggingface.co/collections/z-lab/dflash-2"
 include = ["dflash*"]
 
 [project.optional-dependencies]
+test = [
+    "pytest>=8,<10",
+    "torch==2.13.0",
+    "transformers==5.15.0",
+]
 local = [
     "jinja2==3.1.6; sys_platform == 'linux'",
     "torch==2.13.0; sys_platform == 'linux'",

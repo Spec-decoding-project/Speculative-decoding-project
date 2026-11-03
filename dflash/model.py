@@ -18,6 +18,8 @@ from transformers.models.qwen3.modeling_qwen3 import (
     rotate_half,
 )
 
+from .secondary import redraft_suffix
+
 # ---------------------------------------------------------------------------
 # Model utilities
 # ---------------------------------------------------------------------------
@@ -188,11 +190,16 @@ def dflash_generate(
     top_k: int = 0,
     block_size: int | None = None,
     return_stats: bool = False,
+    secondary_model: nn.Module | None = None,
 ):
     _validate_sampling(temperature, top_p, top_k)
+    if secondary_model is not None and temperature != 0:
+        raise ValueError("Secondary drafting currently requires greedy decoding (temperature=0)")
     num_input_tokens = input_ids.shape[1]
     max_length = num_input_tokens + max_new_tokens
     block_size = model.block_size if block_size is None else block_size
+    if secondary_model is not None and block_size < 3:
+        raise ValueError("Secondary drafting requires block_size >= 3")
 
     output_ids = torch.full(
         (1, max_length + 1), model.mask_token_id, dtype=torch.long, device=target.device,
@@ -266,6 +273,10 @@ def dflash_generate(
                     draft_indices = None
                 else:
                     block_output_ids[:, 1:] = torch.argmax(draft_logits, dim=-1)
+        if secondary_model is not None and verify_size > 2:
+            block_output_ids = redraft_suffix(
+                secondary_model, output_ids[:, :start], block_output_ids,
+            )
         output = target(
             block_output_ids,
             position_ids=block_position_ids,
@@ -613,6 +624,7 @@ class DFlashDraftModel(Qwen3PreTrainedModel):
         temperature: float = 0.0,
         top_p: float = 1.0,
         top_k: int = 0,
+        secondary_model: nn.Module | None = None,
     ):
         self.eval()
         return dflash_generate(
@@ -624,6 +636,7 @@ class DFlashDraftModel(Qwen3PreTrainedModel):
             temperature=temperature,
             top_p=top_p,
             top_k=top_k,
+            secondary_model=secondary_model,
         )
 
 

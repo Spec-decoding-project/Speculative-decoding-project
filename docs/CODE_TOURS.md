@@ -21,7 +21,7 @@ These are CodeTour files for a compatible editor extension. Conductor manages th
 | [4 — Compare backends and sampling paths](../.tours/04-backends-and-sampling.tour) | CUDA versus MLX, cache rollback, stochastic sampling, and server boundaries | 15 minutes |
 | [5 — Read benchmarks and plan your first change](../.tours/05-benchmark-and-modify.tour) | Baselines, acceptance accounting, timing denominators, and missing checks | 15 minutes |
 
-The times are planning estimates, not measured learning guarantees. To find where a future draft-refinement experiment would fit, take 1 → 2 → 5 and return to 3 before changing model internals. Use 4 to understand platform and sampling differences. The tours assume basic Python. Their tensor notation is introduced in tour 3; use the tutoring prompt below if it needs unpacking.
+The times are planning estimates, not measured learning guarantees. To understand the secondary-drafting insertion point, take 1 → 2 → 5, read the [experiment guide](SECONDARY_DRAFTER.md), and return to 3 before changing model internals. Use 4 to understand platform and sampling differences. The tours assume basic Python. Their tensor notation is introduced in tour 3; use the tutoring prompt below if it needs unpacking.
 
 ## Keep this map in mind
 
@@ -30,7 +30,8 @@ flowchart TD
     CLI[cli.py: command and backend] --> Load[benchmark.py: loading and prompt formatting]
     Load --> Gen[model.py: PyTorch dflash_generate]
     Gen --> Draft[Draft a block]
-    Draft --> Verify[Target verifies the block]
+    Draft --> Secondary[Optional token-only suffix regeneration]
+    Secondary --> Verify[Target verifies the block]
     Verify --> Output[Keep accepted tokens and target correction or bonus]
     Output --> Draft
     CLI --> MLX[model_mlx.py: separate streaming implementation]
@@ -41,7 +42,7 @@ flowchart TD
     Bench --> HTTP
 ```
 
-This is the upstream inference baseline. It includes no custom conditional-redrafting observer, trained refiner, or experiment-report writer.
+Without `--secondary-model`, generation follows the upstream drafting path. The optional secondary drafter keeps the anchor and first DFlash proposal, regenerates the remaining suffix, and then hands the block to the same target verifier. There is no custom training loop or experiment-report writer.
 
 ## Turn reading into understanding
 
@@ -71,9 +72,9 @@ python3 -m dflash.cli generate --help
 python3 -m dflash.cli benchmark --help
 ```
 
-These commands use the standard library and require no model downloads. They check navigation and CLI wiring, not inference correctness. The upstream baseline contains a package-build/smoke workflow but no inference test suite. Before modifying generation, add targeted checks for target-output agreement, cache alignment, sampling, stop tokens, and short output budgets as appropriate to your change.
+These commands use the standard library and require no model downloads. They check navigation and CLI wiring, not inference correctness. The [secondary-drafter guide](SECONDARY_DRAFTER.md#read-the-implementation-and-run-cpu-checks) explains the CPU inference tests and their dependencies. Those tests cover the new greedy path; they do not establish GPU performance or validate all upstream sampling and backend paths.
 
-For actual inference, follow [Install for inference](../README.md#install-for-inference) and the [upstream examples](UPSTREAM_README.md). Local inference may download weights and benchmarks may download datasets. The Transformers CLI selects CUDA; MLX is the separate Apple Silicon path. Benchmarks print summaries to the terminal. They do not currently produce the earlier project's experiment JSON reports, and the local benchmark does not assert exact equality between baseline and speculative token IDs.
+For actual inference, follow [Install for inference](../README.md#install-for-inference) and the [upstream examples](UPSTREAM_README.md). Local inference may download weights and benchmarks may download datasets. The Transformers CLI selects CUDA; MLX is the separate Apple Silicon path. Benchmarks print summaries to the terminal and do not produce the earlier project's experiment JSON reports. A Transformers benchmark with `--secondary-model` checks token equality across all three paths; generation with `--check-greedy` checks against an independent target-only loop.
 
 ## When files change
 

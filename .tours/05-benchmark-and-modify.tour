@@ -19,7 +19,7 @@
       "file": "dflash/benchmark.py",
       "pattern": "^\\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ for\\ bs\\ in\\ \\[1,\\ block_size\\]:$",
       "title": "PyTorch compares two block widths",
-      "description": "Before measuring, the runner warms up both widths. It then measures `dflash_generate` with width 1 as its target-only path and with the configured speculative width. Width 1 bypasses draft proposal generation but still uses this generator’s control flow. Results are stored per turn. The speculative response becomes conversation history for later turns. For a meaningful contrast, use a speculative width greater than 1; width 1 makes the two dictionary keys coincide."
+      "description": "Before measuring, the runner warms up both widths. It then measures `dflash_generate` with width 1 as its target-only path and with the configured speculative width. Width 1 bypasses draft proposal generation but still uses this generator’s control flow. Results are stored per turn. The speculative response becomes conversation history for later turns. For a meaningful contrast, use a speculative width greater than 1; width 1 makes the two dictionary keys coincide. With --secondary-model, the runner also warms up and measures a third path using the same prompts, checks both speculative outputs against target-only IDs, and uses the refined response for conversation history. All secondary work is timed."
     },
     {
       "file": "dflash/model.py",
@@ -49,7 +49,7 @@
       "file": "dflash/model.py",
       "pattern": "^\\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ block_output_ids\\[:,\\ 1:\\]\\ =\\ torch\\.argmax\\(draft_logits,\\ dim=\\-1\\)$",
       "title": "Choose a small change and a falsifiable check",
-      "description": "Checkpoint 5C: Before adding a draft refinement pass, name the insertion point, information allowed into it, one cache invariant, and a correctness test. This line finishes original DFlash’s greedy proposals; target verification follows. Your future change must deliberately handle the separate DFlash2 and stochastic paths. Check [the answer key](./docs/TOUR_CHECKPOINTS.md). This pristine baseline has package smoke checks but no added inference-test suite. Do not call benchmark throughput a correctness test or claim a speedup before measuring the complete changed path."
+      "description": "Checkpoint 5C: Identify the insertion point, information allowed into a suffix refiner, one cache invariant, and a correctness test. This line finishes original DFlash’s greedy proposals. The optional redraft_suffix call then preserves the anchor and first proposal, regenerates the suffix using token IDs only, and passes the block to target verification. It also follows the DFlash2 propose branch, but rejects stochastic decoding. Check [the answer key](./docs/TOUR_CHECKPOINTS.md) and [the experiment guide](./docs/SECONDARY_DRAFTER.md). CPU tests cover this greedy extension. Do not call benchmark throughput a correctness test or claim a speedup before measuring the complete changed path."
     }
   ]
 }

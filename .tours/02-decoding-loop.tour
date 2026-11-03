@@ -19,7 +19,7 @@
       "file": "dflash/model.py",
       "pattern": "^\\ \\ \\ \\ \\ \\ \\ \\ verify_size\\ =\\ min\\(block_size,\\ max_length\\ \\-\\ start\\)$",
       "title": "Draft the unfilled positions",
-      "description": "The remaining output budget may shorten a block. The slice is cloned, embedded through the target embedding table, and passed to the drafter together with context features. The returned hidden states for non-anchor positions become vocabulary logits. Greedy `argmax` fills positions 1 onward. After drafting, its cache is cropped back to the boundary before the current block. Find where `block_output_ids[:, 1:]` is assigned; position 0 remains the target anchor."
+      "description": "The remaining output budget may shorten a block. The slice is cloned, embedded through the target embedding table, and passed to the drafter together with context features. The returned hidden states for non-anchor positions become vocabulary logits. Greedy `argmax` fills positions 1 onward. After drafting, its cache is cropped back to the boundary before the current block. Find where `block_output_ids[:, 1:]` is assigned; position 0 remains the target anchor. With --secondary-model, a separate autoregressive model next keeps [anchor, x1] and replaces x2 onward from accepted context plus those two seed tokens. It uses no target hidden states and has a fresh cache per block; target verification still decides which proposals survive."
     },
     {
       "file": "dflash/model.py",
@@ -49,7 +49,7 @@
       "file": "dflash/model.py",
       "pattern": "^\\ \\ \\ \\ \\ \\ \\ \\ _crop_to\\(past_key_values_target,\\ start\\)$",
       "title": "Name the invariant before modifying the loop",
-      "description": "The target cache is cropped to the committed boundary, and the next anchor will be processed on the next round. Keeping rejected positions would let future predictions use discarded history. The stored `acceptance_lengths` use `produced`: accepted proposals plus the new correction/bonus, subject to stop and budget limits. Explain checkpoints 2B and 2C, then check [the answer key](./docs/TOUR_CHECKPOINTS.md). Before a future edit, plan tests for target-output equality, cache alignment, first-token rejection, all-token acceptance, EOS, and a short final block. This baseline does not include those tests."
+      "description": "The target cache is cropped to the committed boundary, and the next anchor will be processed on the next round. Keeping rejected positions would let future predictions use discarded history. The stored `acceptance_lengths` use `produced`: accepted proposals plus the new correction/bonus, subject to stop and budget limits. Explain checkpoints 2B and 2C, then check [the answer key](./docs/TOUR_CHECKPOINTS.md). Before another edit, inspect the CPU tests for target-output equality, cache alignment, first-token rejection, all-token acceptance, EOS, and a short final block. These exercise the optional secondary drafter; they do not prove a speedup."
     }
   ],
   "nextTour": "3 - Understand the draft model"

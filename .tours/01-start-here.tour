@@ -7,7 +7,7 @@
       "file": "README.md",
       "pattern": "^\\#\\ DFlash\\ —\\ an\\ independent\\ starting\\ point$",
       "title": "The purpose of this code",
-      "description": "Goal: identify the major components before reading their internals. A smaller draft model proposes several tokens at once. A larger target model verifies them and determines which continuation is retained. DFlash aims to reduce generation time while preserving target decoding behavior. This is the unmodified upstream Python implementation, including original DFlash and DFlash2. There is no custom redrafting experiment or training loop in this baseline. Assume basic Python; tensor notation is introduced in tour 3."
+      "description": "Goal: identify the major components before reading their internals. A smaller draft model proposes several tokens at once. A larger target model verifies them and determines which continuation is retained. DFlash aims to reduce generation time while preserving target decoding behavior. This starts from upstream DFlash and DFlash2 and adds an optional token-only secondary drafter. The original drafting path remains the default; no training loop is included. Assume basic Python; tensor notation is introduced in tour 3."
     },
     {
       "file": "pyproject.toml",
@@ -35,7 +35,7 @@
     },
     {
       "file": "dflash/benchmark.py",
-      "pattern": "^def\\ _print_decode_summary\\(responses:\\ list\\[dict\\[int,\\ SimpleNamespace\\]\\],\\ block_size:\\ int\\)\\ \\->\\ None:$",
+      "pattern": "^def _print_decode_summary\\($",
       "title": "Measure the result",
       "description": "Local benchmarks compare a baseline with speculative decoding and print throughput, speedup, and acceptance summaries. These are timing and generation statistics, not task-accuracy grades. In particular, the recorded acceptance lengths count newly produced tokens per round, including the correction/bonus; they are not always the number of accepted draft proposals. Tour 5 works through the exact denominators and measurement limits."
     },

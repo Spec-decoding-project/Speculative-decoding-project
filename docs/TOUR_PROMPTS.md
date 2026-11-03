@@ -58,9 +58,10 @@ Keep these distinctions explicit: target anchor vs draft proposals; accepted
 draft proposals vs newly produced tokens including the correction/bonus;
 original DFlash vs DFlash2; greedy vs stochastic decoding; PyTorch vs MLX vs
 server inference; task accuracy vs target-output correctness vs speed.
-This is the upstream baseline, without the earlier custom redrafting runner,
-observer, or experiment tests. Do not describe a trained refiner or packed
-tree verifier as implemented. Confirm these statements against the checkout.
+This checkout adds an optional token-only secondary drafter to the upstream
+baseline, with CPU tests and greedy output checks. Distinguish its pretrained
+weights from a custom-trained refiner; no packed tree verifier is implemented.
+Confirm these statements against the checkout.
 ```
 
 ## Use a tour as a tutor, not a lecture
