@@ -68,6 +68,6 @@ The initial import (`cb44a76`) matches all five upstream `dflash/` files byte fo
 
 The upstream [MIT license and copyright notice](LICENSE) are retained. [Repository history and everyday Git use](docs/REPOSITORY.md) explains the clean history, the local backup of the earlier experiment, and direct pushes without PRs. For the original project documentation and citations, see [UPSTREAM_README.md](docs/UPSTREAM_README.md).
 
-## Editor experiment (Shrinav and Frank, October 2026)
+## Editor experiment
 
-Our experiment on whether a small editor can reproduce a full second drafting pass's corrections cheaply, on Qwen3-4B. Start with [`editor-experiment/README.md`](editor-experiment/README.md) for the architecture, training, results, and plan, and [`results/SUMMARY.md`](results/SUMMARY.md) for the one-page project summary. Measured on the dev set: a full second pass adds 10.2% accepted positions at about 30% more round cost; the best 3M-parameter editor adds 3.7% at 5% to 6% more cost and does not break even. The run write-ups behind those numbers are in `results/`.
+Can a 3M-parameter editor replace a full second drafting pass? On Qwen3-4B, the second pass adds 10.2% accepted positions at about 30% more cost; the best editor adds 3.7% at 5% to 6% more cost and does not break even. Code, results, and plan: [`editor-experiment/`](editor-experiment/README.md). Evidence: [`results/`](results/SUMMARY.md).
