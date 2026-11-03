@@ -1,73 +1,38 @@
-# DFlash — an independent starting point
+# Can a drafter learn from its own draft?
 
-This repository starts from unmodified DFlash Python source from [`z-lab/dflash` at `07ebd93`](https://github.com/z-lab/dflash/tree/07ebd93db9f472af339b644bb70221ad8428328a), with fresh Git history under Frankstuff's repository. It now includes an optional token-only autoregressive secondary drafter. The earlier conditional-redrafting experiment is not included.
+Shrinav Loka and Frank. Speculative decoding on Qwen3 with the DFlash block drafter.
 
-**Start with [the code-tour guide](docs/CODE_TOURS.md).** Five JSON tours in [`.tours/`](.tours) teach the project layout, decoding loop, model internals, backends, and benchmark interpretation. [Tour prompts and research](docs/TOUR_PROMPTS.md) contains reusable prompts for generating and learning from future tours.
+Speculative decoding lets a small drafter guess a block of tokens that the large target model verifies in one pass. A second drafting pass that re-reads the first draft adds accepted tokens, but costs almost a full extra pass. This project asks whether a much smaller network can recover that gain cheaply.
 
-## What the code does
+## What's here
 
-DFlash uses a draft model to propose several tokens in parallel. A larger target model verifies the proposals, retains a valid prefix, and supplies a correction or bonus token. The aim is faster generation while preserving the target model's decoding behavior.
+| Folder | Contents |
+|---|---|
+| [`editor-experiment/`](editor-experiment/README.md) | Our experiment: a 3M-parameter editor trained to imitate a full second drafting pass. Model, training, teacher, cost measurement, analysis. |
+| [`results/`](results/SUMMARY.md) | One-page summary of everything tried, the D2SD paper note, and the run write-ups behind the numbers. |
+| [`dflash/`](dflash/README.md) | The DFlash drafter we build on, plus Frank's token-only secondary drafter. Install and usage notes there. |
+| `docs/`, `.tours/` | Code tours for reading DFlash. |
 
-| File | Role |
-| --- | --- |
-| [`dflash/cli.py`](dflash/cli.py) | `generate` and `benchmark` commands; chooses Transformers, MLX, or an HTTP server |
-| [`dflash/model.py`](dflash/model.py) | PyTorch generation, draft attention, DFlash and DFlash2 model classes |
-| [`dflash/model_mlx.py`](dflash/model_mlx.py) | Apple Silicon implementation, streaming, and cache/state rollback |
-| [`dflash/benchmark.py`](dflash/benchmark.py) | Model loading, prompt formatting, datasets, server requests, and benchmark summaries |
-| [`dflash/secondary.py`](dflash/secondary.py) | Pretrained secondary model loading and token-only suffix regeneration |
-| [`dflash/validation.py`](dflash/validation.py) | Independent target-only greedy output check |
-| [`dflash/__init__.py`](dflash/__init__.py) | Lazy public imports so basic CLI help does not load model libraries |
+## Results so far (Qwen3-4B, measured)
 
-The upstream package contains both original DFlash and DFlash2. The tours first explain original DFlash with greedy decoding, then identify the other paths. Without `--secondary-model`, the original drafting path remains the default. There is no training pipeline.
+| | Extra accepted positions | Extra round cost |
+|---|---|---|
+| Full second drafting pass | +10.2% | about +30% |
+| Best 3M editor | +3.7% | +5% to +6% |
 
-## Try the secondary drafter
+The editor needed about +6% to break even and did not reach it. The second drafter repairs 79 and damages 33 blocks on its training prompts, but 35 and 41 on unseen prompts, so the editor is imitating prompt-specific repairs. A free 24-node tree from the drafter's own scores beats every editor.
 
-After installing the local dependencies on a CUDA machine, run:
+## Next
 
-```bash
-dflash generate transformers \
-  --model Qwen/Qwen3-4B --draft z-lab/Qwen3-4B-DFlash-b16 \
-  --secondary-model Qwen/Qwen3-0.6B \
-  --block-size 16 --max-new-tokens 128 \
-  --temperature 0 --reasoning off --check-greedy \
-  "Explain speculative decoding briefly."
+1. Measure real end-to-end speed on Qwen3-8B.
+2. Scale editor training data 10x, keeping only redrafts the target verified as better.
+3. If that moves the gain, train a D2SD-style second drafter for 8B.
+
+## Setup
+
 ```
-
-The secondary model preserves the anchor and first DFlash proposal, then regenerates the remaining suffix from token IDs. The target verifies the resulting block. Read the [experiment guide](docs/SECONDARY_DRAFTER.md) for weight initialization, a three-way benchmark, implementation locations, CPU tests, and limitations. This is a correctness-first experiment; speedup must be measured.
-
-## Read and inspect without model downloads
-
-```bash
-git clone https://github.com/Frankstuff/Speculative-decoding-project.git
-cd Speculative-decoding-project
-python3 -m dflash.cli --help
-python3 -m dflash.cli generate --help
-python3 -m dflash.cli benchmark --help
-python3 scripts/validate_tours.py
-```
-
-These commands use the standard library. Open this folder in VS Code, install **CodeTour** (`vsls-contrib.codetour`), and run **CodeTour: Start Tour → 1 - Find your way around**. See [the guide](docs/CODE_TOURS.md) for navigation and learning exercises.
-
-## Install for inference
-
-Use a supported Python version for the pinned packages; the package CI uses Python 3.12.
-
-```bash
-python3.12 -m venv .venv
-source .venv/bin/activate
+python3.12 -m venv .venv && source .venv/bin/activate
 python -m pip install -e '.[local]'
 ```
 
-The `local` extra selects PyTorch/Transformers on Linux and MLX on Apple Silicon. The Transformers CLI selects a CUDA device. For an existing compatible inference server, use `python -m pip install -e .` for the lighter client installation. Installing the package does not itself download model checkpoints; running a local generation command can.
-
-See the preserved [upstream usage guide](docs/UPSTREAM_README.md) for supported model pairs and generation/benchmark examples. Install this checkout with `-e` when modifying it; `pip install dflash` alone installs the published upstream package.
-
-## Repository and source provenance
-
-The initial import (`cb44a76`) matches all five upstream `dflash/` files byte for byte. Later changes add the optional secondary drafter, output checks, CPU tests, and learning materials. Package maintainer/URLs and ignore rules are adapted for this repository; the inherited PyPI publishing workflow is omitted. CI checks package builds, code tours, and CPU inference correctness.
-
-The upstream [MIT license and copyright notice](LICENSE) are retained. [Repository history and everyday Git use](docs/REPOSITORY.md) explains the clean history, the local backup of the earlier experiment, and direct pushes without PRs. For the original project documentation and citations, see [UPSTREAM_README.md](docs/UPSTREAM_README.md).
-
-## Editor experiment
-
-Can a 3M-parameter editor replace a full second drafting pass? On Qwen3-4B, the second pass adds 10.2% accepted positions at about 30% more cost; the best editor adds 3.7% at 5% to 6% more cost and does not break even. Code, results, and plan: [`editor-experiment/`](editor-experiment/README.md). Evidence: [`results/`](results/SUMMARY.md).
+Checkpoints: `Qwen/Qwen3-4B` and `z-lab/Qwen3-4B-DFlash-b16`. The editor experiment needs a 24 GB GPU. Upstream DFlash is MIT licensed; see [`LICENSE`](LICENSE).
