@@ -1,0 +1,56 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "2 - Trace one greedy decoding block",
+  "description": "Follow token positions, verification, and cache rollback. Read tour 1 first. About 15 minutes.",
+  "steps": [
+    {
+      "file": "dflash/model.py",
+      "pattern": "^\\ \\ \\ \\ num_input_tokens\\ =\\ input_ids\\.shape\\[1\\]$",
+      "title": "Choose a concrete block",
+      "description": "Goal: explain exactly which tokens may become output. Trace the `temperature=0` path with one prompt and `block_size=4`. Write a candidate as `[a, x1, x2, x3]`: `a` is already selected by the target, while the three `x` values are unverified. `start` points to the anchor in the output buffer. Positive temperature uses probability-based rejection sampling elsewhere in this function; the greedy equality rule in this tour does not describe that branch."
+    },
+    {
+      "file": "dflash/model.py",
+      "pattern": "^\\ \\ \\ \\ prefill_start\\ =\\ _cuda_time\\(\\)\\ if\\ return_stats\\ else\\ None$",
+      "title": "Prefill selects the first anchor",
+      "description": "The first target call processes the entire prompt and populates its key/value cache, which stores past attention states. Its last logits choose `a`. Selected target hidden layers become context features for the drafter. The output buffer was initialized with mask-token IDs, so future positions are placeholders. The target cache ends at the prompt boundary; the anchor has been selected but has not yet been fed through the next target call."
+    },
+    {
+      "file": "dflash/model.py",
+      "pattern": "^\\ \\ \\ \\ \\ \\ \\ \\ verify_size\\ =\\ min\\(block_size,\\ max_length\\ \\-\\ start\\)$",
+      "title": "Draft the unfilled positions",
+      "description": "The remaining output budget may shorten a block. The slice is cloned, embedded through the target embedding table, and passed to the drafter together with context features. The returned hidden states for non-anchor positions become vocabulary logits. Greedy `argmax` fills positions 1 onward. After drafting, its cache is cropped back to the boundary before the current block. Find where `block_output_ids[:, 1:]` is assigned; position 0 remains the target anchor. With --secondary-model, a separate autoregressive model next keeps [anchor, x1] and replaces x2 onward from accepted context plus those two seed tokens. It uses no target hidden states and has a fresh cache per block; target verification still decides which proposals survive."
+    },
+    {
+      "file": "dflash/model.py",
+      "pattern": "^\\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ output_hidden_states=verify_size\\ >\\ 1,$",
+      "title": "Verify the proposed block in one target call",
+      "description": "The target call immediately above processes the anchor plus all proposals using the target cache. Its causal attention predicts the next token at every position. The first logit row predicts x1; later rows predict successive proposals; the final row can supply a bonus. This parallel verification is useful because evaluating a block may cost less than many separate target calls. Whether it actually saves time depends on draft cost, acceptance, block width, and hardware."
+    },
+    {
+      "file": "dflash/model.py",
+      "pattern": "^\\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ acceptance_length\\ =\\ \\(block_output_ids\\[:,\\ 1:\\]\\ ==\\ posterior\\[:,\\ :\\-1\\]\\)\\.cumprod\\(dim=1\\)\\.sum\\(dim=1\\)\\[0\\]\\.item\\(\\)$",
+      "title": "Count a consecutive prefix, not all matches",
+      "description": "A target logit row predicts the following token: the anchor row predicts `x1`, the `x1` row predicts `x2`, and so on. The comparison therefore shifts the two arrays by one position. Cumulative product turns every comparison after the first mismatch into zero.\n\nCheckpoint 2A: For proposals `[4, 9, 6]` and aligned target predictions `[4, 5, 6]`, how many proposals count as accepted? Explain why the final matching 6 cannot be retained."
+    },
+    {
+      "file": "dflash/model.py",
+      "pattern": "^\\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ bonus\\ =\\ posterior\\[:,\\ acceptance_length\\]\\[0\\]$",
+      "title": "A correction becomes the next anchor",
+      "description": "The answer to 2A is one: the mismatch at 9 ends the accepted prefix. This line takes the target prediction at that boundary. If all proposals matched, it is the next bonus token. The following writes retain the anchor and accepted proposals, then store the correction/bonus.\n\nCheckpoint 2B: With `[a, 4, 9, 6]` and predictions `[4, 5, 6, 7]`, which tokens survive this round and which token is the next anchor? Assume enough output budget and no stop token."
+    },
+    {
+      "file": "dflash/model.py",
+      "pattern": "^\\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ stop_indices\\ =\\ torch\\.isin\\($",
+      "title": "Stop boundaries limit useful output",
+      "description": "Before advancing, generation searches newly produced tokens for a stop ID. It keeps the first stop token and ends there. It then advances `start`, crops target cache state back to that boundary, and carries forward only relevant context features. The next anchor is stored at the boundary and will be processed in the next round.\n\nCheckpoint 2C: If a stop token occurs among accepted tokens, can later matches from this block appear in the returned continuation?"
+    },
+    {
+      "file": "dflash/model.py",
+      "pattern": "^\\ \\ \\ \\ \\ \\ \\ \\ _crop_to\\(past_key_values_target,\\ start\\)$",
+      "title": "Name the invariant before modifying the loop",
+      "description": "The target cache is cropped to the committed boundary, and the next anchor will be processed on the next round. Keeping rejected positions would let future predictions use discarded history. The stored `acceptance_lengths` use `produced`: accepted proposals plus the new correction/bonus, subject to stop and budget limits. Explain checkpoints 2B and 2C, then check [the answer key](./docs/TOUR_CHECKPOINTS.md). Before another edit, inspect the CPU tests for target-output equality, cache alignment, first-token rejection, all-token acceptance, EOS, and a short final block. These exercise the optional secondary drafter; they do not prove a speedup."
+    }
+  ],
+  "nextTour": "3 - Understand the draft model"
+}

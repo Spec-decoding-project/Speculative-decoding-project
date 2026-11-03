@@ -193,11 +193,13 @@ def _make_decode_metrics(num_output_tokens: int, generation_tps: float, acceptan
     )
 
 
-def _print_decode_summary(responses: list[dict[int, SimpleNamespace]], block_size: int) -> None:
+def _print_decode_summary(
+    responses: list[dict[int, SimpleNamespace]], block_size: int, label: str = "DFlash",
+) -> None:
     baseline_tpot = statistics.mean(r[1].time_per_output_token for r in responses)
     dflash_tpot = statistics.mean(r[block_size].time_per_output_token for r in responses)
     print(f"Baseline throughput: {1 / baseline_tpot:.2f} tok/s")
-    print(f"DFlash throughput:  {1 / dflash_tpot:.2f} tok/s")
+    print(f"{label} throughput:  {1 / dflash_tpot:.2f} tok/s")
     print(f"Decoding speedup: {baseline_tpot / dflash_tpot:.2f}")
 
     per_request = [
@@ -220,11 +222,17 @@ def _run_transformers(args: argparse.Namespace) -> None:
     import torch
 
     from .model import dflash_generate
+    from .secondary import load_secondary_model
+    from .validation import assert_same_tokens
 
     torch.manual_seed(0)
     device = torch.device("cuda:0")
     target, draft_model, tokenizer = load_transformers_models(
         args.model, args.draft, device
+    )
+    secondary = (
+        load_secondary_model(args.secondary_model, target, tokenizer)
+        if args.secondary_model else None
     )
 
     block_size = args.block_size if args.block_size is not None else draft_model.block_size
@@ -246,8 +254,15 @@ def _run_transformers(args: argparse.Namespace) -> None:
             draft_model, target, warmup, warmup_tokens, None,
             args.temperature, args.top_p, args.top_k, block_size=bs,
         )
+    if secondary is not None:
+        dflash_generate(
+            draft_model, target, warmup, warmup_tokens, None,
+            args.temperature, args.top_p, args.top_k, block_size=block_size,
+            secondary_model=secondary,
+        )
 
     responses = []
+    secondary_responses = []
     for idx in tqdm(range(len(dataset))):
         instance = dataset[idx]
         messages = []
@@ -276,12 +291,39 @@ def _run_transformers(args: argparse.Namespace) -> None:
                 )
 
             spec_response = response[block_size]
+            if secondary is not None:
+                spec_response = dflash_generate(
+                    draft_model,
+                    target=target,
+                    input_ids=input_ids,
+                    max_new_tokens=args.max_new_tokens,
+                    stop_token_ids=stop_token_ids(target, tokenizer),
+                    temperature=args.temperature,
+                    top_p=args.top_p,
+                    top_k=args.top_k,
+                    block_size=block_size,
+                    return_stats=True,
+                    secondary_model=secondary,
+                )
+                assert_same_tokens(
+                    response[block_size].output_ids, response[1].output_ids, "Ordinary DFlash",
+                )
+                assert_same_tokens(
+                    spec_response.output_ids, response[1].output_ids, "Secondary drafting",
+                )
+                secondary_responses.append({1: response[1], block_size: spec_response})
             generated_ids = spec_response.output_ids[0, spec_response.num_input_tokens:]
             output_text = tokenizer.decode(generated_ids, skip_special_tokens=True)
             messages.append({"role": "assistant", "content": output_text})
             responses.append(response)
 
     _print_decode_summary(responses, block_size)
+    if secondary_responses:
+        _print_decode_summary(secondary_responses, block_size, label="DFlash + secondary")
+        ordinary_tpot = statistics.mean(r[block_size].time_per_output_token for r in responses)
+        secondary_tpot = statistics.mean(r[block_size].time_per_output_token for r in secondary_responses)
+        print(f"Speedup vs ordinary DFlash: {ordinary_tpot / secondary_tpot:.2f}")
+        print(f"Greedy token checks passed for all {len(responses)} turns.")
 
 
 def _run_mlx(args: argparse.Namespace) -> None:

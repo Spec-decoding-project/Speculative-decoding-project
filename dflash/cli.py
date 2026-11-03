@@ -7,6 +7,10 @@ def _add_inference_arguments(parser: argparse.ArgumentParser) -> None:
     parser.add_argument("backend", choices=("transformers", "mlx", "openai"))
     parser.add_argument("--model", required=True)
     parser.add_argument("--draft")
+    parser.add_argument(
+        "--secondary-model",
+        help="Pretrained token-only suffix drafter (Transformers, temperature 0)",
+    )
     parser.add_argument("--draft-bits", type=int, choices=[4, 8])
     parser.add_argument("--block-size", type=int)
     parser.add_argument("--max-new-tokens", type=int, default=2048)
@@ -31,6 +35,10 @@ def _parser() -> argparse.ArgumentParser:
     _add_inference_arguments(generate)
     generate.add_argument("prompt")
     generate.add_argument("--system")
+    generate.add_argument(
+        "--check-greedy", action="store_true",
+        help="Compare output IDs with independent target-only greedy generation",
+    )
 
     benchmark = commands.add_parser("benchmark", help="Run a benchmark")
     _add_inference_arguments(benchmark)
@@ -58,11 +66,16 @@ def _generate_transformers(args) -> None:
         stop_token_ids,
     )
     from .model import dflash_generate
+    from .secondary import load_secondary_model
 
     torch.manual_seed(0)
     device = torch.device("cuda:0")
     target, draft, tokenizer = load_transformers_models(
         args.model, args.draft, device
+    )
+    secondary = (
+        load_secondary_model(args.secondary_model, target, tokenizer)
+        if args.secondary_model else None
     )
     prompt = apply_chat_template(tokenizer, _messages(args), args.reasoning)
     input_ids = tokenizer.encode(
@@ -78,7 +91,18 @@ def _generate_transformers(args) -> None:
         args.top_p,
         args.top_k,
         block_size=args.block_size,
+        secondary_model=secondary,
     )
+    if args.check_greedy:
+        import sys
+
+        from .validation import check_greedy_output
+
+        check_greedy_output(
+            target, input_ids, output_ids, args.max_new_tokens,
+            stop_token_ids(target, tokenizer),
+        )
+        print("Greedy check passed: exact target-only token match.", file=sys.stderr)
     print(
         tokenizer.decode(output_ids[0, input_ids.shape[1] :], skip_special_tokens=True)
     )
@@ -136,6 +160,15 @@ def main(argv=None) -> None:
     args = parser.parse_args(argv)
     if args.backend != "openai" and args.draft is None:
         parser.error("--draft is required for local backends")
+    if args.max_new_tokens < 1:
+        parser.error("--max-new-tokens must be positive")
+    if args.block_size is not None and args.block_size < 1:
+        parser.error("--block-size must be positive")
+    if args.secondary_model or getattr(args, "check_greedy", False):
+        if args.backend != "transformers" or args.temperature != 0:
+            parser.error("--secondary-model and --check-greedy require Transformers and --temperature 0")
+    if args.secondary_model and args.block_size is not None and args.block_size < 3:
+        parser.error("--secondary-model needs --block-size >= 3 to replace a suffix")
     if args.command == "benchmark":
         from .benchmark import run
 
