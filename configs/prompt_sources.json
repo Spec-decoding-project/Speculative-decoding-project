@@ -1,0 +1,31 @@
+{
+  "gsm8k": {
+    "repo_id": "openai/gsm8k",
+    "config": "main",
+    "revision": "740312add88f781978c0658806c59bc2815b9866",
+    "prompt_column": "question",
+    "train_split": "train",
+    "test_split": "test",
+    "files": [
+      {"path": "README.md", "sha256": "a17e882503578c9e324560630e31017617714ee025c87cf4fea6fd916895f3c1", "bytes": 7935},
+      {"path": "main/test-00000-of-00001.parquet", "split": "test", "rows": 1319, "bytes": 419088, "sha256": "ee7b8da9e381df27b9e3f7758a159ab2bdaa4dbaa910546cbbc47e0cb44e4f59"},
+      {"path": "main/train-00000-of-00001.parquet", "split": "train", "rows": 7473, "bytes": 2306545, "sha256": "ea82612ea9582142387730c793eb67d3b12849002bc0b7fa6f8efafa7351419d"}
+    ]
+  },
+  "ultrachat_200k": {
+    "repo_id": "HuggingFaceH4/ultrachat_200k",
+    "config": "default",
+    "revision": "8049631c405ae6576f93f445c6b8166f76f5505a",
+    "prompt_column": "messages",
+    "id_column": "prompt_id",
+    "train_split": "train_sft",
+    "test_split": "test_sft",
+    "files": [
+      {"path": "README.md", "sha256": "d2b3bf76702b85b28172f4dd971ae80c03348cd3fee518c7e6e6f4d43dd33431", "bytes": 3899},
+      {"path": "data/test_sft-00000-of-00001-f7dfac4afe5b93f4.parquet", "split": "test_sft", "rows": 23110, "bytes": 81176553, "sha256": "c18fd6e77395577652bdefbc5a87044ea799e989451ecfca5c6cf977ae5c6f70"},
+      {"path": "data/train_sft-00000-of-00003-a3ecf92756993583.parquet", "split": "train_sft", "rows": 69289, "bytes": 243999189, "sha256": "afa8fa7426081b2a0e732fb50dbb5cd402a28ad5f0dbe66c0d996d63e7220727"},
+      {"path": "data/train_sft-00001-of-00003-0a1804bcb6ae68c6.parquet", "split": "train_sft", "rows": 69288, "bytes": 243897199, "sha256": "c8230190bc8b29084c974ff32f05589b458fad1908fc4b2fb2b9e1e9f7921f03"},
+      {"path": "data/train_sft-00002-of-00003-ee46ed25cfae92c6.parquet", "split": "train_sft", "rows": 69288, "bytes": 244131731, "sha256": "6fe7d2a5e95cf660f972ecaf304aa5632d7f53384e4b0e0d0f44d9c96733c03e"}
+    ]
+  }
+}

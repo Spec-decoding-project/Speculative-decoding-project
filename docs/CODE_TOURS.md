@@ -1,13 +1,13 @@
 # Learn this repository with CodeTour
 
-Start with **1 - Find your way around**. The five files in [`.tours/`](../.tours) are JSON documents with the `.tour` extension, which CodeTour discovers automatically. You do not need to install this Python project or download model weights to read them.
+Start with **1 - Find your way around**. The six files in [`.tours/`](../.tours) are JSON documents with the `.tour` extension, which CodeTour discovers automatically. You do not need to install this Python project or download model weights to read them.
 
 ## Open the tours
 
 1. Open this workspace's repository root in VS Code: the folder containing `pyproject.toml`, `dflash/`, and `.tours/`. From the Conductor workspace terminal, `code .` opens that exact folder if the VS Code shell command is installed. Otherwise use VS Code's **File → Open Folder**. Do not open only the `.tours` folder.
 2. Install **CodeTour**, extension ID **`vsls-contrib.codetour`**, from VS Code Extensions. This repository recommends it in `.vscode/extensions.json`. The optional terminal command is `code --install-extension vsls-contrib.codetour`.
 3. Open the Command Palette with **Cmd+Shift+P** on macOS, or **Ctrl+Shift+P** on Windows/Linux. Run **CodeTour: Start Tour**, then select **1 - Find your way around**. You can also start a tour from the **CODETOUR** view in Explorer.
-4. Read the explanation beside the highlighted code, then use the tour's next/previous controls. `Next Tour` links connect the five tours in order. Stop after a tour if you need a break.
+4. Read the explanation beside the highlighted code, then use the tour's next/previous controls. `Next Tour` links connect the five inference tours in order. Tour 6 is a separate data-collection route. Stop after a tour if you need a break.
 
 These are CodeTour files for a compatible editor extension. Conductor manages the workspace; opening JSON as text in its file viewer is not the same as playing a tour. The format, playback, and linking behavior are documented in the [official CodeTour repository](https://github.com/microsoft/codetour).
 
@@ -20,6 +20,7 @@ These are CodeTour files for a compatible editor extension. Conductor manages th
 | [3 — Understand the draft model](../.tours/03-drafter-internals.tour) | How target features and block embeddings become proposals | 15 minutes |
 | [4 — Compare backends and sampling paths](../.tours/04-backends-and-sampling.tour) | CUDA versus MLX, cache rollback, stochastic sampling, and server boundaries | 15 minutes |
 | [5 — Read benchmarks and plan your first change](../.tours/05-benchmark-and-modify.tour) | Baselines, acceptance accounting, timing denominators, and missing checks | 15 minutes |
+| [6 — Collect reproducible source prompts](../.tours/06-prompt-data.tour) | Pinned datasets, fixed validation, exports, Qwen generation, live progress, and external storage planning | 25 minutes |
 
 The times are planning estimates, not measured learning guarantees. To find where a future draft-refinement experiment would fit, take 1 → 2 → 5 and return to 3 before changing model internals. Use 4 to understand platform and sampling differences. The tours assume basic Python. Their tensor notation is introduced in tour 3; use the tutoring prompt below if it needs unpacking.
 

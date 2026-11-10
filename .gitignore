@@ -10,3 +10,8 @@ dist/
 .context/
 .pytest_cache/
 outputs/
+data/
+.venv-data/
+prompt-data-*.log
+.venv-qwen/
+qwen-*.log

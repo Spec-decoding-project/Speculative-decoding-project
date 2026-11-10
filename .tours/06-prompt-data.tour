@@ -1,0 +1,116 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "6 - Collect reproducible source prompts",
+  "description": "Follow pinned sources into prompt exports and resumable Qwen target responses, then inspect live progress and plan external storage. About 25 minutes.",
+  "steps": [
+    {
+      "file": "scripts/collect_prompt_data.py",
+      "pattern": "^def main\\(argv=None\\):$",
+      "title": "Start the data-only collection",
+      "description": "This entry point downloads datasets and prepares 192 GSM8K plus 192 UltraChat prompts by default, with seed 42. The offline mode uses local files; verification mode checks a completed collection without network or ML libraries. It does not load Qwen or DFlash. Prediction: which stage will eventually supply the target responses and saved draft calculations?"
+    },
+    {
+      "file": "scripts/prepare_training_data.py",
+      "pattern": "^def main\\(argv=None\\):$",
+      "title": "Choose a larger export",
+      "description": "The new build entry point defaults to 6,000 math and 44,000 chat training prompts, plus 512 validation prompts per source. It reuses the raw cache or downloads the same pinned files on a fresh machine. The all option selects the whole eligible pool after reserving validation. Verify checks an existing export; upload is a separate explicit operation. These remain source prompts: responses, draft computations, and editor labels still require GPU collection."
+    },
+    {
+      "file": "configs/prompt_sources.json",
+      "pattern": "^  \"gsm8k\": \\{$",
+      "title": "Pin sources and preserve the split boundary",
+      "description": "The source lock identifies exact revisions, file paths, SHA256 values, sizes, and split row counts. GSM8K uses main/train. The cleaned UltraChat-200k variant uses train_sft and the first user message in messages; its separate prompt column can differ in capitalization. Test files are available for evaluation and overlap exclusion. The benchmark loader elsewhere uses GSM8K test, so it is not the training-data entry point."
+    },
+    {
+      "file": "scripts/collect_prompt_data.py",
+      "pattern": "^def prepare\\(output, sources, counts, seed\\):$",
+      "title": "Verify files and gather held-out prompts first",
+      "description": "Every raw file must match the pinned size and checksum before it is read. The collector builds a set of normalized prompt hashes from both held-out splits, then samples training records. NFC Unicode normalization and collapsed whitespace are used for matching; the original prompt text remains the model input. This catches exact normalized overlap, not semantic paraphrases."
+    },
+    {
+      "file": "scripts/collect_prompt_data.py",
+      "pattern": "^def select_prompts\\(rows, name, source, count, seed, heldout, seen\\):$",
+      "title": "Select unique inputs without assistant answers",
+      "description": "Blank, held-out, and duplicate prompts are skipped. A seeded SHA256 ranking selects across the full eligible split with bounded sample storage. Each output has one user message and source provenance; the original answers and conversation histories remain in raw Parquet. An undersized eligible pool fails instead of silently repeating examples. Prediction: would giving the target UltraChat's existing assistant answer produce the fresh target continuation required by this experiment?"
+    },
+    {
+      "file": "scripts/collect_prompt_data.py",
+      "pattern": "^def verify_collection\\(output\\):$",
+      "title": "Verify a portable collection",
+      "description": "The manifest includes source hashes, counts, filtering statistics, the ordered JSONL checksum, and the future generation plan. Verification checks file bytes, training splits, IDs, and one-user-message structure using only the standard library. The planned 12,288 contexts are not collected contexts: generation counters are zero. Optional exercise: in a disposable copy, predict which check detects a changed prompt byte before trying verification."
+    },
+    {
+      "file": "scripts/prepare_training_data.py",
+      "pattern": "^def split_source\\(records, train_count, validation_count, seed\\):$",
+      "title": "Keep validation fixed while training grows",
+      "description": "Validation is ranked from the full eligible source pool before training counts are applied. The first 192 sample-ranked records per source are protected for the original pilot. With the same sources, seed, and validation count, increasing training counts preserves validation and nests the training subsets. All future contexts and prefix variants must inherit their prompt's split. Prediction: what leakage would result from randomly splitting 32 contexts from each response after generating them?"
+    },
+    {
+      "file": "scripts/prepare_training_data.py",
+      "pattern": "^def write_shards\\(root, split, records, shard_rows\\):$",
+      "title": "Export compressed, portable files",
+      "description": "Parquet shards have a fixed schema, compression, and explicit row order. Nullable source.prompt_id preserves UltraChat IDs even when a shard begins with GSM8K records. The builder stages files, preserves source cards, writes a hash manifest, and verifies before publishing the output directory. Existing directories are refused. Verification needs the export and PyArrow, without the raw cache or network. Optional exercise: predict which checks catch a modified shard and a duplicate moved across splits."
+    },
+    {
+      "file": "scripts/prepare_training_data.py",
+      "pattern": "^def upload_dataset\\(output, repo_id\\):$",
+      "title": "Share a verified dataset on the Hub",
+      "description": "The optional upload uses a dedicated private Hugging Face dataset repository and an exact artifact allowlist. It refuses public destinations and stale or unrelated remote files, and checks the parent commit to avoid overwriting concurrent changes. The source cache and working tree are excluded. File exports can feed batched training directly; an application database is unnecessary. Prediction: why can activation tensors dominate storage even when these prompt shards are small?"
+    },
+    {
+      "file": "scripts/collect_prompt_data.sbatch",
+      "pattern": "^#SBATCH --partition=class$",
+      "title": "Use a CPU allocation on Nexus",
+      "description": "The wrapper schedules the original collection in the class partition and account with two CPUs, 4 GiB RAM, and no GPU by default. The adjacent prepare_training_data.sbatch wrapper schedules the new build, verify, or upload command with the same resources. Both run from the submitted project directory and pass arguments through. VPN and authenticated SSH are prerequisites. Prediction: why should data live in shared home/project storage rather than one submission node's local temporary directory?"
+    },
+    {
+      "file": "tests/test_collect_prompt_data.py",
+      "pattern": "^    def test_answers_duplicates_and_heldout_questions_are_excluded\\(self\\):$",
+      "title": "Check the scientific boundary",
+      "description": "Synthetic fixtures verify that target inputs contain no dataset answers, held-out questions, or duplicate/blank prompts. Other cases check UltraChat's first turn, seed repeatability, corruption detection, and insufficient-data failure. Optional exercise: describe a paraphrased test question that passes the exact-normalization filter, and discuss whether the experiment needs a stronger contamination check."
+    },
+    {
+      "file": "tests/test_prepare_training_data.py",
+      "pattern": "^    def test_expansion_keeps_validation_fixed_and_pilot_in_training\\(self\\):$",
+      "title": "Test scaling and sharing boundaries",
+      "description": "Real synthetic Parquet fixtures exercise nested training subsets, fixed validation, pilot preservation, portable verification, corruption, and schema consistency. Hub calls are mocked to check private destinations and the exact upload allowlist without publishing data. Optional exercise: explain why the entire prompt family should stay in one split even when the editor sees only a short prefix."
+    },
+    {
+      "file": "scripts/generate_qwen_responses.py",
+      "pattern": "^def main\\(argv=None\\):$",
+      "title": "Move from prompts to target responses",
+      "description": "The separate GPU entry point accepts the original JSONL pilot or a verified Parquet export. A pinned configuration selects Qwen3-8B in BF16 with thinking disabled and greedy decoding. Larger exports retain each prompt's training or validation split. A per-invocation limit supports a short pilot before resuming the same run. This stage saves target responses; DFlash computations and editor continuation labels still come later."
+    },
+    {
+      "file": "scripts/generate_qwen_responses.py",
+      "pattern": "^    def generate\\(self, prompt\\):$",
+      "title": "Save the exact model input and continuation",
+      "description": "The tokenizer applies the non-thinking template without adding a new system instruction or exposing dataset answers. Input and output token IDs are saved alongside readable text. Inputs above the configured limit are explicitly skipped, while outputs hitting the new-token cap are marked length rather than EOS. Prediction: why does a length-capped answer need different handling from a completed answer when choosing draft contexts?"
+    },
+    {
+      "file": "scripts/generate_qwen_responses.py",
+      "pattern": "^def read_journal\\(path, expected, run_sha256, repair_tail\\):$",
+      "title": "Resume without mixing experiments",
+      "description": "A worker verifies saved record hashes, prompt identities, and run settings before skipping completed examples. It can discard only an unfinished final line after interruption. Completed corruption causes an error. A run pins the input order, generation settings, shard count, and generator code; runtime metadata catches environment changes within a shard. Optional exercise: predict what should happen if the seed or tokenizer changes halfway through collecting a corpus."
+    },
+    {
+      "file": "tests/test_generate_qwen_responses.py",
+      "pattern": "^    def test_model_failure_leaves_earlier_response_durable\\(self\\):$",
+      "title": "Test recovery separately from GPU correctness",
+      "description": "An injected model failure checks that earlier responses survive and resume skips them. Other offline tests cover disjoint shard assignments, partial-line recovery, corruption, and changed inputs or runtime. These tests use a fake backend and do not prove Qwen's token outputs; actual GPU runs validate loading, generation, and saved artifacts separately."
+    },
+    {
+      "file": "scripts/summarize_qwen_responses.py",
+      "pattern": "^def summarize_runs\\(roots\\):$",
+      "title": "Count saved work without changing live journals",
+      "description": "Pass one or more Qwen output directories to the progress inspector. Each journal read stops at its opening size; incomplete tails are reported and left untouched. Completed record hashes and run/shard identities are checked. Counts separate EOS endings, length caps, skipped inputs, and remaining work. Source prompt IDs are deduplicated across runs because the pilot overlaps the larger export. Prediction: why can adding pilot and larger-run response counts overstate training diversity? Full source verification and scheduler state remain separate checks."
+    },
+    {
+      "file": "tests/test_summarize_qwen_responses.py",
+      "pattern": "^    def test_snapshot_does_not_chase_new_appends\\(self\\):$",
+      "title": "Observe progress before designing uploads",
+      "description": "This test appends another response during inspection and verifies that the current snapshot stays bounded. Other tests cover partial tails, corruption, incorrect shard identity, caps/skips, and overlapping prompt IDs. The pipeline plan in docs/DATA_PIPELINE_PLAN.md proposes verified immutable uploads, bounded buffering, and Convex metadata; those upload components are not implemented yet. Optional exercise: explain what happens if a local journal is deleted after uploading it but before the existing generator resumes."
+    }
+  ],
+  "isPrimary": false
+}

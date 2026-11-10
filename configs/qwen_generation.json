@@ -1,0 +1,11 @@
+{
+  "model_id": "Qwen/Qwen3-8B",
+  "revision": "b968826d9c46dd6066d109eabc6255188de91218",
+  "dtype": "bfloat16",
+  "attention": "sdpa",
+  "enable_thinking": false,
+  "do_sample": false,
+  "max_new_tokens": 2048,
+  "max_input_tokens": 6144,
+  "seed": 0
+}
