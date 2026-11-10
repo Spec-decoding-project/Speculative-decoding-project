@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "draft_id": "z-lab/Qwen3-8B-DFlash-b16",
+  "draft_revision": "9b41424b7109f9c5413454f481b09a82b85333f4",
+  "target_id": "Qwen/Qwen3-8B",
+  "target_revision": "b968826d9c46dd6066d109eabc6255188de91218",
+  "files": {
+    "config.json": {
+      "sha256": "9834d608c9ca53d5548b415471ae9e8ebc9aab6cedfc2a7af95b6bd097373102",
+      "bytes": 1099
+    },
+    "dflash.py": {
+      "sha256": "17ab761ba665a41965b27bdc3a1c6795d1b07b285ec1f0789ad146f2ee9c1cc5",
+      "bytes": 12340
+    },
+    "utils.py": {
+      "sha256": "00b91431932c94b87443d9e2c0cf4d743846bd6c9666c9c736008df7bbd0faf1",
+      "bytes": 5731
+    },
+    "model.safetensors": {
+      "sha256": "c702878094f38ad5843e6ac40b327720b3147ffbf669a5d9ca1974865ca6c080",
+      "bytes": 2097259104
+    }
+  }
+}
