@@ -18,7 +18,7 @@ import traceback
 import types
 from typing import Optional
 
-from data import audit_sources, block_inputs, candidates, digest
+from data import audit_sources, block_inputs, candidates, source_name
 from prepare import sha256, verify
 
 
@@ -264,7 +264,7 @@ def run(args, report):
     report.update(elapsed_capture_seconds=time.monotonic() - started,
                   peak_allocated_bytes=torch.cuda.max_memory_allocated(), peak_reserved_bytes=torch.cuda.max_memory_reserved(),
                   candidates_tried=len(tried), classifications=dict(counts), selected_counts=dict(Counter(s['kind'] for s in selected)),
-                  selected_sources=dict(Counter(str(s['source']) for s in selected)),
+                  selected_sources=dict(Counter(source_name(s) for s in selected)),
                   selected_distinct_prompts=len({s['id'] for s in selected}),
                   tensor_bytes=sum(s['bytes'] for s in selected))
     complete = (report['selected_counts'].get('repairable', 0) == args.repairs and

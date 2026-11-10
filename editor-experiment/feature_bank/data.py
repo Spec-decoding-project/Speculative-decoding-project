@@ -34,6 +34,11 @@ def family(row):
     return digest([(m['role'], ' '.join(m['content'].split()).casefold()) for m in row['messages']])
 
 
+def source_name(row):
+    source = row['source']
+    return source['dataset'] if isinstance(source, dict) else str(source)
+
+
 def audit_sources(pilot, main):
     pilots = list(records(pilot))
     if len(pilots) > 384:
@@ -82,7 +87,7 @@ def candidates(rows, max_context=1024, anchors_per_prompt=32):
     # Alternate source groups so the bounded bank is not filled entirely by one domain.
     groups = {}
     for row in sorted(eligible, key=lambda r: (len(r['prompt_token_ids']), r['id'])):
-        groups.setdefault(str(row['source']), []).append(row)
+        groups.setdefault(source_name(row), []).append(row)
     ordered = []
     while any(groups.values()):
         for source in sorted(groups):

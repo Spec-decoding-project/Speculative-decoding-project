@@ -71,6 +71,14 @@ class DataTests(unittest.TestCase):
             self.assertEqual(audit['pilot_overlap'], 1)
             self.assertEqual(audit['counts'], {'train': 1, 'validation': 1})
 
+    def test_real_source_metadata_groups_by_dataset_not_row(self):
+        rows = [row('chat1', source={'dataset': 'chat', 'row_index': 1}),
+                row('chat2', source={'dataset': 'chat', 'row_index': 2}),
+                row('math1', source={'dataset': 'math', 'row_index': 1}),
+                row('math2', source={'dataset': 'math', 'row_index': 2})]
+        schedule, _ = candidates(rows, anchors_per_prompt=1)
+        self.assertEqual([r['id'] for r, _ in schedule], ['chat1', 'math1', 'chat2', 'math2'])
+
     def test_family_leakage_rejected(self):
         with tempfile.TemporaryDirectory() as tmp:
             pilot, main = Path(tmp) / 'pilot', Path(tmp) / 'main'
