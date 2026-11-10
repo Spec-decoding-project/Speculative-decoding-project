@@ -243,6 +243,8 @@ def run(args, report):
             entry = dict(fixture, kind=kind, original_ids=original_ids, labels=labels,
                          record_sha256=row['record_sha256'], dataset_split=row['dataset_split'])
             tried.append(entry)
+            with (args.output / 'attempted.jsonl').open('a') as stream:
+                stream.write(json.dumps(entry, sort_keys=True) + '\n')
             limit = args.repairs if kind == 'repairable' else args.preservation if kind == 'preservation' else 0
             if sum(s['kind'] == kind for s in selected) < limit:
                 name = f'block-{len(selected):04d}.safetensors'
@@ -289,6 +291,8 @@ def main():
     report = dict(schema_version=1, started_utc=time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()),
                   config={k: str(v) if isinstance(v, Path) else v for k, v in vars(args).items()},
                   source_sha256={f.name: sha256(f) for f in Path(__file__).parent.glob('*.py')})
+    report['source_sha256']['compact_second_pass_prototype.py'] = sha256(
+        Path(__file__).resolve().parents[1] / 'compact_second_pass_prototype.py')
     try:
         run(args, report)
     except Exception as error:
