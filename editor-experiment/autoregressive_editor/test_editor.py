@@ -207,6 +207,13 @@ def test_export_requires_full_gate_and_authenticates_source_records(tmp_path):
     (source / 'audit.json').write_text(json.dumps(dict(outcome='success', manifest_sha256=checksum(source / 'manifest.json'))))
     bank = export(source, responses, tmp_path / 'tokens')
     assert len(bank) == 144 and bank[0]['prefix'] == [1, 2, 3]
+    assert bank.manifest['replay_contract'] == 'uncached-first-round-v1'
+    # Preserve the collector's actual replay semantics rather than flattening
+    # an unknown contract into a generic "passed" flag.
+    bad = dict(bank.manifest, replay_contract='skip-mismatches')
+    (tmp_path / 'tokens/manifest.json').write_text(json.dumps(bad))
+    with pytest.raises(ValueError, match='replay contract'):
+        Bank(tmp_path / 'tokens')
     # A validly checksummed response journal is still wrong if it differs from the bank's source.
     source_rows[0]['response_token_ids'][2] = 7
     source_rows[0]['record_sha256'] = digest({k: v for k, v in source_rows[0].items() if k != 'record_sha256'})

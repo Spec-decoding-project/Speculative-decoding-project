@@ -14,7 +14,7 @@ def export(source, responses, destination):
     sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'feature_bank'))
     from feature_bank.inspect_bank import inspect
     from feature_bank.data import records, family
-    inspect(source)  # Deliberately keep the original complete-bank gate.
+    inspection = inspect(source)  # Keep the complete-bank gate and explicit replay contract.
     source, destination = Path(source), Path(destination)
     manifest = json.loads((source / 'manifest.json').read_text())
     audit = json.loads((source / 'audit.json').read_text())
@@ -42,6 +42,7 @@ def export(source, responses, destination):
     result = dict(schema='autoregressive-token-bank-v1', outcome='validated',
                   origin='verified-feature-bank', target_replay='passed', vocab_size=151936,
                   models=manifest['models'], examples=len(examples), examples_sha256=checksum(path),
+                  replay_contract=inspection['replay_contract'],
                   source_bank_manifest_sha256=audit['manifest_sha256'])
     (destination / 'manifest.json').write_text(json.dumps(result, indent=2, sort_keys=True) + '\n')
     return Bank(destination)

@@ -58,6 +58,13 @@ PYTHONPATH=editor-experiment python -m autoregressive_editor.export_bank \
 
 This adapter provides a correctness-preserving pilot route, not a requirement that the eventual token-only collector store hidden features. A scalable token-only collector and a natural-distribution held-out collector remain follow-up work. Reusing the old bank for the first pilot does not make its contents the intended 50k evaluation distribution.
 
+The exporter preserves the source's explicit replay contract. The historical
+`uncached-first-round-v1` check and the new `native-cached-first-round-v1` check
+are distinct; the latter must include all three fixed-fixture native regressions.
+The native contract checks a fresh cached first round at each saved prefix. It
+does not establish agreement with the old uncached replay or a full-generation
+cache history. No bank is approved merely because this option exists.
+
 The token-bank reader indexes JSONL offsets instead of retaining all tensors in memory. It checks checksums, completed status, per-example replay status, token ranges, duplicates, anchor alignment, and prompt/family split ownership. A separate held-out bank must have matching model identities and disjoint prompt/family IDs. The current exporter produces training data only. Raw responses and banks belong outside Git.
 
 ## Train only after the data gate passes
