@@ -6,6 +6,26 @@ The target is Qwen3-8B revision `b968826d9c46dd6066d109eabc6255188de91218`; the 
 
 The loader executes the released, hash-verified `dflash.py` unchanged. It extracts only the three pure helper function definitions from the released `utils.py` to avoid importing unrelated dataset benchmark utilities. It uses the installed Transformers Qwen3 and SDPA implementation; the runtime versions are saved. This is a native **uncached first-round forward** audit, not a validation of the released generation loop under that Transformers version.
 
+## Explicit native cached replay contract
+
+The original uncached replay is retained as the default `uncached-first-round-v1` contract for reproduction. It reproducibly disagrees with one saved token. The November 16 native-verifier diagnostic found that the unchanged released cached first-round verifier accepts the saved 16-token candidate on that fixture and both controls, in three repeats each. No precision setting was changed to obtain that result.
+
+`--replay-contract native-cached-first-round-v1` opts into a different, serving-aligned check. Each saved prefix starts a fresh native round: explicit prefix positions, an empty target cache, a separately checked anchor, then the complete 16-token saved candidate verified against that prefix cache. Verifier row i predicts candidate position i+1; its final bonus row is outside the saved block. Draft extraction also uses a fresh native cache. Saved labels are never replaced, and any native replay mismatch stops collection.
+
+This contract does not assert that the old uncached gate passes, that all numerical execution paths agree, or that restarting from a prefix reproduces the cache history of an entire generation. Long-running and union/replacement cache behavior remain separate gates. Precision/backend probes remain diagnostic only; the native collector uses the original BF16/SDPA settings.
+
+Before a full native bank can succeed, the collector must pass the original failing fixture and both controls. On those exact fixtures it compares its target features, normalized draft states and actual proposal token IDs bitwise with one round of the unchanged released `spec_generate`. The independent inspector requires all three regressions and matching explicit contract metadata. The native mode is intended for the complete bounded bank, not the one-block smoke command below.
+
+The single post-diagnostic bounded attempt uses:
+
+```sh
+sbatch research/editor-feature-bank/feature_bank/collect.sbatch \
+  --replay-contract native-cached-first-round-v1 \
+  --output data/editor_feature_banks/NEW-UNUSED-NATIVE-BANK
+```
+
+This remains an attempt until its audit and independent full-bank check pass. It does not authorize training by itself.
+
 ## Run
 
 Local CPU-only integrity tests:

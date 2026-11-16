@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 
 from prepare import sha256
+from native_replay import validate_contract
 
 
 def inspect(directory, repairs=128, preservation=16):
@@ -17,6 +18,7 @@ def inspect(directory, repairs=128, preservation=16):
     if sha256(directory / 'manifest.json') != audit['manifest_sha256']:
         raise ValueError('Manifest checksum mismatch')
     manifest = json.loads((directory / 'manifest.json').read_text())
+    contract = validate_contract(audit, manifest)
     if manifest['schema_version'] != 1:
         raise ValueError('Unknown bank schema')
     if manifest['models'] != json.loads(Path(__file__).with_name('model_pin.json').read_text()):
@@ -58,7 +60,8 @@ def inspect(directory, repairs=128, preservation=16):
         counts[kind] += 1
     if counts.get('repairable', 0) != repairs or counts.get('preservation', 0) != preservation:
         raise ValueError(f'Insufficient bank: {dict(counts)}, expected {repairs} repairs + {preservation} preservation')
-    return dict(outcome='passed', blocks=len(seen), counts=dict(counts), manifest_sha256=audit['manifest_sha256'])
+    return dict(outcome='passed', blocks=len(seen), counts=dict(counts), manifest_sha256=audit['manifest_sha256'],
+                replay_contract=contract)
 
 
 if __name__ == '__main__':
