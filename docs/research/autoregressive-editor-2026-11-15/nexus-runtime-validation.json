@@ -1,0 +1,42 @@
+{
+  "config": {
+    "heads": 2,
+    "layers": 1,
+    "max_length": 32,
+    "vocab_size": 20,
+    "width": 16
+  },
+  "default_parameters": 40750336,
+  "device": "cuda",
+  "hardware": "NVIDIA RTX A5000",
+  "outcome": "passed",
+  "python": "3.12.12",
+  "scope": "Synthetic compatibility only; no real-data training or speedup evidence",
+  "source_sha256": {
+    "__init__.py": "b2e167fa0bb5617f4f36844efa99db665cc91401bfbcf15c9ab286dce329b494",
+    "data.py": "6269572d4fd1873ce2a87b0b12870fc63e1bdc66d44f96e8c60266edb85b57ee",
+    "export_bank.py": "4a2b6ca7a82eaee75596b3c04266a99e6cfa4920d7b2ddd1d475de6036854563",
+    "learning.py": "3c294c53cca8df92a5a3cc044788f896825b4fe23f18a8799a2519be9cb6a798",
+    "model.py": "f39259621f2519c06c4a2412661a4d8ce8ca7525dedb0cfadf1c3ab682ce95ff",
+    "run.py": "da2273367b61c479138eafad98b31570412108e255fb3789c5167d6d4f383f21",
+    "test_editor.py": "f6de9fc79bbae4d6873e1e0978cb4b339f381e10f8c297fd3a74b3c791653a8a",
+    "validate_runtime.py": "a90dc92ffe9f4379bedb112f15175e329e7fa2bc803338563412014b7d72f181"
+  },
+  "torch": "2.13.0+cu126",
+  "variants": {
+    "context": {
+      "cache_check": "passed",
+      "checkpoint_check": "passed",
+      "free_running_exact_suffix": 1.0,
+      "teacher_forced_ce": 0.0005243143241386861,
+      "updates": 100
+    },
+    "draft": {
+      "cache_check": "passed",
+      "checkpoint_check": "passed",
+      "free_running_exact_suffix": 1.0,
+      "teacher_forced_ce": 0.00050965444825124,
+      "updates": 100
+    }
+  }
+}
