@@ -64,6 +64,9 @@ class Bank:
             raise ValueError('Require a completed, validated token bank')
         if m.get('target_replay') != 'passed' or m.get('origin') not in ('verified-feature-bank', 'synthetic-test'):
             raise ValueError('Unsupported or unverified bank provenance')
+        if m['origin'] == 'verified-feature-bank' and m.get('replay_contract', 'uncached-first-round-v1') not in (
+                'uncached-first-round-v1', 'native-cached-first-round-v1'):
+            raise ValueError('Unsupported target replay contract')
         self.path = self.directory / 'examples.jsonl'
         if checksum(self.path) != m['examples_sha256']:
             raise ValueError('Token bank checksum mismatch')
