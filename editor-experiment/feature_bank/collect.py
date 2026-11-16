@@ -20,6 +20,8 @@ from typing import Optional
 
 from data import audit_sources, block_inputs, candidates, source_name
 from prepare import sha256, verify
+from native_replay import (LEGACY, NATIVE, CONTRACTS, prefill, continuation, draft_kwargs,
+                           compare_released_round, validate_contract)
 
 
 def write_json(path, value):
@@ -128,6 +130,8 @@ def run(args, report):
     torch.set_num_threads(int(os.environ.get('SLURM_CPUS_PER_TASK', '4')))
     torch.manual_seed(0)
     torch.backends.cuda.matmul.allow_tf32 = False
+    report['replay_contract'] = args.replay_contract
+    report['native_regressions'] = []
     if not torch.cuda.is_available():
         raise RuntimeError('A GPU allocation is required')
     report['runtime'] = dict(python=platform.python_version(), torch=torch.__version__,
@@ -194,21 +198,19 @@ def run(args, report):
                     raise ValueError('EOS-labelled response has no EOS')
                 checked_prompts.add(row['id'])
             prefix_ids = torch.tensor([prefix], device='cuda')
-            output = target(prefix_ids, use_cache=False, output_hidden_states=True, logits_to_keep=1)
+            output, target_cache = prefill(target, prefix_ids, args.replay_contract)
             if output.logits.argmax(-1).item() != labels[0]:
                 report['target_mismatch'] = dict(position=0, expected=labels[0], actual=output.logits.argmax(-1).item())
                 raise ValueError('Target anchor replay mismatch; no relabeling permitted')
             features = extract(output.hidden_states, draft.target_layer_ids)
             del output
-            # Independent causal replay: last 16 logits predict anchor + 15 labels.
-            replay = target(torch.tensor([prefix + labels[:-1]], device='cuda'),
-                            use_cache=False, logits_to_keep=16).logits.argmax(-1)[0].tolist()
+            replay = continuation(target, prefix_ids, labels, target_cache, args.replay_contract)
+            del target_cache
             if replay != labels:
                 report['target_mismatch'] = dict(expected=labels, actual=replay,
                     positions=[i for i, (a, b) in enumerate(zip(labels, replay)) if a != b])
                 raise ValueError('Target continuation replay mismatch; investigate numerical/alignment causes')
-            kwargs = dict(target_hidden=features, noise_embedding=target.model.embed_tokens(torch.tensor([noise], device='cuda')),
-                          position_ids=torch.arange(anchor + 16, device='cuda')[None], use_cache=False, is_causal=False)
+            kwargs = draft_kwargs(target, features, noise, anchor, args.replay_contract)
             captured = []
             handle = draft.norm.register_forward_hook(lambda module, inputs, output: captured.append(output.detach().clone()))
             try:
@@ -221,7 +223,7 @@ def run(args, report):
             scores = target.lm_head(states[:, 1:])
             original[:, 1:] = scores.argmax(-1)
             if not tried:
-                repeated = draft(**kwargs)
+                repeated = draft(**draft_kwargs(target, features, noise, anchor, args.replay_contract))
                 if not torch.equal(states, repeated):
                     raise ValueError('Native first pass is not deterministic')
                 # Changing every future target label cannot change the constructed inputs.
@@ -235,7 +237,13 @@ def run(args, report):
                 report['native_controls'] = dict(final_norm_capture_bitwise_equal=True, repeated_forward_bitwise_equal=True,
                     future_label_perturbation_inputs_equal=True, target_context_positions=[0, anchor - 1],
                     native_readout_shape=list(scores.shape), target_layer_offset=1,
-                    attention='sdpa, noncausal draft, causal target', cache='disabled; native forward first round only')
+                    attention='sdpa, noncausal draft, causal target', cache=args.replay_contract)
+            if args.replay_contract == NATIVE and (row['id'], anchor) in {
+                ('gsm8k:train:3821', 38), ('ultrachat_200k:train_sft:164610', 19),
+                ('ultrachat_200k:train_sft:61759', 22)}:
+                regression = compare_released_round(target, draft, extract, prefix_ids, features, states, original)
+                report['native_regressions'].append(dict(id=row['id'], anchor=anchor,
+                    saved_labels_match_native_verification=True, **regression))
             original_ids = original[0].tolist()
             kind = ('wrong_first' if original_ids[1] != labels[1] else
                     'preservation' if original_ids == labels else 'repairable')
@@ -269,9 +277,12 @@ def run(args, report):
                   tensor_bytes=sum(s['bytes'] for s in selected))
     complete = (report['selected_counts'].get('repairable', 0) == args.repairs and
                 report['selected_counts'].get('preservation', 0) == args.preservation)
+    manifest = dict(schema_version=1, models=pin, blocks=selected, replay_contract=args.replay_contract)
+    if complete:
+        validate_contract(report, manifest)
     report['outcome'] = 'success' if complete else 'inconclusive: bounded selection exhausted'
     write_json(args.output / 'attempted.json', tried)
-    write_json(args.output / 'manifest.json', dict(schema_version=1, models=pin, blocks=selected))
+    write_json(args.output / 'manifest.json', manifest)
     report['manifest_sha256'] = sha256(args.output / 'manifest.json')
 
 
@@ -284,6 +295,7 @@ def main():
     p.add_argument('--max-context', type=int, default=1024)
     p.add_argument('--anchors-per-prompt', type=int, default=32)
     p.add_argument('--seconds', type=int, default=2700)
+    p.add_argument('--replay-contract', choices=CONTRACTS, default=LEGACY)
     args = p.parse_args()
     if not 1 <= args.repairs <= 128 or not 0 <= args.preservation <= 16 or not 1 <= args.seconds <= 2700:
         p.error('Initial bank limits: 1..128 repairs, 0..16 preservation, <=2700 seconds')
