@@ -37,6 +37,8 @@ def main():
     parser.add_argument('--eval-every', type=int, default=25)
     parser.add_argument('--seconds', type=int, default=1800)
     parser.add_argument('--threads', type=int, default=4)
+    parser.add_argument('--repairs', type=int, choices=(1, 16, 128), default=1)
+    parser.add_argument('--preservation', type=int, default=0)
     args = parser.parse_args()
     spec = json.loads(args.experiment.read_text())
     config = Config(**spec['model'])
@@ -50,6 +52,8 @@ def main():
         parser.error('--bank and a new --output directory are required')
     if not 1 <= args.updates <= 2000 or min(args.batch_size, args.eval_every, args.seconds, args.threads) < 1:
         parser.error('Initial attempts allow 1–2000 updates and positive batch/time settings')
+    if not 0 <= args.preservation <= 16:
+        parser.error('Initial preservation subset must contain 0–16 blocks')
     torch.set_num_threads(args.threads)
     bank = Bank(args.bank)
     if bank.manifest['vocab_size'] != config.vocab_size:
@@ -68,25 +72,33 @@ def main():
         if bank.splits == {'train'}:
             if metadata['bank_sha256'] != bank.fingerprint:
                 raise ValueError('Training evaluation must use the checkpoint bank')
+            evaluated = [bank[i] for i in metadata['selected_indices']]
         elif bank.splits in ({'validation'}, {'test'}):
             if bank.prompts & set(metadata['train_prompts']) or bank.families & set(metadata['train_families']):
                 raise ValueError('Held-out evaluation overlaps training')
             if bank.manifest['models'] != metadata['models']:
                 raise ValueError('Evaluation model identities differ')
+            evaluated = bank
         else:
             raise ValueError('Mixed evaluation splits')
         args.output.mkdir(parents=True, exist_ok=False)
-        write(args.output / 'evaluation.json', evaluate(trainer.model, bank, trainer.mode))
+        write(args.output / 'evaluation.json', evaluate(trainer.model, evaluated, trainer.mode))
         return
     if bank.splits != {'train'}:
         raise ValueError('Only training-split examples may update weights')
-    for row in bank:
+    repairs, preservation = [], []
+    for index, row in enumerate(bank):
         if row['draft'][:2] != row['labels'][:2]:
             raise ValueError('Initial fit bank contains an unreachable fixed seed')
+        (preservation if row['draft'] == row['labels'] else repairs).append(index)
+    if len(repairs) < args.repairs or len(preservation) < args.preservation:
+        raise ValueError('Insufficient examples for the requested nested fit subset')
+    selected = repairs[:args.repairs] + preservation[:args.preservation]
+    training = [bank[i] for i in selected]
     metadata = dict(bank_sha256=bank.fingerprint, train_prompts=sorted(bank.prompts),
                     train_families=sorted(bank.families), models=bank.manifest['models'],
                     bank_origin=bank.manifest['origin'], validation_sha256=validation.fingerprint if validation else None,
-                    batch_size=args.batch_size)
+                    batch_size=args.batch_size, selected_indices=selected)
     if args.checkpoint:
         trainer, saved = Trainer.load(args.checkpoint, device=args.device)
         if (saved != metadata or trainer.mode != spec['conditioning'] or
@@ -101,7 +113,7 @@ def main():
                                        device=args.device, parameters=sum(p.numel() for p in trainer.model.parameters()),
                                        metadata=metadata, sampling='Uniform blocks with replacement; same RNG sequence in both variants'))
     checkpoint = args.output / 'checkpoint.pt'
-    write(args.output / 'initial-evaluation.json', evaluate(trainer.model, bank, trainer.mode))
+    write(args.output / 'initial-evaluation.json', evaluate(trainer.model, training, trainer.mode))
     started = time.monotonic()
     outcome = 'update budget reached'
     with (args.output / 'updates.jsonl').open('w') as log:
@@ -109,7 +121,7 @@ def main():
             if time.monotonic() - started >= args.seconds:
                 outcome = 'wall-time budget reached'
                 break
-            examples = [bank[trainer.rng.randrange(len(bank))] for _ in range(args.batch_size)]
+            examples = [training[trainer.rng.randrange(len(training))] for _ in range(args.batch_size)]
             synchronize(args.device)
             start = time.perf_counter()
             row = trainer.update(examples)
@@ -118,7 +130,7 @@ def main():
             log.write(json.dumps(row) + '\n')
             log.flush()
             if trainer.step % args.eval_every == 0:
-                result = dict(train=evaluate(trainer.model, bank, trainer.mode))
+                result = dict(train=evaluate(trainer.model, training, trainer.mode))
                 if validation:
                     result['validation'] = evaluate(trainer.model, validation, trainer.mode)
                 write(args.output / f'evaluation-{trainer.step:06d}.json', result)
@@ -126,7 +138,7 @@ def main():
                 print(json.dumps(dict(step=trainer.step, ce=result['train']['teacher_forced_ce'],
                                       exact_suffix=result['train']['free_running_exact_suffix'])), flush=True)
     trainer.save(checkpoint, metadata)
-    write(args.output / 'final-evaluation.json', evaluate(trainer.model, bank, trainer.mode))
+    write(args.output / 'final-evaluation.json', evaluate(trainer.model, training, trainer.mode))
     write(args.output / 'summary.json', dict(outcome=outcome, updates=trainer.step, elapsed_seconds=time.monotonic() - started,
                                            scope='Training feasibility only; no native acceptance or speedup claim'))
 

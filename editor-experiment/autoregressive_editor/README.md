@@ -65,14 +65,17 @@ The token-bank reader indexes JSONL offsets instead of retaining all tensors in 
 ```sh
 PYTHONPATH=editor-experiment python -m autoregressive_editor.run train \
   --bank /path/to/verified-token-bank --output outputs/ar-pilot-run1 \
-  --device cuda --updates 200 --batch-size 16 --eval-every 25 --seconds 1800
+  --device cuda --repairs 1 --preservation 0 \
+  --updates 200 --batch-size 16 --eval-every 25 --seconds 1800
 ```
+
+The default fit selects one repairable block from the fully validated bank. Use `--repairs 16` then `--repairs 128 --preservation 16` for larger nested subsets, restarting from the same seed. Selected indices are saved and checkpoint reload evaluates the same subset.
 
 Output directories must be new. The runner rejects held-out training records and wrong fixed first proposals for the initial fit. It allows at most 2,000 updates per invocation; reaching that cap is not a capacity conclusion. The wall-time limit is checked between optimizer updates; setup and initial evaluation are outside that limit, and an evaluation/checkpoint can overrun it. Use a hard SLURM allocation limit as well. No automatic large-data run or budget extension is scheduled.
 
 Outputs include configuration, code revision, model/data identities, update CE and gradient norms, free-running train metrics, optional validation metrics, and an atomic model/optimizer/RNG checkpoint. Supply `--validation` only for a separately validated prompt-disjoint development bank. The current reader supports `verified-feature-bank` and explicitly labeled `synthetic-test` provenance; a future collector needs its own verified producer contract.
 
-To continue a bounded attempt, use `--checkpoint old-run/checkpoint.pt` and a new output directory. `--updates` is the total target step count, not additional steps. Resume rejects changed conditioning, model dimensions, learning rate, seed, data identity or batch size. Model, optimizer and example-sampling state are restored. CPU continuation is tested exactly; cross-hardware/kernel reproducibility is not claimed.
+To continue a bounded attempt, use `--checkpoint old-run/checkpoint.pt` and a new output directory. `--updates` is the total target step count, not additional steps. Resume rejects changed conditioning, model dimensions, learning rate, seed, data identity, selected subset or batch size. Model, optimizer and example-sampling state are restored. CPU continuation is tested exactly; cross-hardware/kernel reproducibility is not claimed.
 
 ```sh
 PYTHONPATH=editor-experiment python -m autoregressive_editor.run evaluate \

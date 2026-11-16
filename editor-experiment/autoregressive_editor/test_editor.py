@@ -150,7 +150,7 @@ def test_wrong_first_proposal_is_counted_at_evaluation_and_rejected_for_fit():
 
 
 def test_cli_trains_synthetic_bank_and_reloads(tmp_path):
-    path = write_bank(tmp_path / 'bank', [example()])
+    path = write_bank(tmp_path / 'bank', [example(), example(1)])
     experiment = tmp_path / 'experiment.json'
     experiment.write_text(json.dumps(dict(name='synthetic', conditioning='context', seed=1,
                                           learning_rate=0.01, model=asdict(config()))))
@@ -163,6 +163,8 @@ def test_cli_trains_synthetic_bank_and_reloads(tmp_path):
                    '--output', str(tmp_path / 'eval')], cwd=cwd, check=True, capture_output=True)
     summary = json.loads((tmp_path / 'run/summary.json').read_text())
     assert summary['updates'] == 2
+    runtime = json.loads((tmp_path / 'run/run.json').read_text())
+    assert runtime['metadata']['selected_indices'] == [0]
     assert json.loads((tmp_path / 'eval/evaluation.json').read_text())['blocks'] == 1
 
 
