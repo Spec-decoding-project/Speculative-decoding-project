@@ -1,0 +1,13 @@
+{
+  "name": "context-and-seed autoregressive redrafter",
+  "conditioning": "context",
+  "seed": 0,
+  "learning_rate": 0.001,
+  "model": {
+    "vocab_size": 151936,
+    "width": 256,
+    "layers": 2,
+    "heads": 4,
+    "max_length": 1088
+  }
+}

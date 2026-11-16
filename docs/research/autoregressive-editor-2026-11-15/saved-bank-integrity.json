@@ -1,0 +1,12 @@
+{
+  "smoke": {
+    "outcome": "passed",
+    "blocks": 1,
+    "counts": {
+      "repairable": 1
+    },
+    "manifest_sha256": "d46409bf89d762439c4e1cf54354abf3328e5ba43fa612406ee103155373a28e"
+  },
+  "partial_bank_rejected": "Collection did not pass; partial banks cannot unlock training",
+  "corrupt_tensor_rejected": "Tensor checksum/size mismatch: block-0000.safetensors"
+}
