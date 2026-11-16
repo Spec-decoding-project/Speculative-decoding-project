@@ -1,6 +1,6 @@
 # Autoregressive token editor: proposed replacement experiment
 
-Prepared 2026-11-15 after the user's clarification. The two requested token-only variants are now implemented as experimental local models/trainers. They have only synthetic CPU validation; this is not a real-data training result or authorization to treat the previous replay gate as passed.
+Prepared 2026-11-15 after the user's clarification. The two requested token-only variants are implemented as experimental models/trainers and have synthetic CPU and Nexus GPU validation. This is not a real-data training result or authorization to treat the previous replay gate as passed. See the [validation report](research/autoregressive-editor-2026-11-15/REPORT.md) and [practical study guide and quiz prompt](EDITOR_STUDY_GUIDE.md).
 
 ## Confirmed direction and open choices
 
@@ -68,4 +68,4 @@ For a matched fixed-workload approximation, speed ratio is `(new useful tokens /
 
 ## Current status
 
-Only tiny randomly initialized synthetic test models have been trained locally. No pretrained checkpoints were downloaded and no saved-response editor training has run. The current live replay diagnostic remains unresolved. Historical results and the original workspace were not modified. This proposal records the user's new direction without replacing the existing tracker plan while the old hidden-state-specific tracker gates are still pending revision for the new token-only architecture.
+Only tiny randomly initialized synthetic test models have been trained, on local CPU and in one Nexus GPU compatibility job. No additional pretrained checkpoints were downloaded and no saved-response editor training has run. The current live replay diagnostic remains unresolved. Historical results and the original workspace were not modified. The research map and downstream tickets now reflect both token-only variants while preserving the replay gate, bounded experiment budgets and failure routing.
