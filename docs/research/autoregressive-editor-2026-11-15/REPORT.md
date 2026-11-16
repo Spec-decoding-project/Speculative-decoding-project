@@ -19,3 +19,11 @@ VPN plus interactive authentication restored Nexus access. The response run meta
 The previously pending [saved-bank integrity result](saved-bank-integrity.json) was retrieved: the smoke bank passed, the failed partial bank was rejected, and a corrupted tensor copy was rejected. This is an integrity result, not a repair of the original target replay mismatch. The mismatch remains unresolved and real-data editor training remains blocked.
 
 No credentials or response corpora are stored in these artifacts. The original workspace and historical experiment results were preserved.
+
+## Nexus synthetic GPU validation
+
+SLURM job `8432471` completed successfully on one RTX A5000 in 1m21s, with one CPU and a 4 GiB host-memory allocation. Maximum host RSS was 1,504,496 KiB. The runtime was Python 3.12.12 and Torch 2.13.0+cu126, matching the cluster environment rather than the local newer Torch version.
+
+Both tiny variants completed 100 synthetic updates. Context-only teacher-forced CE was 0.0005243143; draft-conditioned CE was 0.0005096544. Both achieved 100% free-running exact suffix match, and cached/full-sequence generation and checkpoint reload checks passed. [Machine-readable result](nexus-runtime-validation.json) contains source hashes, all verified against the committed implementation. These runs used width 16 and vocabulary 20, not the full 40,750,336-parameter default. Full-size memory and latency remain unmeasured.
+
+The default runner now selects explicit nested 1/16/128 repair subsets plus up to 16 preservation blocks, recording the selected indices in checkpoints. The 11 local tests passed again after that addition. No real-data editor training or new target/draft inference job was launched.
