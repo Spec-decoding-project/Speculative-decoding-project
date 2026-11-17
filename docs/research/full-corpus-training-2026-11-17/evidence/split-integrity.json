@@ -1,0 +1,11 @@
+{
+  "validation_prompts": 1024,
+  "unique_normalized_validation_families": 1024,
+  "duplicate_validation_families": 0,
+  "training_validation_family_overlap": 0,
+  "development_prompts": 512,
+  "final_test_prompts": 512,
+  "previously_inspected_prompts_in_final_test": 0,
+  "scope": "Exact normalized message families; semantic near-duplicates not established",
+  "method": "Streamed authenticated prompt index; deterministic source-balanced split; known development IDs excluded from test"
+}
