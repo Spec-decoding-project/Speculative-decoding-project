@@ -1,5 +1,9 @@
 # Authorize one-block memorization before a complete bank
 
+Update: the completed one-block phase is followed by the separately authorized
+[sixteen-block phase in ADR 0004](0004-authorize-sixteen-block-memorization.md).
+The original one-block protocol and evidence remain unchanged.
+
 Accepted November 17, 2026, following the user's explicit request to train both
 full-size autoregressive variants on the same single real repairable block and
 evaluate excluded prompts before increasing the training set.

@@ -1,0 +1,115 @@
+{
+  "passed": true,
+  "audit_scope": "CPU metric recount from private saved tokens; no GPU rerun",
+  "predicted_blocks_checked": 164,
+  "variants": {
+    "context": {
+      "updates": 125,
+      "metrics": {
+        "training": {
+          "blocks": 16,
+          "free_running_token_accuracy": 1.0,
+          "free_running_exact_suffix": 1.0,
+          "mean_original_progress": 3.4375,
+          "mean_edited_progress": 15,
+          "mean_union_progress": 15,
+          "repaired": 16,
+          "damaged": 0,
+          "correct_suffix_tokens": 224
+        },
+        "development": {
+          "blocks": 32,
+          "free_running_token_accuracy": 0.013392857142857142,
+          "free_running_exact_suffix": 0.0,
+          "mean_original_progress": 2.5,
+          "mean_edited_progress": 0.875,
+          "mean_union_progress": 2.5,
+          "repaired": 0,
+          "damaged": 20,
+          "correct_suffix_tokens": 6
+        },
+        "preservation": {
+          "blocks": 1,
+          "free_running_token_accuracy": 0.0,
+          "free_running_exact_suffix": 0.0,
+          "mean_original_progress": 15,
+          "mean_edited_progress": 1,
+          "mean_union_progress": 15,
+          "repaired": 0,
+          "damaged": 1,
+          "correct_suffix_tokens": 0
+        }
+      },
+      "development_by_source": {
+        "HuggingFaceH4/ultrachat_200k": {
+          "blocks": 16,
+          "mean_original_progress": 2.6875,
+          "mean_edited_progress": 0.75,
+          "repaired": 0,
+          "damaged": 10
+        },
+        "openai/gsm8k": {
+          "blocks": 16,
+          "mean_original_progress": 2.3125,
+          "mean_edited_progress": 1,
+          "repaired": 0,
+          "damaged": 10
+        }
+      }
+    },
+    "draft": {
+      "updates": 125,
+      "metrics": {
+        "training": {
+          "blocks": 16,
+          "free_running_token_accuracy": 1.0,
+          "free_running_exact_suffix": 1.0,
+          "mean_original_progress": 3.4375,
+          "mean_edited_progress": 15,
+          "mean_union_progress": 15,
+          "repaired": 16,
+          "damaged": 0,
+          "correct_suffix_tokens": 224
+        },
+        "development": {
+          "blocks": 32,
+          "free_running_token_accuracy": 0.017857142857142856,
+          "free_running_exact_suffix": 0.0,
+          "mean_original_progress": 2.5,
+          "mean_edited_progress": 0.9375,
+          "mean_union_progress": 2.5625,
+          "repaired": 1,
+          "damaged": 19,
+          "correct_suffix_tokens": 8
+        },
+        "preservation": {
+          "blocks": 1,
+          "free_running_token_accuracy": 0.0,
+          "free_running_exact_suffix": 0.0,
+          "mean_original_progress": 15,
+          "mean_edited_progress": 1,
+          "mean_union_progress": 15,
+          "repaired": 0,
+          "damaged": 1,
+          "correct_suffix_tokens": 0
+        }
+      },
+      "development_by_source": {
+        "HuggingFaceH4/ultrachat_200k": {
+          "blocks": 16,
+          "mean_original_progress": 2.6875,
+          "mean_edited_progress": 0.75,
+          "repaired": 0,
+          "damaged": 10
+        },
+        "openai/gsm8k": {
+          "blocks": 16,
+          "mean_original_progress": 2.3125,
+          "mean_edited_progress": 1.125,
+          "repaired": 1,
+          "damaged": 9
+        }
+      }
+    }
+  }
+}

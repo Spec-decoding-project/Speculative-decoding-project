@@ -1,0 +1,101 @@
+{
+  "config": {
+    "vocab_size": 151936,
+    "width": 256,
+    "layers": 2,
+    "heads": 4,
+    "max_length": 1088
+  },
+  "mode": "context",
+  "seed": 0,
+  "lr": 0.001,
+  "parameters": 40750336,
+  "initial_weights_sha256": "672080cdb5b25a32ae824198f3549e43979352bab0f621e75379dd9c46d03ab8",
+  "optimizer": "AdamW",
+  "weight_decay": 0.0,
+  "clip_norm": 1.0,
+  "precision": "FP32",
+  "microbatch": 1,
+  "effective_batch": 16,
+  "suffix_tokens_per_update": 224,
+  "sampling": "All sixteen blocks in fixed dataset order each update",
+  "max_updates": 2000,
+  "max_training_seconds": 600,
+  "evaluation_interval": 25,
+  "required_consecutive_passes": 3,
+  "optimizer_ownership": "Editor parameters only; target/drafter not loaded",
+  "metadata": {
+    "dataset_sha256": "a7bae8e7f1a068591aafe395bf827376e051662e6508a20a22cbc9ab66ec1747",
+    "mode": "context",
+    "training_keys": [
+      {
+        "prompt_id": "ultrachat_200k:train_sft:37680",
+        "anchor": 24
+      },
+      {
+        "prompt_id": "ultrachat_200k:train_sft:37680",
+        "anchor": 41
+      },
+      {
+        "prompt_id": "ultrachat_200k:train_sft:37680",
+        "anchor": 49
+      },
+      {
+        "prompt_id": "ultrachat_200k:train_sft:37680",
+        "anchor": 68
+      },
+      {
+        "prompt_id": "ultrachat_200k:train_sft:61759",
+        "anchor": 22
+      },
+      {
+        "prompt_id": "ultrachat_200k:train_sft:61759",
+        "anchor": 34
+      },
+      {
+        "prompt_id": "ultrachat_200k:train_sft:61759",
+        "anchor": 51
+      },
+      {
+        "prompt_id": "ultrachat_200k:train_sft:61759",
+        "anchor": 70
+      },
+      {
+        "prompt_id": "ultrachat_200k:train_sft:164610",
+        "anchor": 19
+      },
+      {
+        "prompt_id": "ultrachat_200k:train_sft:164610",
+        "anchor": 36
+      },
+      {
+        "prompt_id": "ultrachat_200k:train_sft:164610",
+        "anchor": 50
+      },
+      {
+        "prompt_id": "ultrachat_200k:train_sft:164610",
+        "anchor": 66
+      },
+      {
+        "prompt_id": "gsm8k:train:3821",
+        "anchor": 38
+      },
+      {
+        "prompt_id": "gsm8k:train:3821",
+        "anchor": 51
+      },
+      {
+        "prompt_id": "gsm8k:train:3821",
+        "anchor": 67
+      },
+      {
+        "prompt_id": "gsm8k:train:3821",
+        "anchor": 86
+      }
+    ]
+  },
+  "torch": "2.14.0+cu130",
+  "python": "3.12.12",
+  "gpu": "NVIDIA RTX A5000",
+  "cuda": "13.0"
+}

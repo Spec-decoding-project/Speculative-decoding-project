@@ -1,0 +1,450 @@
+{
+  "teacher_forced_ce": 0.003967220263023462,
+  "free_running_token_accuracy": 1.0,
+  "free_running_exact_suffix": 1.0,
+  "repaired": 16,
+  "damaged": 0,
+  "wrong_first": 0,
+  "blocks": 16,
+  "rows": [
+    {
+      "prompt_id": "ultrachat_200k:train_sft:37680",
+      "anchor": 24,
+      "original_progress": 5,
+      "edited_progress": 15,
+      "union_progress": 15,
+      "repaired": true,
+      "damaged": false,
+      "wrong_first": false,
+      "exact_suffix": true,
+      "kind": "repairable",
+      "editor_milliseconds": {
+        "median": 19.26476159133017,
+        "samples": [
+          19.436806440353394,
+          19.31023597717285,
+          19.586194772273302,
+          19.263016059994698,
+          19.266507122665644,
+          19.25817597657442,
+          19.148847088217735,
+          19.099427852779627,
+          19.098977092653513,
+          19.56668496131897
+        ]
+      }
+    },
+    {
+      "prompt_id": "ultrachat_200k:train_sft:37680",
+      "anchor": 41,
+      "original_progress": 2,
+      "edited_progress": 15,
+      "union_progress": 15,
+      "repaired": true,
+      "damaged": false,
+      "wrong_first": false,
+      "exact_suffix": true,
+      "kind": "repairable",
+      "editor_milliseconds": {
+        "median": 19.169866805896163,
+        "samples": [
+          19.026588182896376,
+          19.719963893294334,
+          19.120817072689533,
+          19.1343380138278,
+          19.153556786477566,
+          19.18617682531476,
+          19.359645899385214,
+          19.189186859875917,
+          19.136526621878147,
+          19.21231672167778
+        ]
+      }
+    },
+    {
+      "prompt_id": "ultrachat_200k:train_sft:37680",
+      "anchor": 49,
+      "original_progress": 6,
+      "edited_progress": 15,
+      "union_progress": 15,
+      "repaired": true,
+      "damaged": false,
+      "wrong_first": false,
+      "exact_suffix": true,
+      "kind": "repairable",
+      "editor_milliseconds": {
+        "median": 19.182671792805195,
+        "samples": [
+          19.593844655901194,
+          19.15239728987217,
+          19.07850755378604,
+          19.072786904871464,
+          19.493894651532173,
+          19.495985005050898,
+          19.563775043934584,
+          19.139177165925503,
+          19.12028808146715,
+          19.21294629573822
+        ]
+      }
+    },
+    {
+      "prompt_id": "ultrachat_200k:train_sft:37680",
+      "anchor": 68,
+      "original_progress": 6,
+      "edited_progress": 15,
+      "union_progress": 15,
+      "repaired": true,
+      "damaged": false,
+      "wrong_first": false,
+      "exact_suffix": true,
+      "kind": "repairable",
+      "editor_milliseconds": {
+        "median": 19.28477152250707,
+        "samples": [
+          19.153886940330267,
+          19.63422354310751,
+          19.268797244876623,
+          19.687054213136435,
+          19.33855703100562,
+          19.320926163345575,
+          19.166696816682816,
+          19.15142685174942,
+          19.30074580013752,
+          19.24995705485344
+        ]
+      }
+    },
+    {
+      "prompt_id": "ultrachat_200k:train_sft:61759",
+      "anchor": 22,
+      "original_progress": 2,
+      "edited_progress": 15,
+      "union_progress": 15,
+      "repaired": true,
+      "damaged": false,
+      "wrong_first": false,
+      "exact_suffix": true,
+      "kind": "repairable",
+      "editor_milliseconds": {
+        "median": 19.336785888299346,
+        "samples": [
+          19.365245942026377,
+          19.423875026404858,
+          19.236857071518898,
+          19.300815649330616,
+          19.346825778484344,
+          19.369755871593952,
+          19.322446081787348,
+          19.466574769467115,
+          19.326745998114347,
+          19.318086095154285
+        ]
+      }
+    },
+    {
+      "prompt_id": "ultrachat_200k:train_sft:61759",
+      "anchor": 34,
+      "original_progress": 2,
+      "edited_progress": 15,
+      "union_progress": 15,
+      "repaired": true,
+      "damaged": false,
+      "wrong_first": false,
+      "exact_suffix": true,
+      "kind": "repairable",
+      "editor_milliseconds": {
+        "median": 19.31891613639891,
+        "samples": [
+          19.512745086103678,
+          19.29770689457655,
+          19.253285601735115,
+          19.357836339622736,
+          19.3228661082685,
+          19.483556039631367,
+          19.3139361217618,
+          19.314966164529324,
+          19.37189605087042,
+          19.293225836008787
+        ]
+      }
+    },
+    {
+      "prompt_id": "ultrachat_200k:train_sft:61759",
+      "anchor": 51,
+      "original_progress": 1,
+      "edited_progress": 15,
+      "union_progress": 15,
+      "repaired": true,
+      "damaged": false,
+      "wrong_first": false,
+      "exact_suffix": true,
+      "kind": "repairable",
+      "editor_milliseconds": {
+        "median": 19.383001141250134,
+        "samples": [
+          19.33640567585826,
+          19.404846243560314,
+          19.418654963374138,
+          19.38549615442753,
+          19.3913159891963,
+          19.39757540822029,
+          19.38050612807274,
+          19.359806086868048,
+          19.35797603800893,
+          19.37910635024309
+        ]
+      }
+    },
+    {
+      "prompt_id": "ultrachat_200k:train_sft:61759",
+      "anchor": 70,
+      "original_progress": 1,
+      "edited_progress": 15,
+      "union_progress": 15,
+      "repaired": true,
+      "damaged": false,
+      "wrong_first": false,
+      "exact_suffix": true,
+      "kind": "repairable",
+      "editor_milliseconds": {
+        "median": 19.28367093205452,
+        "samples": [
+          19.416096154600382,
+          19.276815932244062,
+          19.1704579629004,
+          19.188037607818842,
+          19.183017779141665,
+          19.23140697181225,
+          19.29619675502181,
+          19.290525931864977,
+          19.484384916722775,
+          19.54411482438445
+        ]
+      }
+    },
+    {
+      "prompt_id": "ultrachat_200k:train_sft:164610",
+      "anchor": 19,
+      "original_progress": 4,
+      "edited_progress": 15,
+      "union_progress": 15,
+      "repaired": true,
+      "damaged": false,
+      "wrong_first": false,
+      "exact_suffix": true,
+      "kind": "repairable",
+      "editor_milliseconds": {
+        "median": 19.253481877967715,
+        "samples": [
+          19.083488266915083,
+          19.253996666520834,
+          19.12335678935051,
+          19.252967089414597,
+          19.283315632492304,
+          19.281096756458282,
+          19.21021705493331,
+          19.382455851882696,
+          19.229937344789505,
+          19.368535839021206
+        ]
+      }
+    },
+    {
+      "prompt_id": "ultrachat_200k:train_sft:164610",
+      "anchor": 36,
+      "original_progress": 6,
+      "edited_progress": 15,
+      "union_progress": 15,
+      "repaired": true,
+      "damaged": false,
+      "wrong_first": false,
+      "exact_suffix": true,
+      "kind": "repairable",
+      "editor_milliseconds": {
+        "median": 19.288540817797184,
+        "samples": [
+          19.25984676927328,
+          19.271655939519405,
+          19.437525887042284,
+          19.297105725854635,
+          19.330636132508516,
+          19.23178695142269,
+          19.279975909739733,
+          19.404796417802572,
+          19.15160706266761,
+          19.354376010596752
+        ]
+      }
+    },
+    {
+      "prompt_id": "ultrachat_200k:train_sft:164610",
+      "anchor": 50,
+      "original_progress": 2,
+      "edited_progress": 15,
+      "union_progress": 15,
+      "repaired": true,
+      "damaged": false,
+      "wrong_first": false,
+      "exact_suffix": true,
+      "kind": "repairable",
+      "editor_milliseconds": {
+        "median": 19.292836310341954,
+        "samples": [
+          19.310015719383955,
+          19.311795942485332,
+          19.221457187086344,
+          19.4152956828475,
+          19.272126257419586,
+          19.301465712487698,
+          19.28420690819621,
+          19.238416105508804,
+          19.404316321015358,
+          19.265637267380953
+        ]
+      }
+    },
+    {
+      "prompt_id": "ultrachat_200k:train_sft:164610",
+      "anchor": 66,
+      "original_progress": 2,
+      "edited_progress": 15,
+      "union_progress": 15,
+      "repaired": true,
+      "damaged": false,
+      "wrong_first": false,
+      "exact_suffix": true,
+      "kind": "repairable",
+      "editor_milliseconds": {
+        "median": 19.301141379401088,
+        "samples": [
+          19.439254887402058,
+          19.699684344232082,
+          19.339995924383402,
+          19.282185938209295,
+          19.32009682059288,
+          19.07519716769457,
+          19.14050802588463,
+          19.124056678265333,
+          19.332635682076216,
+          19.268677104264498
+        ]
+      }
+    },
+    {
+      "prompt_id": "gsm8k:train:3821",
+      "anchor": 38,
+      "original_progress": 4,
+      "edited_progress": 15,
+      "union_progress": 15,
+      "repaired": true,
+      "damaged": false,
+      "wrong_first": false,
+      "exact_suffix": true,
+      "kind": "repairable",
+      "editor_milliseconds": {
+        "median": 19.25165206193924,
+        "samples": [
+          19.26453597843647,
+          19.269367214292288,
+          19.230626989156008,
+          19.25448700785637,
+          19.2287671379745,
+          19.330895971506834,
+          19.09904694184661,
+          19.067298155277967,
+          19.24881711602211,
+          19.256815779954195
+        ]
+      }
+    },
+    {
+      "prompt_id": "gsm8k:train:3821",
+      "anchor": 51,
+      "original_progress": 2,
+      "edited_progress": 15,
+      "union_progress": 15,
+      "repaired": true,
+      "damaged": false,
+      "wrong_first": false,
+      "exact_suffix": true,
+      "kind": "repairable",
+      "editor_milliseconds": {
+        "median": 19.24203638918698,
+        "samples": [
+          19.22500692307949,
+          19.213216844946146,
+          19.190216902643442,
+          19.449925050139427,
+          19.252967089414597,
+          19.238055683672428,
+          19.216376822441816,
+          19.303985871374607,
+          19.24601709470153,
+          19.246357027441263
+        ]
+      }
+    },
+    {
+      "prompt_id": "gsm8k:train:3821",
+      "anchor": 67,
+      "original_progress": 1,
+      "edited_progress": 15,
+      "union_progress": 15,
+      "repaired": true,
+      "damaged": false,
+      "wrong_first": false,
+      "exact_suffix": true,
+      "kind": "repairable",
+      "editor_milliseconds": {
+        "median": 19.235326210036874,
+        "samples": [
+          19.24036629498005,
+          19.24309693276882,
+          19.300215877592564,
+          19.262866582721472,
+          19.2302861250937,
+          19.08114831894636,
+          19.083688035607338,
+          19.075757823884487,
+          19.19326838105917,
+          19.273107405751944
+        ]
+      }
+    },
+    {
+      "prompt_id": "gsm8k:train:3821",
+      "anchor": 86,
+      "original_progress": 9,
+      "edited_progress": 15,
+      "union_progress": 15,
+      "repaired": true,
+      "damaged": false,
+      "wrong_first": false,
+      "exact_suffix": true,
+      "kind": "repairable",
+      "editor_milliseconds": {
+        "median": 19.26110591739416,
+        "samples": [
+          19.264835864305496,
+          19.27714701741934,
+          19.257375970482826,
+          19.241207279264927,
+          19.275696016848087,
+          19.254107028245926,
+          19.23717698082328,
+          19.26867663860321,
+          19.273896235972643,
+          19.2316472530365
+        ]
+      }
+    }
+  ],
+  "scope": "Saved-context coverage; not native target acceptance or generation speedup",
+  "mean_original_progress": 3.4375,
+  "mean_edited_progress": 15,
+  "mean_union_progress": 15,
+  "progress_unit": "Consecutive matching proposals after the target anchor; maximum 15",
+  "median_editor_milliseconds": 19.274216261692345,
+  "timing_scope": "FP32 cached editor proposal, 14 sequential outputs, two warmups/ten samples per block; target/drafter unloaded"
+}

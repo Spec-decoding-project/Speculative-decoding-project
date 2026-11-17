@@ -1,0 +1,45 @@
+{
+  "teacher_forced_ce": 11.506920950753349,
+  "free_running_token_accuracy": 0.0,
+  "free_running_exact_suffix": 0.0,
+  "repaired": 0,
+  "damaged": 1,
+  "wrong_first": 0,
+  "blocks": 1,
+  "rows": [
+    {
+      "prompt_id": "gsm8k:train:5868",
+      "anchor": 104,
+      "original_progress": 15,
+      "edited_progress": 1,
+      "union_progress": 15,
+      "repaired": false,
+      "damaged": true,
+      "wrong_first": false,
+      "exact_suffix": false,
+      "kind": "preservation",
+      "editor_milliseconds": {
+        "median": 19.419370451942086,
+        "samples": [
+          19.431525375694036,
+          19.421325996518135,
+          20.116340834647417,
+          19.495415035635233,
+          19.2992459051311,
+          19.25993710756302,
+          19.292655866593122,
+          19.4199550896883,
+          19.414386246353388,
+          19.41878581419587
+        ]
+      }
+    }
+  ],
+  "scope": "Saved-context coverage; not native target acceptance or generation speedup",
+  "mean_original_progress": 15,
+  "mean_edited_progress": 1,
+  "mean_union_progress": 15,
+  "progress_unit": "Consecutive matching proposals after the target anchor; maximum 15",
+  "median_editor_milliseconds": 19.419370451942086,
+  "timing_scope": "FP32 cached editor proposal, 14 sequential outputs, two warmups/ten samples per block; target/drafter unloaded"
+}

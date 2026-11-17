@@ -1,0 +1,282 @@
+{
+  "variants": {
+    "context": {
+      "outcome": "memorization_passed",
+      "updates": 125,
+      "training_seconds": 13.254995147231966,
+      "initial_weights_sha256": "672080cdb5b25a32ae824198f3549e43979352bab0f621e75379dd9c46d03ab8",
+      "final_weights_sha256": "559ed98827d57f4b7b4c422e92d00cabec0ded581e4200821d376f262de988c2",
+      "checkpoint_sha256": "1176ce2d83524297c94d92e403e84b75459d35545308b59f036b5b0723f5ffd3",
+      "checkpoint_bytes": 489040774,
+      "checkpoint_reload": "passed",
+      "cached_full_decoding": "passed",
+      "future_label_check": "passed",
+      "mean_first_100_update_seconds": 0.09257173912599682,
+      "peak_allocated_bytes": 1146663424,
+      "training": {
+        "teacher_forced_ce": 0.004334515043800431,
+        "free_running_token_accuracy": 1.0,
+        "free_running_exact_suffix": 1.0,
+        "repaired": 16,
+        "damaged": 0,
+        "wrong_first": 0,
+        "blocks": 16,
+        "scope": "Saved-context coverage; not native target acceptance or generation speedup",
+        "mean_original_progress": 3.4375,
+        "mean_edited_progress": 15,
+        "mean_union_progress": 15,
+        "progress_unit": "Consecutive matching proposals after the target anchor; maximum 15",
+        "median_editor_milliseconds": 19.040038459934294,
+        "timing_scope": "FP32 cached editor proposal, 14 sequential outputs, two warmups/ten samples per block; target/drafter unloaded"
+      },
+      "development": {
+        "teacher_forced_ce": 11.373516423361641,
+        "free_running_token_accuracy": 0.013392857142857142,
+        "free_running_exact_suffix": 0.0,
+        "repaired": 0,
+        "damaged": 20,
+        "wrong_first": 6,
+        "blocks": 32,
+        "scope": "Saved-context coverage; not native target acceptance or generation speedup",
+        "mean_original_progress": 2.5,
+        "mean_edited_progress": 0.875,
+        "mean_union_progress": 2.5,
+        "progress_unit": "Consecutive matching proposals after the target anchor; maximum 15",
+        "median_editor_milliseconds": 19.11525265313685,
+        "timing_scope": "FP32 cached editor proposal, 14 sequential outputs, two warmups/ten samples per block; target/drafter unloaded"
+      },
+      "preservation": {
+        "teacher_forced_ce": 11.642725263323102,
+        "free_running_token_accuracy": 0.0,
+        "free_running_exact_suffix": 0.0,
+        "repaired": 0,
+        "damaged": 1,
+        "wrong_first": 0,
+        "blocks": 1,
+        "scope": "Saved-context coverage; not native target acceptance or generation speedup",
+        "mean_original_progress": 15,
+        "mean_edited_progress": 1,
+        "mean_union_progress": 15,
+        "progress_unit": "Consecutive matching proposals after the target anchor; maximum 15",
+        "median_editor_milliseconds": 19.172406988218427,
+        "timing_scope": "FP32 cached editor proposal, 14 sequential outputs, two warmups/ten samples per block; target/drafter unloaded"
+      }
+    },
+    "draft": {
+      "outcome": "memorization_passed",
+      "updates": 125,
+      "training_seconds": 13.106486581731588,
+      "initial_weights_sha256": "672080cdb5b25a32ae824198f3549e43979352bab0f621e75379dd9c46d03ab8",
+      "final_weights_sha256": "182d8fe225a5dbd23d94bd7837c7eeb2304c05d529d21ae963ecbf8206ed55fa",
+      "checkpoint_sha256": "a74e04a85fc7ceed43ec0d5140333d2b70697e13cacc05d9962d8a274831b701",
+      "checkpoint_bytes": 489040774,
+      "checkpoint_reload": "passed",
+      "cached_full_decoding": "passed",
+      "future_label_check": "passed",
+      "mean_first_100_update_seconds": 0.09100359752308577,
+      "peak_allocated_bytes": 1146663424,
+      "training": {
+        "teacher_forced_ce": 0.003967220263023462,
+        "free_running_token_accuracy": 1.0,
+        "free_running_exact_suffix": 1.0,
+        "repaired": 16,
+        "damaged": 0,
+        "wrong_first": 0,
+        "blocks": 16,
+        "scope": "Saved-context coverage; not native target acceptance or generation speedup",
+        "mean_original_progress": 3.4375,
+        "mean_edited_progress": 15,
+        "mean_union_progress": 15,
+        "progress_unit": "Consecutive matching proposals after the target anchor; maximum 15",
+        "median_editor_milliseconds": 19.274216261692345,
+        "timing_scope": "FP32 cached editor proposal, 14 sequential outputs, two warmups/ten samples per block; target/drafter unloaded"
+      },
+      "development": {
+        "teacher_forced_ce": 11.269942590168544,
+        "free_running_token_accuracy": 0.017857142857142856,
+        "free_running_exact_suffix": 0.0,
+        "repaired": 1,
+        "damaged": 19,
+        "wrong_first": 6,
+        "blocks": 32,
+        "scope": "Saved-context coverage; not native target acceptance or generation speedup",
+        "mean_original_progress": 2.5,
+        "mean_edited_progress": 0.9375,
+        "mean_union_progress": 2.5625,
+        "progress_unit": "Consecutive matching proposals after the target anchor; maximum 15",
+        "median_editor_milliseconds": 19.315083627589047,
+        "timing_scope": "FP32 cached editor proposal, 14 sequential outputs, two warmups/ten samples per block; target/drafter unloaded"
+      },
+      "preservation": {
+        "teacher_forced_ce": 11.506920950753349,
+        "free_running_token_accuracy": 0.0,
+        "free_running_exact_suffix": 0.0,
+        "repaired": 0,
+        "damaged": 1,
+        "wrong_first": 0,
+        "blocks": 1,
+        "scope": "Saved-context coverage; not native target acceptance or generation speedup",
+        "mean_original_progress": 15,
+        "mean_edited_progress": 1,
+        "mean_union_progress": 15,
+        "progress_unit": "Consecutive matching proposals after the target anchor; maximum 15",
+        "median_editor_milliseconds": 19.419370451942086,
+        "timing_scope": "FP32 cached editor proposal, 14 sequential outputs, two warmups/ten samples per block; target/drafter unloaded"
+      }
+    }
+  },
+  "dataset_sha256": "a7bae8e7f1a068591aafe395bf827376e051662e6508a20a22cbc9ab66ec1747",
+  "scope": "Sixteen repairable blocks/four training prompts; eight development prompts; one excluded preservation control; no full-generation speedup claim",
+  "job": {
+    "id": 8454166,
+    "state": "COMPLETED",
+    "exit_code": "0:0",
+    "elapsed_seconds": 90,
+    "node": "tron61",
+    "gpu": "RTX A5000",
+    "cpus": 4,
+    "allocated_memory_gib": 32,
+    "time_limit_minutes": 30,
+    "max_host_rss_kib": 2670488,
+    "code_revision": "2bcdc06e1b7c688be918d1336ffad46951b1d434",
+    "dataset_sha256": "a7bae8e7f1a068591aafe395bf827376e051662e6508a20a22cbc9ab66ec1747",
+    "package_freeze_sha256": "8a42fd1d3947cf2fc343e2a0c5d77c933622895453df82d3c2f8a7533e2e2c73",
+    "source_files_verified": 20,
+    "local_tests_passed": 21,
+    "checkpoint_sha256_independently_verified": {
+      "context": "1176ce2d83524297c94d92e403e84b75459d35545308b59f036b5b0723f5ffd3",
+      "draft": "a74e04a85fc7ceed43ec0d5140333d2b70697e13cacc05d9962d8a274831b701"
+    },
+    "target_inference_calls": 0,
+    "raw_artifact_path": "/fs/classhomes/fpajak/speculative-decoding-project/research/sixteen-block-fit-8454166"
+  },
+  "independent_audit": {
+    "passed": true,
+    "audit_scope": "CPU metric recount from private saved tokens; no GPU rerun",
+    "predicted_blocks_checked": 164,
+    "variants": {
+      "context": {
+        "updates": 125,
+        "metrics": {
+          "training": {
+            "blocks": 16,
+            "free_running_token_accuracy": 1.0,
+            "free_running_exact_suffix": 1.0,
+            "mean_original_progress": 3.4375,
+            "mean_edited_progress": 15,
+            "mean_union_progress": 15,
+            "repaired": 16,
+            "damaged": 0,
+            "correct_suffix_tokens": 224
+          },
+          "development": {
+            "blocks": 32,
+            "free_running_token_accuracy": 0.013392857142857142,
+            "free_running_exact_suffix": 0.0,
+            "mean_original_progress": 2.5,
+            "mean_edited_progress": 0.875,
+            "mean_union_progress": 2.5,
+            "repaired": 0,
+            "damaged": 20,
+            "correct_suffix_tokens": 6
+          },
+          "preservation": {
+            "blocks": 1,
+            "free_running_token_accuracy": 0.0,
+            "free_running_exact_suffix": 0.0,
+            "mean_original_progress": 15,
+            "mean_edited_progress": 1,
+            "mean_union_progress": 15,
+            "repaired": 0,
+            "damaged": 1,
+            "correct_suffix_tokens": 0
+          }
+        },
+        "development_by_source": {
+          "HuggingFaceH4/ultrachat_200k": {
+            "blocks": 16,
+            "mean_original_progress": 2.6875,
+            "mean_edited_progress": 0.75,
+            "repaired": 0,
+            "damaged": 10
+          },
+          "openai/gsm8k": {
+            "blocks": 16,
+            "mean_original_progress": 2.3125,
+            "mean_edited_progress": 1,
+            "repaired": 0,
+            "damaged": 10
+          }
+        }
+      },
+      "draft": {
+        "updates": 125,
+        "metrics": {
+          "training": {
+            "blocks": 16,
+            "free_running_token_accuracy": 1.0,
+            "free_running_exact_suffix": 1.0,
+            "mean_original_progress": 3.4375,
+            "mean_edited_progress": 15,
+            "mean_union_progress": 15,
+            "repaired": 16,
+            "damaged": 0,
+            "correct_suffix_tokens": 224
+          },
+          "development": {
+            "blocks": 32,
+            "free_running_token_accuracy": 0.017857142857142856,
+            "free_running_exact_suffix": 0.0,
+            "mean_original_progress": 2.5,
+            "mean_edited_progress": 0.9375,
+            "mean_union_progress": 2.5625,
+            "repaired": 1,
+            "damaged": 19,
+            "correct_suffix_tokens": 8
+          },
+          "preservation": {
+            "blocks": 1,
+            "free_running_token_accuracy": 0.0,
+            "free_running_exact_suffix": 0.0,
+            "mean_original_progress": 15,
+            "mean_edited_progress": 1,
+            "mean_union_progress": 15,
+            "repaired": 0,
+            "damaged": 1,
+            "correct_suffix_tokens": 0
+          }
+        },
+        "development_by_source": {
+          "HuggingFaceH4/ultrachat_200k": {
+            "blocks": 16,
+            "mean_original_progress": 2.6875,
+            "mean_edited_progress": 0.75,
+            "repaired": 0,
+            "damaged": 10
+          },
+          "openai/gsm8k": {
+            "blocks": 16,
+            "mean_original_progress": 2.3125,
+            "mean_edited_progress": 1.125,
+            "repaired": 1,
+            "damaged": 9
+          }
+        }
+      }
+    }
+  },
+  "selection_summary": {
+    "selection": "Four order statistics per training prompt: floor(k*(n-1)/3), k=0..3; anchors ascending",
+    "training_prompt_count": 4,
+    "development_prompt_count": 8,
+    "training_editable_tokens": 224,
+    "training_unique_editable_positions": 215,
+    "eligible_counts": {
+      "train/repairable": 45,
+      "train/wrong_first": 7,
+      "validation/repairable": 87,
+      "validation/wrong_first": 34,
+      "validation/preservation": 1
+    }
+  }
+}
