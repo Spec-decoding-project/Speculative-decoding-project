@@ -1,0 +1,882 @@
+{
+  "teacher_forced_ce": 17.33244718824114,
+  "free_running_token_accuracy": 0.008928571428571428,
+  "free_running_exact_suffix": 0.0,
+  "repaired": 0,
+  "damaged": 19,
+  "wrong_first": 6,
+  "blocks": 32,
+  "rows": [
+    {
+      "prompt_id": "ultrachat_200k:train_sft:145402",
+      "anchor": 68,
+      "original_progress": 1,
+      "edited_progress": 1,
+      "union_progress": 1,
+      "repaired": false,
+      "damaged": false,
+      "wrong_first": false,
+      "exact_suffix": false,
+      "kind": "repairable",
+      "editor_milliseconds": {
+        "median": 19.418496172875166,
+        "samples": [
+          19.401646219193935,
+          19.37895594164729,
+          19.51762568205595,
+          19.415336195379496,
+          19.411566201597452,
+          19.39225709065795,
+          19.481206312775612,
+          19.472465850412846,
+          19.427426159381866,
+          19.421656150370836
+        ]
+      }
+    },
+    {
+      "prompt_id": "ultrachat_200k:train_sft:145402",
+      "anchor": 70,
+      "original_progress": 1,
+      "edited_progress": 1,
+      "union_progress": 1,
+      "repaired": false,
+      "damaged": false,
+      "wrong_first": false,
+      "exact_suffix": false,
+      "kind": "repairable",
+      "editor_milliseconds": {
+        "median": 19.422996090725064,
+        "samples": [
+          19.420836120843887,
+          19.406885839998722,
+          19.393506925553083,
+          19.42515606060624,
+          19.39493604004383,
+          23.593964986503124,
+          19.51324613764882,
+          19.439286086708307,
+          19.417906180024147,
+          19.432365894317627
+        ]
+      }
+    },
+    {
+      "prompt_id": "ultrachat_200k:train_sft:145402",
+      "anchor": 72,
+      "original_progress": 5,
+      "edited_progress": 1,
+      "union_progress": 5,
+      "repaired": false,
+      "damaged": true,
+      "wrong_first": false,
+      "exact_suffix": false,
+      "kind": "repairable",
+      "editor_milliseconds": {
+        "median": 19.493829924613237,
+        "samples": [
+          19.524335861206055,
+          19.493495114147663,
+          19.41567612811923,
+          19.494626205414534,
+          19.49416473507881,
+          19.506906159222126,
+          19.48021585121751,
+          19.476245157420635,
+          19.47422605007887,
+          19.530775025486946
+        ]
+      }
+    },
+    {
+      "prompt_id": "ultrachat_200k:train_sft:145402",
+      "anchor": 78,
+      "original_progress": 2,
+      "edited_progress": 1,
+      "union_progress": 2,
+      "repaired": false,
+      "damaged": true,
+      "wrong_first": false,
+      "exact_suffix": false,
+      "kind": "repairable",
+      "editor_milliseconds": {
+        "median": 19.42089688964188,
+        "samples": [
+          19.426426850259304,
+          19.436405040323734,
+          19.465055782347918,
+          19.448716193437576,
+          19.383616745471954,
+          19.390106666833162,
+          19.404145888984203,
+          19.402505829930305,
+          19.418516661971807,
+          19.423277117311954
+        ]
+      }
+    },
+    {
+      "prompt_id": "gsm8k:train:155",
+      "anchor": 68,
+      "original_progress": 2,
+      "edited_progress": 1,
+      "union_progress": 2,
+      "repaired": false,
+      "damaged": true,
+      "wrong_first": false,
+      "exact_suffix": false,
+      "kind": "repairable",
+      "editor_milliseconds": {
+        "median": 19.389706663787365,
+        "samples": [
+          19.487676210701466,
+          19.46086622774601,
+          19.38815601170063,
+          19.394566770642996,
+          19.415896851569414,
+          19.380306359380484,
+          19.37769679352641,
+          19.3912573158741,
+          19.351645838469267,
+          19.36415722593665
+        ]
+      }
+    },
+    {
+      "prompt_id": "gsm8k:train:155",
+      "anchor": 71,
+      "original_progress": 5,
+      "edited_progress": 1,
+      "union_progress": 5,
+      "repaired": false,
+      "damaged": true,
+      "wrong_first": false,
+      "exact_suffix": false,
+      "kind": "repairable",
+      "editor_milliseconds": {
+        "median": 19.476840505376458,
+        "samples": [
+          19.50226631015539,
+          19.453915767371655,
+          23.740233853459358,
+          19.521025009453297,
+          19.456366077065468,
+          19.476125948131084,
+          19.45985620841384,
+          19.449705723673105,
+          19.477555062621832,
+          19.498245790600777
+        ]
+      }
+    },
+    {
+      "prompt_id": "gsm8k:train:5868",
+      "anchor": 57,
+      "original_progress": 1,
+      "edited_progress": 1,
+      "union_progress": 1,
+      "repaired": false,
+      "damaged": false,
+      "wrong_first": false,
+      "exact_suffix": false,
+      "kind": "repairable",
+      "editor_milliseconds": {
+        "median": 19.42216604948044,
+        "samples": [
+          19.448656123131514,
+          19.435185939073563,
+          19.423196092247963,
+          19.402526319026947,
+          19.421136006712914,
+          19.41163605079055,
+          19.416816998273134,
+          19.485626369714737,
+          19.446095917373896,
+          19.400085788220167
+        ]
+      }
+    },
+    {
+      "prompt_id": "gsm8k:train:155",
+      "anchor": 77,
+      "original_progress": 0,
+      "edited_progress": 0,
+      "union_progress": 0,
+      "repaired": false,
+      "damaged": false,
+      "wrong_first": true,
+      "exact_suffix": false,
+      "kind": "wrong_first",
+      "editor_milliseconds": {
+        "median": 19.358602119609714,
+        "samples": [
+          19.209618214517832,
+          19.17963707819581,
+          19.314737059175968,
+          19.41529707983136,
+          19.364497158676386,
+          19.373797345906496,
+          19.3846570327878,
+          19.339857157319784,
+          19.369265995919704,
+          19.35270708054304
+        ]
+      }
+    },
+    {
+      "prompt_id": "gsm8k:train:5868",
+      "anchor": 59,
+      "original_progress": 2,
+      "edited_progress": 1,
+      "union_progress": 2,
+      "repaired": false,
+      "damaged": true,
+      "wrong_first": false,
+      "exact_suffix": false,
+      "kind": "repairable",
+      "editor_milliseconds": {
+        "median": 19.319222075864673,
+        "samples": [
+          19.34372680261731,
+          19.34062596410513,
+          19.33178724721074,
+          19.329196773469448,
+          19.31557711213827,
+          19.30700708180666,
+          19.297007005661726,
+          19.30733723565936,
+          19.291876815259457,
+          19.322867039591074
+        ]
+      }
+    },
+    {
+      "prompt_id": "gsm8k:train:155",
+      "anchor": 78,
+      "original_progress": 5,
+      "edited_progress": 1,
+      "union_progress": 5,
+      "repaired": false,
+      "damaged": true,
+      "wrong_first": false,
+      "exact_suffix": false,
+      "kind": "repairable",
+      "editor_milliseconds": {
+        "median": 19.342076499015093,
+        "samples": [
+          19.173318054527044,
+          19.228207878768444,
+          19.204718060791492,
+          19.24392767250538,
+          19.36091622337699,
+          19.33419704437256,
+          19.35965707525611,
+          19.349955953657627,
+          19.363727420568466,
+          19.367055967450142
+        ]
+      }
+    },
+    {
+      "prompt_id": "gsm8k:train:5868",
+      "anchor": 62,
+      "original_progress": 0,
+      "edited_progress": 0,
+      "union_progress": 0,
+      "repaired": false,
+      "damaged": false,
+      "wrong_first": true,
+      "exact_suffix": false,
+      "kind": "wrong_first",
+      "editor_milliseconds": {
+        "median": 19.336452009156346,
+        "samples": [
+          19.344756845384836,
+          19.332346972078085,
+          19.187467638403177,
+          19.175097811967134,
+          19.153368193656206,
+          19.274198450148106,
+          19.422417040914297,
+          19.352885894477367,
+          19.340557046234608,
+          19.349256996065378
+        ]
+      }
+    },
+    {
+      "prompt_id": "gsm8k:train:5868",
+      "anchor": 63,
+      "original_progress": 3,
+      "edited_progress": 1,
+      "union_progress": 3,
+      "repaired": false,
+      "damaged": true,
+      "wrong_first": false,
+      "exact_suffix": false,
+      "kind": "repairable",
+      "editor_milliseconds": {
+        "median": 19.350341521203518,
+        "samples": [
+          19.24879802390933,
+          19.313807133585215,
+          19.383145961910486,
+          19.42216604948044,
+          19.42734606564045,
+          19.4409959949553,
+          19.40495613962412,
+          19.31753708049655,
+          19.24770837649703,
+          19.240716937929392
+        ]
+      }
+    },
+    {
+      "prompt_id": "ultrachat_200k:train_sft:204138",
+      "anchor": 107,
+      "original_progress": 0,
+      "edited_progress": 0,
+      "union_progress": 0,
+      "repaired": false,
+      "damaged": false,
+      "wrong_first": true,
+      "exact_suffix": false,
+      "kind": "wrong_first",
+      "editor_milliseconds": {
+        "median": 19.438326125964522,
+        "samples": [
+          19.232717342674732,
+          19.22242809087038,
+          19.227956887334585,
+          19.2544381134212,
+          19.48060467839241,
+          19.463686272501945,
+          19.44638602435589,
+          19.45605594664812,
+          19.44104628637433,
+          19.435605965554714
+        ]
+      }
+    },
+    {
+      "prompt_id": "ultrachat_200k:train_sft:204138",
+      "anchor": 108,
+      "original_progress": 0,
+      "edited_progress": 0,
+      "union_progress": 0,
+      "repaired": false,
+      "damaged": false,
+      "wrong_first": true,
+      "exact_suffix": false,
+      "kind": "wrong_first",
+      "editor_milliseconds": {
+        "median": 19.441365962848067,
+        "samples": [
+          19.414247013628483,
+          19.49188532307744,
+          19.453285727649927,
+          19.410216249525547,
+          19.4443860091269,
+          19.424805883318186,
+          19.438345916569233,
+          19.45715583860874,
+          19.407805986702442,
+          19.465376157313585
+        ]
+      }
+    },
+    {
+      "prompt_id": "ultrachat_200k:train_sft:204138",
+      "anchor": 109,
+      "original_progress": 0,
+      "edited_progress": 0,
+      "union_progress": 0,
+      "repaired": false,
+      "damaged": false,
+      "wrong_first": true,
+      "exact_suffix": false,
+      "kind": "wrong_first",
+      "editor_milliseconds": {
+        "median": 19.435275811702013,
+        "samples": [
+          19.422336015850306,
+          19.444596022367477,
+          19.435865804553032,
+          19.434685818850994,
+          19.422005861997604,
+          19.41708568483591,
+          19.469496328383684,
+          19.48031596839428,
+          19.52199498191476,
+          19.425996113568544
+        ]
+      }
+    },
+    {
+      "prompt_id": "ultrachat_200k:train_sft:204138",
+      "anchor": 110,
+      "original_progress": 0,
+      "edited_progress": 0,
+      "union_progress": 0,
+      "repaired": false,
+      "damaged": false,
+      "wrong_first": true,
+      "exact_suffix": false,
+      "kind": "wrong_first",
+      "editor_milliseconds": {
+        "median": 19.461190793663263,
+        "samples": [
+          19.460545852780342,
+          19.461835734546185,
+          19.42891627550125,
+          19.450595136731863,
+          19.44854622706771,
+          19.480245653539896,
+          19.439045805484056,
+          19.4681859575212,
+          20.356609020382166,
+          19.557564985007048
+        ]
+      }
+    },
+    {
+      "prompt_id": "gsm8k:train:1485",
+      "anchor": 61,
+      "original_progress": 1,
+      "edited_progress": 1,
+      "union_progress": 1,
+      "repaired": false,
+      "damaged": false,
+      "wrong_first": false,
+      "exact_suffix": false,
+      "kind": "repairable",
+      "editor_milliseconds": {
+        "median": 19.40112141892314,
+        "samples": [
+          19.44254618138075,
+          19.380776211619377,
+          19.37170699238777,
+          19.422286190092564,
+          19.400655757635832,
+          19.46878619492054,
+          19.439466297626495,
+          19.380395766347647,
+          19.401587080210447,
+          19.382075872272253
+        ]
+      }
+    },
+    {
+      "prompt_id": "gsm8k:train:1485",
+      "anchor": 63,
+      "original_progress": 5,
+      "edited_progress": 1,
+      "union_progress": 5,
+      "repaired": false,
+      "damaged": true,
+      "wrong_first": false,
+      "exact_suffix": false,
+      "kind": "repairable",
+      "editor_milliseconds": {
+        "median": 19.46857082657516,
+        "samples": [
+          19.47574596852064,
+          19.5009158924222,
+          19.4558659568429,
+          19.447735976427794,
+          19.433136098086834,
+          19.468755926936865,
+          19.450565800070763,
+          19.51769506558776,
+          19.468385726213455,
+          19.502836279571056
+        ]
+      }
+    },
+    {
+      "prompt_id": "gsm8k:train:1485",
+      "anchor": 69,
+      "original_progress": 1,
+      "edited_progress": 1,
+      "union_progress": 1,
+      "repaired": false,
+      "damaged": false,
+      "wrong_first": false,
+      "exact_suffix": false,
+      "kind": "repairable",
+      "editor_milliseconds": {
+        "median": 19.72135901451111,
+        "samples": [
+          19.387596752494574,
+          19.42472578957677,
+          19.64747393503785,
+          20.334819331765175,
+          19.795244093984365,
+          19.98549187555909,
+          20.40918916463852,
+          19.86322272568941,
+          19.47442628443241,
+          19.438915885984898
+        ]
+      }
+    },
+    {
+      "prompt_id": "gsm8k:train:1485",
+      "anchor": 71,
+      "original_progress": 4,
+      "edited_progress": 1,
+      "union_progress": 4,
+      "repaired": false,
+      "damaged": true,
+      "wrong_first": false,
+      "exact_suffix": false,
+      "kind": "repairable",
+      "editor_milliseconds": {
+        "median": 19.471695879474282,
+        "samples": [
+          19.49649630114436,
+          19.44378623738885,
+          19.477146212011576,
+          19.465764984488487,
+          19.469815772026777,
+          19.477715715765953,
+          19.473575986921787,
+          19.4500251673162,
+          19.465226214379072,
+          19.48196580633521
+        ]
+      }
+    },
+    {
+      "prompt_id": "gsm8k:train:6867",
+      "anchor": 66,
+      "original_progress": 1,
+      "edited_progress": 1,
+      "union_progress": 1,
+      "repaired": false,
+      "damaged": false,
+      "wrong_first": false,
+      "exact_suffix": false,
+      "kind": "repairable",
+      "editor_milliseconds": {
+        "median": 19.409241853281856,
+        "samples": [
+          19.93737183511257,
+          19.42578563466668,
+          19.432165659964085,
+          19.40446672961116,
+          19.38980584964156,
+          19.39300401136279,
+          19.391736947000027,
+          19.373637158423662,
+          19.419116899371147,
+          19.414016976952553
+        ]
+      }
+    },
+    {
+      "prompt_id": "gsm8k:train:6867",
+      "anchor": 68,
+      "original_progress": 2,
+      "edited_progress": 1,
+      "union_progress": 2,
+      "repaired": false,
+      "damaged": true,
+      "wrong_first": false,
+      "exact_suffix": false,
+      "kind": "repairable",
+      "editor_milliseconds": {
+        "median": 19.394121831282973,
+        "samples": [
+          19.35451803728938,
+          19.33904690667987,
+          19.37728701159358,
+          19.390677101910114,
+          19.397877156734467,
+          19.396796822547913,
+          19.395296927541494,
+          19.400705583393574,
+          19.402537029236555,
+          19.392946735024452
+        ]
+      }
+    },
+    {
+      "prompt_id": "gsm8k:train:6867",
+      "anchor": 71,
+      "original_progress": 3,
+      "edited_progress": 1,
+      "union_progress": 3,
+      "repaired": false,
+      "damaged": true,
+      "wrong_first": false,
+      "exact_suffix": false,
+      "kind": "repairable",
+      "editor_milliseconds": {
+        "median": 19.457981921732426,
+        "samples": [
+          19.51584592461586,
+          19.4424563087523,
+          19.46057705208659,
+          19.45538679137826,
+          19.440506119281054,
+          19.441076088696718,
+          19.495125859975815,
+          19.47331614792347,
+          19.439677242189646,
+          19.496585242450237
+        ]
+      }
+    },
+    {
+      "prompt_id": "gsm8k:train:6867",
+      "anchor": 75,
+      "original_progress": 2,
+      "edited_progress": 1,
+      "union_progress": 2,
+      "repaired": false,
+      "damaged": true,
+      "wrong_first": false,
+      "exact_suffix": false,
+      "kind": "repairable",
+      "editor_milliseconds": {
+        "median": 19.45453602820635,
+        "samples": [
+          19.461146090179682,
+          19.447925966233015,
+          19.4780258461833,
+          19.47018690407276,
+          19.476577173918486,
+          19.43093677982688,
+          19.49321571737528,
+          19.40061617642641,
+          19.39550694078207,
+          19.29193828254938
+        ]
+      }
+    },
+    {
+      "prompt_id": "ultrachat_200k:train_sft:106750",
+      "anchor": 255,
+      "original_progress": 7,
+      "edited_progress": 1,
+      "union_progress": 7,
+      "repaired": false,
+      "damaged": true,
+      "wrong_first": false,
+      "exact_suffix": false,
+      "kind": "repairable",
+      "editor_milliseconds": {
+        "median": 19.39929649233818,
+        "samples": [
+          19.355416763573885,
+          19.331507850438356,
+          19.339217338711023,
+          19.345777109265327,
+          19.32487729936838,
+          20.309969317167997,
+          19.443176221102476,
+          19.470886327326298,
+          19.48984619230032,
+          19.493986386805773
+        ]
+      }
+    },
+    {
+      "prompt_id": "ultrachat_200k:train_sft:106750",
+      "anchor": 263,
+      "original_progress": 4,
+      "edited_progress": 1,
+      "union_progress": 4,
+      "repaired": false,
+      "damaged": true,
+      "wrong_first": false,
+      "exact_suffix": false,
+      "kind": "repairable",
+      "editor_milliseconds": {
+        "median": 19.419211894273758,
+        "samples": [
+          19.31003713980317,
+          19.344056956470013,
+          19.456456881016493,
+          19.460677169263363,
+          19.462396390736103,
+          19.49977595359087,
+          19.463276024907827,
+          19.381966907531023,
+          19.295987207442522,
+          19.345766864717007
+        ]
+      }
+    },
+    {
+      "prompt_id": "ultrachat_200k:train_sft:106750",
+      "anchor": 268,
+      "original_progress": 2,
+      "edited_progress": 2,
+      "union_progress": 2,
+      "repaired": false,
+      "damaged": false,
+      "wrong_first": false,
+      "exact_suffix": false,
+      "kind": "repairable",
+      "editor_milliseconds": {
+        "median": 19.283438101410866,
+        "samples": [
+          19.338338170200586,
+          19.27213743329048,
+          19.285887945443392,
+          19.259628374129534,
+          19.275367725640535,
+          19.25652800127864,
+          19.287777133286,
+          19.28312797099352,
+          19.29732784628868,
+          19.283748231828213
+        ]
+      }
+    },
+    {
+      "prompt_id": "ultrachat_200k:train_sft:106750",
+      "anchor": 271,
+      "original_progress": 2,
+      "edited_progress": 1,
+      "union_progress": 2,
+      "repaired": false,
+      "damaged": true,
+      "wrong_first": false,
+      "exact_suffix": false,
+      "kind": "repairable",
+      "editor_milliseconds": {
+        "median": 19.489855971187353,
+        "samples": [
+          19.36472672969103,
+          19.443525932729244,
+          19.490235950797796,
+          19.526815973222256,
+          19.48947599157691,
+          19.512536004185677,
+          19.4739056751132,
+          19.52065620571375,
+          19.509265664964914,
+          19.378996919840574
+        ]
+      }
+    },
+    {
+      "prompt_id": "ultrachat_200k:train_sft:94625",
+      "anchor": 433,
+      "original_progress": 3,
+      "edited_progress": 1,
+      "union_progress": 3,
+      "repaired": false,
+      "damaged": true,
+      "wrong_first": false,
+      "exact_suffix": false,
+      "kind": "repairable",
+      "editor_milliseconds": {
+        "median": 19.46724602021277,
+        "samples": [
+          19.48223588988185,
+          19.490016158670187,
+          19.474246073514223,
+          19.460245966911316,
+          19.45608574897051,
+          19.476456101983786,
+          19.460156094282866,
+          19.478955771774054,
+          19.455295987427235,
+          19.454506691545248
+        ]
+      }
+    },
+    {
+      "prompt_id": "ultrachat_200k:train_sft:94625",
+      "anchor": 437,
+      "original_progress": 3,
+      "edited_progress": 1,
+      "union_progress": 3,
+      "repaired": false,
+      "damaged": true,
+      "wrong_first": false,
+      "exact_suffix": false,
+      "kind": "repairable",
+      "editor_milliseconds": {
+        "median": 19.513041013851762,
+        "samples": [
+          19.328556954860687,
+          19.390846602618694,
+          19.466865807771683,
+          19.544954877346754,
+          19.500616006553173,
+          19.475665874779224,
+          19.53150611370802,
+          19.5472352206707,
+          19.542044959962368,
+          19.52546602115035
+        ]
+      }
+    },
+    {
+      "prompt_id": "ultrachat_200k:train_sft:94625",
+      "anchor": 441,
+      "original_progress": 6,
+      "edited_progress": 1,
+      "union_progress": 6,
+      "repaired": false,
+      "damaged": true,
+      "wrong_first": false,
+      "exact_suffix": false,
+      "kind": "repairable",
+      "editor_milliseconds": {
+        "median": 19.53146024607122,
+        "samples": [
+          19.51766572892666,
+          19.520345609635115,
+          19.559744745492935,
+          19.560215063393116,
+          19.51099606230855,
+          19.53023485839367,
+          19.527955912053585,
+          19.558014813810587,
+          19.53268563374877,
+          19.54572508111596
+        ]
+      }
+    },
+    {
+      "prompt_id": "ultrachat_200k:train_sft:94625",
+      "anchor": 448,
+      "original_progress": 7,
+      "edited_progress": 1,
+      "union_progress": 7,
+      "repaired": false,
+      "damaged": true,
+      "wrong_first": false,
+      "exact_suffix": false,
+      "kind": "repairable",
+      "editor_milliseconds": {
+        "median": 19.573430065065622,
+        "samples": [
+          19.567484967410564,
+          19.567325245589018,
+          19.562496338039637,
+          19.596515223383904,
+          19.58579570055008,
+          19.56961490213871,
+          19.606994930654764,
+          19.56484466791153,
+          19.584234803915024,
+          19.577245227992535
+        ]
+      }
+    }
+  ],
+  "scope": "Saved-context coverage; not native target acceptance or generation speedup",
+  "mean_original_progress": 2.5,
+  "mean_edited_progress": 0.84375,
+  "mean_union_progress": 2.5,
+  "progress_unit": "Consecutive matching proposals after the target anchor; maximum 15",
+  "median_editor_milliseconds": 19.42913595121354,
+  "timing_scope": "FP32 cached editor proposal, 14 sequential outputs, two warmups/ten samples per block; target/drafter unloaded"
+}

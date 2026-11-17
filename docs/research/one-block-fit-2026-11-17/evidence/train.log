@@ -1,0 +1,10 @@
+{"mode": "context", "step": 25, "ce": 0.5395539828709194, "exact": 1.0, "passes": 0}
+{"mode": "context", "step": 50, "ce": 0.004186562927705901, "exact": 1.0, "passes": 1}
+{"mode": "context", "step": 75, "ce": 0.0020462926477193832, "exact": 1.0, "passes": 2}
+{"mode": "context", "step": 100, "ce": 0.00166226683982781, "exact": 1.0, "passes": 3}
+{"mode": "context", "outcome": "memorization_passed", "updates": 100, "held_out_original": 2.5, "held_out_edited": 0.84375}
+{"mode": "draft", "step": 25, "ce": 0.6100031988961356, "exact": 1.0, "passes": 0}
+{"mode": "draft", "step": 50, "ce": 0.003600649003471647, "exact": 1.0, "passes": 1}
+{"mode": "draft", "step": 75, "ce": 0.0017720628529787064, "exact": 1.0, "passes": 2}
+{"mode": "draft", "step": 100, "ce": 0.0014657540512936456, "exact": 1.0, "passes": 3}
+{"mode": "draft", "outcome": "memorization_passed", "updates": 100, "held_out_original": 2.5, "held_out_edited": 0.8125}

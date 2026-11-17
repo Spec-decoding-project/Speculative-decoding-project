@@ -1,0 +1,109 @@
+{
+  "policy": {
+    "validation_order": "SHA256(prompt ID)",
+    "counts": {
+      "HuggingFaceH4/ultrachat_200k": 4,
+      "openai/gsm8k": 4
+    },
+    "validation_eligible": 997,
+    "family_overlap": 0
+  },
+  "prompts": [
+    {
+      "id": "ultrachat_200k:train_sft:37680",
+      "split": "train",
+      "source": "HuggingFaceH4/ultrachat_200k",
+      "family_id": "7496b2c289fde2cadc5bebc2d84e55384ce23c0fc83cf5181c1ccd56c90052fd",
+      "record_sha256": "91ed156259796a4a10f28748fd6ac95fe27a66d6f6da57345660c0af11bd5fc2",
+      "context_tokens": 24
+    },
+    {
+      "id": "ultrachat_200k:train_sft:61759",
+      "split": "train",
+      "source": "HuggingFaceH4/ultrachat_200k",
+      "family_id": "8d255efcf13944e5c2adb899e2b3235706705f84e8ccf0bd157e20c78cab83d8",
+      "record_sha256": "5da8e59c65d842755c44b3b5a7cc67afa03bb1bbacdd245be6113e568e4aa08d",
+      "context_tokens": 22
+    },
+    {
+      "id": "ultrachat_200k:train_sft:164610",
+      "split": "train",
+      "source": "HuggingFaceH4/ultrachat_200k",
+      "family_id": "8cec2a3972417a5e758c1f75f1657cf993f9ccb919ee394cb753717a94ed52e1",
+      "record_sha256": "1d67ce12cfd8c77698be99560654111f8dd5331d51a83df5fcce2e5102cdc0e5",
+      "context_tokens": 19
+    },
+    {
+      "id": "gsm8k:train:3821",
+      "split": "train",
+      "source": "openai/gsm8k",
+      "family_id": "3acd6530d5ed7bb34ab08321649a7783ca9fe0919f382fde3918241153fbebbb",
+      "record_sha256": "81b8f6795df5aa3b219e8ab59992d63e2b998870405dad78bb5e98fbd1144f24",
+      "context_tokens": 38
+    },
+    {
+      "id": "ultrachat_200k:train_sft:145402",
+      "split": "validation",
+      "source": "HuggingFaceH4/ultrachat_200k",
+      "family_id": "9163b1f4e999e6487a468ee0f57333325e1ed188c6705a1ec22e688b4bd61709",
+      "record_sha256": "6a2c76ecb8a67a5aa9d0a628e97d61a0154d2baca4f25c81a7d3ed924740cdcc",
+      "context_tokens": 68
+    },
+    {
+      "id": "gsm8k:train:155",
+      "split": "validation",
+      "source": "openai/gsm8k",
+      "family_id": "523fe261cb53e671a5d706c298d05b8b66c0f13e8fde7f761982fd086ec2a2a5",
+      "record_sha256": "901ff5af383afa19691ac8a30ca9bbf78f36934cc39508da6e08664c2fbb59a1",
+      "context_tokens": 68
+    },
+    {
+      "id": "gsm8k:train:5868",
+      "split": "validation",
+      "source": "openai/gsm8k",
+      "family_id": "2df6b1ddc63c1a7cd87b5fbb947a28933869bf6f5b1e1b4f46fc4a62a14293e1",
+      "record_sha256": "f34d0fa1ebf298aa865029638fccdfd62ff39af4f9afc024f0896615da32e8fd",
+      "context_tokens": 57
+    },
+    {
+      "id": "ultrachat_200k:train_sft:204138",
+      "split": "validation",
+      "source": "HuggingFaceH4/ultrachat_200k",
+      "family_id": "8ea1c25fb5698af8e32d0f4c099358e37ceedc92482b4ac229efffaf6ea459bc",
+      "record_sha256": "27880420f7dcce5793b2e79d593a8cd1a235da3bb07f4de5c6a80c8a81f965b3",
+      "context_tokens": 107
+    },
+    {
+      "id": "gsm8k:train:1485",
+      "split": "validation",
+      "source": "openai/gsm8k",
+      "family_id": "229127af213a4605841f7e5094382beb943673dfbd808d1c5c5e697548e27d73",
+      "record_sha256": "976fa6bab832e747b3cd7faa8b95389a5a2aed1c52ab493419091487cf64203f",
+      "context_tokens": 61
+    },
+    {
+      "id": "gsm8k:train:6867",
+      "split": "validation",
+      "source": "openai/gsm8k",
+      "family_id": "97ca866e7440abdc6d277c4f2dd7c0c0f4c0df53fb0a1dfe02bff2a3209dde77",
+      "record_sha256": "c24f0d53e8ad7a39723d6a33d6a3be6d2be7e4aa61199cea356b90ae8adf3a00",
+      "context_tokens": 66
+    },
+    {
+      "id": "ultrachat_200k:train_sft:106750",
+      "split": "validation",
+      "source": "HuggingFaceH4/ultrachat_200k",
+      "family_id": "f877874a8b3b4a59e2b8c9b575667074db72baf4f46e66adbf592d14384284db",
+      "record_sha256": "5d20fcef7c59034119064bcb4b3a05d3e8387bcdbabe355fd306dd14863ae747",
+      "context_tokens": 255
+    },
+    {
+      "id": "ultrachat_200k:train_sft:94625",
+      "split": "validation",
+      "source": "HuggingFaceH4/ultrachat_200k",
+      "family_id": "29d0c90349bc279714ab8b9ca875e837c027f3cad76bbf89f6cabe56cb450864",
+      "record_sha256": "565e7969fc26a420d32eddfd51ac1509c60e5e458120cacb7fbb27b090da9a63",
+      "context_tokens": 433
+    }
+  ]
+}

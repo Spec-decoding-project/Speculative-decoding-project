@@ -1,0 +1,38 @@
+{
+  "config": {
+    "vocab_size": 151936,
+    "width": 256,
+    "layers": 2,
+    "heads": 4,
+    "max_length": 1088
+  },
+  "mode": "context",
+  "seed": 0,
+  "lr": 0.001,
+  "parameters": 40750336,
+  "initial_weights_sha256": "672080cdb5b25a32ae824198f3549e43979352bab0f621e75379dd9c46d03ab8",
+  "optimizer": "AdamW",
+  "weight_decay": 0.0,
+  "clip_norm": 1.0,
+  "precision": "FP32",
+  "microbatch": 1,
+  "max_updates": 2000,
+  "max_training_seconds": 600,
+  "evaluation_interval": 25,
+  "required_consecutive_passes": 3,
+  "optimizer_ownership": "editor parameters only",
+  "metadata": {
+    "bank_sha256": "5790fa095357606f2973f7ecc0c9656de5b6c58bc1289eecfe978bfd057635b8",
+    "training_ids": [
+      "ultrachat_200k:train_sft:37680"
+    ],
+    "training_anchors": [
+      24
+    ],
+    "mode": "context"
+  },
+  "torch": "2.14.0+cu130",
+  "python": "3.12.12",
+  "gpu": "NVIDIA RTX A5000",
+  "cuda": "13.0"
+}

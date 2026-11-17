@@ -1,0 +1,303 @@
+{
+  "variants": {
+    "context": {
+      "outcome": "memorization_passed",
+      "updates": 100,
+      "training_seconds": 1.3162572816945612,
+      "initial_weights_sha256": "672080cdb5b25a32ae824198f3549e43979352bab0f621e75379dd9c46d03ab8",
+      "final_weights_sha256": "f08f6e4854a92c29a7db10d330c0157054f2e0e88352b1e9e97662d75b862a68",
+      "checkpoint_sha256": "7ffe98de20c769d0c07b417cd0398eb8dae3cd1bbe83a7a65c53017424278dd4",
+      "checkpoint_bytes": 489039878,
+      "checkpoint_reload": "passed",
+      "cached_full_decoding": "passed",
+      "future_label_check": "passed",
+      "first_100_update_seconds": 0.011879325550980866,
+      "peak_allocated_bytes": 991079936,
+      "training": {
+        "teacher_forced_ce": 0.00166226683982781,
+        "free_running_token_accuracy": 1.0,
+        "free_running_exact_suffix": 1.0,
+        "repaired": 1,
+        "damaged": 0,
+        "wrong_first": 0,
+        "blocks": 1,
+        "scope": "Saved-context coverage; not native target acceptance or generation speedup",
+        "mean_original_progress": 5,
+        "mean_edited_progress": 15,
+        "mean_union_progress": 15,
+        "progress_unit": "Consecutive matching proposals after the target anchor; maximum 15",
+        "median_editor_milliseconds": 19.43193096667528,
+        "timing_scope": "FP32 cached editor proposal, 14 sequential outputs, two warmups/ten samples per block; target/drafter unloaded"
+      },
+      "held_out": {
+        "teacher_forced_ce": 17.33244718824114,
+        "free_running_token_accuracy": 0.008928571428571428,
+        "free_running_exact_suffix": 0.0,
+        "repaired": 0,
+        "damaged": 19,
+        "wrong_first": 6,
+        "blocks": 32,
+        "scope": "Saved-context coverage; not native target acceptance or generation speedup",
+        "mean_original_progress": 2.5,
+        "mean_edited_progress": 0.84375,
+        "mean_union_progress": 2.5,
+        "progress_unit": "Consecutive matching proposals after the target anchor; maximum 15",
+        "median_editor_milliseconds": 19.42913595121354,
+        "timing_scope": "FP32 cached editor proposal, 14 sequential outputs, two warmups/ten samples per block; target/drafter unloaded"
+      }
+    },
+    "draft": {
+      "outcome": "memorization_passed",
+      "updates": 100,
+      "training_seconds": 1.1619107839651406,
+      "initial_weights_sha256": "672080cdb5b25a32ae824198f3549e43979352bab0f621e75379dd9c46d03ab8",
+      "final_weights_sha256": "7cf80ccd3b092930abadae93b498fb95c84112083a6830e61aa47c56122c5dec",
+      "checkpoint_sha256": "c2018402ebc615d6f54369168e8065527917ec37e69b4b81e1591e4bfad9156e",
+      "checkpoint_bytes": 489039878,
+      "checkpoint_reload": "passed",
+      "cached_full_decoding": "passed",
+      "future_label_check": "passed",
+      "first_100_update_seconds": 0.010334859355352818,
+      "peak_allocated_bytes": 991079936,
+      "training": {
+        "teacher_forced_ce": 0.0014657540512936456,
+        "free_running_token_accuracy": 1.0,
+        "free_running_exact_suffix": 1.0,
+        "repaired": 1,
+        "damaged": 0,
+        "wrong_first": 0,
+        "blocks": 1,
+        "scope": "Saved-context coverage; not native target acceptance or generation speedup",
+        "mean_original_progress": 5,
+        "mean_edited_progress": 15,
+        "mean_union_progress": 15,
+        "progress_unit": "Consecutive matching proposals after the target anchor; maximum 15",
+        "median_editor_milliseconds": 19.456256413832307,
+        "timing_scope": "FP32 cached editor proposal, 14 sequential outputs, two warmups/ten samples per block; target/drafter unloaded"
+      },
+      "held_out": {
+        "teacher_forced_ce": 16.59648881639753,
+        "free_running_token_accuracy": 0.004464285714285714,
+        "free_running_exact_suffix": 0.0,
+        "repaired": 0,
+        "damaged": 20,
+        "wrong_first": 6,
+        "blocks": 32,
+        "scope": "Saved-context coverage; not native target acceptance or generation speedup",
+        "mean_original_progress": 2.5,
+        "mean_edited_progress": 0.8125,
+        "mean_union_progress": 2.5,
+        "progress_unit": "Consecutive matching proposals after the target anchor; maximum 15",
+        "median_editor_milliseconds": 19.462991855107248,
+        "timing_scope": "FP32 cached editor proposal, 14 sequential outputs, two warmups/ten samples per block; target/drafter unloaded"
+      }
+    }
+  },
+  "bank_sha256": "5790fa095357606f2973f7ecc0c9656de5b6c58bc1289eecfe978bfd057635b8",
+  "scope": "One real training block; eight excluded validation prompts; no full-generation speedup claim",
+  "executed_commit": "b300dad",
+  "job": {
+    "id": 8453776,
+    "state": "COMPLETED",
+    "exit_code": 0,
+    "elapsed_seconds": 319,
+    "node": "tron61",
+    "gpu": "RTX A5000",
+    "cpus": 4,
+    "host_memory_gib": 32,
+    "max_host_rss_kib": 21294324,
+    "collection_peak_gpu_bytes": 20761271296
+  },
+  "collection": {
+    "emitted_positions": 768,
+    "target_budget": {
+      "calls": 262,
+      "seconds": 16.614208029117435,
+      "max_calls": 500,
+      "max_seconds": 120
+    },
+    "captured_blocks": 215,
+    "retained_blocks": 48,
+    "training_blocks_used": 1,
+    "held_out_blocks": 32,
+    "held_out_classes": {
+      "repairable": 26,
+      "wrong_first": 6
+    },
+    "exclusions": {
+      "four_block_budget": 126,
+      "incomplete_reference_window": 41
+    }
+  },
+  "training_example": {
+    "prompt_id": "ultrachat_200k:train_sft:37680",
+    "family_id": "7496b2c289fde2cadc5bebc2d84e55384ce23c0fc83cf5181c1ccd56c90052fd",
+    "source_record_sha256": "91ed156259796a4a10f28748fd6ac95fe27a66d6f6da57345660c0af11bd5fc2",
+    "anchor": 24,
+    "native_accepted": 5,
+    "token_hashes": {
+      "prefix": "d3e52d189ec682053dc2771e41467852c02150de620f69fede8308711a3085a8",
+      "draft": "1707290e251d71d05bac87ae14b77b78fc8ed5798b762dc1280892f48ed048a3",
+      "labels": "86f612f09842bd4bf4c8411a9eda44b567d70facf6fe41d9972b2a59dfd2c0c3"
+    }
+  },
+  "checkpoints_independently_hashed_on_nexus": true,
+  "native_edited_full_generation_benchmark": false,
+  "remote_directory": "/fs/classhomes/fpajak/speculative-decoding-project/research/one-block-fit-8453776",
+  "raw_artifacts": {
+    "collect.log": {
+      "sha256": "ee5ced1caf44bcee1ba8c7846e2ab408266984a135eb3fe668ba065d57973768",
+      "bytes": 195
+    },
+    "collection/bank.json": {
+      "sha256": "5790fa095357606f2973f7ecc0c9656de5b6c58bc1289eecfe978bfd057635b8",
+      "bytes": 226991
+    },
+    "collection/budget.json": {
+      "sha256": "2140b4de97841c83a91bcee2394bc9f6af2adaa3c01a933680e5251e7fe8c532",
+      "bytes": 94
+    },
+    "collection/comparison.json": {
+      "sha256": "0db38bbdde246fb604fbed3e9f491cde6802db7e642e9f2c7126066e3d0e25e5",
+      "bytes": 557
+    },
+    "collection/greedy.json": {
+      "sha256": "725f7d3bb3fe0a1b9fe949e88aa3f8955e4cc3d18c3839adda65d51bad0ab7fe",
+      "bytes": 599166
+    },
+    "collection/greedy.log": {
+      "sha256": "0a8c18a76034ede612ec3bea1bc2932252e9dd4b40aac12af0b991a2a30b407b",
+      "bytes": 14903
+    },
+    "collection/inputs.json": {
+      "sha256": "e818906d596750ccc7c6107a2782faf681657d41c1f590465a292a60d759723c",
+      "bytes": 27942
+    },
+    "collection/native.json": {
+      "sha256": "00fd4474b9bd241b77fa65c498f1b3b1b5756c013723ed4f3176c0aadad6c42b",
+      "bytes": 2754757
+    },
+    "collection/native.log": {
+      "sha256": "679698ae3993a7079bce3023a567b0caa30f93cede20eca58e553026e6d07afb",
+      "bytes": 17556
+    },
+    "exit-status.txt": {
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2
+    },
+    "independent-audit.json": {
+      "sha256": "72cd2aa0079657c8091061aefff778bc56766deb57385ed0884f2dda46d912d6",
+      "bytes": 410
+    },
+    "nvidia-smi.txt": {
+      "sha256": "65bfcf8b94bf79df36a1a0bd63f9772bbc0f1a1d7bfc2d9053aae9435f9b29ac",
+      "bytes": 1689
+    },
+    "packages.txt": {
+      "sha256": "8a42fd1d3947cf2fc343e2a0c5d77c933622895453df82d3c2f8a7533e2e2c73",
+      "bytes": 4202
+    },
+    "pip-check.txt": {
+      "sha256": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09",
+      "bytes": 30
+    },
+    "train.log": {
+      "sha256": "79f21da0a2a2fa6e6a5bff994a5d10fb6f491e5b76cabf0a16de8509ce5c5049",
+      "bytes": 933
+    },
+    "training/context/final-training.json": {
+      "sha256": "a9b27120805c0a36cf9ba240af4c8662a6ccfbccbd798cc6a756158982cc5e35",
+      "bytes": 2128
+    },
+    "training/context/held-out.json": {
+      "sha256": "63c1e8e30ac785d9d8b79abcf5319fb37cb8634d12fe1e7657c8ac98f100ffde",
+      "bytes": 47407
+    },
+    "training/context/initial-training.json": {
+      "sha256": "a3b1ebfe7b2a3fc37cbe61fd9eb1ddeba298f9a9b6ce64a10a0e1dc9670c3475",
+      "bytes": 1554
+    },
+    "training/context/run.json": {
+      "sha256": "b74014a086c973e94889b50da01eeb9baee0d67ac986e1e03fdc050114314a2c",
+      "bytes": 909
+    },
+    "training/context/summary.json": {
+      "sha256": "2a132bc9640bc87fcedd748e38d01438c18547b7d5adb11efdcf5b00b8925d60",
+      "bytes": 2000
+    },
+    "training/context/training-evaluations.json": {
+      "sha256": "0aa70f8a392c111da18ce37d8755a85361bd4b19c8a866ddfe855db3537f9a53",
+      "bytes": 2654
+    },
+    "training/context/untrained-held-out.json": {
+      "sha256": "cff6ce938731a1972c37fa30016f1ec92d20c5fd31643d1edd04e02b50d5ca08",
+      "bytes": 34743
+    },
+    "training/context/updates.jsonl": {
+      "sha256": "1aef0a6ae3d59bab90ee40d799093810394b9e9812b87e0a8207768637812275",
+      "bytes": 13205
+    },
+    "training/draft/final-training.json": {
+      "sha256": "7e073bf34ea9a03afb313d54a27530baaa700c4190098afffc5c8c412e07d23b",
+      "bytes": 2131
+    },
+    "training/draft/held-out.json": {
+      "sha256": "051a4e06c657b1930994dabbb6260243a86e63044153c326d991316eb5152dc0",
+      "bytes": 47465
+    },
+    "training/draft/initial-training.json": {
+      "sha256": "3e9cd366d2a5f023c291a1d22bfd1427a579cad77a1ee0ea2127dfbe0797dd55",
+      "bytes": 1568
+    },
+    "training/draft/run.json": {
+      "sha256": "37c5673d1e321d13cd348f7ce1fe5ed84105ea427131c73c4f80d1b348e7a0ad",
+      "bytes": 905
+    },
+    "training/draft/summary.json": {
+      "sha256": "963b8e9efb3c646a607db698947a0939709ffb5ab6d30324deac929a712b45e5",
+      "bytes": 2003
+    },
+    "training/draft/training-evaluations.json": {
+      "sha256": "6ac68c9b8d11922f75f566d72ea38b883406e842fdf5ac6f32ebb02378bfc3b2",
+      "bytes": 2656
+    },
+    "training/draft/untrained-held-out.json": {
+      "sha256": "8868d712877d42b3217dc7df28531751d9f1ad64c7be584e2a91112d5148493b",
+      "bytes": 34830
+    },
+    "training/draft/updates.jsonl": {
+      "sha256": "9c2c288974fcdb5c3f596a07692ff4a7f7532c3df67f3b2871735e7571dadc41",
+      "bytes": 13229
+    },
+    "training/result.json": {
+      "sha256": "df195341a1449678535ae7253861b375cb7c7e3f31893bfca72f4899a5fb204c",
+      "bytes": 4608
+    }
+  },
+  "evidence_hashes": {
+    "budget.json": "2140b4de97841c83a91bcee2394bc9f6af2adaa3c01a933680e5251e7fe8c532",
+    "comparison.json": "0db38bbdde246fb604fbed3e9f491cde6802db7e642e9f2c7126066e3d0e25e5",
+    "context-final-training.json": "d158c9b635618d4120c6c6e314f51ccad1e32faf286762921cfdd9aa859e74e9",
+    "context-held-out.json": "0f455d4712c313726b7cdbdc3cd5a33123c4a26c163834749a5b5a49dd53ad34",
+    "context-initial-training.json": "63679b49ae57736e6d15489ab1833c61f72bb8833bbcec2e3270ecb3f86f318c",
+    "context-run.json": "b74014a086c973e94889b50da01eeb9baee0d67ac986e1e03fdc050114314a2c",
+    "context-summary.json": "2a132bc9640bc87fcedd748e38d01438c18547b7d5adb11efdcf5b00b8925d60",
+    "context-training-evaluations.json": "0aa70f8a392c111da18ce37d8755a85361bd4b19c8a866ddfe855db3537f9a53",
+    "context-untrained-held-out.json": "48459218953d7e12daabc362306c0a4d71d1d77bf5f97288760ef07e268510e5",
+    "context-updates.jsonl": "1aef0a6ae3d59bab90ee40d799093810394b9e9812b87e0a8207768637812275",
+    "draft-final-training.json": "e2822414f0353d8ae23ce55105b319dc07621b5c7f35b894d20bbbd418c8ea00",
+    "draft-held-out.json": "8fe8d91640f93a77b9f81ad29bfd03bbaed1e4eacdd47ed5f6fecc574e59604e",
+    "draft-initial-training.json": "a327b6842e5a256bf0b4bfa696c3538de2b4a49c9621d737a7b8ee3ca355650b",
+    "draft-run.json": "37c5673d1e321d13cd348f7ce1fe5ed84105ea427131c73c4f80d1b348e7a0ad",
+    "draft-summary.json": "963b8e9efb3c646a607db698947a0939709ffb5ab6d30324deac929a712b45e5",
+    "draft-training-evaluations.json": "6ac68c9b8d11922f75f566d72ea38b883406e842fdf5ac6f32ebb02378bfc3b2",
+    "draft-untrained-held-out.json": "d6784e208467cad5518a1492a2759c5c3c57046567e9ebc926bb6c0550cfa483",
+    "draft-updates.jsonl": "9c2c288974fcdb5c3f596a07692ff4a7f7532c3df67f3b2871735e7571dadc41",
+    "independent-audit.json": "72cd2aa0079657c8091061aefff778bc56766deb57385ed0884f2dda46d912d6",
+    "packages.txt": "8a42fd1d3947cf2fc343e2a0c5d77c933622895453df82d3c2f8a7533e2e2c73",
+    "pip-check.txt": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09",
+    "selection.json": "e8fd5f224fb03efb1cbb860d834772420127fe9a36fc23729a682a997ac65bf8",
+    "source-hashes.json": "b49c42294184101a3c3ad4934161ef4152a9eda374f4db08e70119d4e5b24e18",
+    "train.log": "79f21da0a2a2fa6e6a5bff994a5d10fb6f491e5b76cabf0a16de8509ce5c5049"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "emitted_prefixes_independently_checked": 768,
+  "native_bank_rows_checked": 33,
+  "full_size_variants": 2,
+  "updates_per_variant": 100,
+  "training_blocks_per_variant": 1,
+  "held_out_prompts": 8,
+  "held_out_blocks": 32,
+  "metric_recount": "all saved before/after metrics agree",
+  "source_and_provenance_hashes": "passed",
+  "scope": "CPU re-audit of saved evidence; no GPU rerun"
+}
