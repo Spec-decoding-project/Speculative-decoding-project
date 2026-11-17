@@ -37,7 +37,8 @@ def logits_summary(logits, labels, focus):
         raise ValueError('Misaligned replay logits')
     row = logits[focus].float()
     expected = labels[focus]
-    alternate = 16984 if expected == 12946 else 3070 if expected == 279 else int(row.topk(2).indices[-1])
+    alternate = 16984 if expected == 12946 else 3070 if expected == 279 else next(
+        token for token in row.topk(2).indices.tolist() if token != expected)
     top = row.topk(5)
     return dict(matches=sum(a == b for a, b in zip(actual, labels)),
                 mismatches=[dict(position=i, expected=a, actual=b) for i, (a, b) in enumerate(zip(labels, actual)) if a != b],

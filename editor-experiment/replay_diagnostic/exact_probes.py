@@ -103,10 +103,18 @@ del weight_fp32
 new=fixtures[0]
 if new['row']['id']!='ultrachat_200k:train_sft:37680':
     raise ValueError('Wrong primary fixture')
-with fp32_linears():
+required_calls=new['focus']+1+2  # Cached steps, then native prefill and block.
+remaining_calls=harness.limit-harness.calls
+if remaining_calls < required_calls or harness.seconds >= harness.max_seconds:
     report['fp32_linears_new_fixture']=dict(
-        cached=harness.cached_saved(new,until=new['focus']),native=harness.native(new))
-report['fp32_intervention_scope']='Only new fixture; no all-fixture correction or timing validation'
+        status='skipped',reason='insufficient_remaining_budget',
+        required_calls=required_calls,remaining_calls=remaining_calls,
+        remaining_target_seconds=harness.max_seconds-harness.seconds)
+else:
+    with fp32_linears():
+        report['fp32_linears_new_fixture']=dict(
+            status='completed',cached=harness.cached_saved(new,until=new['focus']),native=harness.native(new))
+report['fp32_intervention_scope']='Optional, new fixture only; no all-fixture correction or timing validation'
 torch.cuda.synchronize()
 report['probe_wall_seconds']=time.monotonic()-started
 report['target_calls_after_probes']=harness.calls

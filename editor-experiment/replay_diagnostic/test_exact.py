@@ -25,6 +25,15 @@ class ExactDiagnosticTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'Misaligned'):
             diagnostic.logits_summary(logits, labels[:-1], 2)
 
+    def test_control_alternate_is_a_different_token_even_at_a_tie(self):
+        logits = torch.zeros(1, 1000)
+        logits[0, 374] = logits[0, 646] = 31.25
+        result = diagnostic.logits_summary(logits, [374], 0)['focus']
+        self.assertEqual(result['actual'], 374)
+        self.assertEqual(result['alternate'], 646)
+        self.assertEqual(result['signed_margin'], 0.0)
+        self.assertEqual(result['maximum_tie_ids'], [374, 646])
+
     def test_forward_cap_stops_before_the_next_model_execution(self):
         harness = object.__new__(diagnostic.Harness)
         harness.calls, harness.limit = 299, 300

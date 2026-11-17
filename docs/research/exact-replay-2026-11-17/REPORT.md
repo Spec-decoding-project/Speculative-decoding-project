@@ -73,11 +73,13 @@ The call-count plan contained an arithmetic error: baseline used **251** target 
 
 The baseline and all four trace comparisons were saved before this optional probe began and are complete in [result.json](result.json). Its SHA256 is `d468197e17b74c858c8df7a18eeeff7110310c4698291e740fba197bd97dccea`. Executed source hashes were checked against both remote and local files:
 
-- [exact_session.py](../../../editor-experiment/replay_diagnostic/exact_session.py): `9d169721dc295b7fa8f9d7fefc3f63fc8f3d7b260ba189554e49fc2ca7bcbac3`.
-- [exact_probes.py](../../../editor-experiment/replay_diagnostic/exact_probes.py), uploaded as `probes.py`: `63cb2a7acad233526e9f6bfe96485f22c951baa71f1354046eb9cb4fb3e31b75`.
+- [Executed exact_session.py](https://github.com/Spec-decoding-project/Speculative-decoding-project/blob/d32a476/editor-experiment/replay_diagnostic/exact_session.py): `9d169721dc295b7fa8f9d7fefc3f63fc8f3d7b260ba189554e49fc2ca7bcbac3`.
+- [Executed exact_probes.py](https://github.com/Spec-decoding-project/Speculative-decoding-project/blob/d32a476/editor-experiment/replay_diagnostic/exact_probes.py), uploaded as `probes.py`: `63cb2a7acad233526e9f6bfe96485f22c951baa71f1354046eb9cb4fb3e31b75`.
 - [Runner](../../../editor-experiment/replay_diagnostic/exact.sbatch), [usage](../../../editor-experiment/replay_diagnostic/EXACT_REPLAY.md), and [CPU tests](../../../editor-experiment/replay_diagnostic/test_exact.py). Two CPU tests passed for position/margin/tie reporting and the hard call/time caps; the GPU result is the numerical regression evidence.
 
 Remote artifacts remain under `/fs/classhomes/fpajak/speculative-decoding-project/research/editor-feature-bank/exact-replay-20261117/`; allocation log is `exact-replay-8451880.log`. Raw response records remain on Nexus. There was no extra checkpoint copy and no live job remained after the allocation ended.
+
+Post-run maintenance adds an upfront budget check that skips the optional nine-call probe when only six calls remain, and ensures the generic reported alternative is a different token even at a tie. Three CPU tests pass after those changes; no GPU rerun occurred. The executed sources remain preserved at `d32a476`, and the raw result artifact is unchanged.
 
 ## Next bounded question
 
