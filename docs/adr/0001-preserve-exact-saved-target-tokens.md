@@ -1,5 +1,9 @@
 # Preserve exact saved target tokens
 
+Status: superseded for new, separately versioned experiments by
+[ADR 0002](0002-version-the-invariant-target.md), accepted November 17. Original
+response files remain immutable. The historical decision below is retained.
+
 Accepted November 16, 2026: the user rejected creating replacement labels from the native verifier. The original saved greedy continuations remain the reference token sequences for both autoregressive editor experiments; collection and verification must reproduce those tokens exactly before a training bank can pass.
 
 The next work is to diagnose and reconcile source-generation, cached replay and block-verification behavior. Greedy decoding selects the maximum of the computed logits; its absence of sampling does not itself guarantee equality across floating-point execution shapes. That numerical limitation does not relax the user's exact-token requirement. Preserve original files and failure fixtures; do not relabel, accept near-ties, filter mismatches or reinterpret the data as approximate distillation targets.

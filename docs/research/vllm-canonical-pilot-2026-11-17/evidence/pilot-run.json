@@ -1,0 +1,53 @@
+{
+  "schema_version": 2,
+  "stage": "canonical_target_pilot",
+  "canonical_contract": "qwen3-8b-vllm034-invariant-20261117",
+  "status": "verified_pilot_not_a_training_bank",
+  "target_revision": "b968826d9c46dd6066d109eabc6255188de91218",
+  "draft_revision": "9b41424b7109f9c5413454f481b09a82b85333f4",
+  "source_hashes": {
+    "vllm_contract.py": "be6651e19c06735055801b21312dee522d3262f96d3991f3315235cc3924d3bc",
+    "vllm_contract_worker.py": "ed73dc2ef210286f959de16d730c36747ba96a5f813dff3f7ae10ba7a0875da3",
+    "audit_vllm_probe.py": "33bf301fe220789687caa2ae8d87410aa4271c8bbd62c8d9ebc530c8f9f1ae0c",
+    "vllm_probe.py": "a80106e0b75725b30303f593d649e8e9c90dbc6c7a92d900536dcfd0a1280e37",
+    "vllm_probe_worker.py": "9b9bfa480bba1dffe935e5d2ce94ace4342099ec508c1cdfe388fd5737d03e05",
+    "vllm_contract.sbatch": "420cb46af57463ec9879141c4610b1b2dea315a1aacd5da9e1ce05021a056f77"
+  },
+  "greedy_evidence_sha256": "bf0e11c85b87e3cda92294dde9db09d6eb432a3dac7b08d04be3da3df79566c8",
+  "verification_evidence_sha256": "2676b0ff21db0304a166b02bfff9da5347eda40e7218b5822245e1fbc0b0a4d9",
+  "source_run_file_sha256": "fe7cd2e831d86fac78f3c0d4586113e47466cd7ecbd217d160a211b2f5914e1a",
+  "checkpoint_hashes": {
+    "config.json": "d46195ac87f837ad233d02b2f80f148bf7c005e0",
+    "generation_config.json": "20a8a9156fc8c3f25295ca067f61fdf120d517c5",
+    "merges.txt": "31349551d90c7606f325fe0f11bbb8bd5fa0d7c7",
+    "model-00001-of-00005.safetensors": "31d6a825ae35f11fb85b195b4c42c146c051e446433125a215336abdf95cbf5f",
+    "model-00002-of-00005.safetensors": "5991236cea6fe21f3d43cab0f0e84448734fbbe0789816202989f2ddc9d18282",
+    "model-00003-of-00005.safetensors": "c5185c4794be2d8a9784d5753c9922db38df478ce11f9ed0b415b7304d896836",
+    "model-00004-of-00005.safetensors": "b5ee7de71fbf17db3d5704e0c8f2bc7d005ca9e1d7ca2aeb19827b0cfcaa917a",
+    "model-00005-of-00005.safetensors": "20c2d6366ab85c90786ccdd829cd2b9e7d30ef3b2ebbb998280e7e4014b542ff",
+    "model.safetensors.index.json": "2b85c00f1b118961cd7a477e2bba0fe197a4ce1a",
+    "tokenizer.json": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4",
+    "tokenizer_config.json": "417d038a63fa3de29cfde265caedae14d1a58d92",
+    "vocab.json": "4783fe10ac3adce15ac8f358ef5462739852c569"
+  },
+  "max_new_tokens": 2048,
+  "batch_invariant": true,
+  "chunked_prefill": true,
+  "max_model_len": 2304,
+  "runtime": {
+    "vllm": "0.34.0",
+    "torch": "2.14.0+cu130",
+    "cuda": "13.0",
+    "transformers": "5.22.2",
+    "python": "3.12.12",
+    "gpu": "NVIDIA RTX A5000",
+    "capability": [
+      8,
+      6
+    ],
+    "host": "tron61.umiacs.umd.edu",
+    "job_id": "8453328"
+  },
+  "packages_sha256": "8a42fd1d3947cf2fc343e2a0c5d77c933622895453df82d3c2f8a7533e2e2c73",
+  "job_id": "8453328"
+}

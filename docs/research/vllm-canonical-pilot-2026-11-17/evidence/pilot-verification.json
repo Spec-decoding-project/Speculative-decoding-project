@@ -1,0 +1,60 @@
+{
+  "passed": true,
+  "count": 4,
+  "responses": [
+    {
+      "id": "ultrachat_200k:train_sft:164610",
+      "old_length": 1005,
+      "new_length": 1196,
+      "first_difference": {
+        "position": 114,
+        "left": 264,
+        "right": 9760
+      },
+      "old_response_sha256": "c74fa97d96d231d34562caa774d7936ea868499fd333800293ebf20f8515779c",
+      "new_response_sha256": "c9fb401cf36806cbd7e54422df96fb35823784db018c733c13d644295f7c9a58",
+      "record_sha256": "1d67ce12cfd8c77698be99560654111f8dd5331d51a83df5fcce2e5102cdc0e5"
+    },
+    {
+      "id": "ultrachat_200k:train_sft:37680",
+      "old_length": 1628,
+      "new_length": 1568,
+      "first_difference": {
+        "position": 6,
+        "left": 12946,
+        "right": 16984
+      },
+      "old_response_sha256": "3e0554454181f15093eea6344a478727a0df742bde0c596d1bbe46649cfb5fd4",
+      "new_response_sha256": "f906455a93a7193b502f641eb7f42cb3d2beb66511b4fc51a480996607318f0d",
+      "record_sha256": "91ed156259796a4a10f28748fd6ac95fe27a66d6f6da57345660c0af11bd5fc2"
+    },
+    {
+      "id": "ultrachat_200k:train_sft:61759",
+      "old_length": 872,
+      "new_length": 937,
+      "first_difference": {
+        "position": 16,
+        "left": 3070,
+        "right": 4124
+      },
+      "old_response_sha256": "f484e4c09ad06b714e5b53e8e6879cd681d9426e403b5cd5fc9c644205f4d314",
+      "new_response_sha256": "87b46b036b2385f20a401f0f101786ec8b6aaf0b2599b2bc6310901d9e481748",
+      "record_sha256": "5da8e59c65d842755c44b3b5a7cc67afa03bb1bbacdd245be6113e568e4aa08d"
+    },
+    {
+      "id": "gsm8k:train:3821",
+      "old_length": 197,
+      "new_length": 197,
+      "first_difference": null,
+      "old_response_sha256": "1611173e5c98061be6f74ea1b521477f00a1e1811b5efd6ebf4a6a11ae50577c",
+      "new_response_sha256": "1611173e5c98061be6f74ea1b521477f00a1e1811b5efd6ebf4a6a11ae50577c",
+      "record_sha256": "81b8f6795df5aa3b219e8ab59992d63e2b998870405dad78bb5e98fbd1144f24"
+    }
+  ],
+  "shared_full_logit_rows": 3898,
+  "journal_sha256": "5948edc85d9384cffe1404319104458effd24b0e185bf62de7b7b642d5fc3c2f",
+  "run_file_sha256": "d2f7655169fe7bb009e547509ffb7f60302779e6ca52c225203f266ac99ea3ca",
+  "run_content_sha256": "a46395a7a821495fc7e5b566ed76e4095710de6de46bbdb436440ad2ffe172f3",
+  "training_authorized": false,
+  "feature_bank_complete": false
+}
