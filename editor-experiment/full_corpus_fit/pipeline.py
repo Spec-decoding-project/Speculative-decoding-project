@@ -81,6 +81,11 @@ def main():
         if completed.returncode:
             save(args.output/'status.json',dict(**state,failed_at=now(),returncode=completed.returncode))
             raise RuntimeError(f'Pipeline stopped at {name}; preserved outputs can be inspected/resumed')
+    original=json.loads((args.preflight/'summary.json').read_text())['source_hashes']
+    for name,expected in original.items():
+        if sha(args.project/'data/qwen_responses_50k'/name) != expected:
+            raise ValueError(f'Original response source changed during the run: {name}')
+    save(args.output/'original-source-integrity.json',dict(passed=True,files_checked=len(original),checked_at=now()))
     report(args.output)
     completed=dict(phase='complete',completed_at=now(),job_id=os.environ.get('SLURM_JOB_ID'),
                    pipeline_seconds=time.monotonic()-start,result_sha256=sha(args.output/'result.json'))
