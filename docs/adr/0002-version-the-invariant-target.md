@@ -1,5 +1,9 @@
 # Version the batch-invariant canonical target
 
+Update: [ADR 0003](0003-authorize-one-block-memorization.md) supersedes the
+complete-bank prerequisite for the explicitly authorized one-block fit and
+held-out evaluation. The invariant reference and immutable originals remain.
+
 Accepted November 17, 2026, after the user reviewed the invariant-kernel result
 and selected “Adopt invariant vLLM and the small versioned pilot (Recommended)”.
 
