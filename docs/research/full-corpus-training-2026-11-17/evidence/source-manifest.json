@@ -1,0 +1,33 @@
+{
+  "code_revision": "c3b15d6e588cf4b5af078ee780b38530ab8ec15a",
+  "files": {
+    "PROTOCOL.md": "bea3927f404229bf249f61bd9cec3370954fa79d5516a99a313edc9f1f97e958",
+    "autoregressive_editor/__init__.py": "b2e167fa0bb5617f4f36844efa99db665cc91401bfbcf15c9ab286dce329b494",
+    "autoregressive_editor/data.py": "d6160407399b444ca4ca7c5174ff45397a639bc910322919cf4017bbdc53e5bc",
+    "autoregressive_editor/export_bank.py": "1072b92b30eb0c36a746417a1259de1ab69c176f4bf8ed76e4eb57aa940b5840",
+    "autoregressive_editor/learning.py": "3c294c53cca8df92a5a3cc044788f896825b4fe23f18a8799a2519be9cb6a798",
+    "autoregressive_editor/model.py": "f39259621f2519c06c4a2412661a4d8ce8ca7525dedb0cfadf1c3ab682ce95ff",
+    "autoregressive_editor/run.py": "da2273367b61c479138eafad98b31570412108e255fb3789c5167d6d4f383f21",
+    "autoregressive_editor/test_editor.py": "4212a1a819b2d1e8297fb118fa9621dd5827c4f82923f9c77e72fa1244166e39",
+    "autoregressive_editor/validate_runtime.py": "a90dc92ffe9f4379bedb112f15175e329e7fa2bc803338563412014b7d72f181",
+    "full_corpus_fit/__init__.py": "f40ec3fcb7253611066376e71568afcdb5c9af284626dce2accba3fe19102540",
+    "full_corpus_fit/bank.py": "052ecb4e3b8ff2615f87fdd564f5fc77d9a66b20a5c89ddbbe7944791406ffc0",
+    "full_corpus_fit/calibrate.py": "3d1724ea5b1074147b3003ee22e4a09d4b56f84e7d62ccb35f5de06e225f79a1",
+    "full_corpus_fit/calibrate.sbatch": "3b1cbcf435121d746cfe6bc86cb037405bbc8b4ffcf0cac56db8283ae6eef4ed",
+    "full_corpus_fit/capture.py": "1ee381c5a5bf724add6a8ddce0cc0e2449175560f570dcdea00d2ef04e15b114",
+    "full_corpus_fit/collect.py": "0093a48b7053cc5504fa4d5537fa8b8983953a68bd9ee4e7e8106083ea120c26",
+    "full_corpus_fit/data.py": "878ff3c849b561d02e12860ae9fe251b658a1121990ce63a96881b1278c5575b",
+    "full_corpus_fit/pipeline.py": "d06c848c54b28c2d5dc48ab8e1561ea2ecd4e3ba5fcecea3b10706f369c92208",
+    "full_corpus_fit/preflight.py": "99394c5ef4714ef715ed6d569b5bf9138f647fe39b5c85133866d4fb570fa740",
+    "full_corpus_fit/run.sbatch": "447ba76bd1b23603713dd3ef60bdebabe225b420d70c7445265b34597f172f75",
+    "full_corpus_fit/test_data.py": "2b913973bb3ab59f0a0a79e4e099bbcd1e65137b49ff6be587133d21678c9dd1",
+    "full_corpus_fit/test_training.py": "e86e87f4adff1d3ffa5b908c27f1f3dae123e2a88a32417f0258b45921e5fc05",
+    "full_corpus_fit/train.py": "5540b8870a681d7cd22f32abe6a9160f96ce721085ef8f5d6ef332173c97ee88",
+    "one_block_fit/__init__.py": "8fcc2f2c1b89fa6bbca3fe84c9991d1a5161f9bef11ae264b4cc89724b9716bb",
+    "one_block_fit/capture_worker.py": "da38ee9f2e0dfa7f2be9777664a839fb482aba997b20199bbce271e7e64b54e8",
+    "one_block_fit/collect.py": "da4a3023c5a609bc5ab128f1789378d4857162d144a116c8518eac91853db1b7",
+    "one_block_fit/run.sbatch": "d7aef15b2c21574a6ca1cb1d005dbefa832d022421537e91527f07f2d98853cc",
+    "one_block_fit/test_fit.py": "db8904bbf8ee850b4c04ca8897c84128315b8e577e8a27f03ac492525d727a9f",
+    "one_block_fit/train.py": "49fc7d5904c32a89779700dbf22016b6c7872b6f53b9be6f82d707d3a4762827"
+  }
+}

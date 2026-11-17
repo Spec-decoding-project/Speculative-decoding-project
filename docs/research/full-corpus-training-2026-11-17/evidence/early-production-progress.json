@@ -1,0 +1,20 @@
+{
+  "completed_prompts": 576,
+  "total_prompts": 51024,
+  "selected_blocks": 2299,
+  "measured_generation_seconds": 206.22625965857878,
+  "session_seconds": 211.48165743798018,
+  "last_chunk": {
+    "index": 8,
+    "prompts": 64,
+    "prompt_tokens": 4483,
+    "generated_tokens": 4089,
+    "seconds": 23.121263791806996,
+    "buckets": {
+      "0": 64
+    },
+    "selected_blocks": 256,
+    "covered_prompts": 64
+  },
+  "projected_total_generation_seconds": 18268.209501422436
+}

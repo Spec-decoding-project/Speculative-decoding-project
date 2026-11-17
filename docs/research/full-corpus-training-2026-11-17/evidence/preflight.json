@@ -1,0 +1,169 @@
+{
+  "counts": {
+    "train": 50000,
+    "validation": 1024
+  },
+  "statuses": {
+    "train/generated": 50000,
+    "validation/generated": 1024
+  },
+  "finishes": {
+    "train/eos": 47682,
+    "train/length": 2318,
+    "validation/eos": 1001,
+    "validation/length": 23
+  },
+  "sources": {
+    "train/HuggingFaceH4/ultrachat_200k": 44000,
+    "train/openai/gsm8k": 6000,
+    "validation/HuggingFaceH4/ultrachat_200k": 512,
+    "validation/openai/gsm8k": 512
+  },
+  "prompt_tokens": {
+    "total": 8736161,
+    "mean": 171.21670194418314,
+    "min": 14,
+    "max": 3241,
+    "quantiles": {
+      "0.5": 93,
+      "0.9": 459,
+      "0.95": 695,
+      "0.99": 1130
+    },
+    "over1024": 846,
+    "over2240": 14,
+    "over6080": 0
+  },
+  "longest": [
+    [
+      3241,
+      "ultrachat_200k:train_sft:68163",
+      "train"
+    ],
+    [
+      3031,
+      "ultrachat_200k:train_sft:26147",
+      "train"
+    ],
+    [
+      2837,
+      "ultrachat_200k:train_sft:174865",
+      "train"
+    ],
+    [
+      2814,
+      "ultrachat_200k:train_sft:150915",
+      "train"
+    ],
+    [
+      2638,
+      "ultrachat_200k:train_sft:45655",
+      "train"
+    ],
+    [
+      2563,
+      "ultrachat_200k:train_sft:186454",
+      "train"
+    ],
+    [
+      2558,
+      "ultrachat_200k:train_sft:53245",
+      "train"
+    ],
+    [
+      2533,
+      "ultrachat_200k:train_sft:39688",
+      "train"
+    ],
+    [
+      2528,
+      "ultrachat_200k:train_sft:29584",
+      "train"
+    ],
+    [
+      2516,
+      "ultrachat_200k:train_sft:188982",
+      "train"
+    ],
+    [
+      2371,
+      "ultrachat_200k:train_sft:202785",
+      "train"
+    ],
+    [
+      2314,
+      "ultrachat_200k:train_sft:192702",
+      "train"
+    ]
+  ],
+  "exact_normalized_family_overlap": 0,
+  "source_hashes": {
+    "run.json": "7c07d427b1cd4d4bb14668da1d1ecaaf0c9381fa46c01e3b453ed010a23a6380",
+    "shard-00000.jsonl": "f22612753dc0977c25fc115a23d56fbf3b92921390d8ef2489ed014e78be04d9",
+    "shard-00001.jsonl": "cfb086c4bf397bd801c967dbf0ed646ca548dab6660d97282b971c79035190ae",
+    "shard-00002.jsonl": "3be52998b0e58dea830fcd4a289e802b2d87d5a29388dd14043acdaae55e5863",
+    "shard-00003.jsonl": "c29e8a01d2ea53b32df2ee584ab50a369186f3cae0fc15ef9c8bbcbeab8ce2d3",
+    "shard-00004.jsonl": "c96677609919c71f7e95fb40088d658f4b764277689e4e30fc1f0bd8043c0527",
+    "shard-00005.jsonl": "1fd11defc35aa7679ca1b20b6106cf6e7eb513946762314c31989399b0c7e213",
+    "shard-00006.jsonl": "2b4ebdab757ed9d5cd3b11abbaec6c045a7444d21d45fc87cb60c76b8d4d9acc",
+    "shard-00007.jsonl": "68cac4d970f42d00570eb861f8240f05ca685a1e6905b74f97fd175c2aaa3c4c",
+    "shard-00008.jsonl": "182f662c5beaf6902eb73056c2af5c337ca3caf9a1cd3b48b2acdc1f074b20e6",
+    "shard-00009.jsonl": "144857ca86b9846fb6db03571a93783d208b431d24d3ffb22e00bf35a33fa305",
+    "shard-00010.jsonl": "ab685aed8963bff434468fa930ff926af9cfb7293d6b7887d62c01a2ec67049a",
+    "shard-00011.jsonl": "6863ba11c46772e2c99eb36738069909c4213441f825d25362cf0c3cb07cea4c",
+    "shard-00012.jsonl": "4c75378c37c78d3882032dd90352bc4cae941c742eee8c916e01d28e4c0dd786",
+    "shard-00013.jsonl": "283800665fd0e6c4475b33bb81f0d1d88958a39097cb2b0687510439ee1ac4fe",
+    "shard-00014.jsonl": "873cc63f89ecfcc4ebc4f115b6de273ebf51285b95f5e981b85769d3d2bbb68e",
+    "shard-00015.jsonl": "d4a1f7f889f7ff3acf82080d63c7166f2bfe85577fae5607d7e350ad8980f6ba",
+    "shard-00016.jsonl": "dc2af802dfd59809f6e893e46cad07a4738a1eda4b0e687e189f2cc211bd137c",
+    "shard-00017.jsonl": "e7b19031af2744452a93bd06b707a8d23d97e08003ca4937750ae440817ae0c0",
+    "shard-00018.jsonl": "b9049d33cf92b1a1858fdc67a7288bbcdaeef03c0efcbea5324514e95959f123",
+    "shard-00019.jsonl": "da87c7a35a07c8d0f403ae3205af0996b108eaaeb3564e98157110d847f3a1b1",
+    "shard-00020.jsonl": "47633aebca766e025579f71b1e657647f225adb7c4ab2a3e7b24c7f1edf8ad19",
+    "shard-00021.jsonl": "dde7c297a68fba6a3e5dfef4a4a2e779a7f4d10e91e247d2a1f5d401fefe4007",
+    "shard-00022.jsonl": "f39d295da3a3df812644a796c75514d3050ec89e6d9bee48bcc9d7e2581b4865",
+    "shard-00023.jsonl": "3d0f2a3c0a727e1e63e8466d3af2b92d565cfa42f7d3a69727d4fef8f9bb540a",
+    "shard-00024.jsonl": "eeaba19c3459a3f4b118a5061b0b7235446cca3c8cb050a00b3fa2ec8ef3a67d",
+    "shard-00025.jsonl": "c8091b9961b87ddfc9da82688dade7b598ba621f7a82822673796890d8ccc3e9",
+    "shard-00026.jsonl": "e2a2684ca3e5c1719c33c47af678c920c675d144395fc8c49fc37d98e117ba49",
+    "shard-00027.jsonl": "16d7def9d5e240f65b758ee3671baf59b38d4f0232feae444236d9ae40931660",
+    "shard-00028.jsonl": "ab09b199e5891d74288672e5f0cddda9f883ef6d30abf79bc5c72aa9caf721cf",
+    "shard-00029.jsonl": "c945183304a3b0c2a4704def8545dcc866261157927c24b10005a735c1ee21e6",
+    "shard-00030.jsonl": "abf2591e545f0b236b43837b14330ab2cd9fa4769f6384d564d591632ebb330b",
+    "shard-00031.jsonl": "e6c03b409fd16016c0e87687c28e3f4f9801717d8059548ae001f5cddcdc6934",
+    "shard-00032.jsonl": "c06c73360b1ead33026ffa0248275062539a59c0aa2863f9badbbc83bed7086a",
+    "shard-00033.jsonl": "cc985054473803385319b11fb60f4132a081415f0344ef935e88f2d227cff884",
+    "shard-00034.jsonl": "bc739466b457a2402a8d92f05e9c293a1530f5b98295f07754a9b75ca8340b9f",
+    "shard-00035.jsonl": "d5880ab35af628c34d4dff512e9fe74d58b1ba902a34f797bb0187000f051694",
+    "shard-00036.jsonl": "d43e0ae9e4090989c89ba478eff7277ca3a9deb4f058545b189aae4a91e3b601",
+    "shard-00037.jsonl": "64e47433c84fe7c15e2eba8c2ebaedd1f9687f3a8b3924f4ec6cc389a98ab868",
+    "shard-00038.jsonl": "6708d38221f003dac6d3d653d3febafe6423575371e07500d6770d8ba63e8406",
+    "shard-00039.jsonl": "1b5df331e8e29463950059d10f37236e17aaae535d5a83deaf8deec04ee8b3b0",
+    "shard-00040.jsonl": "93fa1837cb1828a501d14fd6caf65294f54ed1082de8a1eca526180de0d92992",
+    "shard-00041.jsonl": "3c98939267731f2aea608a48127fb2bc7c32cbaa96dc7e66b0a80246c7eaba68",
+    "shard-00042.jsonl": "f752e30c58efe697483120994f9e27c3d84933f2bf2a1880661a9523f017abff",
+    "shard-00043.jsonl": "3cc6d5a59b8119584f2a291604a70fc7e5de4ddf561e6f5b41136efe6a501024",
+    "shard-00044.jsonl": "c0df88c7f2b204f0ca23145a79bd4f3a5928d984524fb25acd27729955778ad7",
+    "shard-00045.jsonl": "3f7fc7a3df95ed4d3b0012351c924bb7624ddb20aab06b12e96cd7bea47b2d67",
+    "shard-00046.jsonl": "5d36812b90bc50e8dc74b668b74ed2463be0e0d1c177b06cf98db6475fd452c4",
+    "shard-00047.jsonl": "61eea6a80ed321748b54768fab240b96a0e582a09be5059c901e940f9dcd9ad5",
+    "shard-00048.jsonl": "ad6f8c0fa2e23e5cc5d4308b79e88041b10f580626600b0f5f8d038a217d5538",
+    "shard-00049.jsonl": "ab84546ba1776bbfc2922aaaff8ea460df7fd2880a412ac843deda413e000d14",
+    "shard-00050.jsonl": "241c67abc3a1b11ad3dea3a28b04e2b214d42074687b6bb993bcd791c2523e25",
+    "shard-00051.jsonl": "6ef809b9bcc3b8a7bcb0e9efaa8de6aa55dbde3ea61f5166725d3ca20087f86a",
+    "shard-00052.jsonl": "dc1624409dd0ec1b0ac1ce9dcfe0bf4af24d554320506a352698925defc0f200",
+    "shard-00053.jsonl": "9c65e750a5341115fe54fc9bd2fbe4071320e1f412714635f5987f13b901da10",
+    "shard-00054.jsonl": "7a9e853789a3003f54cf90be8908ed189b10aaacafea598133daa40b3087d61f",
+    "shard-00055.jsonl": "7a045c35d77a2f69483a59d9987036c62836feb0bb76566f8ebc60b761324144",
+    "shard-00056.jsonl": "d4bb8c92f07985b154e5c4b332558d850e33993febe39eb45d1cc3a5d5bdeee3",
+    "shard-00057.jsonl": "17f605d430d13a492383bb33a654769f95b54194e29b9660e0fb83c7aae477ed",
+    "shard-00058.jsonl": "56dbf00e54a9436262a72725bbbba782a9d951cb9dc30e037a19301e1eb3d33e",
+    "shard-00059.jsonl": "ea635bcb334b33c738e177dfb88755de4a47bd6dbeaf0f2701e0e34573000fdb",
+    "shard-00060.jsonl": "efd8e31701384f77a5ba9fd97f0330761de26a593be7e93fd3eddbe50dbb9f0a",
+    "shard-00061.jsonl": "f3f73d59325f9faa72f2cd1b9b3d63d4620b2325321911cdc3d0fb959213513a",
+    "shard-00062.jsonl": "feb54ca74f06913cd11da561206ddf04691986019cfffc6a3b5acefdcd502221",
+    "shard-00063.jsonl": "088fa958fc85c557a6dabfb6f30b2a1cda0ac88468c5643ff0787025b38c3324"
+  },
+  "index_sha256": "efd4c9ebe5357cbd7c96dcb63601ae9242d90110c9cbde2c820488ece2f04623",
+  "elapsed_seconds": 94.94235149491578
+}

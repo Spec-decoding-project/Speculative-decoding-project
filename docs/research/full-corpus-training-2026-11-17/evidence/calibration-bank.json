@@ -1,0 +1,25 @@
+{
+  "schema": "full-corpus-token-bank-v1",
+  "collection_complete_sha256": "99f8801a214d8107988ca6f81a7ff4e297a47c96e0dbf309aa9d2882fad0b16c",
+  "preflight_sha256": "b12749f14492315af52fc894a792bb39baeddfc482b368eb71c7afd14c2971a7",
+  "profile": true,
+  "prompt_count": 128,
+  "selected_counts": {
+    "train/repairable": 505,
+    "train/preservation": 3
+  },
+  "prompt_coverage": {
+    "train/used": 128
+  },
+  "natural_counts": {
+    "train/repairable": 1467,
+    "train/wrong_first": 531,
+    "train/preservation": 3
+  },
+  "emitted_target_positions_verified": 8083,
+  "editor_context_tokens": 1024,
+  "target_contract": "invariant-native-canonical-and-acceptance-v1",
+  "independent_greedy_scope": "128 calibration prompts",
+  "bank_sha256": "9ea12b7013dc59a0b53d56d3397ad2698df6912c28e16b13d00e51b7337431c6",
+  "bytes": 1757184
+}

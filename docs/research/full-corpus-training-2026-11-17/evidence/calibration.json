@@ -1,0 +1,186 @@
+{
+  "agreement": {
+    "passed": true,
+    "prompts": 128,
+    "emitted_tokens": 8083,
+    "matched_full_logit_rows": 8083,
+    "previous_canonical_fixtures": 4
+  },
+  "training_rates": {
+    "context": {
+      "0": {
+        "seconds_per_update": 0.17401130916550756,
+        "samples": [
+          0.1770992842502892,
+          0.17412266926839948,
+          0.17400855012238026,
+          0.17367875110358,
+          0.17401130916550756
+        ],
+        "examples_per_update": 32,
+        "mean_context": 83.5625
+      },
+      "1": {
+        "seconds_per_update": 0.17492562206462026,
+        "samples": [
+          0.17492562206462026,
+          0.17489229189231992,
+          0.17495452100411057,
+          0.174529945012182,
+          0.1750772399827838
+        ],
+        "examples_per_update": 32,
+        "mean_context": 196.375
+      },
+      "2": {
+        "seconds_per_update": 0.18249989114701748,
+        "samples": [
+          0.1825072499923408,
+          0.18248835112899542,
+          0.18249989114701748,
+          0.18268485786393285,
+          0.18211413361132145
+        ],
+        "examples_per_update": 32,
+        "mean_context": 676.28125
+      },
+      "3": {
+        "seconds_per_update": 0.22518646391108632,
+        "samples": [
+          0.22758048493415117,
+          0.22518646391108632,
+          0.22534414287656546,
+          0.22453466895967722,
+          0.2250138851813972
+        ],
+        "examples_per_update": 32,
+        "mean_context": 1024
+      },
+      "4": {
+        "seconds_per_update": 0.2252204241231084,
+        "samples": [
+          0.2252204241231084,
+          0.22529242327436805,
+          0.22491437569260597,
+          0.2255255407653749,
+          0.22457782924175262
+        ],
+        "examples_per_update": 32,
+        "mean_context": 1024
+      }
+    },
+    "draft": {
+      "0": {
+        "seconds_per_update": 0.17393815889954567,
+        "samples": [
+          0.17393815889954567,
+          0.17439127573743463,
+          0.17385127302259207,
+          0.17466222494840622,
+          0.17392255272716284
+        ],
+        "examples_per_update": 32,
+        "mean_context": 83.5625
+      },
+      "1": {
+        "seconds_per_update": 0.17448971793055534,
+        "samples": [
+          0.1748097948729992,
+          0.17443141713738441,
+          0.17448971793055534,
+          0.17493688315153122,
+          0.1739211119711399
+        ],
+        "examples_per_update": 32,
+        "mean_context": 196.375
+      },
+      "2": {
+        "seconds_per_update": 0.18253037706017494,
+        "samples": [
+          0.18256314704194665,
+          0.18266062578186393,
+          0.1824333481490612,
+          0.1824106378480792,
+          0.18253037706017494
+        ],
+        "examples_per_update": 32,
+        "mean_context": 676.28125
+      },
+      "3": {
+        "seconds_per_update": 0.2256115390919149,
+        "samples": [
+          0.22553610894829035,
+          0.2255295692011714,
+          0.2256115390919149,
+          0.22580773616209626,
+          0.22610118379816413
+        ],
+        "examples_per_update": 32,
+        "mean_context": 1024
+      },
+      "4": {
+        "seconds_per_update": 0.22597315488383174,
+        "samples": [
+          0.22605328494682908,
+          0.22579492582008243,
+          0.2255356190726161,
+          0.22597315488383174,
+          0.22610342409461737
+        ],
+        "examples_per_update": 32,
+        "mean_context": 1024
+      }
+    }
+  },
+  "population_by_prompt_length": {
+    "0": 36188,
+    "1": 10427,
+    "2": 3563,
+    "3": 832,
+    "4": 14
+  },
+  "native_seconds_per_prompt_by_length": {
+    "0": 0.49505570153705775,
+    "1": 0.5487034497200511,
+    "2": 0.619098344584927,
+    "3": 0.7235800371272489,
+    "4": 1.2269872240140103
+  },
+  "projected_native_generation_seconds": 26461.45041123618,
+  "projected_training_seconds_three_epochs": {
+    "context": 3293.606603090535,
+    "draft": 3291.1351941508474
+  },
+  "source_hashes": {
+    "collect.py": "0093a48b7053cc5504fa4d5537fa8b8983953a68bd9ee4e7e8106083ea120c26",
+    "capture.py": "1ee381c5a5bf724add6a8ddce0cc0e2449175560f570dcdea00d2ef04e15b114",
+    "data.py": "878ff3c849b561d02e12860ae9fe251b658a1121990ce63a96881b1278c5575b"
+  },
+  "native_config": {
+    "model": "/fs/classhomes/fpajak/speculative-decoding-project/data/models/qwen3-8b",
+    "dtype": "bfloat16",
+    "tensor_parallel_size": 1,
+    "max_model_len": 4096,
+    "max_num_seqs": 4,
+    "max_num_batched_tokens": 256,
+    "enable_chunked_prefill": true,
+    "enable_prefix_caching": false,
+    "enforce_eager": true,
+    "async_scheduling": false,
+    "seed": 0,
+    "kv_cache_memory_bytes": 2147483648,
+    "attention_config": {
+      "backend": "FLASH_ATTN"
+    },
+    "generation_config": "vllm",
+    "worker_extension_cls": "full_corpus_fit.capture.CorpusCaptureWorker",
+    "speculative_config": {
+      "method": "dflash",
+      "model": "/fs/classhomes/fpajak/speculative-decoding-project/data/models/qwen3-8b-dflash-b16",
+      "num_speculative_tokens": 15,
+      "max_model_len": 4096
+    }
+  },
+  "estimation_scope": "Up to four blocks per prompt; calibration oversamples long inputs; excludes queue/startup/audit/evaluation overhead",
+  "peak_editor_gpu_bytes": 1147482624
+}

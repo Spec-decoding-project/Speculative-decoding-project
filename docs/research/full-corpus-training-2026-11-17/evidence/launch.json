@@ -1,0 +1,52 @@
+{
+  "job_id": 8454498,
+  "state_at_recording": "RUNNING",
+  "phase_at_recording": "collection",
+  "start_time_utc": "2026-11-17T19:33:36+00:00",
+  "start_time_eastern": "2026-11-17T14:33:36-05:00",
+  "node": "tron61",
+  "gpu": "RTX A5000",
+  "cpus": 4,
+  "host_memory_gib": 16,
+  "wall_limit_hours": 24,
+  "calibration_job": 8454371,
+  "calibration_exit_code": "0:0",
+  "calibration_elapsed_seconds": 470,
+  "calibration_max_host_rss_kib": 16777812,
+  "local_checks_passed": 30,
+  "source_revision": "c3b15d6e588cf4b5af078ee780b38530ab8ec15a",
+  "projected_computation_hours": 9.17949783568821,
+  "initial_total_estimate_hours": [
+    10,
+    12
+  ],
+  "remote_output": "/fs/classhomes/fpajak/speculative-decoding-project/research/full-corpus-run-20261117",
+  "checkpoint_policy": "latest every 500 optimizer updates and epoch boundary; best after each development improvement",
+  "status": "No full-corpus training/evaluation results yet",
+  "updated_total_estimate_hours": [
+    8,
+    10
+  ],
+  "updated_estimate_basis": "First 192 production prompts: observed short-prompt rate 66.46271968306974/192 s; longer strata retain calibration rates",
+  "projected_collection_seconds_after_initial_progress": 21073.212704278383,
+  "latest_recorded_progress": {
+    "completed_prompts": 576,
+    "total_prompts": 51024,
+    "selected_blocks": 2299,
+    "measured_generation_seconds": 206.22625965857878,
+    "session_seconds": 211.48165743798018,
+    "last_chunk": {
+      "index": 8,
+      "prompts": 64,
+      "prompt_tokens": 4483,
+      "generated_tokens": 4089,
+      "seconds": 23.121263791806996,
+      "buckets": {
+        "0": 64
+      },
+      "selected_blocks": 256,
+      "covered_prompts": 64
+    },
+    "projected_total_generation_seconds": 18268.209501422436
+  }
+}
