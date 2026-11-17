@@ -1,5 +1,10 @@
 # Can a drafter learn from its own draft?
 
+**Overfitting archive (November 17, 2026):** start with the
+[agent handoff](docs/OVERFITTING_HANDOFF.md) for the current one/sixteen-block
+results, versioned target contract, remote-job inspection and artifact locations.
+The overview below describes the older Qwen3-4B work.
+
 Shrinav Loka and Frank. Speculative decoding on Qwen3 with the DFlash block drafter.
 
 Speculative decoding lets a small drafter guess a block of tokens that the large target model verifies in one pass. A second drafting pass that re-reads the first draft adds accepted tokens, but costs almost a full extra pass. This project asks whether a much smaller network can recover that gain cheaply.
