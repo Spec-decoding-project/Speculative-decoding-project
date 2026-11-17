@@ -1,5 +1,7 @@
 # Native cached verifier passes fixed fixtures, but the bank fails on a new prompt
 
+Subsequent user decision: preserve exact agreement with the original saved greedy tokens. The separate-label proposal below was rejected and must not be run; see the [accepted decision](../../adr/0001-preserve-exact-saved-target-tokens.md). The experiment results below are unchanged, and training remains blocked pending exact replay diagnosis.
+
 The unchanged released DFlash cached first-round verifier accepts the saved candidate on the original failing fixture and both controls. The old uncached replay still fails. A new, explicitly named collection contract therefore checks the native cached execution path without changing model precision or any saved labels. The bounded bank outcome is recorded below; a three-fixture success alone does not unlock training.
 
 ## Actual native verifier and matched-prefix controls

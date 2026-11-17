@@ -1,6 +1,6 @@
 # Proposed next step: separate labels defined by the native verifier
 
-Status: awaiting the user's choice of target contract. No relabeling or real-data training is authorized by this document. The original responses, failed banks and diagnostic artifacts remain immutable.
+Status: **rejected by the user on November 16, 2026; do not execute.** The user requires exact agreement with the original saved greedy tokens. [Accepted decision](../../adr/0001-preserve-exact-saved-target-tokens.md). The text below preserves the proposal for historical context; it is not an active recommendation or an authorized experiment. The original responses, failed banks and diagnostic artifacts remain immutable.
 
 ## Recommendation and reason
 
