@@ -6,6 +6,8 @@ Prepared 2026-11-15 after the user's clarification. The two requested token-only
 
 The user wants autoregressive revision from tokens rather than the historical parallel hidden-state residual editor, and wants to investigate training on the existing 50,000 Qwen3-8B responses. Target and DFlash remain the frozen reference pair. The original workspace and historical evidence must be preserved.
 
+On November 16 the user explicitly rejected replacement labels: original saved greedy tokens must match exactly. Follow [the accepted target-token decision](adr/0001-preserve-exact-saved-target-tokens.md). Numerical disagreements require diagnosis; a new label producer, near-tie tolerance or approximate-distillation reinterpretation is not authorized. No real-data training may bypass this gate.
+
 The user selected both input contracts, to be implemented on separate branches. The draft-conditioned variant uses accepted context plus the entire DFlash token proposal, then sequentially generate a corrected suffix. The alternative already in `dflash/secondary.py` sees context plus anchor/first proposal and discards the original suffix; it is a suffix redrafter, not a whole-draft editor. Both are autoregressive and token-only. Every neural decoder still has its own internal hidden states.
 
 For the first matched comparison, propose preserving the target anchor and the first DFlash proposal, as in the historical experiment. Revising the first proposal is a separate follow-up choice because it changes both reachable repairs and the verifier layout. Do not silently fix a wrong first proposal with a saved target label.
