@@ -1,0 +1,29 @@
+{
+  "storage_probe": "passed",
+  "full_checkpoint_save_reload": "passed",
+  "optimizer_roundtrip": "passed",
+  "draft_step": 6226,
+  "draft_state": {
+    "run_sha256": "2f53f06a4f4e998b7eb3b60563b1a56427b2365f11d7cc0198e6497c4d8adaba",
+    "epoch": 0,
+    "cursor": 199205,
+    "best_key": null,
+    "best_epoch": null,
+    "initial_weights_sha256": "672080cdb5b25a32ae824198f3549e43979352bab0f621e75379dd9c46d03ab8"
+  },
+  "draft_weights_sha256": "32a56d026ce8b10683bfe625d041093d8bcc264def10995cb055df97c07f8489",
+  "first_epoch_best_load": "passed",
+  "relocations": [
+    {
+      "original": "/fs/classhomes/fpajak/speculative-decoding-project/research/full-corpus-run-20261117/training/context/best.pt",
+      "destination": "/scratch0/fpajak-full-corpus-recovery-20261119/context-best.pt",
+      "sha256": "94732595d3b701f66d297400d3abedc7f8b516923be295c62b01dd42a67211a9"
+    },
+    {
+      "original": "/fs/classhomes/fpajak/speculative-decoding-project/research/full-corpus-run-20261117/training/context/latest.pt",
+      "destination": "/scratch0/fpajak-full-corpus-recovery-20261119/context-latest.pt",
+      "sha256": "ac112e9d404b49344835f853ff0717d9bf328c227163ce6040144f80494928bc"
+    }
+  ],
+  "source_changed": false
+}

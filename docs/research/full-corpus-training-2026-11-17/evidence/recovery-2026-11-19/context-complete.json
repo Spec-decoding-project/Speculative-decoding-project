@@ -1,0 +1,130 @@
+{
+  "mode": "context",
+  "epochs": 3,
+  "updates": 18678,
+  "selected_epoch": 3,
+  "parameters": 40750336,
+  "bank_sha256": "c7f92fae5609137510a198297a31b5178c70c413f263f89f04560b98aa6bbb3d",
+  "best_checkpoint_sha256": "94732595d3b701f66d297400d3abedc7f8b516923be295c62b01dd42a67211a9",
+  "latest_checkpoint_sha256": "ac112e9d404b49344835f853ff0717d9bf328c227163ce6040144f80494928bc",
+  "selected_weights_sha256": "169cb2962be9b6b5b740b2604b02e2cd5561c0ef8fd428615a152b2c483e03f4",
+  "checkpoint_reload": "passed",
+  "cached_full_check": "passed on 64 fixed test blocks",
+  "development": {
+    "teacher_forced_ce": 3.0171353766438966,
+    "free_running_token_accuracy": 0.13382393973214285,
+    "free_running_exact_suffix": 0.0048828125,
+    "repaired": 274,
+    "damaged": 979,
+    "wrong_first": 320,
+    "blocks": 2048,
+    "scope": "Saved-context coverage; not native target acceptance or generation speedup",
+    "mean_original_progress": 3.57763671875,
+    "mean_edited_progress": 2.0751953125,
+    "mean_union_progress": 4.03076171875,
+    "progress_unit": "Consecutive matching proposals after the target anchor; maximum 15",
+    "groups": {
+      "source/HuggingFaceH4/ultrachat_200k": {
+        "blocks": 1024,
+        "mean_original_progress": 2.474609375,
+        "mean_edited_progress": 1.607421875,
+        "mean_union_progress": 2.71875,
+        "repaired": 95,
+        "damaged": 397
+      },
+      "kind/repairable": {
+        "blocks": 1684,
+        "mean_original_progress": 3.959026128266033,
+        "mean_edited_progress": 2.446555819477435,
+        "mean_union_progress": 4.510095011876484,
+        "repaired": 274,
+        "damaged": 937
+      },
+      "kind/wrong_first": {
+        "blocks": 320,
+        "mean_original_progress": 0,
+        "mean_edited_progress": 0,
+        "mean_union_progress": 0,
+        "repaired": 0,
+        "damaged": 0
+      },
+      "source/openai/gsm8k": {
+        "blocks": 1024,
+        "mean_original_progress": 4.6806640625,
+        "mean_edited_progress": 2.54296875,
+        "mean_union_progress": 5.3427734375,
+        "repaired": 179,
+        "damaged": 582
+      },
+      "kind/preservation": {
+        "blocks": 44,
+        "mean_original_progress": 15,
+        "mean_edited_progress": 2.9545454545454546,
+        "mean_union_progress": 15,
+        "repaired": 0,
+        "damaged": 42
+      }
+    }
+  },
+  "test": {
+    "teacher_forced_ce": 3.0847173738838576,
+    "free_running_token_accuracy": 0.12759103641456582,
+    "free_running_exact_suffix": 0.00196078431372549,
+    "repaired": 275,
+    "damaged": 955,
+    "wrong_first": 324,
+    "blocks": 2040,
+    "scope": "Saved-context coverage; not native target acceptance or generation speedup",
+    "mean_original_progress": 3.542156862745098,
+    "mean_edited_progress": 2.0176470588235293,
+    "mean_union_progress": 3.984313725490196,
+    "progress_unit": "Consecutive matching proposals after the target anchor; maximum 15",
+    "groups": {
+      "source/HuggingFaceH4/ultrachat_200k": {
+        "blocks": 1016,
+        "mean_original_progress": 2.550196850393701,
+        "mean_edited_progress": 1.5767716535433072,
+        "mean_union_progress": 2.797244094488189,
+        "repaired": 101,
+        "damaged": 394
+      },
+      "kind/repairable": {
+        "blocks": 1682,
+        "mean_original_progress": 3.9928656361474437,
+        "mean_edited_progress": 2.4096313912009513,
+        "mean_union_progress": 4.529131985731272,
+        "repaired": 275,
+        "damaged": 921
+      },
+      "kind/wrong_first": {
+        "blocks": 324,
+        "mean_original_progress": 0,
+        "mean_edited_progress": 0,
+        "mean_union_progress": 0,
+        "repaired": 0,
+        "damaged": 0
+      },
+      "source/openai/gsm8k": {
+        "blocks": 1024,
+        "mean_original_progress": 4.5263671875,
+        "mean_edited_progress": 2.455078125,
+        "mean_union_progress": 5.162109375,
+        "repaired": 174,
+        "damaged": 561
+      },
+      "kind/preservation": {
+        "blocks": 34,
+        "mean_original_progress": 15,
+        "mean_edited_progress": 1.8529411764705883,
+        "mean_union_progress": 15,
+        "repaired": 0,
+        "damaged": 34
+      }
+    }
+  },
+  "isolated_latency_ms": 19.101803889498115,
+  "timing_blocks": 64,
+  "peak_gpu_allocated_bytes": 1147721216,
+  "session_seconds": 6383.617417161353,
+  "scope": "Saved-context coverage and isolated FP32 latency; no full-generation speedup measurement"
+}

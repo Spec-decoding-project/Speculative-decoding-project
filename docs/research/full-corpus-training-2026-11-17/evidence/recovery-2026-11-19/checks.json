@@ -1,0 +1,29 @@
+{
+  "tests_passed": 34,
+  "elapsed_seconds": 4.03,
+  "new_tests": 4,
+  "command": "PYTHONPATH=editor-experiment:../ar-draft-editor/editor-experiment /tmp/wayfinder-ar-editor-venv/bin/python -m pytest -q editor-experiment/full_corpus_fit/test_data.py editor-experiment/full_corpus_fit/test_training.py editor-experiment/full_corpus_fit/test_results.py editor-experiment/sixteen_block_fit/test_data.py editor-experiment/one_block_fit/test_fit.py ../ar-draft-editor/editor-experiment/autoregressive_editor/test_editor.py",
+  "original_job": {
+    "id": 8454498,
+    "state": "FAILED",
+    "exit_code": "1:0",
+    "elapsed": "08:05:27"
+  },
+  "resume_job": 8474153,
+  "audit_job": 8474170,
+  "recovery_verified": {
+    "storage_write": true,
+    "full_checkpoint_save_reload": true,
+    "optimizer_roundtrip": true,
+    "resumed_development_epoch_1_byte_identical": true,
+    "observed_training_step": 6400,
+    "epoch": 2
+  },
+  "storage_failure": {
+    "operation": "Create 14-byte file in run output directory",
+    "errno": 28,
+    "message": "No space left on device",
+    "quota_setting": "Not obtained"
+  },
+  "executed_training_source": "c3b15d6e588cf4b5af078ee780b38530ab8ec15a"
+}

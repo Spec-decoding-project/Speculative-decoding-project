@@ -1,0 +1,40 @@
+{
+  "schema": "full-corpus-token-bank-v1",
+  "collection_complete_sha256": "a2f5589c52e78c0a2216ba056975562ac54d4f14223eb4cbf547fe5f580df233",
+  "preflight_sha256": "b12749f14492315af52fc894a792bb39baeddfc482b368eb71c7afd14c2971a7",
+  "profile": false,
+  "prompt_count": 51024,
+  "selected_counts": {
+    "train/repairable": 197032,
+    "development/repairable": 1684,
+    "development/wrong_first": 320,
+    "train/preservation": 2173,
+    "development/preservation": 44,
+    "test/repairable": 1682,
+    "test/wrong_first": 324,
+    "test/preservation": 34
+  },
+  "prompt_coverage": {
+    "train/used": 49953,
+    "development/used": 512,
+    "train/no_eligible_block": 47,
+    "test/used": 512
+  },
+  "natural_counts": {
+    "train/repairable": 592420,
+    "train/wrong_first": 239352,
+    "development/repairable": 5457,
+    "development/wrong_first": 1667,
+    "train/preservation": 2195,
+    "development/preservation": 74,
+    "test/repairable": 5472,
+    "test/wrong_first": 1678,
+    "test/preservation": 50
+  },
+  "emitted_target_positions_verified": 3235678,
+  "editor_context_tokens": 1024,
+  "target_contract": "invariant-native-canonical-and-acceptance-v1",
+  "independent_greedy_scope": "128 calibration prompts",
+  "bank_sha256": "c7f92fae5609137510a198297a31b5178c70c413f263f89f04560b98aa6bbb3d",
+  "bytes": 397631488
+}

@@ -1,6 +1,9 @@
 from pathlib import Path
+import errno
+import hashlib
 import tempfile
 import unittest
+from unittest.mock import patch
 
 import torch
 
@@ -10,6 +13,38 @@ from full_corpus_fit.train import epoch_order, learning_rate, validate_cursor
 
 
 class ResumeContract(unittest.TestCase):
+    def test_storage_failure_preserves_last_resumable_checkpoint(self):
+        """A partial new save must never replace the last committed weights."""
+        torch.set_num_threads(1)
+        row=dict(prefix=[1],draft=[4,5,6,7],labels=[4,5,8,9])
+        trainer=Trainer(Config(vocab_size=16,width=8,layers=1,heads=2,max_length=20),
+                        'draft',device='cpu')
+        trainer.update([row])
+        with tempfile.TemporaryDirectory() as directory:
+            path=Path(directory)/'latest.pt'
+            trainer.save(path,dict(epoch=0,cursor=32))
+            original=hashlib.sha256(path.read_bytes()).hexdigest()
+            trainer.update([row])
+
+            def exhausted_save(payload, temporary):
+                Path(temporary).write_bytes(b'interrupted checkpoint')
+                raise OSError(errno.ENOSPC, 'No space left on device')
+
+            with patch('autoregressive_editor.learning.torch.save',side_effect=exhausted_save):
+                with self.assertRaises(OSError):
+                    trainer.save(path,dict(epoch=0,cursor=64))
+            self.assertEqual(hashlib.sha256(path.read_bytes()).hexdigest(),original)
+            restored,state=Trainer.load(path,device='cpu')
+            self.assertEqual(restored.step,1)
+            self.assertEqual(state,dict(epoch=0,cursor=32))
+            # Recovery overwrites the partial temporary file and becomes loadable.
+            trainer.save(path,dict(epoch=0,cursor=64))
+            recovered,state=Trainer.load(path,device='cpu')
+            self.assertEqual(recovered.step,2)
+            self.assertEqual(state,dict(epoch=0,cursor=64))
+            self.assertTrue(all(torch.equal(value,recovered.model.state_dict()[name])
+                                for name,value in trainer.model.state_dict().items()))
+
     def test_restored_mid_epoch_run_matches_uninterrupted_weights(self):
         torch.set_num_threads(1)
         rows=[dict(prefix=[1+i%3],draft=[4,5,6,7],labels=[4,5,8+i%3,9]) for i in range(70)]

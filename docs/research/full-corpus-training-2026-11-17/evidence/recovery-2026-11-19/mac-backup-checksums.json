@@ -1,0 +1,7 @@
+{
+  "training/draft/latest.pt": "681fb92413db1b4111d6c3935d949ad9c0d1b365f90792de1c79da147aa9586f",
+  "training/draft/best.pt": "6d57e0f9bfb5a9e5679fb356f3bf2e13151deb5c92189220edb5a8f037782967",
+  "training/context/latest.pt": "ac112e9d404b49344835f853ff0717d9bf328c227163ce6040144f80494928bc",
+  "training/context/best.pt": "94732595d3b701f66d297400d3abedc7f8b516923be295c62b01dd42a67211a9",
+  "bank.sqlite": "c7f92fae5609137510a198297a31b5178c70c413f263f89f04560b98aa6bbb3d"
+}
