@@ -1,0 +1,25 @@
+{
+  "context": {
+    "mean_delta": -1.5245098039215685,
+    "delta_95_percentile_interval": [
+      -1.6736893679568838,
+      -1.3726053307921107
+    ],
+    "union_gain_95_percentile_interval": [
+      0.3856296184809643,
+      0.5007431350582034
+    ]
+  },
+  "draft": {
+    "mean_delta": -0.19754901960784313,
+    "delta_95_percentile_interval": [
+      -0.3086731243845588,
+      -0.08627239730368154
+    ],
+    "union_gain_95_percentile_interval": [
+      0.4160507043633004,
+      0.5458120003873511
+    ]
+  },
+  "method": "10000 paired prompt-cluster bootstrap resamples, stratified by source (256 prompts each), block-weighted metric; seed 20261119. Descriptive uncertainty for this saved-context benchmark, not a speedup test."
+}

@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "chunks_verified": 798,
+  "collection_complete_sha256": "a2f5589c52e78c0a2216ba056975562ac54d4f14223eb4cbf547fe5f580df233",
+  "raw_collection_bytes": 1057895536,
+  "checkpoint_hashes_verified": {
+    "bank.sqlite": "c7f92fae5609137510a198297a31b5178c70c413f263f89f04560b98aa6bbb3d",
+    "result.json": "5feeeb49da9c7368df5b252a8f1e8d0ea27654bceb0a90080484b06c7e471c09",
+    "training/context/best.pt": "94732595d3b701f66d297400d3abedc7f8b516923be295c62b01dd42a67211a9",
+    "training/context/latest.pt": "ac112e9d404b49344835f853ff0717d9bf328c227163ce6040144f80494928bc",
+    "training/draft/best.pt": "c79b8c59c1e2cf73a7adf7aa9738b1b273779d330fe32f8d2c4a15fd56b7e8d2",
+    "training/draft/latest.pt": "36240c9b8f5edbb9f073a5297816f4c8dfa6774e3c3eb427baed101e3b9ee0b9"
+  },
+  "destination": "/Users/franciszekpajak/.local/share/wayfinder-artifacts/full-corpus-run-20261119-complete",
+  "scope": "Local backup verification; no new model inference"
+}

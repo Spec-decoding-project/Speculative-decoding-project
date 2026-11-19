@@ -1,0 +1,306 @@
+{
+  "completed_at": "2026-11-19T12:59:33.810820+00:00",
+  "variants": {
+    "context": {
+      "mode": "context",
+      "epochs": 3,
+      "updates": 18678,
+      "selected_epoch": 3,
+      "parameters": 40750336,
+      "bank_sha256": "c7f92fae5609137510a198297a31b5178c70c413f263f89f04560b98aa6bbb3d",
+      "best_checkpoint_sha256": "94732595d3b701f66d297400d3abedc7f8b516923be295c62b01dd42a67211a9",
+      "latest_checkpoint_sha256": "ac112e9d404b49344835f853ff0717d9bf328c227163ce6040144f80494928bc",
+      "selected_weights_sha256": "169cb2962be9b6b5b740b2604b02e2cd5561c0ef8fd428615a152b2c483e03f4",
+      "checkpoint_reload": "passed",
+      "cached_full_check": "passed on 64 fixed test blocks",
+      "development": {
+        "teacher_forced_ce": 3.0171353766438966,
+        "free_running_token_accuracy": 0.13382393973214285,
+        "free_running_exact_suffix": 0.0048828125,
+        "repaired": 274,
+        "damaged": 979,
+        "wrong_first": 320,
+        "blocks": 2048,
+        "scope": "Saved-context coverage; not native target acceptance or generation speedup",
+        "mean_original_progress": 3.57763671875,
+        "mean_edited_progress": 2.0751953125,
+        "mean_union_progress": 4.03076171875,
+        "progress_unit": "Consecutive matching proposals after the target anchor; maximum 15",
+        "groups": {
+          "source/HuggingFaceH4/ultrachat_200k": {
+            "blocks": 1024,
+            "mean_original_progress": 2.474609375,
+            "mean_edited_progress": 1.607421875,
+            "mean_union_progress": 2.71875,
+            "repaired": 95,
+            "damaged": 397
+          },
+          "kind/repairable": {
+            "blocks": 1684,
+            "mean_original_progress": 3.959026128266033,
+            "mean_edited_progress": 2.446555819477435,
+            "mean_union_progress": 4.510095011876484,
+            "repaired": 274,
+            "damaged": 937
+          },
+          "kind/wrong_first": {
+            "blocks": 320,
+            "mean_original_progress": 0,
+            "mean_edited_progress": 0,
+            "mean_union_progress": 0,
+            "repaired": 0,
+            "damaged": 0
+          },
+          "source/openai/gsm8k": {
+            "blocks": 1024,
+            "mean_original_progress": 4.6806640625,
+            "mean_edited_progress": 2.54296875,
+            "mean_union_progress": 5.3427734375,
+            "repaired": 179,
+            "damaged": 582
+          },
+          "kind/preservation": {
+            "blocks": 44,
+            "mean_original_progress": 15,
+            "mean_edited_progress": 2.9545454545454546,
+            "mean_union_progress": 15,
+            "repaired": 0,
+            "damaged": 42
+          }
+        }
+      },
+      "test": {
+        "teacher_forced_ce": 3.0847173738838576,
+        "free_running_token_accuracy": 0.12759103641456582,
+        "free_running_exact_suffix": 0.00196078431372549,
+        "repaired": 275,
+        "damaged": 955,
+        "wrong_first": 324,
+        "blocks": 2040,
+        "scope": "Saved-context coverage; not native target acceptance or generation speedup",
+        "mean_original_progress": 3.542156862745098,
+        "mean_edited_progress": 2.0176470588235293,
+        "mean_union_progress": 3.984313725490196,
+        "progress_unit": "Consecutive matching proposals after the target anchor; maximum 15",
+        "groups": {
+          "source/HuggingFaceH4/ultrachat_200k": {
+            "blocks": 1016,
+            "mean_original_progress": 2.550196850393701,
+            "mean_edited_progress": 1.5767716535433072,
+            "mean_union_progress": 2.797244094488189,
+            "repaired": 101,
+            "damaged": 394
+          },
+          "kind/repairable": {
+            "blocks": 1682,
+            "mean_original_progress": 3.9928656361474437,
+            "mean_edited_progress": 2.4096313912009513,
+            "mean_union_progress": 4.529131985731272,
+            "repaired": 275,
+            "damaged": 921
+          },
+          "kind/wrong_first": {
+            "blocks": 324,
+            "mean_original_progress": 0,
+            "mean_edited_progress": 0,
+            "mean_union_progress": 0,
+            "repaired": 0,
+            "damaged": 0
+          },
+          "source/openai/gsm8k": {
+            "blocks": 1024,
+            "mean_original_progress": 4.5263671875,
+            "mean_edited_progress": 2.455078125,
+            "mean_union_progress": 5.162109375,
+            "repaired": 174,
+            "damaged": 561
+          },
+          "kind/preservation": {
+            "blocks": 34,
+            "mean_original_progress": 15,
+            "mean_edited_progress": 1.8529411764705883,
+            "mean_union_progress": 15,
+            "repaired": 0,
+            "damaged": 34
+          }
+        }
+      },
+      "isolated_latency_ms": 19.101803889498115,
+      "timing_blocks": 64,
+      "peak_gpu_allocated_bytes": 1147721216,
+      "session_seconds": 6383.617417161353,
+      "scope": "Saved-context coverage and isolated FP32 latency; no full-generation speedup measurement"
+    },
+    "draft": {
+      "mode": "draft",
+      "epochs": 3,
+      "updates": 18678,
+      "selected_epoch": 3,
+      "parameters": 40750336,
+      "bank_sha256": "c7f92fae5609137510a198297a31b5178c70c413f263f89f04560b98aa6bbb3d",
+      "best_checkpoint_sha256": "c79b8c59c1e2cf73a7adf7aa9738b1b273779d330fe32f8d2c4a15fd56b7e8d2",
+      "latest_checkpoint_sha256": "36240c9b8f5edbb9f073a5297816f4c8dfa6774e3c3eb427baed101e3b9ee0b9",
+      "selected_weights_sha256": "8babb2bfe3f4c11ef283312e22ccd2e20878438c96957302ff2c462748bbd382",
+      "checkpoint_reload": "passed",
+      "cached_full_check": "passed on 64 fixed test blocks",
+      "development": {
+        "teacher_forced_ce": 2.7711915290606806,
+        "free_running_token_accuracy": 0.2605678013392857,
+        "free_running_exact_suffix": 0.01513671875,
+        "repaired": 335,
+        "damaged": 360,
+        "wrong_first": 320,
+        "blocks": 2048,
+        "scope": "Saved-context coverage; not native target acceptance or generation speedup",
+        "mean_original_progress": 3.57763671875,
+        "mean_edited_progress": 3.46630859375,
+        "mean_union_progress": 4.12158203125,
+        "progress_unit": "Consecutive matching proposals after the target anchor; maximum 15",
+        "groups": {
+          "source/HuggingFaceH4/ultrachat_200k": {
+            "blocks": 1024,
+            "mean_original_progress": 2.474609375,
+            "mean_edited_progress": 2.314453125,
+            "mean_union_progress": 2.763671875,
+            "repaired": 112,
+            "damaged": 154
+          },
+          "kind/repairable": {
+            "blocks": 1684,
+            "mean_original_progress": 3.959026128266033,
+            "mean_edited_progress": 3.9435866983372923,
+            "mean_union_progress": 4.620546318289787,
+            "repaired": 335,
+            "damaged": 336
+          },
+          "kind/wrong_first": {
+            "blocks": 320,
+            "mean_original_progress": 0,
+            "mean_edited_progress": 0,
+            "mean_union_progress": 0,
+            "repaired": 0,
+            "damaged": 0
+          },
+          "source/openai/gsm8k": {
+            "blocks": 1024,
+            "mean_original_progress": 4.6806640625,
+            "mean_edited_progress": 4.6181640625,
+            "mean_union_progress": 5.4794921875,
+            "repaired": 223,
+            "damaged": 206
+          },
+          "kind/preservation": {
+            "blocks": 44,
+            "mean_original_progress": 15,
+            "mean_edited_progress": 10.409090909090908,
+            "mean_union_progress": 15,
+            "repaired": 0,
+            "damaged": 24
+          }
+        }
+      },
+      "test": {
+        "teacher_forced_ce": 2.7813007891376396,
+        "free_running_token_accuracy": 0.25598739495798317,
+        "free_running_exact_suffix": 0.012745098039215686,
+        "repaired": 281,
+        "damaged": 375,
+        "wrong_first": 324,
+        "blocks": 2040,
+        "scope": "Saved-context coverage; not native target acceptance or generation speedup",
+        "mean_original_progress": 3.542156862745098,
+        "mean_edited_progress": 3.344607843137255,
+        "mean_union_progress": 4.020588235294118,
+        "progress_unit": "Consecutive matching proposals after the target anchor; maximum 15",
+        "groups": {
+          "source/HuggingFaceH4/ultrachat_200k": {
+            "blocks": 1016,
+            "mean_original_progress": 2.550196850393701,
+            "mean_edited_progress": 2.302165354330709,
+            "mean_union_progress": 2.8031496062992125,
+            "repaired": 100,
+            "damaged": 153
+          },
+          "kind/repairable": {
+            "blocks": 1682,
+            "mean_original_progress": 3.9928656361474437,
+            "mean_edited_progress": 3.843638525564804,
+            "mean_union_progress": 4.573127229488704,
+            "repaired": 281,
+            "damaged": 354
+          },
+          "kind/wrong_first": {
+            "blocks": 324,
+            "mean_original_progress": 0,
+            "mean_edited_progress": 0,
+            "mean_union_progress": 0,
+            "repaired": 0,
+            "damaged": 0
+          },
+          "source/openai/gsm8k": {
+            "blocks": 1024,
+            "mean_original_progress": 4.5263671875,
+            "mean_edited_progress": 4.37890625,
+            "mean_union_progress": 5.228515625,
+            "repaired": 181,
+            "damaged": 222
+          },
+          "kind/preservation": {
+            "blocks": 34,
+            "mean_original_progress": 15,
+            "mean_edited_progress": 10.529411764705882,
+            "mean_union_progress": 15,
+            "repaired": 0,
+            "damaged": 21
+          }
+        }
+      },
+      "isolated_latency_ms": 19.303120905533433,
+      "timing_blocks": 64,
+      "peak_gpu_allocated_bytes": 1147721216,
+      "session_seconds": 4098.10133969225,
+      "scope": "Saved-context coverage and isolated FP32 latency; no full-generation speedup measurement"
+    }
+  },
+  "bank": {
+    "schema": "full-corpus-token-bank-v1",
+    "collection_complete_sha256": "a2f5589c52e78c0a2216ba056975562ac54d4f14223eb4cbf547fe5f580df233",
+    "preflight_sha256": "b12749f14492315af52fc894a792bb39baeddfc482b368eb71c7afd14c2971a7",
+    "profile": false,
+    "prompt_count": 51024,
+    "selected_counts": {
+      "train/repairable": 197032,
+      "development/repairable": 1684,
+      "development/wrong_first": 320,
+      "train/preservation": 2173,
+      "development/preservation": 44,
+      "test/repairable": 1682,
+      "test/wrong_first": 324,
+      "test/preservation": 34
+    },
+    "prompt_coverage": {
+      "train/used": 49953,
+      "development/used": 512,
+      "train/no_eligible_block": 47,
+      "test/used": 512
+    },
+    "natural_counts": {
+      "train/repairable": 592420,
+      "train/wrong_first": 239352,
+      "development/repairable": 5457,
+      "development/wrong_first": 1667,
+      "train/preservation": 2195,
+      "development/preservation": 74,
+      "test/repairable": 5472,
+      "test/wrong_first": 1678,
+      "test/preservation": 50
+    },
+    "emitted_target_positions_verified": 3235678,
+    "editor_context_tokens": 1024,
+    "target_contract": "invariant-native-canonical-and-acceptance-v1",
+    "independent_greedy_scope": "128 calibration prompts",
+    "bank_sha256": "c7f92fae5609137510a198297a31b5178c70c413f263f89f04560b98aa6bbb3d",
+    "bytes": 397631488
+  },
+  "scope": "Full prompt inventory; up to four complete reachable training blocks per prompt; saved-context evaluation"
+}

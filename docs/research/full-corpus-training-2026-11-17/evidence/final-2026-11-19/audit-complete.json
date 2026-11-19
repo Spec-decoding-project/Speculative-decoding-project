@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "completed_at": "2026-11-19T13:00:46.872982+00:00",
+  "job_id": "8474170",
+  "source_files_unchanged": 65,
+  "resumed_first_epoch_development_identical": true,
+  "audit_source_sha256": "e09da4e8b64d4c6f3fb160310dc3a42e34ef68eba0e760ef60d5d700d00abeb0",
+  "audits": {
+    "context": "80171ec2d5a0c3bc4b3f812feb41c42602e9030854220327923eb243fb4e56fa",
+    "draft": "4e6dacf23a9d64e24df9b9d468c8421c1252ccac96d0e6c474da35ee42436fd1"
+  },
+  "result_sha256": "5feeeb49da9c7368df5b252a8f1e8d0ea27654bceb0a90080484b06c7e471c09"
+}
