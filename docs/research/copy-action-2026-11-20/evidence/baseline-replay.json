@@ -1,0 +1,7 @@
+{
+  "passed": true,
+  "blocks": 2048,
+  "reference_sha256": "6c3b7b085f14708b58683160c6f0a06d248458459e4f8db2ce898f7b4dbedefa",
+  "shared_weights_sha256": "8babb2bfe3f4c11ef283312e22ccd2e20878438c96957302ff2c462748bbd382",
+  "teacher_forced_ce_delta": 0.0
+}

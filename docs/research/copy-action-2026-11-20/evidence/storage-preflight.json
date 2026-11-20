@@ -1,0 +1,6 @@
+{
+  "passed": true,
+  "simultaneously_written_bytes": 1467117036,
+  "checkpoint_copies": 3,
+  "headroom_policy": "Two arms plus one atomic replacement"
+}

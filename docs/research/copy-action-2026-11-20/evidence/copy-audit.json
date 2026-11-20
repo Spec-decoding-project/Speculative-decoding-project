@@ -1,0 +1,124 @@
+{
+  "training": {
+    "passed": true,
+    "copy_actions": 617,
+    "metrics": {
+      "blocks": 64,
+      "mean_original_progress": 9.609375,
+      "mean_edited_progress": 15,
+      "mean_union_progress": 15,
+      "repaired": 32,
+      "damaged": 0,
+      "wrong_first": 0,
+      "free_running_exact_suffix": 1.0,
+      "free_running_token_accuracy": 1.0
+    },
+    "groups": {
+      "source/HuggingFaceH4/ultrachat_200k": {
+        "blocks": 32,
+        "mean_original_progress": 8.9375,
+        "mean_edited_progress": 15,
+        "mean_union_progress": 15,
+        "repaired": 16,
+        "damaged": 0
+      },
+      "kind/preservation": {
+        "blocks": 32,
+        "mean_original_progress": 15,
+        "mean_edited_progress": 15,
+        "mean_union_progress": 15,
+        "repaired": 0,
+        "damaged": 0
+      },
+      "source/openai/gsm8k": {
+        "blocks": 32,
+        "mean_original_progress": 10.28125,
+        "mean_edited_progress": 15,
+        "mean_union_progress": 15,
+        "repaired": 16,
+        "damaged": 0
+      },
+      "kind/repairable": {
+        "blocks": 32,
+        "mean_original_progress": 4.21875,
+        "mean_edited_progress": 15,
+        "mean_union_progress": 15,
+        "repaired": 32,
+        "damaged": 0
+      }
+    },
+    "editable_matches": 896,
+    "editable_tokens": 896,
+    "exact_suffixes": 64,
+    "prompts": 64,
+    "prompt_weighted_mean_delta": 5.390625,
+    "prompts_improved": 32,
+    "prompts_worsened": 0,
+    "prompts_unchanged": 32
+  },
+  "development": {
+    "passed": true,
+    "copy_actions": 23097,
+    "metrics": {
+      "blocks": 2048,
+      "mean_original_progress": 3.57763671875,
+      "mean_edited_progress": 3.46826171875,
+      "mean_union_progress": 3.6103515625,
+      "repaired": 38,
+      "damaged": 94,
+      "wrong_first": 320,
+      "free_running_exact_suffix": 0.02001953125,
+      "free_running_token_accuracy": 0.30482700892857145
+    },
+    "groups": {
+      "source/HuggingFaceH4/ultrachat_200k": {
+        "blocks": 1024,
+        "mean_original_progress": 2.474609375,
+        "mean_edited_progress": 2.330078125,
+        "mean_union_progress": 2.5078125,
+        "repaired": 20,
+        "damaged": 67
+      },
+      "kind/repairable": {
+        "blocks": 1684,
+        "mean_original_progress": 3.959026128266033,
+        "mean_edited_progress": 3.836104513064133,
+        "mean_union_progress": 3.998812351543943,
+        "repaired": 38,
+        "damaged": 90
+      },
+      "kind/wrong_first": {
+        "blocks": 320,
+        "mean_original_progress": 0,
+        "mean_edited_progress": 0,
+        "mean_union_progress": 0,
+        "repaired": 0,
+        "damaged": 0
+      },
+      "source/openai/gsm8k": {
+        "blocks": 1024,
+        "mean_original_progress": 4.6806640625,
+        "mean_edited_progress": 4.6064453125,
+        "mean_union_progress": 4.712890625,
+        "repaired": 18,
+        "damaged": 27
+      },
+      "kind/preservation": {
+        "blocks": 44,
+        "mean_original_progress": 15,
+        "mean_edited_progress": 14.613636363636363,
+        "mean_union_progress": 15,
+        "repaired": 0,
+        "damaged": 4
+      }
+    },
+    "editable_matches": 8740,
+    "editable_tokens": 28672,
+    "exact_suffixes": 41,
+    "prompts": 512,
+    "prompt_weighted_mean_delta": -0.109375,
+    "prompts_improved": 32,
+    "prompts_worsened": 75,
+    "prompts_unchanged": 405
+  }
+}

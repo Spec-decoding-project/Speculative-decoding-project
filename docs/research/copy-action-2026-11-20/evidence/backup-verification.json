@@ -1,0 +1,34 @@
+{
+  "passed": true,
+  "selection": {
+    "schema": 1,
+    "bank_sha256": "c7f92fae5609137510a198297a31b5178c70c413f263f89f04560b98aa6bbb3d",
+    "selection_sha256": "f286a92360b74187f78f93ff798caf3f9a5a9be2157d145126287b34c0485809",
+    "blocks": 64,
+    "prompts": 64,
+    "families": 64,
+    "counts": {
+      "preservation/HuggingFaceH4/ultrachat_200k": 16,
+      "preservation/openai/gsm8k": 16,
+      "repairable/HuggingFaceH4/ultrachat_200k": 16,
+      "repairable/openai/gsm8k": 16
+    },
+    "development_blocks": 2048,
+    "development_prompts": 512,
+    "final_test_loaded": false
+  },
+  "arms": {
+    "baseline": {
+      "checkpoint_sha256": "5b03244e1a28db6aaacd8ba8d517ca2c8f7f192da894999ae8d6f9bbcc01d0d9",
+      "recount_matches_gpu_audit": true,
+      "updates": 100,
+      "unique_contiguous_steps": true
+    },
+    "copy": {
+      "checkpoint_sha256": "bcde53a197f3152c3f9cc9b1e3c3d49ed5a715635e3ce4027b3338bb0403ab39",
+      "recount_matches_gpu_audit": true,
+      "updates": 250,
+      "unique_contiguous_steps": true
+    }
+  }
+}

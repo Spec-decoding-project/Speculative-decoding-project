@@ -1,0 +1,702 @@
+[
+  {
+    "step": 25,
+    "consecutive": 0,
+    "teacher_forced_action_ce": 7.456471249461174,
+    "teacher_forced_ce": 2.871869939778532,
+    "free_running_token_accuracy": 0.17075892857142858,
+    "free_running_exact_suffix": 0.0,
+    "repaired": 6,
+    "damaged": 49,
+    "wrong_first": 0,
+    "blocks": 64,
+    "mean_original_progress": 9.609375,
+    "mean_edited_progress": 2.53125,
+    "mean_union_progress": 10.0625,
+    "copy_actions": 0,
+    "editable_tokens": 896,
+    "scope": "Saved-context coverage; no native acceptance or full-generation speedup",
+    "groups": {
+      "source/HuggingFaceH4/ultrachat_200k": {
+        "blocks": 32,
+        "mean_original_progress": 8.9375,
+        "mean_edited_progress": 3.0625,
+        "repaired": 5,
+        "damaged": 23,
+        "prefix_positions_gained": 25,
+        "prefix_positions_lost": 213,
+        "exact_suffixes": 0
+      },
+      "kind/preservation": {
+        "blocks": 32,
+        "mean_original_progress": 15,
+        "mean_edited_progress": 2.09375,
+        "repaired": 0,
+        "damaged": 32,
+        "prefix_positions_gained": 0,
+        "prefix_positions_lost": 413,
+        "exact_suffixes": 0
+      },
+      "first/correct": {
+        "blocks": 64,
+        "mean_original_progress": 9.609375,
+        "mean_edited_progress": 2.53125,
+        "repaired": 6,
+        "damaged": 49,
+        "prefix_positions_gained": 29,
+        "prefix_positions_lost": 482,
+        "exact_suffixes": 0
+      },
+      "source/openai/gsm8k": {
+        "blocks": 32,
+        "mean_original_progress": 10.28125,
+        "mean_edited_progress": 2,
+        "repaired": 1,
+        "damaged": 26,
+        "prefix_positions_gained": 4,
+        "prefix_positions_lost": 269,
+        "exact_suffixes": 0
+      },
+      "kind/repairable": {
+        "blocks": 32,
+        "mean_original_progress": 4.21875,
+        "mean_edited_progress": 2.96875,
+        "repaired": 6,
+        "damaged": 17,
+        "prefix_positions_gained": 29,
+        "prefix_positions_lost": 69,
+        "exact_suffixes": 0
+      }
+    }
+  },
+  {
+    "step": 50,
+    "consecutive": 0,
+    "teacher_forced_action_ce": 5.87110227186765,
+    "teacher_forced_ce": 3.1191544165568694,
+    "free_running_token_accuracy": 0.14732142857142858,
+    "free_running_exact_suffix": 0.015625,
+    "repaired": 4,
+    "damaged": 55,
+    "wrong_first": 0,
+    "blocks": 64,
+    "mean_original_progress": 9.609375,
+    "mean_edited_progress": 2.171875,
+    "mean_union_progress": 10.078125,
+    "copy_actions": 0,
+    "editable_tokens": 896,
+    "scope": "Saved-context coverage; no native acceptance or full-generation speedup",
+    "groups": {
+      "source/HuggingFaceH4/ultrachat_200k": {
+        "blocks": 32,
+        "mean_original_progress": 8.9375,
+        "mean_edited_progress": 2.3125,
+        "repaired": 3,
+        "damaged": 28,
+        "prefix_positions_gained": 26,
+        "prefix_positions_lost": 238,
+        "exact_suffixes": 1
+      },
+      "kind/preservation": {
+        "blocks": 32,
+        "mean_original_progress": 15,
+        "mean_edited_progress": 1.875,
+        "repaired": 0,
+        "damaged": 32,
+        "prefix_positions_gained": 0,
+        "prefix_positions_lost": 420,
+        "exact_suffixes": 0
+      },
+      "first/correct": {
+        "blocks": 64,
+        "mean_original_progress": 9.609375,
+        "mean_edited_progress": 2.171875,
+        "repaired": 4,
+        "damaged": 55,
+        "prefix_positions_gained": 30,
+        "prefix_positions_lost": 506,
+        "exact_suffixes": 1
+      },
+      "source/openai/gsm8k": {
+        "blocks": 32,
+        "mean_original_progress": 10.28125,
+        "mean_edited_progress": 2.03125,
+        "repaired": 1,
+        "damaged": 27,
+        "prefix_positions_gained": 4,
+        "prefix_positions_lost": 268,
+        "exact_suffixes": 0
+      },
+      "kind/repairable": {
+        "blocks": 32,
+        "mean_original_progress": 4.21875,
+        "mean_edited_progress": 2.46875,
+        "repaired": 4,
+        "damaged": 23,
+        "prefix_positions_gained": 30,
+        "prefix_positions_lost": 86,
+        "exact_suffixes": 1
+      }
+    }
+  },
+  {
+    "step": 75,
+    "consecutive": 0,
+    "teacher_forced_action_ce": 4.525182933679649,
+    "teacher_forced_ce": 3.0856419461114064,
+    "free_running_token_accuracy": 0.12165178571428571,
+    "free_running_exact_suffix": 0.015625,
+    "repaired": 5,
+    "damaged": 56,
+    "wrong_first": 0,
+    "blocks": 64,
+    "mean_original_progress": 9.609375,
+    "mean_edited_progress": 1.90625,
+    "mean_union_progress": 10.015625,
+    "copy_actions": 0,
+    "editable_tokens": 896,
+    "scope": "Saved-context coverage; no native acceptance or full-generation speedup",
+    "groups": {
+      "source/HuggingFaceH4/ultrachat_200k": {
+        "blocks": 32,
+        "mean_original_progress": 8.9375,
+        "mean_edited_progress": 1.875,
+        "repaired": 3,
+        "damaged": 28,
+        "prefix_positions_gained": 18,
+        "prefix_positions_lost": 244,
+        "exact_suffixes": 1
+      },
+      "kind/preservation": {
+        "blocks": 32,
+        "mean_original_progress": 15,
+        "mean_edited_progress": 1.40625,
+        "repaired": 0,
+        "damaged": 32,
+        "prefix_positions_gained": 0,
+        "prefix_positions_lost": 435,
+        "exact_suffixes": 0
+      },
+      "first/correct": {
+        "blocks": 64,
+        "mean_original_progress": 9.609375,
+        "mean_edited_progress": 1.90625,
+        "repaired": 5,
+        "damaged": 56,
+        "prefix_positions_gained": 26,
+        "prefix_positions_lost": 519,
+        "exact_suffixes": 1
+      },
+      "source/openai/gsm8k": {
+        "blocks": 32,
+        "mean_original_progress": 10.28125,
+        "mean_edited_progress": 1.9375,
+        "repaired": 2,
+        "damaged": 28,
+        "prefix_positions_gained": 8,
+        "prefix_positions_lost": 275,
+        "exact_suffixes": 0
+      },
+      "kind/repairable": {
+        "blocks": 32,
+        "mean_original_progress": 4.21875,
+        "mean_edited_progress": 2.40625,
+        "repaired": 5,
+        "damaged": 24,
+        "prefix_positions_gained": 26,
+        "prefix_positions_lost": 84,
+        "exact_suffixes": 1
+      }
+    }
+  },
+  {
+    "step": 100,
+    "consecutive": 0,
+    "teacher_forced_action_ce": 2.800411706790328,
+    "teacher_forced_ce": 2.435309140011668,
+    "free_running_token_accuracy": 0.37723214285714285,
+    "free_running_exact_suffix": 0.03125,
+    "repaired": 6,
+    "damaged": 55,
+    "wrong_first": 0,
+    "blocks": 64,
+    "mean_original_progress": 9.609375,
+    "mean_edited_progress": 3.28125,
+    "mean_union_progress": 9.984375,
+    "copy_actions": 187,
+    "editable_tokens": 896,
+    "scope": "Saved-context coverage; no native acceptance or full-generation speedup",
+    "groups": {
+      "source/HuggingFaceH4/ultrachat_200k": {
+        "blocks": 32,
+        "mean_original_progress": 8.9375,
+        "mean_edited_progress": 2.6875,
+        "repaired": 4,
+        "damaged": 28,
+        "prefix_positions_gained": 18,
+        "prefix_positions_lost": 218,
+        "exact_suffixes": 1
+      },
+      "kind/preservation": {
+        "blocks": 32,
+        "mean_original_progress": 15,
+        "mean_edited_progress": 4.09375,
+        "repaired": 0,
+        "damaged": 31,
+        "prefix_positions_gained": 0,
+        "prefix_positions_lost": 349,
+        "exact_suffixes": 1
+      },
+      "first/correct": {
+        "blocks": 64,
+        "mean_original_progress": 9.609375,
+        "mean_edited_progress": 3.28125,
+        "repaired": 6,
+        "damaged": 55,
+        "prefix_positions_gained": 24,
+        "prefix_positions_lost": 429,
+        "exact_suffixes": 2
+      },
+      "source/openai/gsm8k": {
+        "blocks": 32,
+        "mean_original_progress": 10.28125,
+        "mean_edited_progress": 3.875,
+        "repaired": 2,
+        "damaged": 27,
+        "prefix_positions_gained": 6,
+        "prefix_positions_lost": 211,
+        "exact_suffixes": 1
+      },
+      "kind/repairable": {
+        "blocks": 32,
+        "mean_original_progress": 4.21875,
+        "mean_edited_progress": 2.46875,
+        "repaired": 6,
+        "damaged": 24,
+        "prefix_positions_gained": 24,
+        "prefix_positions_lost": 80,
+        "exact_suffixes": 1
+      }
+    }
+  },
+  {
+    "step": 125,
+    "consecutive": 0,
+    "teacher_forced_action_ce": 1.219989387118923,
+    "teacher_forced_ce": 1.1806620796477156,
+    "free_running_token_accuracy": 0.9654017857142857,
+    "free_running_exact_suffix": 0.828125,
+    "repaired": 27,
+    "damaged": 0,
+    "wrong_first": 0,
+    "blocks": 64,
+    "mean_original_progress": 9.609375,
+    "mean_edited_progress": 13.59375,
+    "mean_union_progress": 13.59375,
+    "copy_actions": 628,
+    "editable_tokens": 896,
+    "scope": "Saved-context coverage; no native acceptance or full-generation speedup",
+    "groups": {
+      "source/HuggingFaceH4/ultrachat_200k": {
+        "blocks": 32,
+        "mean_original_progress": 8.9375,
+        "mean_edited_progress": 14.21875,
+        "repaired": 16,
+        "damaged": 0,
+        "prefix_positions_gained": 169,
+        "prefix_positions_lost": 0,
+        "exact_suffixes": 29
+      },
+      "kind/preservation": {
+        "blocks": 32,
+        "mean_original_progress": 15,
+        "mean_edited_progress": 15,
+        "repaired": 0,
+        "damaged": 0,
+        "prefix_positions_gained": 0,
+        "prefix_positions_lost": 0,
+        "exact_suffixes": 32
+      },
+      "first/correct": {
+        "blocks": 64,
+        "mean_original_progress": 9.609375,
+        "mean_edited_progress": 13.59375,
+        "repaired": 27,
+        "damaged": 0,
+        "prefix_positions_gained": 255,
+        "prefix_positions_lost": 0,
+        "exact_suffixes": 53
+      },
+      "source/openai/gsm8k": {
+        "blocks": 32,
+        "mean_original_progress": 10.28125,
+        "mean_edited_progress": 12.96875,
+        "repaired": 11,
+        "damaged": 0,
+        "prefix_positions_gained": 86,
+        "prefix_positions_lost": 0,
+        "exact_suffixes": 24
+      },
+      "kind/repairable": {
+        "blocks": 32,
+        "mean_original_progress": 4.21875,
+        "mean_edited_progress": 12.1875,
+        "repaired": 27,
+        "damaged": 0,
+        "prefix_positions_gained": 255,
+        "prefix_positions_lost": 0,
+        "exact_suffixes": 21
+      }
+    }
+  },
+  {
+    "step": 150,
+    "consecutive": 0,
+    "teacher_forced_action_ce": 0.3356052600179932,
+    "teacher_forced_ce": 0.33053396485878955,
+    "free_running_token_accuracy": 0.9854910714285714,
+    "free_running_exact_suffix": 0.9375,
+    "repaired": 30,
+    "damaged": 0,
+    "wrong_first": 0,
+    "blocks": 64,
+    "mean_original_progress": 9.609375,
+    "mean_edited_progress": 14.578125,
+    "mean_union_progress": 14.578125,
+    "copy_actions": 625,
+    "editable_tokens": 896,
+    "scope": "Saved-context coverage; no native acceptance or full-generation speedup",
+    "groups": {
+      "source/HuggingFaceH4/ultrachat_200k": {
+        "blocks": 32,
+        "mean_original_progress": 8.9375,
+        "mean_edited_progress": 15,
+        "repaired": 16,
+        "damaged": 0,
+        "prefix_positions_gained": 194,
+        "prefix_positions_lost": 0,
+        "exact_suffixes": 32
+      },
+      "kind/preservation": {
+        "blocks": 32,
+        "mean_original_progress": 15,
+        "mean_edited_progress": 15,
+        "repaired": 0,
+        "damaged": 0,
+        "prefix_positions_gained": 0,
+        "prefix_positions_lost": 0,
+        "exact_suffixes": 32
+      },
+      "first/correct": {
+        "blocks": 64,
+        "mean_original_progress": 9.609375,
+        "mean_edited_progress": 14.578125,
+        "repaired": 30,
+        "damaged": 0,
+        "prefix_positions_gained": 318,
+        "prefix_positions_lost": 0,
+        "exact_suffixes": 60
+      },
+      "source/openai/gsm8k": {
+        "blocks": 32,
+        "mean_original_progress": 10.28125,
+        "mean_edited_progress": 14.15625,
+        "repaired": 14,
+        "damaged": 0,
+        "prefix_positions_gained": 124,
+        "prefix_positions_lost": 0,
+        "exact_suffixes": 28
+      },
+      "kind/repairable": {
+        "blocks": 32,
+        "mean_original_progress": 4.21875,
+        "mean_edited_progress": 14.15625,
+        "repaired": 30,
+        "damaged": 0,
+        "prefix_positions_gained": 318,
+        "prefix_positions_lost": 0,
+        "exact_suffixes": 28
+      }
+    }
+  },
+  {
+    "step": 175,
+    "consecutive": 0,
+    "teacher_forced_action_ce": 0.05228083517535457,
+    "teacher_forced_ce": 0.05169709415973297,
+    "free_running_token_accuracy": 1.0,
+    "free_running_exact_suffix": 1.0,
+    "repaired": 32,
+    "damaged": 0,
+    "wrong_first": 0,
+    "blocks": 64,
+    "mean_original_progress": 9.609375,
+    "mean_edited_progress": 15,
+    "mean_union_progress": 15,
+    "copy_actions": 617,
+    "editable_tokens": 896,
+    "scope": "Saved-context coverage; no native acceptance or full-generation speedup",
+    "groups": {
+      "source/HuggingFaceH4/ultrachat_200k": {
+        "blocks": 32,
+        "mean_original_progress": 8.9375,
+        "mean_edited_progress": 15,
+        "repaired": 16,
+        "damaged": 0,
+        "prefix_positions_gained": 194,
+        "prefix_positions_lost": 0,
+        "exact_suffixes": 32
+      },
+      "kind/preservation": {
+        "blocks": 32,
+        "mean_original_progress": 15,
+        "mean_edited_progress": 15,
+        "repaired": 0,
+        "damaged": 0,
+        "prefix_positions_gained": 0,
+        "prefix_positions_lost": 0,
+        "exact_suffixes": 32
+      },
+      "first/correct": {
+        "blocks": 64,
+        "mean_original_progress": 9.609375,
+        "mean_edited_progress": 15,
+        "repaired": 32,
+        "damaged": 0,
+        "prefix_positions_gained": 345,
+        "prefix_positions_lost": 0,
+        "exact_suffixes": 64
+      },
+      "source/openai/gsm8k": {
+        "blocks": 32,
+        "mean_original_progress": 10.28125,
+        "mean_edited_progress": 15,
+        "repaired": 16,
+        "damaged": 0,
+        "prefix_positions_gained": 151,
+        "prefix_positions_lost": 0,
+        "exact_suffixes": 32
+      },
+      "kind/repairable": {
+        "blocks": 32,
+        "mean_original_progress": 4.21875,
+        "mean_edited_progress": 15,
+        "repaired": 32,
+        "damaged": 0,
+        "prefix_positions_gained": 345,
+        "prefix_positions_lost": 0,
+        "exact_suffixes": 32
+      }
+    }
+  },
+  {
+    "step": 200,
+    "consecutive": 1,
+    "teacher_forced_action_ce": 0.011331626663117536,
+    "teacher_forced_ce": 0.011251339289758886,
+    "free_running_token_accuracy": 1.0,
+    "free_running_exact_suffix": 1.0,
+    "repaired": 32,
+    "damaged": 0,
+    "wrong_first": 0,
+    "blocks": 64,
+    "mean_original_progress": 9.609375,
+    "mean_edited_progress": 15,
+    "mean_union_progress": 15,
+    "copy_actions": 617,
+    "editable_tokens": 896,
+    "scope": "Saved-context coverage; no native acceptance or full-generation speedup",
+    "groups": {
+      "source/HuggingFaceH4/ultrachat_200k": {
+        "blocks": 32,
+        "mean_original_progress": 8.9375,
+        "mean_edited_progress": 15,
+        "repaired": 16,
+        "damaged": 0,
+        "prefix_positions_gained": 194,
+        "prefix_positions_lost": 0,
+        "exact_suffixes": 32
+      },
+      "kind/preservation": {
+        "blocks": 32,
+        "mean_original_progress": 15,
+        "mean_edited_progress": 15,
+        "repaired": 0,
+        "damaged": 0,
+        "prefix_positions_gained": 0,
+        "prefix_positions_lost": 0,
+        "exact_suffixes": 32
+      },
+      "first/correct": {
+        "blocks": 64,
+        "mean_original_progress": 9.609375,
+        "mean_edited_progress": 15,
+        "repaired": 32,
+        "damaged": 0,
+        "prefix_positions_gained": 345,
+        "prefix_positions_lost": 0,
+        "exact_suffixes": 64
+      },
+      "source/openai/gsm8k": {
+        "blocks": 32,
+        "mean_original_progress": 10.28125,
+        "mean_edited_progress": 15,
+        "repaired": 16,
+        "damaged": 0,
+        "prefix_positions_gained": 151,
+        "prefix_positions_lost": 0,
+        "exact_suffixes": 32
+      },
+      "kind/repairable": {
+        "blocks": 32,
+        "mean_original_progress": 4.21875,
+        "mean_edited_progress": 15,
+        "repaired": 32,
+        "damaged": 0,
+        "prefix_positions_gained": 345,
+        "prefix_positions_lost": 0,
+        "exact_suffixes": 32
+      }
+    }
+  },
+  {
+    "step": 225,
+    "consecutive": 2,
+    "teacher_forced_action_ce": 0.006214215345348099,
+    "teacher_forced_ce": 0.006174304239851024,
+    "free_running_token_accuracy": 1.0,
+    "free_running_exact_suffix": 1.0,
+    "repaired": 32,
+    "damaged": 0,
+    "wrong_first": 0,
+    "blocks": 64,
+    "mean_original_progress": 9.609375,
+    "mean_edited_progress": 15,
+    "mean_union_progress": 15,
+    "copy_actions": 617,
+    "editable_tokens": 896,
+    "scope": "Saved-context coverage; no native acceptance or full-generation speedup",
+    "groups": {
+      "source/HuggingFaceH4/ultrachat_200k": {
+        "blocks": 32,
+        "mean_original_progress": 8.9375,
+        "mean_edited_progress": 15,
+        "repaired": 16,
+        "damaged": 0,
+        "prefix_positions_gained": 194,
+        "prefix_positions_lost": 0,
+        "exact_suffixes": 32
+      },
+      "kind/preservation": {
+        "blocks": 32,
+        "mean_original_progress": 15,
+        "mean_edited_progress": 15,
+        "repaired": 0,
+        "damaged": 0,
+        "prefix_positions_gained": 0,
+        "prefix_positions_lost": 0,
+        "exact_suffixes": 32
+      },
+      "first/correct": {
+        "blocks": 64,
+        "mean_original_progress": 9.609375,
+        "mean_edited_progress": 15,
+        "repaired": 32,
+        "damaged": 0,
+        "prefix_positions_gained": 345,
+        "prefix_positions_lost": 0,
+        "exact_suffixes": 64
+      },
+      "source/openai/gsm8k": {
+        "blocks": 32,
+        "mean_original_progress": 10.28125,
+        "mean_edited_progress": 15,
+        "repaired": 16,
+        "damaged": 0,
+        "prefix_positions_gained": 151,
+        "prefix_positions_lost": 0,
+        "exact_suffixes": 32
+      },
+      "kind/repairable": {
+        "blocks": 32,
+        "mean_original_progress": 4.21875,
+        "mean_edited_progress": 15,
+        "repaired": 32,
+        "damaged": 0,
+        "prefix_positions_gained": 345,
+        "prefix_positions_lost": 0,
+        "exact_suffixes": 32
+      }
+    }
+  },
+  {
+    "step": 250,
+    "consecutive": 3,
+    "teacher_forced_action_ce": 0.004462125154012548,
+    "teacher_forced_ce": 0.004434533604320937,
+    "free_running_token_accuracy": 1.0,
+    "free_running_exact_suffix": 1.0,
+    "repaired": 32,
+    "damaged": 0,
+    "wrong_first": 0,
+    "blocks": 64,
+    "mean_original_progress": 9.609375,
+    "mean_edited_progress": 15,
+    "mean_union_progress": 15,
+    "copy_actions": 617,
+    "editable_tokens": 896,
+    "scope": "Saved-context coverage; no native acceptance or full-generation speedup",
+    "groups": {
+      "source/HuggingFaceH4/ultrachat_200k": {
+        "blocks": 32,
+        "mean_original_progress": 8.9375,
+        "mean_edited_progress": 15,
+        "repaired": 16,
+        "damaged": 0,
+        "prefix_positions_gained": 194,
+        "prefix_positions_lost": 0,
+        "exact_suffixes": 32
+      },
+      "kind/preservation": {
+        "blocks": 32,
+        "mean_original_progress": 15,
+        "mean_edited_progress": 15,
+        "repaired": 0,
+        "damaged": 0,
+        "prefix_positions_gained": 0,
+        "prefix_positions_lost": 0,
+        "exact_suffixes": 32
+      },
+      "first/correct": {
+        "blocks": 64,
+        "mean_original_progress": 9.609375,
+        "mean_edited_progress": 15,
+        "repaired": 32,
+        "damaged": 0,
+        "prefix_positions_gained": 345,
+        "prefix_positions_lost": 0,
+        "exact_suffixes": 64
+      },
+      "source/openai/gsm8k": {
+        "blocks": 32,
+        "mean_original_progress": 10.28125,
+        "mean_edited_progress": 15,
+        "repaired": 16,
+        "damaged": 0,
+        "prefix_positions_gained": 151,
+        "prefix_positions_lost": 0,
+        "exact_suffixes": 32
+      },
+      "kind/repairable": {
+        "blocks": 32,
+        "mean_original_progress": 4.21875,
+        "mean_edited_progress": 15,
+        "repaired": 32,
+        "damaged": 0,
+        "prefix_positions_gained": 345,
+        "prefix_positions_lost": 0,
+        "exact_suffixes": 32
+      }
+    }
+  }
+]
