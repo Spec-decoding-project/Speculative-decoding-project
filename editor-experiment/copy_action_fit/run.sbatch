@@ -12,7 +12,7 @@
 set -euo pipefail
 cd "${SLURM_SUBMIT_DIR:?Submit from project root}"
 project_dir="$PWD"
-source_dir="$project_dir/research/copy-action-fit-20261120"
+source_dir="$project_dir/research/copy-action-fit-20261120-r2"
 output_dir="$project_dir/research/copy-action-run-20261120"
 original_dir="$project_dir/research/full-corpus-run-20261117"
 install_dir=/scratch0/fpajak-vllm034-Ry21jsII

@@ -40,7 +40,11 @@ selects the highest-scoring action, not the highest marginal token probability.
   induced-token CE below 0.05. No development-based checkpoint selection.
 
 The unchanged baseline package is vendored from the previous full-run sources;
-the sole refactor exposes normalized decoder features before the tied readout.
+the sole model refactor exposes normalized decoder features before the tied readout.
+The old generic CLI also reads its revision from a frozen source manifest when
+running outside a Git checkout. Its feature-bank test helpers are included in the
+bundle. These packaging requirements were caught by preflight before training;
+the replacement job retains the original start time and remaining budget.
 Before any update, all 2,048 saved development proposals must replay exactly from
 the original selected checkpoint in the pinned GPU environment. Loss agreement
 tolerance is 1e-5. Tests cover COPY alignment, actual-token feedback, causal masks,

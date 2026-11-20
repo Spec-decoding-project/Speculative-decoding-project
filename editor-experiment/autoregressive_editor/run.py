@@ -107,7 +107,14 @@ def main():
     else:
         trainer = Trainer(config, spec['conditioning'], seed=spec['seed'], lr=spec['learning_rate'], device=args.device)
     args.output.mkdir(parents=True, exist_ok=False)
-    revision = subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip()
+    source_root = Path(__file__).resolve().parents[1]
+    manifest = source_root/'source-manifest.json'
+    if manifest.exists():
+        revision = json.loads(manifest.read_text())['git_commit']
+        if len(revision) != 40 or any(c not in '0123456789abcdef' for c in revision):
+            raise ValueError('Invalid frozen source revision')
+    else:
+        revision = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=source_root, text=True).strip()
     write(args.output / 'run.json', dict(experiment=spec, arguments={k: str(v) if isinstance(v, Path) else v for k, v in vars(args).items()},
                                        python=platform.python_version(), torch=str(torch.__version__), git_revision=revision,
                                        device=args.device, parameters=sum(p.numel() for p in trainer.model.parameters()),
