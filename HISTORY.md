@@ -447,3 +447,26 @@ cost, with the assumption of fixed noneditor round work made explicit.
 The prepared tron59/tron61 hosts lack 32 GiB allocatable memory. CPU-only staging
 allocation 8580160 copies the identical environment and original generator to
 tron50; packages and checkpoint hashes must pass before GPU execution.
+
+Implementation tests: 27 passed locally. Source commit
+`30f1850`, archive SHA256
+`7639be0e3517dc5558bb89109479cf00660b30c6764bb6bab9e6c02ba2eb564c`.
+CPU staging completed successfully and its allocation was released. Native job
+**8580225** submitted to tron50; outputs are written per request under
+`research/native-best-8580225/benchmark/records/`. The job is self-contained and
+continues if SSH disconnects. All later report audits are CPU-only.
+
+**Timing-accounting observation during the run (no GPU rerun):** early records
+show ~8.45 ms of post-return drain/RPC for unedited DFlash versus ~0.38 ms for the
+edited path. Synchronization inside the editor can wait for preceding drafter
+kernels; therefore its inclusive callback wall time must not be labeled entirely
+as incremental editor computation. The requested primary break-even calculation
+uses the observed complete-round difference instead: if baseline/edited round
+costs are B/E and baseline/edited visible commits are c0/c1, the affordable added
+cost is B*(c1/c0-1), and the extra commits needed at measured edited-round cost
+are c0*(E/B-1). These quantities follow directly from measured decode throughput.
+The raw runner's callback-based estimate is retained for provenance but is not
+the headline economics. A separate CPU audit reconstructs counts and this
+calculation from raw records; its regression check reproduces the user's
+50 ms /3.4% example (1.7 ms affordable). No data, model, timing or sampling setting
+was changed during the GPU run.

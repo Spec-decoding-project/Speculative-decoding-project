@@ -36,3 +36,15 @@ def test_economics_uses_actual_commits_and_all_editor_calls():
     assert result['measured_editor_ms_per_round']==pytest.approx(190/18)
     assert result['required_extra_committed_tokens_per_round']==pytest.approx(3.6*(190/18)/50)
     assert result['latency_increase_percent']==pytest.approx(100*(1.3/1.2-1))
+
+
+def test_measured_round_economics_matches_throughput_and_user_example():
+    from refinement_research.native_best_audit import round_economics
+    result=round_economics(50.,56.73,4.,4.*1.034)
+    assert result['affordable_added_ms']==pytest.approx(1.7)
+    assert result['measured_added_round_ms']==pytest.approx(6.73)
+    assert result['required_extra_committed_tokens']==pytest.approx(4*6.73/50)
+    assert result['required_total_committed_tokens']/56.73==pytest.approx(4/50)
+    assert result['decode_speedup']<1
+    loss=round_economics(50.,55.,4.,3.9)
+    assert loss['affordable_added_ms']<0
