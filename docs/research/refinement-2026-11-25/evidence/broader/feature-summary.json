@@ -1,0 +1,20 @@
+{
+  "fit": {
+    "blocks": 9392,
+    "positions": 131488,
+    "eligible_decisions": 8300,
+    "copy_targets": 1170,
+    "generate_targets": 7130,
+    "feature_dimensions": 264,
+    "rows_sha256": "8527af5b2b4e610217cba9b702bf78cea3d7019d7e5e4add1a9ea575bed36ded"
+  },
+  "calibration": {
+    "blocks": 512,
+    "positions": 7168,
+    "eligible_decisions": 289,
+    "copy_targets": 101,
+    "generate_targets": 188,
+    "feature_dimensions": 264,
+    "rows_sha256": "1a356888d96ee15f5e282fd979c34129f8d6eff9e6fb9fe0f7411ae0fb7f815e"
+  }
+}

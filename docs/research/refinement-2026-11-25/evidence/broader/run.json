@@ -1,0 +1,65 @@
+{
+  "schema": "frozen-generator-gates-v1",
+  "selection": {
+    "schema": "broader-gates-v1",
+    "bank_sha256": "c7f92fae5609137510a198297a31b5178c70c413f263f89f04560b98aa6bbb3d",
+    "fit_blocks": 9392,
+    "fit_prompts": 9392,
+    "calibration_blocks": 512,
+    "development_blocks": 2048,
+    "development_prompts": 512,
+    "fit_sha256": "8527af5b2b4e610217cba9b702bf78cea3d7019d7e5e4add1a9ea575bed36ded",
+    "calibration_sha256": "1a356888d96ee15f5e282fd979c34129f8d6eff9e6fb9fe0f7411ae0fb7f815e",
+    "counts": {
+      "preservation/HuggingFaceH4/ultrachat_200k": 600,
+      "preservation/openai/gsm8k": 600,
+      "repairable/HuggingFaceH4/ultrachat_200k": 4096,
+      "repairable/openai/gsm8k": 4096
+    },
+    "group_weights": {
+      "preservation/HuggingFaceH4/ultrachat_200k": 3.9133333333333336,
+      "preservation/openai/gsm8k": 3.9133333333333336,
+      "repairable/HuggingFaceH4/ultrachat_200k": 0.5732421875,
+      "repairable/openai/gsm8k": 0.5732421875
+    },
+    "parent_complete_sha256": "eef4b1ec51745412d02cfd3bbcb125e48eb7604d7f978c80480ff111ec241a6b",
+    "final_test_loaded": false
+  },
+  "initial_checkpoint_sha256": "c79b8c59c1e2cf73a7adf7aa9738b1b273779d330fe32f8d2c4a15fd56b7e8d2",
+  "generator_weights_sha256": "8babb2bfe3f4c11ef283312e22ccd2e20878438c96957302ff2c462748bbd382",
+  "kinds": [
+    "scores",
+    "linear",
+    "mlp"
+  ],
+  "seed": 0,
+  "lr": 0.001,
+  "weight_decay": 0.01,
+  "clip_norm": 1,
+  "batch_size": 256,
+  "max_updates": 2000,
+  "max_epochs": 200,
+  "calibration_interval_epochs": 5,
+  "patience_epochs": 50,
+  "objective": "Reachable exclusive candidate choices, weighted by remaining attainable prefix",
+  "group_balancing": true,
+  "selection_rule": "Maximum internal-calibration mean prefix, then minimum weighted decision CE",
+  "source_hashes": {
+    "__init__.py": "b8fe0a0b2f204f16c9cb1320b6ea1c652616cb029a9a393275563996c746f370",
+    "broader_data.py": "8569483c77394f7221bfe670781fdf0344038fa62a770bfa8ff27b3a8a6354e8",
+    "diagnose_copy.py": "e0927b64f88792a9df1301254e3f813702ab9ba8eb32b866093e9e57807f57d3",
+    "gate.py": "b2e9678f622c3de96aea9f1319249ebad2bbaa28bb0df60b5f9126f46ef38e86",
+    "gate_data.py": "6bcc767197f25a2ca9a24f5c0a2d57adfeaf8de50a759b935d40e9b9c838d360",
+    "short_edits.py": "d11be22c7ba5fe5cb0994aadbac608f229526815bb578d2852e4283a0c8dbaa0",
+    "test_broader_data.py": "8641abe3b599fcca4e86c818f7359e438ecd80b99311bce4cf05514752317831",
+    "test_diagnostic.py": "fd284c656f9ea3801399421ee875ee86f6c6bc07126c37a7d4dc38d75a6c1410",
+    "test_gate.py": "6916a1a1df246e2550a75a973647973a27bfb68d59930241b4cd833d81db42f2",
+    "test_gate_training.py": "d5a27065ad3b9fadc5fd00e07cbfe2cb888d0104e3a85eed7b1d8a4ac1a7cc19",
+    "test_short_edits.py": "d7c532f4e38b5651da6895b82ad1193a346cfde710efbe0268cccbf83befb6cc",
+    "train_gates.py": "8c6e462b2261c07ddf56ae409ff328abefd29729cc6695ed2e25ac07ee6a1703"
+  },
+  "torch": "2.14.0+cu130",
+  "cuda": "13.0",
+  "gpu": "NVIDIA RTX A5000",
+  "final_test_loaded": false
+}

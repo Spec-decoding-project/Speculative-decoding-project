@@ -1,0 +1,105 @@
+{
+  "passed": true,
+  "artifacts_verified": 42,
+  "files": {
+    "budget.json": "ccdc446fe880f5fe83e4e7d891ace8e805de16de672f9ab38662dddc91e41dda",
+    "calibration-examples.json": "f1dc625bb0cc67c6851ac5783969668153fea8087b934af61eb1bd19091e7832",
+    "complete.json": "2f877658d94db743cb093edcd7b6706615ae45526b764bcc99852e4c1fa812fb",
+    "exit-status-8579313.txt": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "feature-summary.json": "2647d49207c1cc2f4d113c4d6bb64825f041874243246747a1b81a5e0c784408",
+    "features.pt": "1dc80d3b51c9f38d2e63a90cdce4cd93dda98ff6d15440961af8bbd6f637da1c",
+    "fit-examples.json": "94ee67d0c26785aacaf623d077372a4442c3eebb1a875c3b321d4fae0a9b34d5",
+    "integration-controls.json": "7d4519c850beed5e57113330f8d6d737520eda4a7396a4b98ccf8ef4eec41495",
+    "linear/audit.json": "34db2ec8a52b99b15e9f5c340effa7aa559d09a7386566d1d05cfbbc285d42c0",
+    "linear/best.pt": "b6f1c27a312a829efedc1db2ac42091f3702ad7d586f9025033508ab2c606882",
+    "linear/calibration-history.json": "2a804d52782a62d113f7347bdc5f90816ab3ac3717623ac39fd3ff769ff8ef48",
+    "linear/calibration.json": "969f0dd6c20857f300de2e0c84777cd23ba87bbd78ff266b6889ac51df9149d8",
+    "linear/complete.json": "01f47916fc3776d34baa00c5dff9333baa2624acf627bcb2b6fc69fe2bf6e1a9",
+    "linear/development.json": "88122ef1bbe641212a44dcc2d1a542c7edefc25228580f5995af0bd39ed11de1",
+    "linear/latest.pt": "fe887d0cd9f4d69cea9372406646b2f2c46b5375ef535dbccd6eb52b53894a06",
+    "linear/timing.json": "74c02acd731d5b4062804faf26ef2e1de986a980f1a970d096dfa812372a72c4",
+    "linear/updates-1795659686744795863.jsonl": "081a508a4e5540510daf86e8580a013fdc43cae3edab4473eeb8beae61ef1922",
+    "mlp/audit.json": "fdf6823619ff0c5760825a4bac1c2cb271eb0e1cc28e5932af3065b0a0d62389",
+    "mlp/best.pt": "f0d3ecd4d731fae1c89f298a47dcbe3e2dd0ffb16d6334e6dced72d31f51fb97",
+    "mlp/calibration-history.json": "e49d26a7defae185a04abff0611d3d116bf7d154bc6b23c372c10042d2a063fc",
+    "mlp/calibration.json": "78bf277f832031c9f9533dfaf040694c98233becc9e86b88d16f25d2751486cb",
+    "mlp/complete.json": "1aa13f8f55cf2e36c817108b6a485db41dc0a39dfd36819fd78370d0e419f14a",
+    "mlp/development.json": "935f21d7a098a21d9be70fc121486c24353c75cb25c2f59b28e11384a0f4b957",
+    "mlp/latest.pt": "5c8f171fafa4d96162cf609bf3c1f9bdd5c60fc8b8092c80c8803f6622a13ab2",
+    "mlp/timing.json": "392b726bbc95614af64a13be6f30bab17d89943fe8c45db333ad4d632e44208a",
+    "mlp/updates-1795659787904480740.jsonl": "26dc6c1b3152251639182f776de28b988015a4f3ae56d3377dbd06783a778bff",
+    "nvidia-smi-8579313.txt": "19a46e13ed54b393d966fca362c918dff5a76f27985eedc8cb6f862313a76f13",
+    "packages-8579313.txt": "8a42fd1d3947cf2fc343e2a0c5d77c933622895453df82d3c2f8a7533e2e2c73",
+    "pip-check-8579313.txt": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09",
+    "progress.json": "6501e33ca95fdd4ea3d1ba3c68ac9a51161f78716da98ee046a218ce34c12850",
+    "run.json": "8542fd8eea37193066080b4e879f14cf092f39949615f62f7f6ba449f1795e3c",
+    "scores/audit.json": "cb8698bc090653ab0069c02c69b9bbea800dfcc4e7ef95ced6e0a93edbdac84e",
+    "scores/best.pt": "2ff5ce7a45fcb33b435748d05a00dd3047d780e93a7f770eca1c0cf39f94dc5b",
+    "scores/calibration-history.json": "de678a10f8b2a83d83a2afe3e0710fe7ad05372ab88a1087857a2a15ab02164f",
+    "scores/calibration.json": "cde5da0ff58116c9870800b5e44628f3a61e2aacda956ae3c9da67c28dc2bd42",
+    "scores/complete.json": "34bab06bd55428084629965df97af8f1e83cea6695701c4fe83506953b57bb6c",
+    "scores/development.json": "df4bcd407de4363d58bd8354c4892d5d141fb31bb0cb3b9c197eaaf2f4be6d49",
+    "scores/latest.pt": "9d5fecf9efc1d3ffdc5370d0160350a585c1f43673745db522b337d25ff03b15",
+    "scores/timing.json": "d9881b3ab1d1f3f22fbee6f625a62eac183c6db35d415c2625f96d99e457318d",
+    "scores/updates-1795659585405216754.jsonl": "3eaf270ca82173cc6bfbc49fa08a6673a7f3fd430eca2a93f29f082cd7b1dc3b",
+    "selection.json": "64ee0783f852581e9f8317908188eb53c382cce956f09c86b409b5c7243cfcab",
+    "tests-8579313.txt": "ca9ce06712dab333a83daa74b35ed2a0a35018f54a3f77dffb30253085ea23fc"
+  },
+  "arms": {
+    "scores": {
+      "audit": "exactly matches remote",
+      "update_journal": "contiguous",
+      "checkpoint_sha256": "2ff5ce7a45fcb33b435748d05a00dd3047d780e93a7f770eca1c0cf39f94dc5b",
+      "selected_epoch": 60
+    },
+    "linear": {
+      "audit": "exactly matches remote",
+      "update_journal": "contiguous",
+      "checkpoint_sha256": "b6f1c27a312a829efedc1db2ac42091f3702ad7d586f9025033508ab2c606882",
+      "selected_epoch": 60
+    },
+    "mlp": {
+      "audit": "exactly matches remote",
+      "update_journal": "contiguous",
+      "checkpoint_sha256": "f0d3ecd4d731fae1c89f298a47dcbe3e2dd0ffb16d6334e6dced72d31f51fb97",
+      "selected_epoch": 30
+    }
+  },
+  "calibration_feature_cache": "bitwise identical to prior run",
+  "balanced_objective_weights": "independently verified",
+  "larger_minus_smaller": {
+    "scores": {
+      "mean_delta": 0.03369140625,
+      "ci95": [
+        0.0078125,
+        0.0625
+      ],
+      "prompts": 512,
+      "bootstrap_draws": 10000,
+      "seed": 0,
+      "scope": "Exploratory development comparison, paired resampling by prompt"
+    },
+    "linear": {
+      "mean_delta": -0.02001953125,
+      "ci95": [
+        -0.0751953125,
+        0.03369140625
+      ],
+      "prompts": 512,
+      "bootstrap_draws": 10000,
+      "seed": 0,
+      "scope": "Exploratory development comparison, paired resampling by prompt"
+    },
+    "mlp": {
+      "mean_delta": -0.04150390625,
+      "ci95": [
+        -0.1025390625,
+        0.017578125
+      ],
+      "prompts": 512,
+      "bootstrap_draws": 10000,
+      "seed": 0,
+      "scope": "Exploratory development comparison, paired resampling by prompt"
+    }
+  }
+}

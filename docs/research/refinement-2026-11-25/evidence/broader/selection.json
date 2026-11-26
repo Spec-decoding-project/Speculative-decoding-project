@@ -1,0 +1,25 @@
+{
+  "schema": "broader-gates-v1",
+  "bank_sha256": "c7f92fae5609137510a198297a31b5178c70c413f263f89f04560b98aa6bbb3d",
+  "fit_blocks": 9392,
+  "fit_prompts": 9392,
+  "calibration_blocks": 512,
+  "development_blocks": 2048,
+  "development_prompts": 512,
+  "fit_sha256": "8527af5b2b4e610217cba9b702bf78cea3d7019d7e5e4add1a9ea575bed36ded",
+  "calibration_sha256": "1a356888d96ee15f5e282fd979c34129f8d6eff9e6fb9fe0f7411ae0fb7f815e",
+  "counts": {
+    "preservation/HuggingFaceH4/ultrachat_200k": 600,
+    "preservation/openai/gsm8k": 600,
+    "repairable/HuggingFaceH4/ultrachat_200k": 4096,
+    "repairable/openai/gsm8k": 4096
+  },
+  "group_weights": {
+    "preservation/HuggingFaceH4/ultrachat_200k": 3.9133333333333336,
+    "preservation/openai/gsm8k": 3.9133333333333336,
+    "repairable/HuggingFaceH4/ultrachat_200k": 0.5732421875,
+    "repairable/openai/gsm8k": 0.5732421875
+  },
+  "parent_complete_sha256": "eef4b1ec51745412d02cfd3bbcb125e48eb7604d7f978c80480ff111ec241a6b",
+  "final_test_loaded": false
+}

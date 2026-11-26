@@ -103,31 +103,36 @@ class GateEditor(TokenEditor):
         tokens = torch.tensor([ids], dtype=torch.long, device=device)
         types = torch.tensor([segments], dtype=torch.long, device=device)
         source = torch.tensor([draft], dtype=torch.long, device=device)
-        metadata = dict(kv=None, original=source, seed=len(ids)-1)
-        past, emitted, actions = metadata, [], []
         was_training = self.training
         self.eval()
         try:
-            for position in range(2, 2+limit):
-                result = self.readout(tokens, types, past=past if cached else metadata,
-                                      use_cache=cached, logit_start=tokens.shape[1]-1)
-                copying = result['gate'] >= 0
-                action = torch.where(copying, self.config.vocab_size, result['best'])
-                chosen = torch.where(copying, source[:, position:position+1], result['best'])
-                emitted.append(chosen)
-                if record_actions:
-                    actions.append(action)
-                if cached:
-                    tokens, types, past = chosen, torch.full_like(chosen, 2), result['cache']
-                else:
-                    tokens = torch.cat((tokens, chosen), dim=1)
-                    types = torch.cat((types, torch.full_like(chosen, 2)), dim=1)
+            proposal, actions = self.decode_tensors(tokens,types,source,limit=limit,cached=cached,
+                                                    record_actions=record_actions)
         finally:
             self.train(was_training)
-        proposal = list(draft[:2])+torch.cat(emitted, dim=1).flatten().tolist()+list(draft[2+limit:])
-        recorded = (torch.cat(actions, dim=1).flatten().tolist()+
-                    [self.config.vocab_size]*(len(draft)-2-limit)) if actions else []
-        return proposal, recorded
+        return proposal.flatten().tolist(), actions.flatten().tolist() if actions is not None else []
+
+    @torch.no_grad()
+    def decode_tensors(self,tokens,types,source,*,limit=14,cached=True,record_actions=False):
+        """Device-only decode for fixed-shape capture; caller owns input buffers."""
+        metadata=dict(kv=None,original=source,seed=tokens.shape[1]-1)
+        past,emitted,actions=metadata,[],[]
+        for position in range(2,2+limit):
+            result=self.readout(tokens,types,past=past if cached else metadata,
+                                use_cache=cached,logit_start=tokens.shape[1]-1)
+            copying=result['gate']>=0
+            chosen=torch.where(copying,source[:,position:position+1],result['best'])
+            emitted.append(chosen)
+            if record_actions:actions.append(torch.where(copying,self.config.vocab_size,result['best']))
+            if cached:
+                tokens,types,past=chosen,torch.full_like(chosen,2),result['cache']
+            else:
+                tokens=torch.cat((tokens,chosen),dim=1)
+                types=torch.cat((types,torch.full_like(chosen,2)),dim=1)
+        proposal=torch.cat((source[:,:2],*emitted,source[:,2+limit:]),dim=1)
+        recorded=(torch.cat((*actions,torch.full_like(source[:,2+limit:],self.config.vocab_size)),dim=1)
+                  if record_actions else None)
+        return proposal,recorded
 
     def propose(self, prefix, draft, conditioning='draft', *, cached=True, max_edits=None):
         return self.propose_actions(prefix, draft, conditioning, cached=cached, record_actions=False,

@@ -233,7 +233,43 @@ This is an exploratory learning-curve comparison, not independent confirmation.
 pinned GPU tests, selection/provenance checks, extraction, all three gate fits and
 evaluation automatically. Output: `research/broader-gates-20261125/`. Source archive
 SHA256: `b018c78513e243bf0b8088010c42d6d34234135f08021283f78f42848aee00ab`.
-Results pending.
+**Result:** job completed in **10m33s**, exit 0. All three arms reached 2,000
+updates. Mean development prefixes are **3.6895 / 3.6797 / 3.6353** for
+score/linear/nonlinear gates. Relative to their smaller fits, changes are
++0.0337 / −0.0200 / −0.0415; the latter two intervals span zero. None beats the
+earlier smaller linear fit. The larger bank supplies 8,300 meaningful decisions,
+but data expansion alone has not produced a material gain. All GPU checks and
+independent audits passed, including bitwise-identical calibration features and
+exact group-weight reconstruction. All artifacts are backed up. [Detailed results](docs/research/refinement-2026-11-25/BROADER_DATA.md).
+
+## November 25, approach 5: test whether GPU graph replay cuts the full-loop cost
+
+**Evidence:** broader gate training helps one arm but worsens the other two; all
+full-loop variants still cost about 26 ms. Shortening the loop mostly destroys
+the gain. Test execution overhead before another data or capacity increase.
+
+**Predeclared method:** freeze the broader-fit linear gate and generator. Separate
+tensor-only decoding from host input/output handling, and capture the exact
+fourteen-step computation in a CUDA graph for each tested prefix length. Follow
+[PyTorch's capture workflow](https://docs.pytorch.org/docs/stable/notes/cuda.html#cuda-graphs):
+three warmup iterations on a side stream, persistent input/output buffers, and
+in-place input copies before replay. No arithmetic precision or weights change.
+This is a fixed-shape prototype, not a deployed variable-length graph cache.
+
+**Comparison and checks:** use the same 64 fixed development timing blocks. Require
+eager output to match saved parent output, cached/full agreement, graph agreement
+on original and altered proposal inputs, and restoration after the altered input.
+Use two warmups and ten interleaved eager/graph timing repeats per block. Include
+CPU input construction, transfers and returned output in warm call time. Report
+cold graph preparation time and extra live allocation separately. Keep every
+repeat, hash checks and any failed controls. Attempt a three-call eager CUDA/CPU
+profile to investigate GPU kernel time; missing profiler support will be explicit.
+
+One A5000/four CPUs/5 GiB, twenty minutes, no optimizer updates or target inference.
+A warm latency reduction would support execution engineering; it would not prove
+native generation speedup or amortize graph preparation automatically.
+
+**Status:** predeclared; implementation and tests in progress, no job submitted.
 
 ## How to read future entries
 

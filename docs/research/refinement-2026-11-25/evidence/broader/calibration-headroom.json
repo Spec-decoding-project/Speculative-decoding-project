@@ -1,0 +1,18 @@
+{
+  "fit": {
+    "blocks": 1536,
+    "original_prefix": 9.397786140441895,
+    "oracle_prefix": 10.005859375,
+    "maximum_mean_gain": 0.6080729365348816,
+    "blocks_with_oracle_gain": 261,
+    "scope": "Reference-informed upper bound on the fixed two-candidate choices; not an inference policy or development result"
+  },
+  "calibration": {
+    "blocks": 512,
+    "original_prefix": 9.458984375,
+    "oracle_prefix": 10.04296875,
+    "maximum_mean_gain": 0.583984375,
+    "blocks_with_oracle_gain": 77,
+    "scope": "Reference-informed upper bound on the fixed two-candidate choices; not an inference policy or development result"
+  }
+}

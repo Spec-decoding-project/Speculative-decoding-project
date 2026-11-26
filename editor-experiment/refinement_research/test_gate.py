@@ -83,3 +83,17 @@ def test_limited_edits_match_full_causal_prefix_and_preserve_remainder(kind):
         assert limited_actions==actions[:limit]+[20]*(14-limit)
     for invalid in (-1,15,True,1.5):
         with pytest.raises(ValueError):editor.propose(prefix,draft,max_edits=invalid)
+
+
+def test_tensor_decode_needs_no_host_scalar_or_list_reads(monkeypatch):
+    from autoregressive_editor.data import condition
+    editor=model();prefix,draft=[1,2],[4,5,6,7]
+    expected,expected_actions=editor.propose_actions(prefix,draft)
+    ids,segments=condition(prefix,draft,'draft')
+    def forbidden(*args,**kwargs):raise AssertionError('Host read inside device-only decode')
+    with monkeypatch.context() as patch:
+        patch.setattr(torch.Tensor,'item',forbidden)
+        patch.setattr(torch.Tensor,'tolist',forbidden)
+        result,actions=editor.decode_tensors(torch.tensor([ids]),torch.tensor([segments]),
+                                             torch.tensor([draft]),limit=2,record_actions=True)
+    assert result.flatten().tolist()==expected and actions.flatten().tolist()==expected_actions
