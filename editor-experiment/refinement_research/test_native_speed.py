@@ -2,6 +2,7 @@ import pytest
 
 from refinement_research.native_speed import compare, select, summarize
 from refinement_research.native_speed_worker import editor_input
+from refinement_research.editor_kernels import editor_kernels
 
 
 def test_native_anchor_is_excluded_from_context_and_preserved_in_draft():
@@ -35,8 +36,29 @@ def test_summary_uses_paired_prompt_medians_and_reports_slowdown():
         for mode,seconds in [('off',2.),('editor',3.)]:
             for repeat in range(5):
                 rows.append(dict(phase='timing',length_group=group,prompt_id=group,mode=mode,
+                    precision='fp32',
                     seconds=seconds if repeat<4 else 99.,generated=dict(tokens=[1]*64),
                     observed=dict(rounds=[{}]*10,editor_ms=[6.7],peak_allocated_bytes=100)))
     result=summarize(rows)
     assert result['groups']['all']['speedup']==pytest.approx(2/3)
     assert result['groups']['short']['total_median_seconds']==dict(off=2.,editor=3.)
+
+
+def test_scoped_dispatch_restores_target_after_editor_exception():
+    class Library:
+        destroyed = False
+        def _destroy(self):self.destroyed=True
+    class Invariant:
+        _batch_invariant_MODE = True
+        _batch_invariant_LIB = Library()
+        def enable_batch_invariant_mode(self):
+            assert not self._batch_invariant_MODE
+            self._batch_invariant_MODE=True
+            self._batch_invariant_LIB=Library()
+    state=Invariant();old=state._batch_invariant_LIB
+    with pytest.raises(ValueError,match='editor failure'):
+        with editor_kernels('standard',state):
+            assert old.destroyed and not state._batch_invariant_MODE
+            raise ValueError('editor failure')
+    assert state._batch_invariant_MODE and state._batch_invariant_LIB is not old
+    with editor_kernels('invariant',state):assert state._batch_invariant_MODE

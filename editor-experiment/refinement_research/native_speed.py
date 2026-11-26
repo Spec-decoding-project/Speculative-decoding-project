@@ -7,6 +7,7 @@ import statistics
 import subprocess
 import sys
 import time
+import shutil
 
 from copy_action_fit.data import digest, save, sha
 
@@ -73,8 +74,10 @@ def child(args):
         result = dict(request_id=output.request_id, prompt=list(output.prompt_token_ids),
             tokens=list(output.outputs[0].token_ids), finish_reason=output.outputs[0].finish_reason)
         if audit:
-            audited = audit_chunk([p], [result], observed['native'])
+            audited = audit_chunk([p], [result], observed['native'],
+                                  hashes=observed['kernels']=='standard')
             observed['audit'] = dict(positions_checked=audited['positions_checked'],
+                                     aligned_hashes=audited['aligned_hashes'],
                                      selected_blocks=len(audited['rows']))
         row = dict(prompt_id=p['id'], length_group=p['length_group'], prompt_tokens=len(p['prompt']),
                    mode=mode, precision=observed['precision'], seconds=seconds,
@@ -102,14 +105,19 @@ def child(args):
     refs = json.loads((args.output/'reference-results.json').read_text())
     initial = args.project/'research/full-corpus-run-20261117/training/draft/best.pt'
     gate = args.project/'research/broader-gates-20261125/linear/best.pt'
-    load = llm.collective_rpc('speed_load', args=(str(initial),str(gate),'fp32'))[0]
+    load = llm.collective_rpc('speed_load', args=(str(initial),str(gate),args.precision,args.editor_kernels))[0]
     save(args.output/'editor-loaded.json', load)
     # Correctness precedes any interpretation of benchmark timing.
     for p, ref in zip(prompts, refs):
         full = p['prompt']+ref['generated']['tokens']
+        baseline_hashes = None
         for mode in ('off','identity','editor'):
             row = generate(p, mode, audit=True, reference=full, clear=mode=='editor')
             compare(ref['generated'], row['generated'])
+            hashes = row['observed']['audit']['aligned_hashes']
+            if mode == 'off':baseline_hashes = hashes
+            elif hashes != baseline_hashes:
+                raise ValueError('Target full logits changed after editor dispatch scope')
             checkpoint(row, 'correctness')
     p, ref = prompts[0], refs[0]
     full = p['prompt']+ref['generated']['tokens']
@@ -127,7 +135,7 @@ def child(args):
         compare(ref['generated'], row['generated'])
         checkpoint(row, 'stop-fixture')
     save(args.output/'correctness-passed.json', dict(passed=True, prompts=8,
-        controls=['original','identity','fp32_editor','all_accepted','first_rejected','budgets_1_2_17','stop_token'],
+        controls=['original','identity',args.precision+'_editor','all_accepted','first_rejected','budgets_1_2_17','stop_token'],
         scope='Replacement only; native cache progression checked by successive exact greedy prefixes/output. No union claim.'))
 
     # Per-prompt empty-cache run includes graph creation. Warm paired runs follow.
@@ -146,11 +154,12 @@ def child(args):
                 checkpoint(row, 'timing')
 
     # Precision comparison is separate, after the fixed FP32 timing candidate.
-    llm.collective_rpc('speed_load', args=(str(initial),str(gate),'bf16'))
-    for p, ref in zip(prompts, refs):
-        row = generate(p, 'editor', audit=True, reference=p['prompt']+ref['generated']['tokens'], clear=True)
-        compare(ref['generated'], row['generated'])
-        checkpoint(row, 'bf16-correctness')
+    if args.precision == 'fp32':
+        llm.collective_rpc('speed_load', args=(str(initial),str(gate),'bf16',args.editor_kernels))
+        for p, ref in zip(prompts, refs):
+            row = generate(p, 'editor', audit=True, reference=p['prompt']+ref['generated']['tokens'], clear=True)
+            compare(ref['generated'], row['generated'])
+            checkpoint(row, 'bf16-correctness')
     save(args.output/'complete.json', summarize(records))
 
 
@@ -173,6 +182,7 @@ def summarize(records):
             speedup=totals['off']/totals['editor'], per_prompt=by_prompt,
             tokens=sum(r['tokens'] for r in by_prompt.values()))
     return dict(passed_correctness=True, groups=groups, repeats=5, optimizer_updates=0,
+        precision=timing[0]['precision'], editor_kernels=timing[0]['observed'].get('kernels','invariant'),
         scope='Exploratory batch-one replacement, invariant target/drafter eager; editor CUDA graphs reused. Eight development prompts, 64-token cap; no union or non-invariant performance claim.',
         cold_seconds=sum(r['seconds'] for r in records if r['phase']=='cold'),
         peak_allocated_bytes=max(r['observed']['peak_allocated_bytes'] for r in records))
@@ -182,6 +192,9 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     for name in ('project','output'):parser.add_argument('--'+name, type=Path, required=True)
     parser.add_argument('--phase', choices=['reference','candidate'])
+    parser.add_argument('--precision', choices=['fp32','bf16'], default='fp32')
+    parser.add_argument('--editor-kernels', choices=['invariant','standard'], default='invariant')
+    parser.add_argument('--reference-directory', type=Path)
     args = parser.parse_args()
     args.output.mkdir(parents=True, exist_ok=True)
     if args.phase:
@@ -193,7 +206,18 @@ def main():
     preflight = args.project/'research/full-corpus-preflight-8454304'
     prompts = select(load_prompts(preflight))
     save(args.output/'prompts.json', prompts)
+    reused = None
+    if args.reference_directory:
+        parent = json.loads((args.reference_directory/'complete.json').read_text())
+        contract = json.loads((args.reference_directory/'run.json').read_text())
+        if not parent['passed_correctness'] or contract['prompts_sha256'] != digest(prompts) or \
+                contract['configurations']['reference'] != configuration(args.project,True):
+            raise ValueError('Reference reuse contract mismatch')
+        names = ('reference-results.json','reference-startup.json')
+        reused = {name:sha(args.reference_directory/name) for name in (*names,'complete.json','run.json')}
+        for name in names:shutil.copyfile(args.reference_directory/name,args.output/name)
     save(args.output/'run.json', dict(schema='native-speed-v1', prompts_sha256=digest(prompts),
+        editor_precision=args.precision, editor_kernels=args.editor_kernels, reused_reference_hashes=reused,
         initial_sha256=sha(args.project/'research/full-corpus-run-20261117/training/draft/best.pt'),
         gate_sha256=sha(args.project/'research/broader-gates-20261125/linear/best.pt'),
         configurations={p:configuration(args.project,p=='reference') for p in ('reference','candidate')},
@@ -201,9 +225,10 @@ def main():
         source_hashes={p.name:sha(p) for p in Path(__file__).parent.glob('native_speed*.py')},
         final_test_loaded=False, training=False))
     started = time.monotonic()
-    for phase in ('reference','candidate'):
+    for phase in (('candidate',) if reused else ('reference','candidate')):
         subprocess.run([sys.executable,'-u','-m','refinement_research.native_speed',
-            '--project',str(args.project),'--output',str(args.output),'--phase',phase],
+            '--project',str(args.project),'--output',str(args.output),'--phase',phase,
+            '--precision',args.precision,'--editor-kernels',args.editor_kernels],
             check=True, timeout=max(1,2650-(time.monotonic()-started)))
 
 

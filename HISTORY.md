@@ -320,7 +320,45 @@ claim remain separate requirements. Do not close all of issue #8 from this subse
 If correctness fails, stop timing and retain the concrete failure. If the editor
 does not repay its cost, report that plainly before more training is proposed.
 
-**Status:** implementation and local checks in progress; no native result yet.
+**Status:** 23 relevant local tests passed. Slurm **8579825** submitted with source
+`140b0550b171eb0f001011422d5a82760ef8c763`; archive SHA256
+`9bea99592cc682312a6b60fffc3bfbb731807092aa290a81de2a0320e30b38dc`.
+Output: `research/native-speed-8579825/`. CPU-only staging completed; environment
+package freeze and original checkpoint hash match on tron59. No native result yet.
+
+## November 25 — diagnose native editor kernel overhead
+
+The first native correctness gate passed. During its unchanged timing phase,
+warm graphed editor calls take about 23.5 ms rather than the earlier isolated
+6.7 ms. The pinned vLLM source installs process-wide ATen matrix multiplication
+overrides on Ampere when batch invariance is enabled; these include the editor.
+This is a concrete unresolved integration issue, not a reason to train more.
+
+Ranked explanations: (1) invariant ATen kernels slow the editor, predicting a
+large reduction when only editor dispatch changes; (2) input/output handling
+dominates, predicting a fast isolated graph despite slow native calls; (3) GPU
+execution conditions differ, predicting both isolated kernel modes stay slow.
+
+**Bounded follow-up, no training:** after the initial job succeeds, compare eight
+native input blocks under invariant → ordinary → restored invariant dispatch,
+with identical weights/GPU/inputs and five timings each. Restore checks must pass.
+If ordinary dispatch is faster, run paired native FP32 and BF16 editor benchmarks
+with the original invariant target. Reuse the authenticated reference; do not
+regenerate labels. Keep all eight prompts, five alternating repeats and cold cost.
+
+The adapter temporarily removes vLLM's private ATen override library only while
+capturing/eager-checking the editor, then restores it before target execution.
+The recorded graph retains its editor kernels. This is restricted to the pinned
+synchronous, batch-one worker; it is not a concurrent serving implementation.
+Assert invariant target dispatch before every native round and compare full
+target-logit hashes on all 512 emitted positions between original/identity/editor
+correctness runs, in addition to existing greedy-token/cache/stop checks. A failed
+restoration/hash check prevents timing. Target weights, kernels and reference
+definition are unchanged during every target call.
+
+One sequential follow-up job, one A5000/four CPUs/32 GiB, at most 30 minutes;
+180-second isolated probe and 720-second bound per precision. Original job and
+its source remain immutable. All results, including failures, will be retained.
 
 ## How to read future entries
 

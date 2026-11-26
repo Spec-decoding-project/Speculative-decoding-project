@@ -8,6 +8,7 @@ import functools
 import time
 
 from full_corpus_fit.capture import CorpusCaptureWorker
+from refinement_research.editor_kernels import editor_kernels
 
 
 def editor_input(committed, proposal):
@@ -29,6 +30,7 @@ class NativeSpeedWorker(CorpusCaptureWorker):
         self.editor = None
         self.graphs = OrderedDict()
         self.precision = None
+        self.kernels = 'invariant'
         original_propose = DFlashSpeculator.propose
         original_execute = GPUModelRunner.execute_model
         original_sample_tokens = GPUModelRunner.sample_tokens
@@ -75,14 +77,16 @@ class NativeSpeedWorker(CorpusCaptureWorker):
                         worker.graphs.popitem(last=False)
                         worker.evictions += 1
                     before = time.perf_counter()
-                    worker.graphs[key] = CapturedEditor(worker.editor, prefix, draft)
+                    with editor_kernels(worker.kernels):
+                        worker.graphs[key] = CapturedEditor(worker.editor, prefix, draft)
                     cold_ms = 1000*(time.perf_counter()-before)
                 else:
                     worker.hits += 1
                     worker.graphs.move_to_end(key)
                 edited = worker.graphs[key].propose(prefix, draft)
                 if worker.active:
-                    eager = worker.editor.propose(prefix, draft)
+                    with editor_kernels(worker.kernels):
+                        eager = worker.editor.propose(prefix, draft)
                     if eager != edited:
                         raise RuntimeError('Native graph output differs from eager editor')
                 if edited[:2] != draft[:2]:
@@ -102,6 +106,9 @@ class NativeSpeedWorker(CorpusCaptureWorker):
         @functools.wraps(original_execute)
         def execute(runner, *args, **kwargs):
             if worker.measuring:
+                from vllm.model_executor.determinism import batch_invariant
+                if not batch_invariant._batch_invariant_MODE or batch_invariant._batch_invariant_LIB is None:
+                    raise RuntimeError('Target execution lost invariant dispatch')
                 worker.round_started = time.perf_counter()
                 worker.round_event = torch.cuda.Event(enable_timing=True)
                 worker.round_event.record()
@@ -133,7 +140,7 @@ class NativeSpeedWorker(CorpusCaptureWorker):
         GPUModelRunner.sample = sample
         GPUModelRunner.sample_tokens = sample_tokens
 
-    def speed_load(self, initial, gate, precision):
+    def speed_load(self, initial, gate, precision, kernels='invariant'):
         import torch
         from copy_action_fit.data import CHECKPOINT_SHA256, sha
         from refinement_research.train_gates import initialize
@@ -152,7 +159,9 @@ class NativeSpeedWorker(CorpusCaptureWorker):
             self.editor.gate_head.float()
         self.editor.requires_grad_(False)
         self.precision = precision
+        self.kernels = kernels
         return dict(precision=precision, initial_sha256=sha(initial), gate_sha256=sha(gate),
+                    kernels=kernels, generator_dtype=str(self.editor.token.weight.dtype),
                     parameters=sum(p.numel() for p in self.editor.parameters()))
 
     def speed_begin(self, mode, audit=False, reference=None, clear_graphs=False):
@@ -165,7 +174,7 @@ class NativeSpeedWorker(CorpusCaptureWorker):
         self.hits = self.misses = self.evictions = self.edit_calls = 0
         self.cold_ms = 0.0
         if audit:
-            self.corpus_begin(False)
+            self.corpus_begin(self.kernels == 'standard')
         else:
             self.active = False
         torch.cuda.synchronize()
@@ -178,7 +187,7 @@ class NativeSpeedWorker(CorpusCaptureWorker):
         torch.cuda.synchronize()
         self.measuring = False
         audited = self.corpus_finish() if self.active else None
-        return dict(mode=self.mode, precision=self.precision,
+        return dict(mode=self.mode, precision=self.precision, kernels=self.kernels,
             rounds=[dict(gpu_ms=a.elapsed_time(b), host_ms=host, speculative=spec)
                     for a,b,host,spec in self.rounds],
             sampled=[int(a.sum()) for a,b in self.acceptance],
