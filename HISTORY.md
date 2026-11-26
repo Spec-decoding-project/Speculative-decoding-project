@@ -284,6 +284,41 @@ launch/scheduling overhead. Independent timing/profile recounts and all backup
 hashes pass. This remains a fixed-shape prototype with no native generation
 speedup claim. [Detailed results](docs/research/refinement-2026-11-25/GRAPH_REPLAY.md).
 
+## November 25 — native replacement and complete-generation timing
+
+**Question:** does the fixed broader linear gate repay its execution cost when
+inserted before native DFlash verification? The user explicitly requested this
+measurement. No training, data expansion or target determinism investigation.
+
+**Predeclared protocol:** eight development prompts selected by stable hash, four
+with 1–128 input tokens and four with 1,024–1,900; 64 generated tokens maximum.
+Use the canonical invariant vLLM 0.34 environment, frozen target/drafter, and
+broader linear checkpoint `b6f1c27a…`. Batch one, unchanged target/drafter eager
+execution, 2 GiB native KV cache. Original DFlash, identity replacement and FP32
+editor must first match independent target-only greedy output and termination.
+Audit actual complete prefixes, native acceptance counts and successive rounds.
+Include forced first rejection/all acceptance, short budgets and stop-token tests.
+These oracle controls test the verifier only and never count as learned results.
+
+Then measure five alternating original/editor repeats per prompt, including the
+complete generation call and native round CUDA events. An empty editor graph cache
+run is separate from warm repeats. Cache at most 64 exact prefix lengths with LRU
+eviction; record hits, misses, preparation and memory. Keep the complete target
+prefix; only the editor receives its trained last-1,024-token window. Separately
+check BF16 generator/FP32 gate native output, after the FP32 benchmark. Preserve
+all raw results privately and publish aggregate results, including slowdowns.
+
+**Budget and scope:** one A5000, four CPUs, 32 GiB host RAM, 45-minute job limit.
+The original pinned node has insufficient schedulable RAM; copy its unchanged
+environment and checkpoint to available tron59 scratch using CPU-only staging.
+Both timing arms run on the same GPU. This measures native replacement; union
+verification, a natural-EOS fixture, non-invariant speed and a fresh final-test
+claim remain separate requirements. Do not close all of issue #8 from this subset.
+If correctness fails, stop timing and retain the concrete failure. If the editor
+does not repay its cost, report that plainly before more training is proposed.
+
+**Status:** implementation and local checks in progress; no native result yet.
+
 ## How to read future entries
 
 Each entry will state the hypothesis, the one main change, data and compute budget,
