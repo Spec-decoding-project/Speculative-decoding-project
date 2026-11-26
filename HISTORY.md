@@ -90,7 +90,8 @@ the COPY decision. Lost vocabulary predictions point toward protecting the train
 generator during fine-tuning. A mixed result will be reported as mixed. This
 diagnostic does not itself establish a deployable selection rule.
 
-**Status:** implementation and tests in progress; no job submitted yet.
+**Status:** 15 local diagnostic/editor tests passed. Frozen source `54cef7d` was
+submitted as Slurm job **8579035**, with a 15-minute cap. Results are pending.
 
 ## How to read future entries
 
