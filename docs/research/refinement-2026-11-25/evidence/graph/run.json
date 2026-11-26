@@ -1,0 +1,29 @@
+{
+  "schema": "fixed-shape-graph-prototype-v1",
+  "kind": "linear",
+  "blocks": 64,
+  "parent_complete_sha256": "2f877658d94db743cb093edcd7b6706615ae45526b764bcc99852e4c1fa812fb",
+  "checkpoint_sha256": "b6f1c27a312a829efedc1db2ac42091f3702ad7d586f9025033508ab2c606882",
+  "inputs_sha256": "e93fd7dceac325d7ee1e98006d305cb60d0bfd703b0312646c65b785b6d696f2",
+  "warmups": 2,
+  "repeats": 10,
+  "interleaved_order": true,
+  "graph_warmups": 3,
+  "optimizer_updates": 0,
+  "final_test_loaded": false,
+  "source_hashes": {
+    "__init__.py": "b8fe0a0b2f204f16c9cb1320b6ea1c652616cb029a9a393275563996c746f370",
+    "broader_data.py": "8569483c77394f7221bfe670781fdf0344038fa62a770bfa8ff27b3a8a6354e8",
+    "diagnose_copy.py": "e0927b64f88792a9df1301254e3f813702ab9ba8eb32b866093e9e57807f57d3",
+    "gate.py": "794433de967fa53cd28b9a5304b2fea734940546d669f623255bb2a9a8c47e11",
+    "gate_data.py": "6bcc767197f25a2ca9a24f5c0a2d57adfeaf8de50a759b935d40e9b9c838d360",
+    "graph_replay.py": "844b8046b069d53b73a0912408d1b5435ca89c9d92a3da78cf902859b7e3a1aa",
+    "short_edits.py": "d11be22c7ba5fe5cb0994aadbac608f229526815bb578d2852e4283a0c8dbaa0",
+    "test_broader_data.py": "8641abe3b599fcca4e86c818f7359e438ecd80b99311bce4cf05514752317831",
+    "test_diagnostic.py": "fd284c656f9ea3801399421ee875ee86f6c6bc07126c37a7d4dc38d75a6c1410",
+    "test_gate.py": "7c1492d98bf666c74cf01515d33428a650f923c2f00b1342b8fbe1aef9d7b1af",
+    "test_gate_training.py": "d5a27065ad3b9fadc5fd00e07cbfe2cb888d0104e3a85eed7b1d8a4ac1a7cc19",
+    "test_short_edits.py": "d7c532f4e38b5651da6895b82ad1193a346cfde710efbe0268cccbf83befb6cc",
+    "train_gates.py": "8c6e462b2261c07ddf56ae409ff328abefd29729cc6695ed2e25ac07ee6a1703"
+  }
+}

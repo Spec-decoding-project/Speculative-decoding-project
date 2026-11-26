@@ -6,12 +6,13 @@ and updated when results arrive. Failed attempts stay in this record.
 
 ## Current state — November 25, 2026
 
-Nexus login succeeded and no old job was running. The frozen-model diagnostic finished on `work/ar-refinement-research`. It found
-both bad COPY choices and damage to vocabulary predictions. Three frozen-generator gates have now completed training with small positive
-development gains. The completed shorter-edit comparison did not retain a useful quality/cost
-tradeoff. The 9,392-prompt gate comparison is complete and does not reliably improve the
-result. An exact-output CUDA graph cost comparison is now running. The user has authorized
-successive experiments and asked to stay informed; no additional data is needed.
+Five GPU experiments are complete: a frozen-model diagnostic, two three-gate
+training comparisons, a shorter-edit comparison, and an exact-output CUDA graph
+prototype. The gates give small positive development gains; larger training does
+not reliably improve them. Graph replay cuts warm editor cost from 25.45 to
+6.73 ms with identical tested outputs. Native generation speedup remains untested.
+All checkpoints/results are independently backed up and audited. See the concise
+[project update](docs/research/refinement-2026-11-25/REPORT.md).
 
 Our objective is an autoregressive module that improves DFlash's proposals enough
 to repay its own computation. The target still verifies all accepted output.
@@ -274,7 +275,14 @@ native generation speedup or amortize graph preparation automatically.
 `11423488bcc3066eb12b2df0be92d9cab72559da`, twenty-minute cap. All 54 local tests
 passed. Remote output: `research/graph-replay-20261125/`. Source archive SHA256:
 `9bab36c445544a8281c1adfb1ea0c90f176747839bfff86584dea5ce51b99368`.
-Results pending.
+**Result:** job completed in **1m01s**, exit 0. All 64 original outputs, 64
+changed-input controls, cache checks and 1,280 timed calls pass. Warm editor time
+falls **25.45 → 6.73 ms (3.78×)**; every case is faster. Median capture plus
+warmup is **101.57 ms per shape**, and 52 prefix lengths are tested. The profile
+records about 6.97 ms of GPU kernel work per ordinary call, supporting substantial
+launch/scheduling overhead. Independent timing/profile recounts and all backup
+hashes pass. This remains a fixed-shape prototype with no native generation
+speedup claim. [Detailed results](docs/research/refinement-2026-11-25/GRAPH_REPLAY.md).
 
 ## How to read future entries
 

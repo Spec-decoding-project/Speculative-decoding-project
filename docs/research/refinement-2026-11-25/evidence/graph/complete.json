@@ -1,0 +1,41 @@
+{
+  "passed_checks": true,
+  "blocks": 64,
+  "exact_parent_outputs": true,
+  "cached_full": "passed",
+  "changed_input_controls": 64,
+  "changed_output_controls": 43,
+  "all_repeats_match": true,
+  "eager_median_ms": 25.453313981415704,
+  "graph_median_ms": 6.73017674125731,
+  "editor_latency_ratio": 3.781968135455028,
+  "median_capture_and_warmup_ms": 101.56934906262904,
+  "maximum_additional_allocated_bytes": 17043456,
+  "distinct_tested_prefix_lengths": 52,
+  "warm_break_even_baseline_round_ms": 301.8918992788865,
+  "generator_weights_sha256": "8babb2bfe3f4c11ef283312e22ccd2e20878438c96957302ff2c462748bbd382",
+  "gate_checkpoint_sha256": "b6f1c27a312a829efedc1db2ac42091f3702ad7d586f9025033508ab2c606882",
+  "profile": {
+    "status": "collected",
+    "calls": 3,
+    "kernels": 4365,
+    "summed_kernel_ms_per_call": 6.9691860000000005,
+    "largest_kernels_ms_per_call": {
+      "void gemv2T_kernel_val<long, long, float, float, float, float, 128, 16, 2, 2, false, false, cublasGemvParamsEx<int, cublasGemvTensorStridedBatched<float const>, cublasGemvTensorStridedBatched<float const>, cublasGemvTensorStridedBatched<float>, float> >(cublasGemvParamsEx<int, cublasGemvTensorStridedBatched<float const>, cublasGemvTensorStridedBatched<float const>, cublasGemvTensorStridedBatched<float>, float>, float, float)": 3.1583289999999997,
+      "fmha_cutlassF_f32_aligned_64x64_rf_sm80(PyTorchMemEffAttention::AttentionKernel<float, cutlass::arch::Sm80, true, 64, 64, 64, true, true>::Params)": 0.8006303333333338,
+      "std::enable_if<!(false), void>::type internal::gemvx::kernel<int, int, float, float, float, float, false, true, true, false, 8, false, cublasGemvParamsEx<int, cublasGemvTensorStridedBatched<float const>, cublasGemvTensorStridedBatched<float const>, cublasGemvTensorStridedBatched<float>, float> >(cublasGemvParamsEx<int, cublasGemvTensorStridedBatched<float const>, cublasGemvTensorStridedBatched<float const>, cublasGemvTensorStridedBatched<float>, float>)": 0.23942833333333313,
+      "at::native::mbtopk::computeDigitCumSum(short*, unsigned int*, unsigned int)": 0.22065166666666688,
+      "void at::native::(anonymous namespace)::vectorized_layer_norm_kernel<float, float, false>(int, float, float const*, float const*, float const*, float*, float*, float*)": 0.20905466666666636,
+      "void at::native::vectorized_elementwise_kernel<4, at::native::CUDAFunctor_add<float>, std::array<char*, 3ul>, false>(int, at::native::CUDAFunctor_add<float>, std::array<char*, 3ul>)": 0.15929500000000021,
+      "void at::native::mbtopk::computeBlockwiseWithinKCounts<unsigned int, float>(unsigned int*, short*, unsigned int*, unsigned int*, unsigned int, int, bool, unsigned int*, float*, unsigned int*, unsigned int*, unsigned int)": 0.14133133333333328,
+      "void at::native::mbtopk::computeBlockDigitCounts<float, unsigned int, unsigned int, 1>(at::cuda::detail::TensorInfo<float const, unsigned int>, unsigned int, unsigned int*, unsigned int, unsigned int, int, int, unsigned int, unsigned int, unsigned int*, short*)": 0.13491166666666665,
+      "void at::native::(anonymous namespace)::CatArrayBatchedCopy_vectorized<at::native::(anonymous namespace)::OpaqueType<4u>, unsigned int, 3, 128, 1, 16, 4>(char*, at::native::(anonymous namespace)::CatArrInputTensorMetadata<at::native::(anonymous namespace)::OpaqueType<4u>, unsigned int, 128, 1>, at::native::(anonymous namespace)::TensorSizeStride<unsigned int, 4u>, int, unsigned int)": 0.12906533333333345,
+      "void at::native::reduce_kernel<512, 1, at::native::ReduceOp<float, at::native::ArgMaxOps<float>, unsigned int, long, 4, 4> >(at::native::ReduceOp<float, at::native::ArgMaxOps<float>, unsigned int, long, 4, 4>)": 0.11836800000000001
+    },
+    "scope": "Instrumented sum of kernel durations, not unprofiled wall latency or exclusive bottleneck attribution"
+  },
+  "elapsed_seconds": 44.362590297008865,
+  "optimizer_updates": 0,
+  "final_test_loaded": false,
+  "scope": "Warm fixed-shape editor prototype including input/output copies; cold capture separate; no serving cache or native generation speedup"
+}

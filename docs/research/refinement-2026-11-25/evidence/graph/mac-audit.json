@@ -1,0 +1,23 @@
+{
+  "passed": true,
+  "artifacts_verified": 12,
+  "files": {
+    "budget.json": "df86e4a997e363ae9a42fd62405a716cb4e018134b0f8edf2665a8473c905527",
+    "complete.json": "4355f271f46b057af1ccc9bdc8b27fb60c2fa33da017c0e1473a904c57347354",
+    "eager-profile.json": "6c0d14c8ab15ccb7f90d84fea032cbfa31341e858f472934deac8e962d63b9e4",
+    "exit-status-8579567.txt": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "nvidia-smi-8579567.txt": "1dde38b8d8ba924457e3cffde93cc9c2ff9eccdab73495a871514f815e1a785e",
+    "packages-8579567.txt": "8a42fd1d3947cf2fc343e2a0c5d77c933622895453df82d3c2f8a7533e2e2c73",
+    "pip-check-8579567.txt": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09",
+    "profile-summary.json": "357c22527e4e5f80f79eb40d7854b9ce9a280543a9be43188a7238690e07158c",
+    "progress.json": "51a34f015e236ffff64207e4765a899132d29df7fb77225c05d38f80f5a99c44",
+    "run.json": "55b67df285b11863ce6b46b654c2e36bda07bdec506d017dbe9fababc0337c2f",
+    "tests-8579567.txt": "d20e39151e5e1652ae6a512be3ec814b8beec98ca682ab68ef2915e30030fe91",
+    "timing.json": "aa0f6743e9bcab21912d0b03110057b5fafda8c2413d98d62c715dc45ac646ae"
+  },
+  "case_count": 64,
+  "timed_calls": 1280,
+  "all_cases_faster": true,
+  "independent_timing_and_profile_recount": "passed",
+  "output_check_scope": "GPU runtime asserted every output; this Mac audit recomputes saved timings, profile totals and backup hashes, without GPU inference"
+}
