@@ -189,6 +189,7 @@ def fit(args, kind, fit_data, cal_data, cal_rows, development, contract, deadlin
         generator_weights_sha256=generator_hash(model), checkpoint_sha256=sha(best),
         checkpoint_reload='passed', calibration_simulation='all 512 actual prefixes match',
         cached_full='passed on 64 development blocks', audit='passed',
+        training_prefix_simulation=calibration_metrics(model,fit_data),
         calibration=selected, development=aggregate(result,development), uncertainty=interval,
         median_editor_ms=timed['median_editor_ms'], elapsed_seconds=time.monotonic()-started,
         scope='Exploratory development transfer and isolated FP32 latency; no generation speedup claim')
@@ -202,6 +203,7 @@ def main():
     parser=argparse.ArgumentParser(description=__doc__)
     for name in ('bank','initial','output'):
         parser.add_argument('--'+name,type=Path,required=True)
+    parser.add_argument('--broader-from',type=Path)
     args=parser.parse_args()
     torch.set_num_threads(4)
     args.output.mkdir(parents=True,exist_ok=True)
@@ -209,7 +211,11 @@ def main():
     budget=args.output/'budget.json'
     if not budget.exists():save(budget,dict(started_epoch=time.time(),maximum_seconds=7200))
     deadline=json.loads(budget.read_text())['started_epoch']+6900
-    fit_rows,cal_rows,development,selection=select(args.bank)
+    if args.broader_from:
+        from refinement_research.broader_data import select_broader
+        fit_rows,cal_rows,development,selection=select_broader(args.bank,args.broader_from)
+    else:
+        fit_rows,cal_rows,development,selection=select(args.bank)
     save(args.output/'selection.json',selection)
     save(args.output/'fit-examples.json',fit_rows);save(args.output/'calibration-examples.json',cal_rows)
     root=Path(__file__).parent
@@ -218,6 +224,7 @@ def main():
         kinds=['scores','linear','mlp'],seed=0,lr=.001,weight_decay=.01,clip_norm=1,batch_size=256,
         max_updates=2000,max_epochs=200,calibration_interval_epochs=5,patience_epochs=50,
         objective='Reachable exclusive candidate choices, weighted by remaining attainable prefix',
+        group_balancing=bool(args.broader_from),
         selection_rule='Maximum internal-calibration mean prefix, then minimum weighted decision CE',
         source_hashes={p.name:sha(p) for p in sorted(root.glob('*.py'))},
         torch=str(torch.__version__),cuda=torch.version.cuda,gpu=torch.cuda.get_device_name(),
@@ -236,6 +243,9 @@ def main():
         for split,rows in (('fit',fit_rows),('calibration',cal_rows)):
             progress(args.output,phase='feature_extraction',split=split,blocks=len(rows))
             datasets[split]=extract(model,rows,lambda p:progress(args.output,phase='feature_extraction',split=split,**p))
+            if split=='fit' and args.broader_from:
+                factors=torch.tensor([selection['group_weights'][r['kind']+'/'+r['source']] for r in rows])
+                datasets[split]['weights']*=factors[:,None]
         require(generator_hash(model) == SHARED_WEIGHTS_SHA256,'Feature extraction changed generator')
         temporary=cache.with_suffix('.pt.tmp');torch.save(datasets,temporary);temporary.replace(cache)
         del model;gc.collect();torch.cuda.empty_cache()

@@ -188,7 +188,47 @@ end-to-end benchmark; a gain cannot be claimed as actual serving speedup.
 `d2d3a54041039b83b326324b39b485bc136eeab0`, with a twenty-minute cap. All 51 local
 tests passed. Output: `research/short-edits-20261125/`. Source archive SHA256:
 `2c691e2a054795cef40dfb10f303fb6cf6ae789c2fef87448e8377fca8bb2b63`.
-Results pending.
+**Result:** job completed in **4m30s**, exit 0. Eight of nine shortened
+configurations worsen development prefix quality. The four-token linear gate
+scores **3.5952**, only +0.0176 over DFlash, at **7.58 ms**; its interval spans zero.
+One/two-step loops cost about 2.1/4.0 ms but lose quality. All 23,040 short-proposal
+replays, timing/cache checks, generator/parent hashes and independent Mac recounts
+passed. Thus early stopping alone does not repay editing. [Full comparison](docs/research/refinement-2026-11-25/SHORT_EDITS.md).
+
+## November 25, approach 4: increase decision-training coverage
+
+**Evidence:** freezing the generator gives small positive development gains, but
+shortening its output loop loses most or all of them. The first fit contained only
+991 decisive training positions after excluding choices that cannot affect the
+reachable prefix. Before changing capacity, test substantially more examples.
+
+**Predeclared comparison:** train the same three gate architectures from their
+original zero-output initialization, around exactly the same frozen full-trained
+generator. Use **9,392 distinct training prompts**: 600 natural preservation and
+4,096 repair blocks per source. Preserve the exact original 512-prompt gate
+calibration set, exclude those prompts and families from optimization, and keep
+development unchanged. No final-test access, new labels or native collection.
+Selection is deterministic and authenticated against the immutable bank.
+
+Natural preservation prompts are scarce. To preserve equal source/kind weighting
+rather than silently changing the objective, multiply each training block's
+remaining-prefix decision weights by N/(4 × group_count): 3.913333 for preservation
+and 0.573242 for repair groups. Keep all other optimizer, stopping, selection,
+feature-extraction, reload and evaluation rules from approach 2. At most 2,000
+updates/200 epochs per gate, one A5000/four CPUs/5 GiB, two hours total; expected
+runtime roughly ten to fifteen minutes. Calibration remains the sole checkpoint
+selection population. Report every arm, including deterioration.
+
+Fit SHA256: `8527af5b2b4e610217cba9b702bf78cea3d7019d7e5e4add1a9ea575bed36ded`.
+Calibration SHA256 remains `1a356888d96ee15f5e282fd979c34129f8d6eff9e6fb9fe0f7411ae0fb7f815e`.
+The local selection check passed with no split/prompt/family overlap.
+
+**Decision rule:** larger gains would justify fresh confirmation and investigation
+of execution cost. No improvement would argue against simply scaling this gate
+objective; reconsider the decision features/objective and measure execution costs.
+This is an exploratory learning-curve comparison, not independent confirmation.
+
+**Status:** predeclared; implementation and tests in progress, no job submitted.
 
 ## How to read future entries
 
