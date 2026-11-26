@@ -7,9 +7,9 @@ and updated when results arrive. Failed attempts stay in this record.
 ## Current state — November 25, 2026
 
 Nexus login succeeded and no old job was running. The frozen-model diagnostic finished on `work/ar-refinement-research`. It found
-both bad COPY choices and damage to vocabulary predictions. The next training
-approach will freeze the original full-trained generator and learn only a small
-decision layer, using a broader dataset. The user has authorized
+both bad COPY choices and damage to vocabulary predictions. Three frozen-generator gates have now completed training with small positive
+development gains. A shorter-edit comparison is running to investigate their
+computation cost. The user has authorized
 successive experiments and asked to stay informed; no additional data is needed.
 
 Our objective is an autoregressive module that improves DFlash's proposals enough
@@ -184,7 +184,11 @@ repay the measured editor cost under unchanged verification cost and the observe
 prefix distribution: editor_ms × (original_prefix+1) / prefix_gain. This is not an
 end-to-end benchmark; a gain cannot be claimed as actual serving speedup.
 
-**Status:** predeclared; implementation in progress, no job submitted.
+**Status:** Slurm job **8579195** submitted from frozen source
+`d2d3a54041039b83b326324b39b485bc136eeab0`, with a twenty-minute cap. All 51 local
+tests passed. Output: `research/short-edits-20261125/`. Source archive SHA256:
+`2c691e2a054795cef40dfb10f303fb6cf6ae789c2fef87448e8377fca8bb2b63`.
+Results pending.
 
 ## How to read future entries
 
