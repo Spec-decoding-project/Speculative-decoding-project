@@ -9,7 +9,8 @@ and updated when results arrive. Failed attempts stay in this record.
 Nexus login succeeded and no old job was running. The frozen-model diagnostic finished on `work/ar-refinement-research`. It found
 both bad COPY choices and damage to vocabulary predictions. Three frozen-generator gates have now completed training with small positive
 development gains. The completed shorter-edit comparison did not retain a useful quality/cost
-tradeoff. A larger gate-only fit on 9,392 prompts is now running. The user has authorized
+tradeoff. The 9,392-prompt gate comparison is complete and does not reliably improve the
+result. An exact-output CUDA graph cost comparison is now running. The user has authorized
 successive experiments and asked to stay informed; no additional data is needed.
 
 Our objective is an autoregressive module that improves DFlash's proposals enough
@@ -269,7 +270,11 @@ One A5000/four CPUs/5 GiB, twenty minutes, no optimizer updates or target infere
 A warm latency reduction would support execution engineering; it would not prove
 native generation speedup or amortize graph preparation automatically.
 
-**Status:** predeclared; implementation and tests in progress, no job submitted.
+**Status:** Slurm job **8579567** submitted from frozen source
+`11423488bcc3066eb12b2df0be92d9cab72559da`, twenty-minute cap. All 54 local tests
+passed. Remote output: `research/graph-replay-20261125/`. Source archive SHA256:
+`9bab36c445544a8281c1adfb1ea0c90f176747839bfff86584dea5ce51b99368`.
+Results pending.
 
 ## How to read future entries
 
