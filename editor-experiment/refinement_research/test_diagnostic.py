@@ -44,9 +44,9 @@ def test_vocabulary_ablation_removes_only_the_copy_action():
 def test_skipped_repair_selection_checks_identity_and_exact_prefix():
     labels = list(range(16)); original = labels.copy(); original[3] = 99
     common = dict(prompt_id='p', anchor=10, original_tokens=original, label_tokens=labels)
-    control = dict(rows=[dict(common, repaired=True, edited_tokens=labels)])
+    control = dict(rows=[dict(common, repaired=True, edited_tokens=labels.copy())])
     copied = dict(rows=[dict(common, edited_progress=2, original_progress=2,
-                            edited_tokens=original, actions=[151936]*14)])
+                            edited_tokens=original.copy(), actions=[151936]*14)])
     cases = skipped_cases(control, copied)
     assert len(cases) == 1 and cases[0]['position'] == 3
     changed = deepcopy(copied); changed['rows'][0]['edited_tokens'][2] = 99
