@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "bank_sha256": "c7f92fae5609137510a198297a31b5178c70c413f263f89f04560b98aa6bbb3d",
+  "selection_sha256": "cad4b36d2adc0bf02b3faa61c3281b98e6c009e19a8fed037e9c0286c86222fc",
+  "blocks": 2048,
+  "prompts": 2048,
+  "families": 2048,
+  "counts": {
+    "preservation/HuggingFaceH4/ultrachat_200k": 512,
+    "preservation/openai/gsm8k": 512,
+    "repairable/HuggingFaceH4/ultrachat_200k": 512,
+    "repairable/openai/gsm8k": 512
+  },
+  "development_blocks": 2048,
+  "development_prompts": 512,
+  "final_test_loaded": false,
+  "fit_blocks": 1536,
+  "calibration_blocks": 512,
+  "fit_sha256": "cb540f6821ad50241fff31979ee4cde1778fee352a799b6420ae413ee802f377",
+  "calibration_sha256": "1a356888d96ee15f5e282fd979c34129f8d6eff9e6fb9fe0f7411ae0fb7f815e"
+}

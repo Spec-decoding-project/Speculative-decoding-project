@@ -147,7 +147,44 @@ runs pinned-environment tests and full-size COPY/forced-generator controls befor
 optimization. Remote output is `research/frozen-gates-20261125/`. The job runs
 independently of SSH, writes progress/checkpoints/results, and has a two-hour cap.
 Archive SHA256: `5bd18c7efa70ee331fd2d6a3660c4f30884aa167ddbc5ae5eae88eb8de9931a0`.
-Training/evaluation results are pending.
+**Result:** job completed in **6m44s**, exit 0. Score/linear/nonlinear gates produce
+mean development prefixes **3.6558 / 3.6997 / 3.6768**, versus **3.5776** for
+DFlash. Their improved/damaged block counts are **246/136, 269/187, 286/212**.
+Selected updates are 80/180/220; total updates run are 280/380/420. All generator,
+reload, full-size integration, calibration simulation and cache checks passed.
+Independent Mac recounts and artifact hashes agree. The linear gate's +0.1221
+prefix tokens has a descriptive paired 95% interval [0.0410, 0.2041]; development
+remains exploratory. All gates cost roughly **26 ms**, so no speedup is shown.
+[Detailed results](docs/research/refinement-2026-11-25/GATES.md).
+
+## November 25, approach 3: spend fewer autoregressive steps
+
+**Reason:** the first two frozen-gate arms improve development prefix quality only
+modestly, while their fourteen-step inference costs about 26 ms. Before scaling
+training, test whether most of the useful change can be retained with less work.
+
+**Predeclared method:** keep all three selected gate checkpoints fixed. For each,
+edit only the first one, two or four editable tokens, then copy the untouched tail.
+Compare all nine combinations with their corresponding fourteen-step versions.
+These are global fixed budgets; no reference labels or oracle per-example choices
+enter inference. Use the same internal calibration and development populations;
+no final-test or new prompts. No optimizer updates or model-size changes.
+
+**Checks:** limited outputs must exactly match the corresponding first outputs of
+the saved full autoregressive execution, with the rest copied. Check all 512
+calibration and 2,048 development blocks for each short budget, action emission,
+frozen hashes, and cached/full agreement on 64 fixed development blocks. Measure
+all four budgets with two warmups/ten synchronized repeats per block. Report
+paired-by-prompt quality changes and isolated FP32 latency, including negative
+results. One A5000/four CPUs/5 GiB, twenty minutes total.
+
+**Interpretation:** a shorter loop has value only if its quality/cost tradeoff
+improves. As a screening calculation, report the baseline round time required to
+repay the measured editor cost under unchanged verification cost and the observed
+prefix distribution: editor_ms × (original_prefix+1) / prefix_gain. This is not an
+end-to-end benchmark; a gain cannot be claimed as actual serving speedup.
+
+**Status:** predeclared; implementation in progress, no job submitted.
 
 ## How to read future entries
 

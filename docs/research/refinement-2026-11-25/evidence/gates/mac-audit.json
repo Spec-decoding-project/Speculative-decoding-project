@@ -1,0 +1,68 @@
+{
+  "passed": true,
+  "artifacts_verified": 42,
+  "files": {
+    "budget.json": "163681dd0cfba538af766b33d24e02721d9d83070b39686d8972bbf9b770fddf",
+    "calibration-examples.json": "f1dc625bb0cc67c6851ac5783969668153fea8087b934af61eb1bd19091e7832",
+    "complete.json": "eef4b1ec51745412d02cfd3bbcb125e48eb7604d7f978c80480ff111ec241a6b",
+    "exit-status-8579153.txt": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "feature-summary.json": "d029f74fa4987a09f4cc71df2d20f17dde266396c0abafa7268607983ec99aa8",
+    "features.pt": "07a509045020eab7f7f8bf4f8526008e84caacb0d3c64d6424aa54f25a7fea76",
+    "fit-examples.json": "a6653337bb8bfd6ce9cdef6671d6026d7ad177e99ba632bed7afebf7fd3e6fef",
+    "integration-controls.json": "7d4519c850beed5e57113330f8d6d737520eda4a7396a4b98ccf8ef4eec41495",
+    "linear/audit.json": "39ff3147ecaa3669dafe52b458caca34f4dde45376af728762bee18ed8356080",
+    "linear/best.pt": "5ab048b622beffb10ab8d282027cb2510f5439e4621793d5a82e687e696d679b",
+    "linear/calibration-history.json": "74fc36ccf96ac3fc32194c9a1b464c240f807be1c05a255e88d647a166f936d6",
+    "linear/calibration.json": "679ed88596a6b7df2e93218f7ed6eac45a4f245f96358083021ecf39e1de055a",
+    "linear/complete.json": "699e50e80ac914693c798459a4af465fb46bbdebc42dbff33995f58070ddc6ac",
+    "linear/development.json": "45ed6b975fca1a43d9cfa211bfe6f840232649620a6f6ce5abf2bd2b27dbc62a",
+    "linear/latest.pt": "e32018cde8de9099f019c7935f13db99ad0582265fa4d49df32d3a55bd3e3aef",
+    "linear/timing.json": "5382de92d580c22794a27c7a936727d513895df9765810b417b212865c54fcdd",
+    "linear/updates-1795658457321376303.jsonl": "3cfeb7e631d12bbd3e12623fe8bc9168ba9da5a4c1f7463e3c8aef2eaf628df7",
+    "mlp/audit.json": "37a35bcd4e6bbaac51f3e86783277c3030834a20ee5dbd51b4eefda57dd5a74e",
+    "mlp/best.pt": "8d955ee7df59052c6e428739afdb35bef3b43da239c7053131ab336019f43327",
+    "mlp/calibration-history.json": "85d3b895c1992615d1d15b9cfdb2c14402452365a3fae89051a11761d0f5403c",
+    "mlp/calibration.json": "759146d9e7938682ee47419d083dae94ae67f0957a265f5d79c46cd587cb2570",
+    "mlp/complete.json": "704eeb812bb624334715d69ede4abf51b04b10c7832730cd024779b227bc0cd0",
+    "mlp/development.json": "23cc7b4ab8eaaa138916742bf9bab32cd6a2d57e49b42e42ab99df45f495ff90",
+    "mlp/latest.pt": "81cb5c901aaf900e748595cc11e1b7ff8131c9681118bbaae9fb8024814ade2b",
+    "mlp/timing.json": "e94a39066f229e0c7c7395811f6d4ccc23e50d4c6df98eb04cf3241efcec060d",
+    "mlp/updates-1795658556132600316.jsonl": "1173b813d574809a81d95384f9fc3ee4a9044592e26507d59d48acae716ef4db",
+    "nvidia-smi-8579153.txt": "9d4cf30e455d84b00fc73bed59fc575e10785644c41df2f9c35b69a602bb00a9",
+    "packages-8579153.txt": "8a42fd1d3947cf2fc343e2a0c5d77c933622895453df82d3c2f8a7533e2e2c73",
+    "pip-check-8579153.txt": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09",
+    "progress.json": "6e3d5c9d335768292fd1255aef787b344c4c61839e0c16a5ee1b6a1f48495302",
+    "run.json": "552dcba14a264535ae13ae741080746bfeb7cb10d3245dbfe33ec1f202966ac1",
+    "scores/audit.json": "be15cfbacfce70d171f26ded953edad29a4092901d44c1f3d85ddd9c25e48c3b",
+    "scores/best.pt": "0fc34dd99607ebc6cf5ae02caa6a169ed70a88296fe10ac4ca724391f3b2f53e",
+    "scores/calibration-history.json": "6e29d653e41c320d2ae91ba11b81981f5b6eb9a479ec756f442f2c029ef25c4d",
+    "scores/calibration.json": "4bdbf0785fa9ad9517e36fbf8a8d475aedf64ad47294ef2ba818622b3b26e2a3",
+    "scores/complete.json": "31d0a642bec2e754ef3985ef5d5932188dc2c130ef3e3741092becf254a17e57",
+    "scores/development.json": "7ba4857474abdc8fd4a9e22781928b2145cc4c74dabe8021884ea967e895a102",
+    "scores/latest.pt": "40c87f89423dc771d000065b6de03cdf6e8fa11cacd9b2539c4a30f11a9a46d1",
+    "scores/timing.json": "569f41ceb07e8768663f561c46e3bbd0771b4a8290195ab05d03d060e591363b",
+    "scores/updates-1795658358751119742.jsonl": "ef25ca2d6c1d0b129603c1a49e53719323be4ceb7a3152746577e89dac28be59",
+    "selection.json": "ee3039fc675de12f46c83c26e18c577146dfe16647ffb84c6a625e63b3ef5052",
+    "tests-8579153.txt": "56c2fbf862dae3f69526d1218ad6131d6594bc3ffc3556c8ae718a1f8e7dd6c6"
+  },
+  "arms": {
+    "scores": {
+      "audit": "exactly matches remote",
+      "update_journal": "contiguous",
+      "checkpoint_sha256": "0fc34dd99607ebc6cf5ae02caa6a169ed70a88296fe10ac4ca724391f3b2f53e",
+      "selected_epoch": 20
+    },
+    "linear": {
+      "audit": "exactly matches remote",
+      "update_journal": "contiguous",
+      "checkpoint_sha256": "5ab048b622beffb10ab8d282027cb2510f5439e4621793d5a82e687e696d679b",
+      "selected_epoch": 45
+    },
+    "mlp": {
+      "audit": "exactly matches remote",
+      "update_journal": "contiguous",
+      "checkpoint_sha256": "8d955ee7df59052c6e428739afdb35bef3b43da239c7053131ab336019f43327",
+      "selected_epoch": 55
+    }
+  }
+}

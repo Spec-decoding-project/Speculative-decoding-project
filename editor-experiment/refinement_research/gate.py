@@ -87,9 +87,15 @@ class GateEditor(TokenEditor):
         return torch.cat((vocabulary, copying), dim=-1), result['cache']
 
     @torch.no_grad()
-    def propose_actions(self, prefix, draft, conditioning='draft', *, cached=True, record_actions=True):
+    def propose_actions(self, prefix, draft, conditioning='draft', *, cached=True, record_actions=True,
+                        max_edits=None):
         if conditioning != 'draft':
             raise ValueError('Frozen-gate models read the complete proposal')
+        limit = len(draft)-2 if max_edits is None else max_edits
+        if type(limit) is not int or not 0 <= limit <= len(draft)-2:
+            raise ValueError('Edit limit must fit the editable suffix')
+        if limit == 0:
+            return list(draft), [self.config.vocab_size]*(len(draft)-2) if record_actions else []
         ids, segments = condition(prefix, draft, conditioning)
         if len(ids)+len(draft)-2 > self.config.max_length:
             raise ValueError('Editor context budget exceeded')
@@ -102,7 +108,7 @@ class GateEditor(TokenEditor):
         was_training = self.training
         self.eval()
         try:
-            for position in range(2, len(draft)):
+            for position in range(2, 2+limit):
                 result = self.readout(tokens, types, past=past if cached else metadata,
                                       use_cache=cached, logit_start=tokens.shape[1]-1)
                 copying = result['gate'] >= 0
@@ -118,11 +124,14 @@ class GateEditor(TokenEditor):
                     types = torch.cat((types, torch.full_like(chosen, 2)), dim=1)
         finally:
             self.train(was_training)
-        proposal = list(draft[:2])+torch.cat(emitted, dim=1).flatten().tolist()
-        return proposal, torch.cat(actions, dim=1).flatten().tolist() if actions else []
+        proposal = list(draft[:2])+torch.cat(emitted, dim=1).flatten().tolist()+list(draft[2+limit:])
+        recorded = (torch.cat(actions, dim=1).flatten().tolist()+
+                    [self.config.vocab_size]*(len(draft)-2-limit)) if actions else []
+        return proposal, recorded
 
-    def propose(self, prefix, draft, conditioning='draft', *, cached=True):
-        return self.propose_actions(prefix, draft, conditioning, cached=cached, record_actions=False)[0]
+    def propose(self, prefix, draft, conditioning='draft', *, cached=True, max_edits=None):
+        return self.propose_actions(prefix, draft, conditioning, cached=cached, record_actions=False,
+                                    max_edits=max_edits)[0]
 
 
 def supervision(original, generated, labels):

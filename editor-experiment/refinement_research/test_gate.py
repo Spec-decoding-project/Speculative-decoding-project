@@ -66,3 +66,20 @@ def test_optimizer_updates_only_gate_and_can_learn_a_known_decision():
     assert generator_hash(editor)==before
     assert all(p.grad is None and not p.requires_grad for name,p in editor.named_parameters()
                if not name.startswith('gate_head.'))
+
+
+@pytest.mark.parametrize('kind', ['scores','linear','mlp'])
+def test_limited_edits_match_full_causal_prefix_and_preserve_remainder(kind):
+    torch.manual_seed(71)
+    editor=GateEditor(Config(vocab_size=20,width=16,layers=1,heads=2,max_length=64),kind)
+    with torch.no_grad():
+        (editor.gate_head[-1] if kind=='mlp' else editor.gate_head).bias.fill_(-100)
+    prefix,draft=[1,2],list(range(16))
+    full,actions=editor.propose_actions(prefix,draft)
+    for limit in (0,1,2,4,14):
+        expected=full[:2+limit]+draft[2+limit:]
+        result,limited_actions=editor.propose_actions(prefix,draft,max_edits=limit)
+        assert result==expected==editor.propose(prefix,draft,max_edits=limit,cached=False)
+        assert limited_actions==actions[:limit]+[20]*(14-limit)
+    for invalid in (-1,15,True,1.5):
+        with pytest.raises(ValueError):editor.propose(prefix,draft,max_edits=invalid)

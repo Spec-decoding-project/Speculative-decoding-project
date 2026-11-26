@@ -1,0 +1,56 @@
+{
+  "schema": "frozen-generator-gates-v1",
+  "selection": {
+    "schema": 1,
+    "bank_sha256": "c7f92fae5609137510a198297a31b5178c70c413f263f89f04560b98aa6bbb3d",
+    "selection_sha256": "cad4b36d2adc0bf02b3faa61c3281b98e6c009e19a8fed037e9c0286c86222fc",
+    "blocks": 2048,
+    "prompts": 2048,
+    "families": 2048,
+    "counts": {
+      "preservation/HuggingFaceH4/ultrachat_200k": 512,
+      "preservation/openai/gsm8k": 512,
+      "repairable/HuggingFaceH4/ultrachat_200k": 512,
+      "repairable/openai/gsm8k": 512
+    },
+    "development_blocks": 2048,
+    "development_prompts": 512,
+    "final_test_loaded": false,
+    "fit_blocks": 1536,
+    "calibration_blocks": 512,
+    "fit_sha256": "cb540f6821ad50241fff31979ee4cde1778fee352a799b6420ae413ee802f377",
+    "calibration_sha256": "1a356888d96ee15f5e282fd979c34129f8d6eff9e6fb9fe0f7411ae0fb7f815e"
+  },
+  "initial_checkpoint_sha256": "c79b8c59c1e2cf73a7adf7aa9738b1b273779d330fe32f8d2c4a15fd56b7e8d2",
+  "generator_weights_sha256": "8babb2bfe3f4c11ef283312e22ccd2e20878438c96957302ff2c462748bbd382",
+  "kinds": [
+    "scores",
+    "linear",
+    "mlp"
+  ],
+  "seed": 0,
+  "lr": 0.001,
+  "weight_decay": 0.01,
+  "clip_norm": 1,
+  "batch_size": 256,
+  "max_updates": 2000,
+  "max_epochs": 200,
+  "calibration_interval_epochs": 5,
+  "patience_epochs": 50,
+  "objective": "Reachable exclusive candidate choices, weighted by remaining attainable prefix",
+  "selection_rule": "Maximum internal-calibration mean prefix, then minimum weighted decision CE",
+  "source_hashes": {
+    "__init__.py": "b8fe0a0b2f204f16c9cb1320b6ea1c652616cb029a9a393275563996c746f370",
+    "diagnose_copy.py": "e0927b64f88792a9df1301254e3f813702ab9ba8eb32b866093e9e57807f57d3",
+    "gate.py": "281032a842721cc3e6caf8eee3d2cbdf3da51f1a6d8243e499492ba3dd5f8f95",
+    "gate_data.py": "6bcc767197f25a2ca9a24f5c0a2d57adfeaf8de50a759b935d40e9b9c838d360",
+    "test_diagnostic.py": "fd284c656f9ea3801399421ee875ee86f6c6bc07126c37a7d4dc38d75a6c1410",
+    "test_gate.py": "2d50543d7c2df12f842c6160684b9b9b193be7d4927fd39b6d1a14e1f892ddff",
+    "test_gate_training.py": "d5a27065ad3b9fadc5fd00e07cbfe2cb888d0104e3a85eed7b1d8a4ac1a7cc19",
+    "train_gates.py": "a215851fd6e236877bb33fb8e5d2290f7bdc846749b9c5f8e4af2a0d33fc2a1e"
+  },
+  "torch": "2.14.0+cu130",
+  "cuda": "13.0",
+  "gpu": "NVIDIA RTX A5000",
+  "final_test_loaded": false
+}
