@@ -8,8 +8,8 @@ and updated when results arrive. Failed attempts stay in this record.
 
 Nexus login succeeded and no old job was running. The frozen-model diagnostic finished on `work/ar-refinement-research`. It found
 both bad COPY choices and damage to vocabulary predictions. Three frozen-generator gates have now completed training with small positive
-development gains. A shorter-edit comparison is running to investigate their
-computation cost. The user has authorized
+development gains. The completed shorter-edit comparison did not retain a useful quality/cost
+tradeoff. A larger gate-only fit on 9,392 prompts is now running. The user has authorized
 successive experiments and asked to stay informed; no additional data is needed.
 
 Our objective is an autoregressive module that improves DFlash's proposals enough
@@ -228,7 +228,12 @@ of execution cost. No improvement would argue against simply scaling this gate
 objective; reconsider the decision features/objective and measure execution costs.
 This is an exploratory learning-curve comparison, not independent confirmation.
 
-**Status:** predeclared; implementation and tests in progress, no job submitted.
+**Status:** Slurm job **8579313** submitted from frozen source
+`b3c4ce451beb3afb93335549e2f41f478d3d2186`. All 53 local tests passed. The job runs
+pinned GPU tests, selection/provenance checks, extraction, all three gate fits and
+evaluation automatically. Output: `research/broader-gates-20261125/`. Source archive
+SHA256: `b018c78513e243bf0b8088010c42d6d34234135f08021283f78f42848aee00ab`.
+Results pending.
 
 ## How to read future entries
 
