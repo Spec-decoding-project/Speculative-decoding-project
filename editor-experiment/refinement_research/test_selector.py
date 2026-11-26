@@ -51,6 +51,13 @@ def test_shadow_labels_exclude_unknown_tail_and_count_damage():
     record=dict(generated=dict(tokens=full[2:]),observed=dict(selector_decisions=decisions,edits=edits))
     result=label_shadow(prompt,record)
     assert len(result)==1 and result[0]['gain']==-13
+    overshoot=copy.deepcopy(record)
+    overshoot['observed']['edits'].append(dict(anchor=len(full)+4,prefix=full+[80]*4,
+        original=[80]*16,edited=[80]*16))
+    overshoot['observed']['selector_decisions'].append(dict(length=len(full)+5,features=[0.]*14))
+    assert label_shadow(prompt,overshoot)==result
+    overshoot['observed']['edits'][-1]['prefix'][0]=999
+    with pytest.raises(ValueError,match='canonical baseline'):label_shadow(prompt,overshoot)
     broken=copy.deepcopy(record);broken['observed']['edits'][0]['edited'][1]=99
     with pytest.raises(ValueError,match='changed'):label_shadow(prompt,broken)
 

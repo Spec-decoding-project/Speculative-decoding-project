@@ -102,12 +102,15 @@ def label_shadow(prompt, record):
     rows=[]
     for decision,edit in zip(decisions,edits):
         position=edit['anchor']+1
-        if decision['length'] != position or edit['prefix'] != full[:position-1]:
+        known=min(position-1,len(full))
+        if decision['length'] != position or len(edit['prefix']) != position-1 or edit['prefix'][:known] != full[:known]:
             raise ValueError('Shadow context does not follow canonical baseline')
-        if full[position-1] != edit['original'][0] or edit['original'][:2] != edit['edited'][:2]:
+        if edit['original'][:2] != edit['edited'][:2]:
             raise ValueError('Shadow anchor/first proposal changed')
         if position+15 > len(full):
             continue  # The unobserved tail must never become a guessed label.
+        if full[position-1] != edit['original'][0]:
+            raise ValueError('Shadow anchor differs from canonical baseline')
         labels=full[position:position+15]
         original=prefix_length(edit['original'][1:], labels)
         edited=prefix_length(edit['edited'][1:], labels)

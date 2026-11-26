@@ -554,3 +554,12 @@ One GPU, maximum 80 minutes. A selector that cannot beat baseline is a negative
 result, not a reason to silently increase training or change the frozen editor.
 
 Tracked in [Can a cheap pre-editor selector recover native DFlash throughput?](https://github.com/Spec-decoding-project/Speculative-decoding-project/issues/27).
+
+The first launch (8580929, source 444ebc3) stopped after one shadow example:
+all 64 emitted tokens passed the native audit, but the last native round had
+computed six tokens beyond the output cap. The label builder checked an
+unreturned prefix before discarding its incomplete window. Fixed that ordering:
+validate the entire known prefix, retain the alignment/anchor guards, and omit
+any window without 15 observed future tokens. A synthetic overshoot regression
+test and the saved real failure fixture now pass. No selector fit or development
+evaluation occurred in that failed launch; its source/log/output remain intact.

@@ -7,12 +7,12 @@
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=32G
 #SBATCH --gres=gpu:rtxa5000:1
-#SBATCH --time=01:20:00
+#SBATCH --time=01:18:00
 #SBATCH --output=ar-selector-%j.log
 set -euo pipefail
 cd "${SLURM_SUBMIT_DIR:?Submit from project root}"
 project_dir="$PWD"
-source_dir="$project_dir/research/selector-20261125-source"
+source_dir="$project_dir/research/selector-r2-20261125-source"
 run_dir="$project_dir/research/selector-$SLURM_JOB_ID"
 output_dir="$run_dir/benchmark"
 install_dir=/scratch0/fpajak-vllm034-Ry21jsII
@@ -35,4 +35,4 @@ PYTHONPATH="$PYTHONPATH:$project_dir/research/copy-action-fit-20261120-r2/test-s
  "$python_bin" -m pytest -q "$source_dir/refinement_research/test_selector.py" "$source_dir/refinement_research/test_native_best.py" "$source_dir/refinement_research/test_native_speed.py" > "$run_dir/tests.txt"
 sha256sum "$project_dir/research/full-corpus-run-20261117/training/draft/best.pt" \
  "$project_dir/research/frozen-gates-20261125/linear/best.pt" > "$run_dir/checkpoint-hashes.txt"
-timeout 4700 "$python_bin" -u -m refinement_research.native_selector --project "$project_dir" --output "$output_dir"
+timeout 4580 "$python_bin" -u -m refinement_research.native_selector --project "$project_dir" --output "$output_dir"
