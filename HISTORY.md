@@ -6,12 +6,12 @@ and updated when results arrive. Failed attempts stay in this record.
 
 ## Current state — November 25, 2026
 
-Five GPU experiments are complete: a frozen-model diagnostic, two three-gate
-training comparisons, a shorter-edit comparison, and an exact-output CUDA graph
-prototype. The gates give small positive development gains; larger training does
-not reliably improve them. Graph replay cuts warm editor cost from 25.45 to
-6.73 ms with identical tested outputs. Native generation speedup remains untested.
-All checkpoints/results are independently backed up and audited. See the concise
+The completed native comparison of the earlier 3.6997 gate loses throughput by
+8.86% on UltraChat and 8.59% on GSM8K across 128 development prompts. Correctness
+checks pass, but the always-on editor's cost exceeds its acceptance benefit. The
+user has requested a cheap pre-editor selector. That bounded follow-up is being
+prepared; larger editor training remains paused. Prior results are backed up and
+audited. See the concise
 [project update](docs/research/refinement-2026-11-25/REPORT.md).
 
 Our objective is an autoregressive module that improves DFlash's proposals enough
@@ -517,3 +517,40 @@ Private raw outputs, source, logs and hashes:
 editor/gate remain unchanged, original workspace edits are preserved, and final
 test responses were not evaluated. Serving-fidelity remains open for union,
 concurrency and fresh confirmation; four replacement natural-EOS cases now pass.
+
+## November 25: test selection before paying for the editor (registered)
+
+The user requested the cheap-selector follow-up. A new tiny decision tree will
+look at DFlash's top-two score gaps, proposal repetition, prompt/generated length,
+and the previous round's committed-token count. These are available before any
+editor step. DFlash already computes the vocabulary scores; we will measure the
+additional reduction/copy cost, rather than treating these features as free.
+The existing confidence buffer is uninitialized in our configuration and is not
+used. The selector receives no target labels, hidden states, or editor features
+at inference. Target, drafter, 40.75M generator and earlier 265-parameter gate
+remain frozen; the only newly fitted object is a depth-three CPU decision tree.
+
+Collect baseline trajectories on 96 training-origin fit prompts and 32 disjoint
+training-origin calibration prompts (balanced by source/length quartile). Run
+the existing editor in shadow mode: save its proposals but return DFlash's
+original proposal to the verifier. The completed canonical continuation labels
+both candidates. Discard windows without all 15 future reference tokens, and
+retain damage/zero-gain/wrong-first examples. Fit maximum depth 3, minimum leaf
+64, leaf shrinkage 32. Pick one threshold from 0/.25/.5/.75/1/1.5/2/never using
+only calibration net prefix gain minus 0.45 tokens per edit; ties favor fewer
+edits. This fixed prior approximates the earlier complete-round break-even cost;
+native timings, not the proxy objective, decide success.
+
+Freeze the selector before evaluating 64 development prompts excluded from the
+previous 128 native prompts: 32 per source, eight per source/length quartile.
+These are new native trajectories, not untouched final confirmation (saved
+development blocks have previously been evaluated). Three balanced repeats
+compare baseline, selector-only/always-skip, always-on and selective editing,
+batch one, 64-token cap. All feature extraction, copies and editing are timed.
+Warm graph reuse is required; both editor arms get separate empty-cache runs.
+Check all final tokens/termination, and raw target logits plus independent greedy
+references on one prompt per stratum. No final-test responses or larger training.
+One GPU, maximum 80 minutes. A selector that cannot beat baseline is a negative
+result, not a reason to silently increase training or change the frozen editor.
+
+Tracked in [Can a cheap pre-editor selector recover native DFlash throughput?](https://github.com/Spec-decoding-project/Speculative-decoding-project/issues/27).

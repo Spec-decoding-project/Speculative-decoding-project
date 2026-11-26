@@ -56,6 +56,11 @@ class NativeSpeedWorker(CorpusCaptureWorker):
             # num_sampled is zero for an unfinished chunked prefill.
             if int(args[5][0]) == 0:
                 return result
+            # A selector must run before copying the context or invoking any
+            # editor step. The default worker has no selector and is unchanged.
+            selector = getattr(worker, 'choose_edit', None)
+            if selector is not None and not selector(speculator, result, batch, args):
+                return result
             states = worker.model_runner.req_states
             slot = states.req_id_to_index[batch.req_ids[0]]
             length = int(states.total_len.gpu[slot])
@@ -74,7 +79,7 @@ class NativeSpeedWorker(CorpusCaptureWorker):
                 edited = [draft[0], *continuation, *draft[1+len(continuation):]]
                 if worker.mode == 'reject_first':
                     edited[1] = (edited[1]+1) % 151936
-            elif worker.mode == 'editor':
+            elif worker.mode in ('editor', 'selected', 'shadow'):
                 from refinement_research.graph_replay import CapturedEditor
                 key = len(prefix)
                 if key not in worker.graphs:
@@ -100,11 +105,12 @@ class NativeSpeedWorker(CorpusCaptureWorker):
             else:
                 raise ValueError('Unknown native mode')
             # Return a fresh tensor: never mutate DFlash's persistent output buffer.
-            result = torch.tensor([edited[1:]], dtype=result.dtype, device=result.device)
+            if worker.mode != 'shadow':
+                result = torch.tensor([edited[1:]], dtype=result.dtype, device=result.device)
             worker.edit_calls += 1
             worker.editor_ms.append(1000*(time.perf_counter()-started))
             worker.cold_ms += cold_ms
-            if worker.active:
+            if worker.active or worker.mode == 'shadow':
                 worker.edits.append(dict(anchor=length-1, prefix=committed[:-1],
                     original=draft, edited=edited, graph_preparation_ms=cold_ms))
             return result
