@@ -397,3 +397,53 @@ decision. Development results are exploratory because we have inspected them
 repeatedly. A later success claim needs fresh confirmation prompts and complete
 generation timing. Neither copying everything nor an oracle choosing the better
 proposal counts as a working editor.
+
+## November 25 — matched native benchmark of the earlier best linear gate
+
+**User request:** finish this comparison before any more training. Use the earlier
+265-parameter gate (development prefix 3.69970703125), not the broader gate used
+in the first native pilot. The gate still calls the frozen 40,750,336-parameter
+autoregressive generator; 265 is not the complete editor size.
+
+**Registered method, before execution:** exact gate SHA256
+`5ab048b622beffb10ab8d282027cb2510f5439e4621793d5a82e687e696d679b`, FP32 generator
+and gate, unchanged original generator and canonical invariant target/drafter.
+Ordinary editor kernels are captured under the tested temporary dispatch scope;
+invariant dispatch is restored before every target call. Batch one, one A5000,
+4 CPUs/32 GiB, 80-minute maximum allocation, no optimizer updates.
+
+Select 128 development prompts, 64 per source. Within each source's 256 development
+prompts, rank by prompt length/hash into four 64-prompt quartiles; choose 16 per
+quartile by a fixed hash independent of outputs. Interleave prompt order by a
+second fixed hash. Preserve the final test split. This is exploratory development
+evidence, not fresh confirmation. Use 64 output tokens maximum and normal EOS.
+
+Eight target-only reference controls cover each source/quartile. Every selected
+prompt gets baseline/editor correctness runs checking exact output/stopping,
+native accepted counts, full target-logit hashes and editor graph/eager agreement.
+Then an unedited warmup and an empty-cache editor run precede five timing pairs.
+Pair order alternates by prompt and repetition. Every timed output must match;
+any warm graph miss fails the benchmark. No precision sweep or training.
+
+End-to-end timing includes the whole generation call, all input/output copies,
+editor work, engine scheduling, and a final worker synchronization/RPC to drain
+last-round GPU work. Also save ordinary generate-call latency and drain/RPC cost.
+A synchronized boundary immediately before the first DFlash proposal separates
+prefill/request work from decode, identically in both arms. Decode includes the
+first proposal and any unused final proposal. Average decode round wall time is
+this complete interval divided by actual speculative verification calls. Commit
+counts exclude the prefill's first token and clip final-block overshoot against
+tokens actually returned. This prevents confusing correct draft prefix with
+emitted tokens or counting chunked prefill as verification.
+
+Warm graph reuse and cold setup are reported separately; exact-length graphs are
+kept in the existing 64-entry cache and cleared for each cold prompt. Warm results
+are an optimistic reusable-shape case, not a claim that setup amortizes across a
+fresh arbitrary workload. Report means/aggregate throughput, five paired repeat
+ratios, paired-prompt bootstrap intervals, separate source and length-quartile
+results/counts. Break-even arithmetic uses measured visible commits and round
+cost, with the assumption of fixed noneditor round work made explicit.
+
+The prepared tron59/tron61 hosts lack 32 GiB allocatable memory. CPU-only staging
+allocation 8580160 copies the identical environment and original generator to
+tron50; packages and checkpoint hashes must pass before GPU execution.

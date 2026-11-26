@@ -38,6 +38,12 @@ class NativeSpeedWorker(CorpusCaptureWorker):
 
         @functools.wraps(original_propose)
         def propose(speculator, *args, **kwargs):
+            if worker.measuring and worker.details and worker.decode_started is None:
+                # A single synchronized boundary after the final prefill's target
+                # token, before DFlash and editor work. Same probe in both arms.
+                torch.cuda.synchronize()
+                if int(args[5][0]) > 0:
+                    worker.decode_started = time.perf_counter()
             result = original_propose(speculator, *args, **kwargs)
             if not worker.measuring or worker.mode == 'off' or kwargs.get('dummy_run', False):
                 return result
@@ -46,10 +52,10 @@ class NativeSpeedWorker(CorpusCaptureWorker):
                 raise RuntimeError('Native editor pilot only supports batch one / b16')
             if kwargs.get('num_speculative_tokens', 15) == 0:
                 return result
+            started = time.perf_counter()
             # num_sampled is zero for an unfinished chunked prefill.
             if int(args[5][0]) == 0:
                 return result
-            started = time.perf_counter()
             states = worker.model_runner.req_states
             slot = states.req_id_to_index[batch.req_ids[0]]
             length = int(states.total_len.gpu[slot])
@@ -120,6 +126,8 @@ class NativeSpeedWorker(CorpusCaptureWorker):
             result = original_sample(runner, hidden_states, batch, grammar_output)
             if worker.measuring:
                 worker.round_speculative = batch.num_draft_tokens > 0
+                if worker.details:
+                    worker.all_samples.append((worker.round_speculative, result[1].clone()))
                 if worker.round_speculative:
                     # Copies stay on device until finish; no per-round CPU sync.
                     worker.acceptance.append((result[1].clone(), result[2].clone()))
@@ -140,7 +148,8 @@ class NativeSpeedWorker(CorpusCaptureWorker):
         GPUModelRunner.sample = sample
         GPUModelRunner.sample_tokens = sample_tokens
 
-    def speed_load(self, initial, gate, precision, kernels='invariant'):
+    def speed_load(self, initial, gate, precision, kernels='invariant',
+                   expected_gate_sha256='b6f1c27a312a829efedc1db2ac42091f3702ad7d586f9025033508ab2c606882'):
         import torch
         from copy_action_fit.data import CHECKPOINT_SHA256, sha
         from refinement_research.train_gates import initialize
@@ -151,7 +160,7 @@ class NativeSpeedWorker(CorpusCaptureWorker):
         torch.cuda.empty_cache()
         self.editor = initialize(initial, 'linear')
         payload = torch.load(gate, map_location='cpu', weights_only=True)
-        if sha(gate) != 'b6f1c27a312a829efedc1db2ac42091f3702ad7d586f9025033508ab2c606882':
+        if sha(gate) != expected_gate_sha256:
             raise ValueError('Gate checkpoint changed')
         self.editor.gate_head.load_state_dict(payload['gate'], strict=True)
         if precision == 'bf16':
@@ -164,12 +173,15 @@ class NativeSpeedWorker(CorpusCaptureWorker):
                     kernels=kernels, generator_dtype=str(self.editor.token.weight.dtype),
                     parameters=sum(p.numel() for p in self.editor.parameters()))
 
-    def speed_begin(self, mode, audit=False, reference=None, clear_graphs=False):
+    def speed_begin(self, mode, audit=False, reference=None, clear_graphs=False, details=False):
         import torch
         if clear_graphs:
             self.graphs.clear()
             torch.cuda.empty_cache()
         self.mode, self.reference = mode, reference
+        self.details = details
+        self.decode_started = None
+        self.all_samples = []
         self.rounds, self.edits, self.editor_ms, self.acceptance = [], [], [], []
         self.hits = self.misses = self.evictions = self.edit_calls = 0
         self.cold_ms = 0.0
@@ -182,12 +194,23 @@ class NativeSpeedWorker(CorpusCaptureWorker):
         self.measuring = True
         return dict(graphs=len(self.graphs), precision=self.precision)
 
+    def speed_stop(self):
+        # Drain this worker's GPU context, including any last-round proposal.
+        # The timestamp excludes serializing the much larger diagnostic payload.
+        import torch
+        torch.cuda.synchronize()
+        stamp = time.perf_counter()
+        self.measuring = False
+        return stamp
+
     def speed_finish(self):
         import torch
         torch.cuda.synchronize()
         self.measuring = False
         audited = self.corpus_finish() if self.active else None
         return dict(mode=self.mode, precision=self.precision, kernels=self.kernels,
+            decode_started=self.decode_started,
+            all_samples=[dict(speculative=spec, sampled=int(n.sum())) for spec,n in self.all_samples],
             rounds=[dict(gpu_ms=a.elapsed_time(b), host_ms=host, speculative=spec)
                     for a,b,host,spec in self.rounds],
             sampled=[int(a.sum()) for a,b in self.acceptance],
