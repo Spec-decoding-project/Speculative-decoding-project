@@ -1,10 +1,26 @@
 # November 25 project update
 
-**Native replacement now passes the tested correctness checks, but the best tested editor is 7.5% slower overall with warm graphs.** Eight development prompts, 64 output tokens each and five paired repeats show two short-prompt wins, including 1.24× on one 94-token input. Short prompts as a group are essentially tied; longer prompts are slower. Empty-cache generation is about twice as slow. [Native verification, kernel diagnosis and full timing report](NATIVE_SPEED.md).
+**The exact earlier 3.6997 linear gate now has a completed native benchmark on
+128 development prompts. It lowers end-to-end throughput by 8.86% on UltraChat
+and 8.59% on GSM8K.** All 640 timing pairs preserve final tokens; full target-logit,
+acceptance and graph-reuse checks pass. At batch one, commits per round improve
+only 2.15%/2.32%, permitting 1.50/1.62 ms of extra work, while measured complete
+rounds cost 8.75/8.67 ms more. All eight length groups lose on average.
+[Complete matched benchmark, repeats, length groups and break-even results](NATIVE_BEST.md).
 
-We fixed a real integration penalty: vLLM's process-wide invariant kernels also affected the editor. Ordinary editor kernels preserve the target's invariant full logits on the tested positions and reduce the initial 33% slowdown to 12% in FP32; BF16 reduces it to 7.5%. All jobs and independent audits completed. Union, natural EOS and fresh confirmation remain open; no more training ran. The evidence favors a cheaper decision to skip unprofitable rounds and better graph reuse before scaling this always-on design. Earlier training and isolated timing findings follow.
+The earlier native pilot used a different, broader-data gate and only eight
+UltraChat prompts. Its best BF16 arm was 7.5% slower overall; those results are
+historical and are not substituted for the requested earlier-gate comparison.
+That pilot also identified and reduced a process-wide editor-kernel penalty.
+[Earlier native integration and kernel investigation](NATIVE_SPEED.md).
 
-The underlying whole-draft autoregressive editor remains **40,750,336 parameters**. It reads accepted context and the complete DFlash token proposal, preserves the anchor and first proposal token, and generates fourteen editable tokens one at a time. It uses its own embeddings/representations; no target/drafter hidden states are inputs. This session freezes that generator and trains only a COPY-versus-generate decision gate: 9, 265 or 17,025 parameters.
+All jobs, independent audits and backups are complete; no more training ran.
+Four natural EOS cases now pass for replacement. Union, concurrency and fresh
+confirmation remain open. The present always-on execution design fails the speed
+criterion; reduce its cost or change when editing runs before scaling it further.
+Earlier training and isolated timing findings follow.
+
+The underlying whole-draft autoregressive editor remains **40,750,336 parameters**. It reads accepted context and the complete DFlash token proposal, preserves the anchor and first proposal token, and generates fourteen editable tokens one at a time. It uses its own embeddings/representations; no target/drafter hidden states are inputs. The earlier gate experiments froze that generator and trained only a COPY-versus-generate decision gate: 9, 265 or 17,025 parameters.
 
 | Experiment | What it established |
 |---|---|
@@ -12,6 +28,7 @@ The underlying whole-draft autoregressive editor remains **40,750,336 parameters
 | Three gates on 1,536 training prompts | All three improve development prefix quality modestly. Best observed mean: **3.6997**, versus DFlash **3.5776** (+3.4%). |
 | One/two/four-edit budgets | Eight of nine shortened variants lose quality. The one positive short gain is tiny. |
 | Same gates on 9,392 training prompts | More data helps the score gate slightly and does not reliably improve the others. Best earlier result remains higher. |
+| Native earlier-gate benchmark | Exact outputs, but 8.86%/8.59% lower UltraChat/GSM8K throughput with warm graphs; the acceptance gain buys much less time than editing adds. |
 | Exact-output CUDA graph prototype | On a fixed broader linear checkpoint, warm editor latency falls **25.45 → 6.73 ms (3.78×)**, preserving every tested output. |
 
 Both training comparisons select checkpoints using the same 512 training-origin calibration prompts. Development uses 2,048 blocks from 512 separate prompts, excluded from optimization. These development prompts have been inspected repeatedly; this is exploratory evidence, not fresh confirmation. The first fit supplies 991 decisive training positions and the larger fit 8,300. Only the gate receives gradient updates; the original full-trained generator is unchanged.
@@ -20,7 +37,7 @@ Training computes which candidate is correct under the reference preceding token
 
 The earlier 3.78× latency result is for a **warm, fixed-shape editor invocation**. Graph preparation costs about 102 ms per captured shape; that prototype lacked a serving cache. The graphed checkpoint's development prefix is 3.6797, and its warm break-even screening threshold is about 302 ms of baseline round time under stated assumptions. Target/drafter were unloaded during that timing. These numbers must not be described as a 3.78× faster DFlash generator. The native report now measures bounded graph reuse, cold cost and complete generation directly.
 
-All five earlier GPU jobs completed successfully and all artifacts are backed up. Their 54-test local suite passes. Full-size GPU controls, reloads, generator hashes, calibration simulations, cache/output checks and independent saved-result audits passed. The two subsequent native GPU jobs, CPU pin audit and independent native audits also pass their correctness checks; their aggregate performance result is negative. Original data, old experiments and original workspace changes are preserved. The final test split remains unused.
+All five earlier GPU jobs completed successfully and all artifacts are backed up. Their 54-test local suite passes. Full-size GPU controls, reloads, generator hashes, calibration simulations, cache/output checks and independent saved-result audits passed. The subsequent native GPU jobs, CPU pin audits and independent native audits also pass their correctness checks; their aggregate performance result is negative. Original data, old experiments and original workspace changes are preserved. The final test split remains unused.
 
 The earlier proposed native milestone has now run for replacement; see the current report above. The serving-fidelity ticket remains open for its untested requirements. Nothing additional is needed from the user to reproduce the completed measurements.
 

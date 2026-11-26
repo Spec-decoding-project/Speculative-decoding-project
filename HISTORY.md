@@ -470,3 +470,50 @@ the headline economics. A separate CPU audit reconstructs counts and this
 calculation from raw records; its regression check reproduces the user's
 50 ms /3.4% example (1.7 ms affordable). No data, model, timing or sampling setting
 was changed during the GPU run.
+
+**Completed result:** Slurm **8580225** finished successfully in **57m24s**;
+CPU-only model pin audit **8580512** passed in **17s**. No jobs remain queued.
+All 128 development prompts completed five paired timings (640 pairs); all paired
+outputs/stops match. Independent Mac reconstruction checks 1,792 native runs,
+eight target-only controls, 16,750 raw argmax positions and 8,119 paired full-logit
+hashes. Four UltraChat cases terminate naturally; both paths agree. Every warm
+editor call reuses a graph: 11,995 hits, zero captures. Local checks pass 28 tests;
+the GPU host passed 10 benchmark tests. All 1,820 backup files match remote hashes.
+
+**UltraChat:** 37.383→34.069 end-to-end tokens/s (**8.86% lower**);
+69.683→78.428ms per complete decode round; 2.68407→2.74169 actual committed
+output tokens per round. Verification rounds over all five repeats fall
+7,375→7,220 (1,475→1,444 in one pass). The observed acceptance gain permits
+only 1.496ms extra work, versus 8.745ms measured extra round cost. At that cost,
+required extra commits are 0.33686, compared with 0.05762 observed.
+
+**GSM8K:** 63.300→57.860 tokens/s (**8.59% lower**);
+69.757→78.427ms/round; 4.56625→4.67207 committed tokens/round; rounds
+4,415→4,315 over five repeats (883→863 per pass). Affordable extra cost 1.617ms;
+measured extra cost 8.670ms. Required extra commits 0.56752; observed 0.10582.
+
+All five repeat ratios lose on both datasets; aggregate throughput ratios are
+0.91136 and 0.91406, with paired-prompt 95% intervals 0.89678–0.92807 and
+0.89280–0.93564. Every source/length quartile loses on average. Four UltraChat
+and twelve GSM8K prompts improve individually. This does not establish a
+population-wide impossibility; it rejects this always-on implementation on the
+measured workload. No further training was started.
+
+Cold runs capture 2,399 graphs, taking 230.07 s for capture plus warmup across 128
+requests (1.797s/request). Full empty-cache generation takes 413.90 s versus 172.32 s
+for one warm DFlash pass. This is an optimistic warm-cache speed test plus a
+separate per-prompt empty-cache measurement, not an inferred production hit rate.
+
+The raw runtime archive remains immutable at 30f1850. Its callback-based cost
+estimate is retained in private raw results; the independent audit reports the
+correct complete-round economics. Reusable reporting code is now also corrected
+to avoid attributing pending drafter work entirely to the editor callback.
+Model initialization and ordinary generate-call-only timing are separately
+reported; the latter also loses on both datasets.
+
+[Complete report and aggregate evidence](docs/research/refinement-2026-11-25/NATIVE_BEST.md).
+Private raw outputs, source, logs and hashes:
+`~/.local/share/wayfinder-artifacts/native-best-8580225/`. Target/drafter/initial
+editor/gate remain unchanged, original workspace edits are preserved, and final
+test responses were not evaluated. Serving-fidelity remains open for union,
+concurrency and fresh confirmation; four replacement natural-EOS cases now pass.

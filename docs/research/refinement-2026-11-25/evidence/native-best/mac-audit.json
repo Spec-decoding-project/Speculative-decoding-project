@@ -1,0 +1,2826 @@
+{
+  "passed": true,
+  "prompts": 128,
+  "candidate_generations": 1792,
+  "target_only_controls": 8,
+  "native_argmax_positions_checked": 16750,
+  "full_logit_hash_comparisons": 8119,
+  "natural_stops": {
+    "HuggingFaceH4/ultrachat_200k": 4,
+    "openai/gsm8k": 0
+  },
+  "one_pass_output_tokens": {
+    "HuggingFaceH4/ultrachat_200k": 4023,
+    "openai/gsm8k": 4096
+  },
+  "warm_graph_hits": 11995,
+  "warm_graph_misses": 0,
+  "native_edited_trajectory": {
+    "complete_windows": 1785,
+    "repaired": 147,
+    "damaged": 102,
+    "prefix_delta_sum": 93,
+    "scope": "Local comparisons on edited trajectory, not matched-baseline throughput"
+  },
+  "drain_and_rpc_ms": {
+    "mean": 4.019195954003862,
+    "maximum": 11.789101001340896
+  },
+  "per_prompt": [
+    {
+      "case": 0,
+      "source": "HuggingFaceH4/ultrachat_200k",
+      "quartile": "Q3",
+      "input_tokens": 143,
+      "seconds": {
+        "off": 1.51833260920248,
+        "editor": 1.70070397919917
+      },
+      "speedup": 0.8927671292434058,
+      "verification_rounds": {
+        "off": 21,
+        "editor": 21
+      }
+    },
+    {
+      "case": 1,
+      "source": "openai/gsm8k",
+      "quartile": "Q4",
+      "input_tokens": 100,
+      "seconds": {
+        "off": 1.0084414340002694,
+        "editor": 1.0559056204016088
+      },
+      "speedup": 0.9550488362934496,
+      "verification_rounds": {
+        "off": 14,
+        "editor": 13
+      }
+    },
+    {
+      "case": 2,
+      "source": "openai/gsm8k",
+      "quartile": "Q2",
+      "input_tokens": 57,
+      "seconds": {
+        "off": 0.9479784191993531,
+        "editor": 0.9838297599955694
+      },
+      "speedup": 0.9635594060537691,
+      "verification_rounds": {
+        "off": 13,
+        "editor": 12
+      }
+    },
+    {
+      "case": 3,
+      "source": "HuggingFaceH4/ultrachat_200k",
+      "quartile": "Q2",
+      "input_tokens": 68,
+      "seconds": {
+        "off": 1.9716660246020183,
+        "editor": 1.7359020321979188
+      },
+      "speedup": 1.135816415921575,
+      "verification_rounds": {
+        "off": 28,
+        "editor": 22
+      }
+    },
+    {
+      "case": 4,
+      "source": "openai/gsm8k",
+      "quartile": "Q1",
+      "input_tokens": 47,
+      "seconds": {
+        "off": 1.1693364246020792,
+        "editor": 1.2284368207998342
+      },
+      "speedup": 0.9518897551774175,
+      "verification_rounds": {
+        "off": 16,
+        "editor": 15
+      }
+    },
+    {
+      "case": 5,
+      "source": "HuggingFaceH4/ultrachat_200k",
+      "quartile": "Q1",
+      "input_tokens": 28,
+      "seconds": {
+        "off": 1.9221443657996133,
+        "editor": 2.057176818797598
+      },
+      "speedup": 0.9343603078918079,
+      "verification_rounds": {
+        "off": 27,
+        "editor": 26
+      }
+    },
+    {
+      "case": 6,
+      "source": "openai/gsm8k",
+      "quartile": "Q4",
+      "input_tokens": 117,
+      "seconds": {
+        "off": 1.088849543404649,
+        "editor": 1.0674511971999892
+      },
+      "speedup": 1.0200462056352453,
+      "verification_rounds": {
+        "off": 15,
+        "editor": 13
+      }
+    },
+    {
+      "case": 7,
+      "source": "openai/gsm8k",
+      "quartile": "Q1",
+      "input_tokens": 51,
+      "seconds": {
+        "off": 1.100045574599062,
+        "editor": 1.2290263530012453
+      },
+      "speedup": 0.8950545054732015,
+      "verification_rounds": {
+        "off": 15,
+        "editor": 15
+      }
+    },
+    {
+      "case": 8,
+      "source": "openai/gsm8k",
+      "quartile": "Q3",
+      "input_tokens": 77,
+      "seconds": {
+        "off": 0.9577730874036205,
+        "editor": 1.070824504402117
+      },
+      "speedup": 0.8944258218468605,
+      "verification_rounds": {
+        "off": 13,
+        "editor": 13
+      }
+    },
+    {
+      "case": 9,
+      "source": "openai/gsm8k",
+      "quartile": "Q4",
+      "input_tokens": 109,
+      "seconds": {
+        "off": 1.1593197515961946,
+        "editor": 1.0679618933994788
+      },
+      "speedup": 1.085544117970268,
+      "verification_rounds": {
+        "off": 16,
+        "editor": 13
+      }
+    },
+    {
+      "case": 10,
+      "source": "openai/gsm8k",
+      "quartile": "Q3",
+      "input_tokens": 78,
+      "seconds": {
+        "off": 0.8884652034001193,
+        "editor": 0.9171463391976431
+      },
+      "speedup": 0.968727852282968,
+      "verification_rounds": {
+        "off": 12,
+        "editor": 11
+      }
+    },
+    {
+      "case": 11,
+      "source": "openai/gsm8k",
+      "quartile": "Q2",
+      "input_tokens": 60,
+      "seconds": {
+        "off": 0.8910999377985718,
+        "editor": 0.9187628343963297
+      },
+      "speedup": 0.9698911453945199,
+      "verification_rounds": {
+        "off": 12,
+        "editor": 11
+      }
+    },
+    {
+      "case": 12,
+      "source": "HuggingFaceH4/ultrachat_200k",
+      "quartile": "Q3",
+      "input_tokens": 126,
+      "seconds": {
+        "off": 2.119898956202087,
+        "editor": 2.3905158585956086
+      },
+      "speedup": 0.8867956046304981,
+      "verification_rounds": {
+        "off": 30,
+        "editor": 30
+      }
+    },
+    {
+      "case": 13,
+      "source": "openai/gsm8k",
+      "quartile": "Q4",
+      "input_tokens": 124,
+      "seconds": {
+        "off": 1.0184913448028965,
+        "editor": 0.9894940608006436
+      },
+      "speedup": 1.0293051622551326,
+      "verification_rounds": {
+        "off": 14,
+        "editor": 12
+      }
+    },
+    {
+      "case": 14,
+      "source": "openai/gsm8k",
+      "quartile": "Q3",
+      "input_tokens": 73,
+      "seconds": {
+        "off": 0.8869244117988273,
+        "editor": 0.8380931006016908
+      },
+      "speedup": 1.058264781277974,
+      "verification_rounds": {
+        "off": 12,
+        "editor": 10
+      }
+    },
+    {
+      "case": 15,
+      "source": "openai/gsm8k",
+      "quartile": "Q1",
+      "input_tokens": 49,
+      "seconds": {
+        "off": 0.8200602233962855,
+        "editor": 0.8393689018004806
+      },
+      "speedup": 0.9769961951618922,
+      "verification_rounds": {
+        "off": 11,
+        "editor": 10
+      }
+    },
+    {
+      "case": 16,
+      "source": "HuggingFaceH4/ultrachat_200k",
+      "quartile": "Q4",
+      "input_tokens": 507,
+      "seconds": {
+        "off": 1.5355354688013905,
+        "editor": 1.6558009237982332
+      },
+      "speedup": 0.9273672014139439,
+      "verification_rounds": {
+        "off": 20,
+        "editor": 19
+      }
+    },
+    {
+      "case": 17,
+      "source": "HuggingFaceH4/ultrachat_200k",
+      "quartile": "Q2",
+      "input_tokens": 95,
+      "seconds": {
+        "off": 1.289767240799847,
+        "editor": 1.3600501021981473
+      },
+      "speedup": 0.9483233292033085,
+      "verification_rounds": {
+        "off": 18,
+        "editor": 17
+      }
+    },
+    {
+      "case": 18,
+      "source": "HuggingFaceH4/ultrachat_200k",
+      "quartile": "Q4",
+      "input_tokens": 402,
+      "seconds": {
+        "off": 0.9218296680017375,
+        "editor": 1.0359843360027299
+      },
+      "speedup": 0.8898104304921735,
+      "verification_rounds": {
+        "off": 11,
+        "editor": 11
+      }
+    },
+    {
+      "case": 19,
+      "source": "openai/gsm8k",
+      "quartile": "Q2",
+      "input_tokens": 61,
+      "seconds": {
+        "off": 0.9528052052017302,
+        "editor": 1.0646262019989081
+      },
+      "speedup": 0.8949668939321366,
+      "verification_rounds": {
+        "off": 13,
+        "editor": 13
+      }
+    },
+    {
+      "case": 20,
+      "source": "HuggingFaceH4/ultrachat_200k",
+      "quartile": "Q2",
+      "input_tokens": 79,
+      "seconds": {
+        "off": 1.5683231276023435,
+        "editor": 1.687699335202342
+      },
+      "speedup": 0.9292668989611907,
+      "verification_rounds": {
+        "off": 22,
+        "editor": 21
+      }
+    },
+    {
+      "case": 21,
+      "source": "HuggingFaceH4/ultrachat_200k",
+      "quartile": "Q1",
+      "input_tokens": 46,
+      "seconds": {
+        "off": 2.0715413280035135,
+        "editor": 2.2911593296012143
+      },
+      "speedup": 0.9041454696055877,
+      "verification_rounds": {
+        "off": 29,
+        "editor": 29
+      }
+    },
+    {
+      "case": 22,
+      "source": "HuggingFaceH4/ultrachat_200k",
+      "quartile": "Q2",
+      "input_tokens": 98,
+      "seconds": {
+        "off": 0.8181027411977994,
+        "editor": 0.916719103397918
+      },
+      "speedup": 0.8924246676712785,
+      "verification_rounds": {
+        "off": 11,
+        "editor": 11
+      }
+    },
+    {
+      "case": 23,
+      "source": "HuggingFaceH4/ultrachat_200k",
+      "quartile": "Q3",
+      "input_tokens": 135,
+      "seconds": {
+        "off": 2.166649373600376,
+        "editor": 2.4120589647995074
+      },
+      "speedup": 0.8982572172651965,
+      "verification_rounds": {
+        "off": 30,
+        "editor": 30
+      }
+    },
+    {
+      "case": 24,
+      "source": "HuggingFaceH4/ultrachat_200k",
+      "quartile": "Q3",
+      "input_tokens": 113,
+      "seconds": {
+        "off": 2.2503161497996187,
+        "editor": 2.5106152574007865
+      },
+      "speedup": 0.8963205904075271,
+      "verification_rounds": {
+        "off": 32,
+        "editor": 32
+      }
+    },
+    {
+      "case": 25,
+      "source": "openai/gsm8k",
+      "quartile": "Q1",
+      "input_tokens": 54,
+      "seconds": {
+        "off": 0.6843771310028387,
+        "editor": 0.9193675243994222
+      },
+      "speedup": 0.7443999410898365,
+      "verification_rounds": {
+        "off": 9,
+        "editor": 11
+      }
+    },
+    {
+      "case": 26,
+      "source": "openai/gsm8k",
+      "quartile": "Q3",
+      "input_tokens": 68,
+      "seconds": {
+        "off": 1.0966961284022545,
+        "editor": 1.1478593066043685
+      },
+      "speedup": 0.9554273089848734,
+      "verification_rounds": {
+        "off": 15,
+        "editor": 14
+      }
+    },
+    {
+      "case": 27,
+      "source": "HuggingFaceH4/ultrachat_200k",
+      "quartile": "Q4",
+      "input_tokens": 303,
+      "seconds": {
+        "off": 1.7572622905980098,
+        "editor": 2.057202171999961
+      },
+      "speedup": 0.8542000949229228,
+      "verification_rounds": {
+        "off": 23,
+        "editor": 24
+      }
+    },
+    {
+      "case": 28,
+      "source": "openai/gsm8k",
+      "quartile": "Q1",
+      "input_tokens": 55,
+      "seconds": {
+        "off": 0.8950814957992407,
+        "editor": 1.0748348384047859
+      },
+      "speedup": 0.8327618940298532,
+      "verification_rounds": {
+        "off": 12,
+        "editor": 13
+      }
+    },
+    {
+      "case": 29,
+      "source": "HuggingFaceH4/ultrachat_200k",
+      "quartile": "Q1",
+      "input_tokens": 26,
+      "seconds": {
+        "off": 1.7252428999985567,
+        "editor": 1.9224454615963622
+      },
+      "speedup": 0.8974209851269059,
+      "verification_rounds": {
+        "off": 24,
+        "editor": 24
+      }
+    },
+    {
+      "case": 30,
+      "source": "HuggingFaceH4/ultrachat_200k",
+      "quartile": "Q1",
+      "input_tokens": 27,
+      "seconds": {
+        "off": 1.775785850797547,
+        "editor": 1.8192601710004965
+      },
+      "speedup": 0.9761032968808189,
+      "verification_rounds": {
+        "off": 25,
+        "editor": 23
+      }
+    },
+    {
+      "case": 31,
+      "source": "openai/gsm8k",
+      "quartile": "Q3",
+      "input_tokens": 74,
+      "seconds": {
+        "off": 0.9582523715973366,
+        "editor": 0.9949443455960136
+      },
+      "speedup": 0.9631215814622304,
+      "verification_rounds": {
+        "off": 13,
+        "editor": 12
+      }
+    },
+    {
+      "case": 32,
+      "source": "HuggingFaceH4/ultrachat_200k",
+      "quartile": "Q2",
+      "input_tokens": 95,
+      "seconds": {
+        "off": 1.2311108555964894,
+        "editor": 1.5897499646031066
+      },
+      "speedup": 0.7744053360641815,
+      "verification_rounds": {
+        "off": 17,
+        "editor": 20
+      }
+    },
+    {
+      "case": 33,
+      "source": "HuggingFaceH4/ultrachat_200k",
+      "quartile": "Q4",
+      "input_tokens": 577,
+      "seconds": {
+        "off": 1.9249616760003847,
+        "editor": 2.255418539396487
+      },
+      "speedup": 0.8534831306811341,
+      "verification_rounds": {
+        "off": 25,
+        "editor": 26
+      }
+    },
+    {
+      "case": 34,
+      "source": "openai/gsm8k",
+      "quartile": "Q1",
+      "input_tokens": 43,
+      "seconds": {
+        "off": 1.0981812010053544,
+        "editor": 1.2242912340036127
+      },
+      "speedup": 0.8969934362873285,
+      "verification_rounds": {
+        "off": 15,
+        "editor": 15
+      }
+    },
+    {
+      "case": 35,
+      "source": "openai/gsm8k",
+      "quartile": "Q3",
+      "input_tokens": 76,
+      "seconds": {
+        "off": 0.8873645328043495,
+        "editor": 0.9159055478026857
+      },
+      "speedup": 0.9688384735011072,
+      "verification_rounds": {
+        "off": 12,
+        "editor": 11
+      }
+    },
+    {
+      "case": 36,
+      "source": "openai/gsm8k",
+      "quartile": "Q2",
+      "input_tokens": 59,
+      "seconds": {
+        "off": 0.8190524505946086,
+        "editor": 0.8386582722014282
+      },
+      "speedup": 0.9766223952512202,
+      "verification_rounds": {
+        "off": 11,
+        "editor": 10
+      }
+    },
+    {
+      "case": 37,
+      "source": "openai/gsm8k",
+      "quartile": "Q4",
+      "input_tokens": 136,
+      "seconds": {
+        "off": 0.9793642033997457,
+        "editor": 1.1057246887998189
+      },
+      "speedup": 0.8857215664260621,
+      "verification_rounds": {
+        "off": 13,
+        "editor": 13
+      }
+    },
+    {
+      "case": 38,
+      "source": "openai/gsm8k",
+      "quartile": "Q4",
+      "input_tokens": 98,
+      "seconds": {
+        "off": 1.0196925105992705,
+        "editor": 1.1423925988026895
+      },
+      "speedup": 0.8925937647600154,
+      "verification_rounds": {
+        "off": 14,
+        "editor": 14
+      }
+    },
+    {
+      "case": 39,
+      "source": "HuggingFaceH4/ultrachat_200k",
+      "quartile": "Q4",
+      "input_tokens": 602,
+      "seconds": {
+        "off": 1.8018420415988659,
+        "editor": 2.0398415518022377
+      },
+      "speedup": 0.8833245111645585,
+      "verification_rounds": {
+        "off": 23,
+        "editor": 23
+      }
+    },
+    {
+      "case": 40,
+      "source": "openai/gsm8k",
+      "quartile": "Q4",
+      "input_tokens": 112,
+      "seconds": {
+        "off": 0.8824694638053188,
+        "editor": 1.068520818601246
+      },
+      "speedup": 0.82587952283468,
+      "verification_rounds": {
+        "off": 12,
+        "editor": 13
+      }
+    },
+    {
+      "case": 41,
+      "source": "HuggingFaceH4/ultrachat_200k",
+      "quartile": "Q3",
+      "input_tokens": 150,
+      "seconds": {
+        "off": 2.3642565630027095,
+        "editor": 2.5584412655996855
+      },
+      "speedup": 0.9241003867440903,
+      "verification_rounds": {
+        "off": 33,
+        "editor": 32
+      }
+    },
+    {
+      "case": 42,
+      "source": "openai/gsm8k",
+      "quartile": "Q4",
+      "input_tokens": 93,
+      "seconds": {
+        "off": 1.0226995744014857,
+        "editor": 1.1456719897978473
+      },
+      "speedup": 0.8926635053563106,
+      "verification_rounds": {
+        "off": 14,
+        "editor": 14
+      }
+    },
+    {
+      "case": 43,
+      "source": "HuggingFaceH4/ultrachat_200k",
+      "quartile": "Q2",
+      "input_tokens": 101,
+      "seconds": {
+        "off": 1.1582507530023576,
+        "editor": 1.2201005240000087
+      },
+      "speedup": 0.9493076432793577,
+      "verification_rounds": {
+        "off": 16,
+        "editor": 15
+      }
+    },
+    {
+      "case": 44,
+      "source": "openai/gsm8k",
+      "quartile": "Q2",
+      "input_tokens": 59,
+      "seconds": {
+        "off": 1.292260280600749,
+        "editor": 1.5881999609991908
+      },
+      "speedup": 0.8136634632503983,
+      "verification_rounds": {
+        "off": 18,
+        "editor": 20
+      }
+    },
+    {
+      "case": 45,
+      "source": "openai/gsm8k",
+      "quartile": "Q3",
+      "input_tokens": 69,
+      "seconds": {
+        "off": 0.8795702987990808,
+        "editor": 1.0708842114021535
+      },
+      "speedup": 0.8213495814336664,
+      "verification_rounds": {
+        "off": 12,
+        "editor": 13
+      }
+    },
+    {
+      "case": 46,
+      "source": "openai/gsm8k",
+      "quartile": "Q1",
+      "input_tokens": 55,
+      "seconds": {
+        "off": 0.8082096027996158,
+        "editor": 0.8957610536017455
+      },
+      "speedup": 0.9022602618744184,
+      "verification_rounds": {
+        "off": 11,
+        "editor": 11
+      }
+    },
+    {
+      "case": 47,
+      "source": "openai/gsm8k",
+      "quartile": "Q3",
+      "input_tokens": 72,
+      "seconds": {
+        "off": 0.8890820685977815,
+        "editor": 0.9930058972007828
+      },
+      "speedup": 0.8953441979589893,
+      "verification_rounds": {
+        "off": 12,
+        "editor": 12
+      }
+    },
+    {
+      "case": 48,
+      "source": "openai/gsm8k",
+      "quartile": "Q4",
+      "input_tokens": 89,
+      "seconds": {
+        "off": 1.1657048093969933,
+        "editor": 1.1480186908011092
+      },
+      "speedup": 1.0154057758271708,
+      "verification_rounds": {
+        "off": 16,
+        "editor": 14
+      }
+    },
+    {
+      "case": 49,
+      "source": "openai/gsm8k",
+      "quartile": "Q3",
+      "input_tokens": 78,
+      "seconds": {
+        "off": 0.9543899409996811,
+        "editor": 1.067325478393468
+      },
+      "speedup": 0.894188286815961,
+      "verification_rounds": {
+        "off": 13,
+        "editor": 13
+      }
+    },
+    {
+      "case": 50,
+      "source": "HuggingFaceH4/ultrachat_200k",
+      "quartile": "Q3",
+      "input_tokens": 107,
+      "seconds": {
+        "off": 1.370280661599827,
+        "editor": 1.5347133344010218
+      },
+      "speedup": 0.8928577284660327,
+      "verification_rounds": {
+        "off": 19,
+        "editor": 19
+      }
+    },
+    {
+      "case": 51,
+      "source": "HuggingFaceH4/ultrachat_200k",
+      "quartile": "Q1",
+      "input_tokens": 32,
+      "seconds": {
+        "off": 2.626568189196405,
+        "editor": 2.9254051482013894
+      },
+      "speedup": 0.8978476676337578,
+      "verification_rounds": {
+        "off": 37,
+        "editor": 37
+      }
+    },
+    {
+      "case": 52,
+      "source": "openai/gsm8k",
+      "quartile": "Q1",
+      "input_tokens": 55,
+      "seconds": {
+        "off": 0.891674027798581,
+        "editor": 1.0712467334029498
+      },
+      "speedup": 0.8323703587557895,
+      "verification_rounds": {
+        "off": 12,
+        "editor": 13
+      }
+    },
+    {
+      "case": 53,
+      "source": "openai/gsm8k",
+      "quartile": "Q4",
+      "input_tokens": 85,
+      "seconds": {
+        "off": 0.9583502310008043,
+        "editor": 1.3801376363961027
+      },
+      "speedup": 0.6943874333456375,
+      "verification_rounds": {
+        "off": 13,
+        "editor": 17
+      }
+    },
+    {
+      "case": 54,
+      "source": "HuggingFaceH4/ultrachat_200k",
+      "quartile": "Q1",
+      "input_tokens": 26,
+      "seconds": {
+        "off": 1.3717028863989982,
+        "editor": 1.4519153146015014
+      },
+      "speedup": 0.9447540587279234,
+      "verification_rounds": {
+        "off": 19,
+        "editor": 18
+      }
+    },
+    {
+      "case": 55,
+      "source": "openai/gsm8k",
+      "quartile": "Q4",
+      "input_tokens": 110,
+      "seconds": {
+        "off": 1.0936758919997374,
+        "editor": 1.1485650018032174
+      },
+      "speedup": 0.9522107066493358,
+      "verification_rounds": {
+        "off": 15,
+        "editor": 14
+      }
+    },
+    {
+      "case": 56,
+      "source": "HuggingFaceH4/ultrachat_200k",
+      "quartile": "Q1",
+      "input_tokens": 31,
+      "seconds": {
+        "off": 1.3720619137980976,
+        "editor": 1.5297398177994181
+      },
+      "speedup": 0.8969250181196529,
+      "verification_rounds": {
+        "off": 19,
+        "editor": 19
+      }
+    },
+    {
+      "case": 57,
+      "source": "HuggingFaceH4/ultrachat_200k",
+      "quartile": "Q2",
+      "input_tokens": 79,
+      "seconds": {
+        "off": 1.718234326399397,
+        "editor": 1.7678726646030554
+      },
+      "speedup": 0.9719219946110748,
+      "verification_rounds": {
+        "off": 24,
+        "editor": 22
+      }
+    },
+    {
+      "case": 58,
+      "source": "HuggingFaceH4/ultrachat_200k",
+      "quartile": "Q2",
+      "input_tokens": 91,
+      "seconds": {
+        "off": 1.3666390987957129,
+        "editor": 1.4531895364023513
+      },
+      "speedup": 0.9404410536694955,
+      "verification_rounds": {
+        "off": 19,
+        "editor": 18
+      }
+    },
+    {
+      "case": 59,
+      "source": "openai/gsm8k",
+      "quartile": "Q1",
+      "input_tokens": 37,
+      "seconds": {
+        "off": 0.8892907889996422,
+        "editor": 0.9928010462055681
+      },
+      "speedup": 0.8957391739245879,
+      "verification_rounds": {
+        "off": 12,
+        "editor": 12
+      }
+    },
+    {
+      "case": 60,
+      "source": "openai/gsm8k",
+      "quartile": "Q1",
+      "input_tokens": 39,
+      "seconds": {
+        "off": 0.9645821603975492,
+        "editor": 1.2293291164009132
+      },
+      "speedup": 0.7846411083319499,
+      "verification_rounds": {
+        "off": 13,
+        "editor": 15
+      }
+    },
+    {
+      "case": 61,
+      "source": "HuggingFaceH4/ultrachat_200k",
+      "quartile": "Q1",
+      "input_tokens": 26,
+      "seconds": {
+        "off": 2.2153710040001897,
+        "editor": 2.4672128075995716
+      },
+      "speedup": 0.8979245718797939,
+      "verification_rounds": {
+        "off": 31,
+        "editor": 31
+      }
+    },
+    {
+      "case": 62,
+      "source": "HuggingFaceH4/ultrachat_200k",
+      "quartile": "Q3",
+      "input_tokens": 152,
+      "seconds": {
+        "off": 1.739213642399409,
+        "editor": 1.7882068737992085
+      },
+      "speedup": 0.9726020338487409,
+      "verification_rounds": {
+        "off": 24,
+        "editor": 22
+      }
+    },
+    {
+      "case": 63,
+      "source": "HuggingFaceH4/ultrachat_200k",
+      "quartile": "Q2",
+      "input_tokens": 65,
+      "seconds": {
+        "off": 2.1208047243999317,
+        "editor": 1.8982734324003103
+      },
+      "speedup": 1.1172282602713548,
+      "verification_rounds": {
+        "off": 30,
+        "editor": 24
+      }
+    },
+    {
+      "case": 64,
+      "source": "HuggingFaceH4/ultrachat_200k",
+      "quartile": "Q2",
+      "input_tokens": 89,
+      "seconds": {
+        "off": 1.998136765998788,
+        "editor": 2.235297780003748
+      },
+      "speedup": 0.8939018254630208,
+      "verification_rounds": {
+        "off": 28,
+        "editor": 28
+      }
+    },
+    {
+      "case": 65,
+      "source": "openai/gsm8k",
+      "quartile": "Q4",
+      "input_tokens": 81,
+      "seconds": {
+        "off": 0.7489159520016984,
+        "editor": 0.9152012980019208
+      },
+      "speedup": 0.8183073534060116,
+      "verification_rounds": {
+        "off": 10,
+        "editor": 11
+      }
+    },
+    {
+      "case": 66,
+      "source": "HuggingFaceH4/ultrachat_200k",
+      "quartile": "Q4",
+      "input_tokens": 781,
+      "seconds": {
+        "off": 1.3732499598030699,
+        "editor": 1.724222395804827
+      },
+      "speedup": 0.7964459591432628,
+      "verification_rounds": {
+        "off": 16,
+        "editor": 18
+      }
+    },
+    {
+      "case": 67,
+      "source": "openai/gsm8k",
+      "quartile": "Q1",
+      "input_tokens": 40,
+      "seconds": {
+        "off": 0.8894985179998912,
+        "editor": 1.0699538326036417
+      },
+      "speedup": 0.8313428962027007,
+      "verification_rounds": {
+        "off": 12,
+        "editor": 13
+      }
+    },
+    {
+      "case": 68,
+      "source": "HuggingFaceH4/ultrachat_200k",
+      "quartile": "Q2",
+      "input_tokens": 97,
+      "seconds": {
+        "off": 1.3668494518031367,
+        "editor": 1.5306956175976665
+      },
+      "speedup": 0.8929596688519457,
+      "verification_rounds": {
+        "off": 19,
+        "editor": 19
+      }
+    },
+    {
+      "case": 69,
+      "source": "openai/gsm8k",
+      "quartile": "Q1",
+      "input_tokens": 52,
+      "seconds": {
+        "off": 1.3042953372001649,
+        "editor": 1.4569613120023859
+      },
+      "speedup": 0.8952161779832003,
+      "verification_rounds": {
+        "off": 18,
+        "editor": 18
+      }
+    },
+    {
+      "case": 70,
+      "source": "HuggingFaceH4/ultrachat_200k",
+      "quartile": "Q4",
+      "input_tokens": 532,
+      "seconds": {
+        "off": 1.2835945197963157,
+        "editor": 1.5137195490009616
+      },
+      "speedup": 0.8479738011202101,
+      "verification_rounds": {
+        "off": 15,
+        "editor": 16
+      }
+    },
+    {
+      "case": 71,
+      "source": "openai/gsm8k",
+      "quartile": "Q4",
+      "input_tokens": 94,
+      "seconds": {
+        "off": 0.9563750694011105,
+        "editor": 1.0714030343980994
+      },
+      "speedup": 0.8926380070767579,
+      "verification_rounds": {
+        "off": 13,
+        "editor": 13
+      }
+    },
+    {
+      "case": 72,
+      "source": "HuggingFaceH4/ultrachat_200k",
+      "quartile": "Q1",
+      "input_tokens": 60,
+      "seconds": {
+        "off": 1.710762517596595,
+        "editor": 1.4530525078007486
+      },
+      "speedup": 1.1773576718063001,
+      "verification_rounds": {
+        "off": 24,
+        "editor": 18
+      }
+    },
+    {
+      "case": 73,
+      "source": "HuggingFaceH4/ultrachat_200k",
+      "quartile": "Q4",
+      "input_tokens": 187,
+      "seconds": {
+        "off": 1.5490849133959272,
+        "editor": 1.5023388167988743
+      },
+      "speedup": 1.0311155486860533,
+      "verification_rounds": {
+        "off": 21,
+        "editor": 18
+      }
+    },
+    {
+      "case": 74,
+      "source": "openai/gsm8k",
+      "quartile": "Q1",
+      "input_tokens": 37,
+      "seconds": {
+        "off": 0.9489674385986291,
+        "editor": 1.0532386994047556
+      },
+      "speedup": 0.9009994022579535,
+      "verification_rounds": {
+        "off": 13,
+        "editor": 13
+      }
+    },
+    {
+      "case": 75,
+      "source": "HuggingFaceH4/ultrachat_200k",
+      "quartile": "Q1",
+      "input_tokens": 60,
+      "seconds": {
+        "off": 2.475594857998658,
+        "editor": 2.755472366997856
+      },
+      "speedup": 0.8984284827707671,
+      "verification_rounds": {
+        "off": 35,
+        "editor": 35
+      }
+    },
+    {
+      "case": 76,
+      "source": "HuggingFaceH4/ultrachat_200k",
+      "quartile": "Q1",
+      "input_tokens": 23,
+      "seconds": {
+        "off": 1.719293719198322,
+        "editor": 1.7625216583983274
+      },
+      "speedup": 0.9754738110626746,
+      "verification_rounds": {
+        "off": 24,
+        "editor": 22
+      }
+    },
+    {
+      "case": 77,
+      "source": "HuggingFaceH4/ultrachat_200k",
+      "quartile": "Q3",
+      "input_tokens": 112,
+      "seconds": {
+        "off": 1.2138843182037817,
+        "editor": 1.4343719292024617
+      },
+      "speedup": 0.8462828179290462,
+      "verification_rounds": {
+        "off": 17,
+        "editor": 18
+      }
+    },
+    {
+      "case": 78,
+      "source": "openai/gsm8k",
+      "quartile": "Q4",
+      "input_tokens": 84,
+      "seconds": {
+        "off": 1.7023019486019622,
+        "editor": 1.8202348156017252
+      },
+      "speedup": 0.9352100805956856,
+      "verification_rounds": {
+        "off": 24,
+        "editor": 23
+      }
+    },
+    {
+      "case": 79,
+      "source": "HuggingFaceH4/ultrachat_200k",
+      "quartile": "Q2",
+      "input_tokens": 76,
+      "seconds": {
+        "off": 1.7864572839986068,
+        "editor": 1.9194154077995336
+      },
+      "speedup": 0.930729886161874,
+      "verification_rounds": {
+        "off": 25,
+        "editor": 24
+      }
+    },
+    {
+      "case": 80,
+      "source": "HuggingFaceH4/ultrachat_200k",
+      "quartile": "Q1",
+      "input_tokens": 30,
+      "seconds": {
+        "off": 1.0995570379978745,
+        "editor": 1.3033688012015774
+      },
+      "speedup": 0.8436269434899711,
+      "verification_rounds": {
+        "off": 15,
+        "editor": 16
+      }
+    },
+    {
+      "case": 81,
+      "source": "HuggingFaceH4/ultrachat_200k",
+      "quartile": "Q1",
+      "input_tokens": 27,
+      "seconds": {
+        "off": 1.4339913693984272,
+        "editor": 1.5904481571982614
+      },
+      "speedup": 0.9016272318643513,
+      "verification_rounds": {
+        "off": 20,
+        "editor": 20
+      }
+    },
+    {
+      "case": 82,
+      "source": "openai/gsm8k",
+      "quartile": "Q1",
+      "input_tokens": 34,
+      "seconds": {
+        "off": 1.443819820799399,
+        "editor": 1.5324449762003496
+      },
+      "speedup": 0.9421674795654368,
+      "verification_rounds": {
+        "off": 20,
+        "editor": 19
+      }
+    },
+    {
+      "case": 83,
+      "source": "HuggingFaceH4/ultrachat_200k",
+      "quartile": "Q3",
+      "input_tokens": 138,
+      "seconds": {
+        "off": 1.7448939813970354,
+        "editor": 1.8715037849993679
+      },
+      "speedup": 0.9323486254117433,
+      "verification_rounds": {
+        "off": 24,
+        "editor": 23
+      }
+    },
+    {
+      "case": 84,
+      "source": "HuggingFaceH4/ultrachat_200k",
+      "quartile": "Q1",
+      "input_tokens": 24,
+      "seconds": {
+        "off": 1.855334684200352,
+        "editor": 2.0682998824020613
+      },
+      "speedup": 0.8970336941883021,
+      "verification_rounds": {
+        "off": 26,
+        "editor": 26
+      }
+    },
+    {
+      "case": 85,
+      "source": "HuggingFaceH4/ultrachat_200k",
+      "quartile": "Q4",
+      "input_tokens": 496,
+      "seconds": {
+        "off": 1.5462918112025363,
+        "editor": 1.6593181959993673
+      },
+      "speedup": 0.9318838393568282,
+      "verification_rounds": {
+        "off": 20,
+        "editor": 19
+      }
+    },
+    {
+      "case": 86,
+      "source": "openai/gsm8k",
+      "quartile": "Q4",
+      "input_tokens": 139,
+      "seconds": {
+        "off": 1.200241146798362,
+        "editor": 1.3466434861999006
+      },
+      "speedup": 0.8912835201730549,
+      "verification_rounds": {
+        "off": 16,
+        "editor": 16
+      }
+    },
+    {
+      "case": 87,
+      "source": "HuggingFaceH4/ultrachat_200k",
+      "quartile": "Q1",
+      "input_tokens": 32,
+      "seconds": {
+        "off": 1.7182760747993597,
+        "editor": 1.8394826180010568
+      },
+      "speedup": 0.9341083508941168,
+      "verification_rounds": {
+        "off": 24,
+        "editor": 23
+      }
+    },
+    {
+      "case": 88,
+      "source": "HuggingFaceH4/ultrachat_200k",
+      "quartile": "Q2",
+      "input_tokens": 102,
+      "seconds": {
+        "off": 0.8722643760003848,
+        "editor": 0.8942323809984373
+      },
+      "speedup": 0.9754336730978981,
+      "verification_rounds": {
+        "off": 12,
+        "editor": 11
+      }
+    },
+    {
+      "case": 89,
+      "source": "openai/gsm8k",
+      "quartile": "Q2",
+      "input_tokens": 62,
+      "seconds": {
+        "off": 0.67797122260381,
+        "editor": 0.7580822663963772
+      },
+      "speedup": 0.8943240762333311,
+      "verification_rounds": {
+        "off": 9,
+        "editor": 9
+      }
+    },
+    {
+      "case": 90,
+      "source": "openai/gsm8k",
+      "quartile": "Q2",
+      "input_tokens": 66,
+      "seconds": {
+        "off": 1.097613144799834,
+        "editor": 1.2250367390020984
+      },
+      "speedup": 0.8959838589771093,
+      "verification_rounds": {
+        "off": 15,
+        "editor": 15
+      }
+    },
+    {
+      "case": 91,
+      "source": "HuggingFaceH4/ultrachat_200k",
+      "quartile": "Q3",
+      "input_tokens": 131,
+      "seconds": {
+        "off": 2.1736737146013185,
+        "editor": 2.435632975999033
+      },
+      "speedup": 0.892447152761074,
+      "verification_rounds": {
+        "off": 30,
+        "editor": 30
+      }
+    },
+    {
+      "case": 92,
+      "source": "openai/gsm8k",
+      "quartile": "Q2",
+      "input_tokens": 67,
+      "seconds": {
+        "off": 0.8181862608005759,
+        "editor": 0.7627892838005209
+      },
+      "speedup": 1.0726242203142198,
+      "verification_rounds": {
+        "off": 11,
+        "editor": 9
+      }
+    },
+    {
+      "case": 93,
+      "source": "HuggingFaceH4/ultrachat_200k",
+      "quartile": "Q3",
+      "input_tokens": 106,
+      "seconds": {
+        "off": 1.7071555281989277,
+        "editor": 1.9033057550026569
+      },
+      "speedup": 0.8969423455542195,
+      "verification_rounds": {
+        "off": 24,
+        "editor": 24
+      }
+    },
+    {
+      "case": 94,
+      "source": "HuggingFaceH4/ultrachat_200k",
+      "quartile": "Q4",
+      "input_tokens": 229,
+      "seconds": {
+        "off": 1.8053146649996052,
+        "editor": 2.023721821195795
+      },
+      "speedup": 0.8920764929701972,
+      "verification_rounds": {
+        "off": 25,
+        "editor": 25
+      }
+    },
+    {
+      "case": 95,
+      "source": "openai/gsm8k",
+      "quartile": "Q2",
+      "input_tokens": 56,
+      "seconds": {
+        "off": 1.028602385800332,
+        "editor": 1.150667835198692
+      },
+      "speedup": 0.8939177357145102,
+      "verification_rounds": {
+        "off": 14,
+        "editor": 14
+      }
+    },
+    {
+      "case": 96,
+      "source": "openai/gsm8k",
+      "quartile": "Q2",
+      "input_tokens": 56,
+      "seconds": {
+        "off": 1.428296329997829,
+        "editor": 1.3596864747989457
+      },
+      "speedup": 1.050460055660279,
+      "verification_rounds": {
+        "off": 20,
+        "editor": 17
+      }
+    },
+    {
+      "case": 97,
+      "source": "openai/gsm8k",
+      "quartile": "Q3",
+      "input_tokens": 79,
+      "seconds": {
+        "off": 1.0246355906012468,
+        "editor": 1.0680931170005352
+      },
+      "speedup": 0.9593129796385845,
+      "verification_rounds": {
+        "off": 14,
+        "editor": 13
+      }
+    },
+    {
+      "case": 98,
+      "source": "openai/gsm8k",
+      "quartile": "Q2",
+      "input_tokens": 68,
+      "seconds": {
+        "off": 1.2217560151999352,
+        "editor": 1.5127812966005876
+      },
+      "speedup": 0.8076223694365978,
+      "verification_rounds": {
+        "off": 17,
+        "editor": 19
+      }
+    },
+    {
+      "case": 99,
+      "source": "openai/gsm8k",
+      "quartile": "Q1",
+      "input_tokens": 50,
+      "seconds": {
+        "off": 1.2222989389993018,
+        "editor": 1.2044385838002198
+      },
+      "speedup": 1.0148287803457186,
+      "verification_rounds": {
+        "off": 17,
+        "editor": 15
+      }
+    },
+    {
+      "case": 100,
+      "source": "openai/gsm8k",
+      "quartile": "Q2",
+      "input_tokens": 55,
+      "seconds": {
+        "off": 0.7517934310017154,
+        "editor": 0.9165989119996084
+      },
+      "speedup": 0.8201989126974183,
+      "verification_rounds": {
+        "off": 10,
+        "editor": 11
+      }
+    },
+    {
+      "case": 101,
+      "source": "HuggingFaceH4/ultrachat_200k",
+      "quartile": "Q4",
+      "input_tokens": 288,
+      "seconds": {
+        "off": 2.0174999079987175,
+        "editor": 2.195567409001524
+      },
+      "speedup": 0.9188968189850358,
+      "verification_rounds": {
+        "off": 27,
+        "editor": 26
+      }
+    },
+    {
+      "case": 102,
+      "source": "HuggingFaceH4/ultrachat_200k",
+      "quartile": "Q4",
+      "input_tokens": 949,
+      "seconds": {
+        "off": 1.8651136706001126,
+        "editor": 2.219975547998911
+      },
+      "speedup": 0.8401505468298192,
+      "verification_rounds": {
+        "off": 23,
+        "editor": 24
+      }
+    },
+    {
+      "case": 103,
+      "source": "openai/gsm8k",
+      "quartile": "Q3",
+      "input_tokens": 74,
+      "seconds": {
+        "off": 0.8882292535970919,
+        "editor": 1.2240693075960736
+      },
+      "speedup": 0.7256364064396553,
+      "verification_rounds": {
+        "off": 12,
+        "editor": 15
+      }
+    },
+    {
+      "case": 104,
+      "source": "openai/gsm8k",
+      "quartile": "Q3",
+      "input_tokens": 76,
+      "seconds": {
+        "off": 1.0239040384010878,
+        "editor": 1.0667331882024882
+      },
+      "speedup": 0.9598501759623977,
+      "verification_rounds": {
+        "off": 14,
+        "editor": 13
+      }
+    },
+    {
+      "case": 105,
+      "source": "HuggingFaceH4/ultrachat_200k",
+      "quartile": "Q3",
+      "input_tokens": 145,
+      "seconds": {
+        "off": 2.0211281223979314,
+        "editor": 2.1751578847994097
+      },
+      "speedup": 0.929186858812466,
+      "verification_rounds": {
+        "off": 28,
+        "editor": 27
+      }
+    },
+    {
+      "case": 106,
+      "source": "HuggingFaceH4/ultrachat_200k",
+      "quartile": "Q4",
+      "input_tokens": 675,
+      "seconds": {
+        "off": 1.6949057333928068,
+        "editor": 2.086009228799958
+      },
+      "speedup": 0.812511138489955,
+      "verification_rounds": {
+        "off": 21,
+        "editor": 23
+      }
+    },
+    {
+      "case": 107,
+      "source": "openai/gsm8k",
+      "quartile": "Q2",
+      "input_tokens": 63,
+      "seconds": {
+        "off": 1.2977304708008888,
+        "editor": 1.2223510143987368
+      },
+      "speedup": 1.0616676024433378,
+      "verification_rounds": {
+        "off": 18,
+        "editor": 15
+      }
+    },
+    {
+      "case": 108,
+      "source": "openai/gsm8k",
+      "quartile": "Q2",
+      "input_tokens": 56,
+      "seconds": {
+        "off": 1.0288543121976546,
+        "editor": 1.2265149496000958
+      },
+      "speedup": 0.838843678614037,
+      "verification_rounds": {
+        "off": 14,
+        "editor": 15
+      }
+    },
+    {
+      "case": 109,
+      "source": "openai/gsm8k",
+      "quartile": "Q3",
+      "input_tokens": 72,
+      "seconds": {
+        "off": 1.1647932666004635,
+        "editor": 1.2236191130010412
+      },
+      "speedup": 0.951924707798735,
+      "verification_rounds": {
+        "off": 16,
+        "editor": 15
+      }
+    },
+    {
+      "case": 110,
+      "source": "HuggingFaceH4/ultrachat_200k",
+      "quartile": "Q4",
+      "input_tokens": 637,
+      "seconds": {
+        "off": 1.7597656034020475,
+        "editor": 2.002749580005184
+      },
+      "speedup": 0.8786748083589624,
+      "verification_rounds": {
+        "off": 23,
+        "editor": 23
+      }
+    },
+    {
+      "case": 111,
+      "source": "HuggingFaceH4/ultrachat_200k",
+      "quartile": "Q4",
+      "input_tokens": 220,
+      "seconds": {
+        "off": 1.3321924391988431,
+        "editor": 1.6533175110031153
+      },
+      "speedup": 0.8057692671449198,
+      "verification_rounds": {
+        "off": 18,
+        "editor": 20
+      }
+    },
+    {
+      "case": 112,
+      "source": "openai/gsm8k",
+      "quartile": "Q2",
+      "input_tokens": 61,
+      "seconds": {
+        "off": 0.7462012388015864,
+        "editor": 0.7575432920013554
+      },
+      "speedup": 0.985027848151352,
+      "verification_rounds": {
+        "off": 10,
+        "editor": 9
+      }
+    },
+    {
+      "case": 113,
+      "source": "openai/gsm8k",
+      "quartile": "Q4",
+      "input_tokens": 85,
+      "seconds": {
+        "off": 1.1626099459943362,
+        "editor": 1.3006312934012385
+      },
+      "speedup": 0.8938812651155216,
+      "verification_rounds": {
+        "off": 16,
+        "editor": 16
+      }
+    },
+    {
+      "case": 114,
+      "source": "HuggingFaceH4/ultrachat_200k",
+      "quartile": "Q3",
+      "input_tokens": 127,
+      "seconds": {
+        "off": 0.8120201830053702,
+        "editor": 0.8350364215904846
+      },
+      "speedup": 0.9724368446812467,
+      "verification_rounds": {
+        "off": 11,
+        "editor": 10
+      }
+    },
+    {
+      "case": 115,
+      "source": "HuggingFaceH4/ultrachat_200k",
+      "quartile": "Q3",
+      "input_tokens": 116,
+      "seconds": {
+        "off": 1.350203012797283,
+        "editor": 1.5079815625969786
+      },
+      "speedup": 0.8953710352214278,
+      "verification_rounds": {
+        "off": 19,
+        "editor": 19
+      }
+    },
+    {
+      "case": 116,
+      "source": "HuggingFaceH4/ultrachat_200k",
+      "quartile": "Q1",
+      "input_tokens": 34,
+      "seconds": {
+        "off": 1.8542905126116238,
+        "editor": 2.0647973528015426
+      },
+      "speedup": 0.8980496367334545,
+      "verification_rounds": {
+        "off": 26,
+        "editor": 26
+      }
+    },
+    {
+      "case": 117,
+      "source": "HuggingFaceH4/ultrachat_200k",
+      "quartile": "Q2",
+      "input_tokens": 99,
+      "seconds": {
+        "off": 2.0632332859851887,
+        "editor": 2.1518595834029837
+      },
+      "speedup": 0.9588140889390004,
+      "verification_rounds": {
+        "off": 29,
+        "editor": 27
+      }
+    },
+    {
+      "case": 118,
+      "source": "openai/gsm8k",
+      "quartile": "Q3",
+      "input_tokens": 69,
+      "seconds": {
+        "off": 1.2342818476085085,
+        "editor": 1.2267778981942683
+      },
+      "speedup": 1.0061167954079426,
+      "verification_rounds": {
+        "off": 17,
+        "editor": 15
+      }
+    },
+    {
+      "case": 119,
+      "source": "openai/gsm8k",
+      "quartile": "Q3",
+      "input_tokens": 81,
+      "seconds": {
+        "off": 0.8172011851973366,
+        "editor": 1.0670062973978929
+      },
+      "speedup": 0.7658822512952775,
+      "verification_rounds": {
+        "off": 11,
+        "editor": 13
+      }
+    },
+    {
+      "case": 120,
+      "source": "HuggingFaceH4/ultrachat_200k",
+      "quartile": "Q4",
+      "input_tokens": 367,
+      "seconds": {
+        "off": 1.9860276755993254,
+        "editor": 2.2401176083949395
+      },
+      "speedup": 0.8865729496329118,
+      "verification_rounds": {
+        "off": 26,
+        "editor": 26
+      }
+    },
+    {
+      "case": 121,
+      "source": "HuggingFaceH4/ultrachat_200k",
+      "quartile": "Q2",
+      "input_tokens": 76,
+      "seconds": {
+        "off": 1.9885744825995062,
+        "editor": 2.2144695576047524
+      },
+      "speedup": 0.8979913387251156,
+      "verification_rounds": {
+        "off": 28,
+        "editor": 28
+      }
+    },
+    {
+      "case": 122,
+      "source": "openai/gsm8k",
+      "quartile": "Q1",
+      "input_tokens": 55,
+      "seconds": {
+        "off": 0.8177375600091181,
+        "editor": 0.7613533754018136
+      },
+      "speedup": 1.0740578375679324,
+      "verification_rounds": {
+        "off": 11,
+        "editor": 9
+      }
+    },
+    {
+      "case": 123,
+      "source": "openai/gsm8k",
+      "quartile": "Q3",
+      "input_tokens": 69,
+      "seconds": {
+        "off": 1.093367668404244,
+        "editor": 1.0699164774094243
+      },
+      "speedup": 1.021918711871418,
+      "verification_rounds": {
+        "off": 15,
+        "editor": 13
+      }
+    },
+    {
+      "case": 124,
+      "source": "HuggingFaceH4/ultrachat_200k",
+      "quartile": "Q3",
+      "input_tokens": 113,
+      "seconds": {
+        "off": 1.8337334597948938,
+        "editor": 2.1339745681965723
+      },
+      "speedup": 0.8593042705961519,
+      "verification_rounds": {
+        "off": 26,
+        "editor": 27
+      }
+    },
+    {
+      "case": 125,
+      "source": "HuggingFaceH4/ultrachat_200k",
+      "quartile": "Q2",
+      "input_tokens": 79,
+      "seconds": {
+        "off": 1.792097031598678,
+        "editor": 2.082079304597573
+      },
+      "speedup": 0.860724674435519,
+      "verification_rounds": {
+        "off": 25,
+        "editor": 26
+      }
+    },
+    {
+      "case": 126,
+      "source": "HuggingFaceH4/ultrachat_200k",
+      "quartile": "Q3",
+      "input_tokens": 116,
+      "seconds": {
+        "off": 1.0188199917960445,
+        "editor": 1.0664973697974347
+      },
+      "speedup": 0.955295362790772,
+      "verification_rounds": {
+        "off": 14,
+        "editor": 13
+      }
+    },
+    {
+      "case": 127,
+      "source": "openai/gsm8k",
+      "quartile": "Q2",
+      "input_tokens": 63,
+      "seconds": {
+        "off": 0.9477375016082078,
+        "editor": 0.9861482511914801
+      },
+      "speedup": 0.961049720935099,
+      "verification_rounds": {
+        "off": 13,
+        "editor": 12
+      }
+    }
+  ],
+  "groups": {
+    "all": {
+      "arms": {
+        "off": {
+          "requests": 640,
+          "output_tokens": 40595,
+          "seconds": 861.6239583049755,
+          "tokens_per_second": 47.11452090986452,
+          "verification_rounds": 11790,
+          "decode_ms": 821887.9888098745,
+          "average_decode_round_ms": 69.71060125613863,
+          "committed_tokens": 39955,
+          "average_committed_per_round": 3.388888888888889,
+          "decode_tokens_per_second": 48.61368038466699,
+          "prefill_and_request_ms": 39735.96949510102,
+          "editor_calls": 0,
+          "graph_hits": 0,
+          "graph_misses": 0,
+          "callback_total_ms_including_native_wait": 0,
+          "callback_ms_per_round_including_native_wait": 0.0,
+          "average_callback_ms_including_native_wait": 0
+        },
+        "editor": {
+          "requests": 640,
+          "output_tokens": 40595,
+          "seconds": 944.3734075720713,
+          "tokens_per_second": 42.98617440358403,
+          "verification_rounds": 11535,
+          "decode_ms": 904663.3886579366,
+          "average_decode_round_ms": 78.42768865695159,
+          "committed_tokens": 39955,
+          "average_committed_per_round": 3.4638058084091896,
+          "decode_tokens_per_second": 44.16559849876652,
+          "prefill_and_request_ms": 39710.01891413471,
+          "editor_calls": 11995,
+          "graph_hits": 11995,
+          "graph_misses": 0,
+          "callback_total_ms_including_native_wait": 464013.7444678985,
+          "callback_ms_per_round_including_native_wait": 40.2265924983007,
+          "average_callback_ms_including_native_wait": 38.68393034330125
+        }
+      },
+      "end_to_end_speedup": 0.9123763454120973,
+      "latency_increase_percent": 9.60389372527246,
+      "throughput_change_percent": -8.762365458790267,
+      "decode_speedup": 0.9085014372352804,
+      "committed_gain_percent": 2.210663198959706,
+      "editing_budget_ms_per_round": 1.541066607742999,
+      "observed_extra_committed_tokens_per_round": 0.07491691952030077,
+      "observed_round_cost_increase_ms": 8.717087400812957,
+      "prompts": 128,
+      "prompt_tokens_range": [
+        23,
+        949
+      ],
+      "repeats": 5,
+      "repeat_speedups": [
+        0.9124985266492276,
+        0.9121665760912855,
+        0.9124327659770575,
+        0.9123079604922871,
+        0.9124759168416539
+      ],
+      "prompt_bootstrap_speedup_ci95": [
+        0.9001244316639624,
+        0.925445533988032
+      ],
+      "prompts_faster": 16
+    },
+    "HuggingFaceH4/ultrachat_200k": {
+      "arms": {
+        "off": {
+          "requests": 320,
+          "output_tokens": 20115,
+          "seconds": 538.0848154728155,
+          "tokens_per_second": 37.38258248808775,
+          "verification_rounds": 7375,
+          "decode_ms": 513910.62042875274,
+          "average_decode_round_ms": 69.68279599033936,
+          "committed_tokens": 19795,
+          "average_committed_per_round": 2.6840677966101696,
+          "decode_tokens_per_second": 38.518371119641664,
+          "prefill_and_request_ms": 24174.1950440628,
+          "editor_calls": 0,
+          "graph_hits": 0,
+          "graph_misses": 0,
+          "callback_total_ms_including_native_wait": 0,
+          "callback_ms_per_round_including_native_wait": 0.0,
+          "average_callback_ms_including_native_wait": 0
+        },
+        "editor": {
+          "requests": 320,
+          "output_tokens": 20115,
+          "seconds": 590.4169375699566,
+          "tokens_per_second": 34.06914456551585,
+          "verification_rounds": 7220,
+          "decode_ms": 566251.5756939829,
+          "average_decode_round_ms": 78.42819607949902,
+          "committed_tokens": 19795,
+          "average_committed_per_round": 2.7416897506925206,
+          "decode_tokens_per_second": 34.95796011823857,
+          "prefill_and_request_ms": 24165.36187597376,
+          "editor_calls": 7395,
+          "graph_hits": 7395,
+          "graph_misses": 0,
+          "callback_total_ms_including_native_wait": 290295.37052079104,
+          "callback_ms_per_round_including_native_wait": 40.207115030580475,
+          "average_callback_ms_including_native_wait": 39.25562819753767
+        }
+      },
+      "end_to_end_speedup": 0.911364124626014,
+      "latency_increase_percent": 9.725627000114635,
+      "throughput_change_percent": -8.863587537398598,
+      "decode_speedup": 0.9075658991304661,
+      "committed_gain_percent": 2.146814404432118,
+      "editing_budget_ms_per_round": 1.4959603017316516,
+      "observed_extra_committed_tokens_per_round": 0.057621954082351046,
+      "observed_round_cost_increase_ms": 8.74540008915966,
+      "prompts": 64,
+      "prompt_tokens_range": [
+        23,
+        949
+      ],
+      "repeats": 5,
+      "repeat_speedups": [
+        0.9114584600366775,
+        0.9110498247359765,
+        0.9115648931285671,
+        0.9112455372813337,
+        0.9115020049728345
+      ],
+      "prompt_bootstrap_speedup_ci95": [
+        0.8967756205884373,
+        0.9280668213272103
+      ],
+      "prompts_faster": 4
+    },
+    "HuggingFaceH4/ultrachat_200k/Q1": {
+      "arms": {
+        "off": {
+          "requests": 80,
+          "output_tokens": 5120,
+          "seconds": 144.73759605897067,
+          "tokens_per_second": 35.37436118473289,
+          "verification_rounds": 2025,
+          "decode_ms": 140371.47157095023,
+          "average_decode_round_ms": 69.31924522022234,
+          "committed_tokens": 5040,
+          "average_committed_per_round": 2.488888888888889,
+          "decode_tokens_per_second": 35.904731521266065,
+          "prefill_and_request_ms": 4366.124488020432,
+          "editor_calls": 0,
+          "graph_hits": 0,
+          "graph_misses": 0,
+          "callback_total_ms_including_native_wait": 0,
+          "callback_ms_per_round_including_native_wait": 0.0,
+          "average_callback_ms_including_native_wait": 0
+        },
+        "editor": {
+          "requests": 80,
+          "output_tokens": 5120,
+          "seconds": 156.5087910699949,
+          "tokens_per_second": 32.71381731975809,
+          "verification_rounds": 1965,
+          "decode_ms": 152156.65109097608,
+          "average_decode_round_ms": 77.43341022441531,
+          "committed_tokens": 5040,
+          "average_committed_per_round": 2.564885496183206,
+          "decode_tokens_per_second": 33.1237574162074,
+          "prefill_and_request_ms": 4352.13997901883,
+          "editor_calls": 2020,
+          "graph_hits": 2020,
+          "graph_misses": 0,
+          "callback_total_ms_including_native_wait": 77357.20718219818,
+          "callback_ms_per_round_including_native_wait": 39.367535461678465,
+          "average_callback_ms_including_native_wait": 38.29564711990009
+        }
+      },
+      "end_to_end_speedup": 0.9247889212449424,
+      "latency_increase_percent": 8.13278327921676,
+      "throughput_change_percent": -7.521107875505761,
+      "decode_speedup": 0.9225457485063906,
+      "committed_gain_percent": 3.0534351145037997,
+      "editing_budget_ms_per_round": 2.116618174663266,
+      "observed_extra_committed_tokens_per_round": 0.07599660729431701,
+      "observed_round_cost_increase_ms": 8.11416500419297,
+      "prompts": 16,
+      "prompt_tokens_range": [
+        23,
+        60
+      ],
+      "repeats": 5,
+      "repeat_speedups": [
+        0.924811842536636,
+        0.9243976864678481,
+        0.9246523071007403,
+        0.9247284589595511,
+        0.925354581077568
+      ],
+      "prompt_bootstrap_speedup_ci95": [
+        0.9026642057488283,
+        0.9579035202898886
+      ],
+      "prompts_faster": 1
+    },
+    "HuggingFaceH4/ultrachat_200k/Q2": {
+      "arms": {
+        "off": {
+          "requests": 80,
+          "output_tokens": 4930,
+          "seconds": 125.55255785190093,
+          "tokens_per_second": 39.26642423179718,
+          "verification_rounds": 1755,
+          "decode_ms": 122064.00651790318,
+          "average_decode_round_ms": 69.55214046604169,
+          "committed_tokens": 4850,
+          "average_committed_per_round": 2.7635327635327633,
+          "decode_tokens_per_second": 39.733252564412986,
+          "prefill_and_request_ms": 3488.551333997748,
+          "editor_calls": 0,
+          "graph_hits": 0,
+          "graph_misses": 0,
+          "callback_total_ms_including_native_wait": 0,
+          "callback_ms_per_round_including_native_wait": 0.0,
+          "average_callback_ms_including_native_wait": 0
+        },
+        "editor": {
+          "requests": 80,
+          "output_tokens": 4930,
+          "seconds": 133.28803163504926,
+          "tokens_per_second": 36.9875669970027,
+          "verification_rounds": 1665,
+          "decode_ms": 129789.15836410306,
+          "average_decode_round_ms": 77.95144646492676,
+          "committed_tokens": 4850,
+          "average_committed_per_round": 2.9129129129129128,
+          "decode_tokens_per_second": 37.368298408978724,
+          "prefill_and_request_ms": 3498.8732709462056,
+          "editor_calls": 1715,
+          "graph_hits": 1715,
+          "graph_misses": 0,
+          "callback_total_ms_including_native_wait": 66185.89876321494,
+          "callback_ms_per_round_including_native_wait": 39.75129054847744,
+          "average_callback_ms_including_native_wait": 38.592360794877514
+        }
+      },
+      "end_to_end_speedup": 0.9419642282337207,
+      "latency_increase_percent": 6.1611439189259265,
+      "throughput_change_percent": -5.803577176627927,
+      "decode_speedup": 0.9404792207333051,
+      "committed_gain_percent": 5.405405405405417,
+      "editing_budget_ms_per_round": 3.7595751603265857,
+      "observed_extra_committed_tokens_per_round": 0.14938014938014943,
+      "observed_round_cost_increase_ms": 8.399305998885069,
+      "prompts": 16,
+      "prompt_tokens_range": [
+        65,
+        102
+      ],
+      "repeats": 5,
+      "repeat_speedups": [
+        0.9419303447660727,
+        0.9418322788085804,
+        0.9422420818024615,
+        0.941941307202638,
+        0.9418751706161373
+      ],
+      "prompt_bootstrap_speedup_ci95": [
+        0.9010745285794306,
+        0.988376064416227
+      ],
+      "prompts_faster": 2
+    },
+    "HuggingFaceH4/ultrachat_200k/Q3": {
+      "arms": {
+        "off": {
+          "requests": 80,
+          "output_tokens": 4985,
+          "seconds": 137.02230133999547,
+          "tokens_per_second": 36.38093909713752,
+          "verification_rounds": 1910,
+          "decode_ms": 132453.0094529473,
+          "average_decode_round_ms": 69.34712536803524,
+          "committed_tokens": 4905,
+          "average_committed_per_round": 2.568062827225131,
+          "decode_tokens_per_second": 37.03200116221184,
+          "prefill_and_request_ms": 4569.291887048166,
+          "editor_calls": 0,
+          "graph_hits": 0,
+          "graph_misses": 0,
+          "callback_total_ms_including_native_wait": 0,
+          "callback_ms_per_round_including_native_wait": 0.0,
+          "average_callback_ms_including_native_wait": 0
+        },
+        "editor": {
+          "requests": 80,
+          "output_tokens": 4985,
+          "seconds": 151.29358892989694,
+          "tokens_per_second": 32.949182019271404,
+          "verification_rounds": 1885,
+          "decode_ms": 146724.45301486005,
+          "average_decode_round_ms": 77.83790610867906,
+          "committed_tokens": 4905,
+          "average_committed_per_round": 2.6021220159151195,
+          "decode_tokens_per_second": 33.43001046664818,
+          "prefill_and_request_ms": 4569.135915036895,
+          "editor_calls": 1915,
+          "graph_hits": 1915,
+          "graph_misses": 0,
+          "callback_total_ms_including_native_wait": 74551.18083814159,
+          "callback_ms_per_round_including_native_wait": 39.54969805736955,
+          "average_callback_ms_including_native_wait": 38.930120542110494
+        }
+      },
+      "end_to_end_speedup": 0.9056715642028018,
+      "latency_increase_percent": 10.415302801322767,
+      "throughput_change_percent": -9.432843579719819,
+      "decode_speedup": 0.9027330259635225,
+      "committed_gain_percent": 1.326259946949615,
+      "editing_budget_ms_per_round": 0.9197231481171871,
+      "observed_extra_committed_tokens_per_round": 0.034059188689988584,
+      "observed_round_cost_increase_ms": 8.490780740643828,
+      "prompts": 16,
+      "prompt_tokens_range": [
+        106,
+        152
+      ],
+      "repeats": 5,
+      "repeat_speedups": [
+        0.9056058216385792,
+        0.9056872461425411,
+        0.9064479331433417,
+        0.9054237781706578,
+        0.9051929761836864
+      ],
+      "prompt_bootstrap_speedup_ci95": [
+        0.8913934702321891,
+        0.9210413529756875
+      ],
+      "prompts_faster": 0
+    },
+    "HuggingFaceH4/ultrachat_200k/Q4": {
+      "arms": {
+        "off": {
+          "requests": 80,
+          "output_tokens": 5080,
+          "seconds": 130.77236022194847,
+          "tokens_per_second": 38.84612919257679,
+          "verification_rounds": 1685,
+          "decode_ms": 119022.13288695202,
+          "average_decode_round_ms": 70.63628064507539,
+          "committed_tokens": 5000,
+          "average_committed_per_round": 2.9673590504451037,
+          "decode_tokens_per_second": 42.00899344283329,
+          "prefill_and_request_ms": 11750.227334996453,
+          "editor_calls": 0,
+          "graph_hits": 0,
+          "graph_misses": 0,
+          "callback_total_ms_including_native_wait": 0,
+          "callback_ms_per_round_including_native_wait": 0.0,
+          "average_callback_ms_including_native_wait": 0
+        },
+        "editor": {
+          "requests": 80,
+          "output_tokens": 5080,
+          "seconds": 149.32652593501552,
+          "tokens_per_second": 34.01940792629659,
+          "verification_rounds": 1705,
+          "decode_ms": 137581.3132240437,
+          "average_decode_round_ms": 80.69285233081742,
+          "committed_tokens": 5000,
+          "average_committed_per_round": 2.932551319648094,
+          "decode_tokens_per_second": 36.34214474939465,
+          "prefill_and_request_ms": 11745.212710971828,
+          "editor_calls": 1745,
+          "graph_hits": 1745,
+          "graph_misses": 0,
+          "callback_total_ms_including_native_wait": 72201.08373723633,
+          "callback_ms_per_round_including_native_wait": 42.34667667873099,
+          "average_callback_ms_including_native_wait": 41.375979219046606
+        }
+      },
+      "end_to_end_speedup": 0.8757476905265879,
+      "latency_increase_percent": 14.188140125005532,
+      "throughput_change_percent": -12.425230947341214,
+      "decode_speedup": 0.8651039163518592,
+      "committed_gain_percent": -1.1730205278592365,
+      "editing_budget_ms_per_round": -0.828578072082995,
+      "observed_extra_committed_tokens_per_round": -0.03480773079700983,
+      "observed_round_cost_increase_ms": 10.056571685742028,
+      "prompts": 16,
+      "prompt_tokens_range": [
+        187,
+        949
+      ],
+      "repeats": 5,
+      "repeat_speedups": [
+        0.8761906169905205,
+        0.8750252027564004,
+        0.875651847699271,
+        0.8756064769859421,
+        0.8762647240562823
+      ],
+      "prompt_bootstrap_speedup_ci95": [
+        0.851994322970753,
+        0.9022361430422791
+      ],
+      "prompts_faster": 1
+    },
+    "openai/gsm8k": {
+      "arms": {
+        "off": {
+          "requests": 320,
+          "output_tokens": 20480,
+          "seconds": 323.53914283216,
+          "tokens_per_second": 63.29991425681763,
+          "verification_rounds": 4415,
+          "decode_ms": 307977.3683811218,
+          "average_decode_round_ms": 69.75704833094491,
+          "committed_tokens": 20160,
+          "average_committed_per_round": 4.566251415628539,
+          "decode_tokens_per_second": 65.45935536098229,
+          "prefill_and_request_ms": 15561.774451038218,
+          "editor_calls": 0,
+          "graph_hits": 0,
+          "graph_misses": 0,
+          "callback_total_ms_including_native_wait": 0,
+          "callback_ms_per_round_including_native_wait": 0.0,
+          "average_callback_ms_including_native_wait": 0
+        },
+        "editor": {
+          "requests": 320,
+          "output_tokens": 20480,
+          "seconds": 353.95647000211466,
+          "tokens_per_second": 57.86022219025307,
+          "verification_rounds": 4315,
+          "decode_ms": 338411.8129639537,
+          "average_decode_round_ms": 78.42683962084675,
+          "committed_tokens": 20160,
+          "average_committed_per_round": 4.6720741599073,
+          "decode_tokens_per_second": 59.572388515135444,
+          "prefill_and_request_ms": 15544.657038160949,
+          "editor_calls": 4600,
+          "graph_hits": 4600,
+          "graph_misses": 0,
+          "callback_total_ms_including_native_wait": 173718.37394710747,
+          "callback_ms_per_round_including_native_wait": 40.259182838263605,
+          "average_callback_ms_including_native_wait": 37.7648639015451
+        }
+      },
+      "end_to_end_speedup": 0.9140647798590236,
+      "latency_increase_percent": 9.401436532127438,
+      "throughput_change_percent": -8.593522014097644,
+      "decode_speedup": 0.9100668374538282,
+      "committed_gain_percent": 2.3174971031286296,
+      "editing_budget_ms_per_round": 1.6166175742976863,
+      "observed_extra_committed_tokens_per_round": 0.10582274427876115,
+      "observed_round_cost_increase_ms": 8.669791289901838,
+      "prompts": 64,
+      "prompt_tokens_range": [
+        34,
+        139
+      ],
+      "repeats": 5,
+      "repeat_speedups": [
+        0.9142327977140494,
+        0.914030025142398,
+        0.9138802898483559,
+        0.9140807400210698,
+        0.9141000465501047
+      ],
+      "prompt_bootstrap_speedup_ci95": [
+        0.8927987729926571,
+        0.9356371957064228
+      ],
+      "prompts_faster": 12
+    },
+    "openai/gsm8k/Q1": {
+      "arms": {
+        "off": {
+          "requests": 80,
+          "output_tokens": 5120,
+          "seconds": 79.73728122003376,
+          "tokens_per_second": 64.21086750965888,
+          "verification_rounds": 1085,
+          "decode_ms": 75551.26352606749,
+          "average_decode_round_ms": 69.63250094568431,
+          "committed_tokens": 5040,
+          "average_committed_per_round": 4.645161290322581,
+          "decode_tokens_per_second": 66.70967188074951,
+          "prefill_and_request_ms": 4186.017693966278,
+          "editor_calls": 0,
+          "graph_hits": 0,
+          "graph_misses": 0,
+          "callback_total_ms_including_native_wait": 0,
+          "callback_ms_per_round_including_native_wait": 0.0,
+          "average_callback_ms_including_native_wait": 0
+        },
+        "editor": {
+          "requests": 80,
+          "output_tokens": 5120,
+          "seconds": 88.91427200716862,
+          "tokens_per_second": 57.58355643498049,
+          "verification_rounds": 1085,
+          "decode_ms": 84736.90420806815,
+          "average_decode_round_ms": 78.09852922402595,
+          "committed_tokens": 5040,
+          "average_committed_per_round": 4.645161290322581,
+          "decode_tokens_per_second": 59.47821727855997,
+          "prefill_and_request_ms": 4177.367799100466,
+          "editor_calls": 1150,
+          "graph_hits": 1150,
+          "graph_misses": 0,
+          "callback_total_ms_including_native_wait": 43178.3790790214,
+          "callback_ms_per_round_including_native_wait": 39.79574108665567,
+          "average_callback_ms_including_native_wait": 37.54641659045339
+        }
+      },
+      "end_to_end_speedup": 0.8967883267784618,
+      "latency_increase_percent": 11.509033975978046,
+      "throughput_change_percent": -10.321167322153823,
+      "decode_speedup": 0.8915981086653143,
+      "committed_gain_percent": 0.0,
+      "editing_budget_ms_per_round": 0.0,
+      "observed_extra_committed_tokens_per_round": 0.0,
+      "observed_round_cost_increase_ms": 8.46602827834164,
+      "prompts": 16,
+      "prompt_tokens_range": [
+        34,
+        55
+      ],
+      "repeats": 5,
+      "repeat_speedups": [
+        0.8969321243817701,
+        0.8968387600555031,
+        0.8965840646868861,
+        0.8966530369330418,
+        0.8969335576328147
+      ],
+      "prompt_bootstrap_speedup_ci95": [
+        0.861316015902646,
+        0.9335782049883555
+      ],
+      "prompts_faster": 2
+    },
+    "openai/gsm8k/Q2": {
+      "arms": {
+        "off": {
+          "requests": 80,
+          "output_tokens": 5120,
+          "seconds": 79.73969303503691,
+          "tokens_per_second": 64.20892538111876,
+          "verification_rounds": 1090,
+          "decode_ms": 75786.79992599064,
+          "average_decode_round_ms": 69.52917424402811,
+          "committed_tokens": 5040,
+          "average_committed_per_round": 4.623853211009174,
+          "decode_tokens_per_second": 66.50234611992849,
+          "prefill_and_request_ms": 3952.893109046272,
+          "editor_calls": 0,
+          "graph_hits": 0,
+          "graph_misses": 0,
+          "callback_total_ms_including_native_wait": 0,
+          "callback_ms_per_round_including_native_wait": 0.0,
+          "average_callback_ms_including_native_wait": 0
+        },
+        "editor": {
+          "requests": 80,
+          "output_tokens": 5120,
+          "seconds": 86.36138672289962,
+          "tokens_per_second": 59.28575482962201,
+          "verification_rounds": 1055,
+          "decode_ms": 82416.69434992946,
+          "average_decode_round_ms": 78.12008943121276,
+          "committed_tokens": 5040,
+          "average_committed_per_round": 4.777251184834123,
+          "decode_tokens_per_second": 61.15265893340593,
+          "prefill_and_request_ms": 3944.6923729701666,
+          "editor_calls": 1120,
+          "graph_hits": 1120,
+          "graph_misses": 0,
+          "callback_total_ms_including_native_wait": 42019.534824285074,
+          "callback_ms_per_round_including_native_wait": 39.828942961407655,
+          "average_callback_ms_including_native_wait": 37.51744180739739
+        }
+      },
+      "end_to_end_speedup": 0.9233257600516631,
+      "latency_increase_percent": 8.304137419933632,
+      "throughput_change_percent": -7.667423994833689,
+      "decode_speedup": 0.9195564141921387,
+      "committed_gain_percent": 3.3175355450236976,
+      "editing_budget_ms_per_round": 2.3066550697070944,
+      "observed_extra_committed_tokens_per_round": 0.15339797382494869,
+      "observed_round_cost_increase_ms": 8.590915187184649,
+      "prompts": 16,
+      "prompt_tokens_range": [
+        55,
+        68
+      ],
+      "repeats": 5,
+      "repeat_speedups": [
+        0.9238557305752715,
+        0.92299481614356,
+        0.9228349348118529,
+        0.9236805180211362,
+        0.923263050229167
+      ],
+      "prompt_bootstrap_speedup_ci95": [
+        0.8791473755984979,
+        0.9705517002172454
+      ],
+      "prompts_faster": 3
+    },
+    "openai/gsm8k/Q3": {
+      "arms": {
+        "off": {
+          "requests": 80,
+          "output_tokens": 5120,
+          "seconds": 78.22465447106515,
+          "tokens_per_second": 65.4525102682794,
+          "verification_rounds": 1065,
+          "decode_ms": 74477.71820602065,
+          "average_decode_round_ms": 69.93212977091142,
+          "committed_tokens": 5040,
+          "average_committed_per_round": 4.732394366197183,
+          "decode_tokens_per_second": 67.6712461310687,
+          "prefill_and_request_ms": 3746.9362650444964,
+          "editor_calls": 0,
+          "graph_hits": 0,
+          "graph_misses": 0,
+          "callback_total_ms_including_native_wait": 0,
+          "callback_ms_per_round_including_native_wait": 0.0,
+          "average_callback_ms_including_native_wait": 0
+        },
+        "editor": {
+          "requests": 80,
+          "output_tokens": 5120,
+          "seconds": 84.81102065001323,
+          "tokens_per_second": 60.369512838768095,
+          "verification_rounds": 1030,
+          "decode_ms": 81067.82547093462,
+          "average_decode_round_ms": 78.70662667081031,
+          "committed_tokens": 5040,
+          "average_committed_per_round": 4.893203883495145,
+          "decode_tokens_per_second": 62.17016394262357,
+          "prefill_and_request_ms": 3743.1951790786115,
+          "editor_calls": 1110,
+          "graph_hits": 1110,
+          "graph_misses": 0,
+          "callback_total_ms_including_native_wait": 41921.36978401686,
+          "callback_ms_per_round_including_native_wait": 40.700359013608605,
+          "average_callback_ms_including_native_wait": 37.766999805420596
+        }
+      },
+      "end_to_end_speedup": 0.9223406801560871,
+      "latency_increase_percent": 8.419808592934519,
+      "throughput_change_percent": -7.765931984391294,
+      "decode_speedup": 0.9187087204247667,
+      "committed_gain_percent": 3.398058252427183,
+      "editing_budget_ms_per_round": 2.376334506778542,
+      "observed_extra_committed_tokens_per_round": 0.16080951729796222,
+      "observed_round_cost_increase_ms": 8.774496899898892,
+      "prompts": 16,
+      "prompt_tokens_range": [
+        68,
+        81
+      ],
+      "repeats": 5,
+      "repeat_speedups": [
+        0.9221619381817401,
+        0.9227541424580423,
+        0.9222090548504135,
+        0.9225166500510622,
+        0.9220619392697053
+      ],
+      "prompt_bootstrap_speedup_ci95": [
+        0.8770884160974176,
+        0.9633318039979653
+      ],
+      "prompts_faster": 3
+    },
+    "openai/gsm8k/Q4": {
+      "arms": {
+        "off": {
+          "requests": 80,
+          "output_tokens": 5120,
+          "seconds": 85.83751410602417,
+          "tokens_per_second": 59.647580120690755,
+          "verification_rounds": 1175,
+          "decode_ms": 82161.586723043,
+          "average_decode_round_ms": 69.92475465790893,
+          "committed_tokens": 5040,
+          "average_committed_per_round": 4.2893617021276595,
+          "decode_tokens_per_second": 61.34253488785756,
+          "prefill_and_request_ms": 3675.927382981172,
+          "editor_calls": 0,
+          "graph_hits": 0,
+          "graph_misses": 0,
+          "callback_total_ms_including_native_wait": 0,
+          "callback_ms_per_round_including_native_wait": 0.0,
+          "average_callback_ms_including_native_wait": 0
+        },
+        "editor": {
+          "requests": 80,
+          "output_tokens": 5120,
+          "seconds": 93.86979062203318,
+          "tokens_per_second": 54.54363929089483,
+          "verification_rounds": 1145,
+          "decode_ms": 90190.38893502147,
+          "average_decode_round_ms": 78.76889863320653,
+          "committed_tokens": 5040,
+          "average_committed_per_round": 4.401746724890829,
+          "decode_tokens_per_second": 55.88178584783702,
+          "prefill_and_request_ms": 3679.401687011705,
+          "editor_calls": 1220,
+          "graph_hits": 1220,
+          "graph_misses": 0,
+          "callback_total_ms_including_native_wait": 46599.090259784134,
+          "callback_ms_per_round_including_native_wait": 40.697895423392254,
+          "average_callback_ms_including_native_wait": 38.19597562277388
+        }
+      },
+      "end_to_end_speedup": 0.9144317201222811,
+      "latency_increase_percent": 9.357536270316213,
+      "throughput_change_percent": -8.556827987771886,
+      "decode_speedup": 0.9109794036062656,
+      "committed_gain_percent": 2.6200873362445254,
+      "editing_budget_ms_per_round": 1.832089641691926,
+      "observed_extra_committed_tokens_per_round": 0.11238502276316975,
+      "observed_round_cost_increase_ms": 8.844143975297598,
+      "prompts": 16,
+      "prompt_tokens_range": [
+        81,
+        139
+      ],
+      "repeats": 5,
+      "repeat_speedups": [
+        0.9146015705123043,
+        0.9141911989651249,
+        0.9144955101933436,
+        0.9141298203918178,
+        0.9147406063790338
+      ],
+      "prompt_bootstrap_speedup_ci95": [
+        0.8667942927637615,
+        0.9576436609164765
+      ],
+      "prompts_faster": 4
+    }
+  },
+  "round_economics": {
+    "all": {
+      "affordable_added_ms": 1.541066607742999,
+      "measured_added_round_ms": 8.717087400812957,
+      "observed_extra_committed_tokens": 0.07491691952030077,
+      "required_extra_committed_tokens": 0.4237697007883287,
+      "required_total_committed_tokens": 3.812658589677218,
+      "decode_speedup": 0.9085014372352805,
+      "scope": "At the measured complete-round cost, including all copies and scheduling. No standalone-editor or callback-wait attribution."
+    },
+    "HuggingFaceH4/ultrachat_200k": {
+      "affordable_added_ms": 1.4959603017316516,
+      "measured_added_round_ms": 8.74540008915966,
+      "observed_extra_committed_tokens": 0.057621954082351046,
+      "required_extra_committed_tokens": 0.33685856622399923,
+      "required_total_committed_tokens": 3.0209263628341687,
+      "decode_speedup": 0.9075658991304659,
+      "scope": "At the measured complete-round cost, including all copies and scheduling. No standalone-editor or callback-wait attribution."
+    },
+    "HuggingFaceH4/ultrachat_200k/Q1": {
+      "affordable_added_ms": 2.116618174663266,
+      "measured_added_round_ms": 8.11416500419297,
+      "observed_extra_committed_tokens": 0.07599660729431701,
+      "required_extra_committed_tokens": 0.2913369159948014,
+      "required_total_committed_tokens": 2.78022580488369,
+      "decode_speedup": 0.9225457485063905,
+      "scope": "At the measured complete-round cost, including all copies and scheduling. No standalone-editor or callback-wait attribution."
+    },
+    "HuggingFaceH4/ultrachat_200k/Q2": {
+      "affordable_added_ms": 3.7595751603265857,
+      "measured_added_round_ms": 8.399305998885069,
+      "observed_extra_committed_tokens": 0.14938014938014943,
+      "required_extra_committed_tokens": 0.33373174661948973,
+      "required_total_committed_tokens": 3.097264510152253,
+      "decode_speedup": 0.940479220733305,
+      "scope": "At the measured complete-round cost, including all copies and scheduling. No standalone-editor or callback-wait attribution."
+    },
+    "HuggingFaceH4/ultrachat_200k/Q3": {
+      "affordable_added_ms": 0.9197231481171871,
+      "measured_added_round_ms": 8.490780740643828,
+      "observed_extra_committed_tokens": 0.034059188689988584,
+      "required_extra_committed_tokens": 0.31443060225560804,
+      "required_total_committed_tokens": 2.8824934294807387,
+      "decode_speedup": 0.9027330259635228,
+      "scope": "At the measured complete-round cost, including all copies and scheduling. No standalone-editor or callback-wait attribution."
+    },
+    "HuggingFaceH4/ultrachat_200k/Q4": {
+      "affordable_added_ms": -0.828578072082995,
+      "measured_added_round_ms": 10.056571685742028,
+      "observed_extra_committed_tokens": -0.03480773079700983,
+      "required_extra_committed_tokens": 0.42246645400372,
+      "required_total_committed_tokens": 3.3898255044488237,
+      "decode_speedup": 0.8651039163518592,
+      "scope": "At the measured complete-round cost, including all copies and scheduling. No standalone-editor or callback-wait attribution."
+    },
+    "openai/gsm8k": {
+      "affordable_added_ms": 1.6166175742976863,
+      "measured_added_round_ms": 8.669791289901838,
+      "observed_extra_committed_tokens": 0.10582274427876115,
+      "required_extra_committed_tokens": 0.5675189489512333,
+      "required_total_committed_tokens": 5.133770364579772,
+      "decode_speedup": 0.9100668374538283,
+      "scope": "At the measured complete-round cost, including all copies and scheduling. No standalone-editor or callback-wait attribution."
+    },
+    "openai/gsm8k/Q1": {
+      "affordable_added_ms": 0.0,
+      "measured_added_round_ms": 8.46602827834164,
+      "observed_extra_committed_tokens": 0.0,
+      "required_extra_committed_tokens": 0.5647659685813171,
+      "required_total_committed_tokens": 5.209927258903899,
+      "decode_speedup": 0.8915981086653143,
+      "scope": "At the measured complete-round cost, including all copies and scheduling. No standalone-editor or callback-wait attribution."
+    },
+    "openai/gsm8k/Q2": {
+      "affordable_added_ms": 2.3066550697070944,
+      "measured_added_round_ms": 8.590915187184649,
+      "observed_extra_committed_tokens": 0.15339797382494869,
+      "required_extra_committed_tokens": 0.5713160152651033,
+      "required_total_committed_tokens": 5.1951692262742775,
+      "decode_speedup": 0.9195564141921388,
+      "scope": "At the measured complete-round cost, including all copies and scheduling. No standalone-editor or callback-wait attribution."
+    },
+    "openai/gsm8k/Q3": {
+      "affordable_added_ms": 2.376334506778542,
+      "measured_added_round_ms": 8.774496899898892,
+      "observed_extra_committed_tokens": 0.16080951729796222,
+      "required_extra_committed_tokens": 0.5937811393893567,
+      "required_total_committed_tokens": 5.326175505586541,
+      "decode_speedup": 0.9187087204247668,
+      "scope": "At the measured complete-round cost, including all copies and scheduling. No standalone-editor or callback-wait attribution."
+    },
+    "openai/gsm8k/Q4": {
+      "affordable_added_ms": 1.832089641691926,
+      "measured_added_round_ms": 8.844143975297598,
+      "observed_extra_committed_tokens": 0.11238502276316975,
+      "required_extra_committed_tokens": 0.5425222103579279,
+      "required_total_committed_tokens": 4.831883912485588,
+      "decode_speedup": 0.9109794036062655,
+      "scope": "At the measured complete-round cost, including all copies and scheduling. No standalone-editor or callback-wait attribution."
+    }
+  },
+  "graph_setup": {
+    "empty_cache_requests": 128,
+    "total_capture_and_warmup_ms": 230070.0979035464,
+    "total_new_graphs": 2399,
+    "total_cold_end_to_end_seconds": 413.9021564039722,
+    "cold_output_tokens": 8119,
+    "cold_by_source": {
+      "HuggingFaceH4/ultrachat_200k": {
+        "requests": 64,
+        "seconds": 257.2391398239997,
+        "graph_preparation_ms": 142261.94687682437
+      },
+      "openai/gsm8k": {
+        "requests": 64,
+        "seconds": 156.66301657997246,
+        "graph_preparation_ms": 87808.15102672204
+      }
+    }
+  },
+  "source_artifact_hashes": {
+    "run.json": "12d5e9a85ba7426c21bd28db00cd73b140d92a96bb0772dcd02c974633aeed9f",
+    "prompts.json": "710c5dddad321aa77dfd21f903e567997890e9f71e4e946ccec192e2e7a385b1",
+    "complete.json": "36a2a99c73181f5ce53e8215d49bf589497839d98661a576ea2a0a60c5abab41"
+  }
+}

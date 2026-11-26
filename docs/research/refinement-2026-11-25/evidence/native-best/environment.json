@@ -1,0 +1,73 @@
+{
+  "benchmark_job": {
+    "id": 8580225,
+    "state": "COMPLETED",
+    "exit_code": 0,
+    "elapsed": "00:57:24",
+    "node": "tron50",
+    "gpu": "NVIDIA RTX A5000",
+    "gpu_count": 1,
+    "batch_size": 1,
+    "allocated_cpu_cores": 4,
+    "allocated_host_memory_gib": 32,
+    "max_rss_kib": 24479236,
+    "gpu_uuid": "GPU-5e564a26-cb8d-4dbc-67ab-f00879595883",
+    "driver": "620.70.06"
+  },
+  "pin_audit_job": {
+    "id": 8580512,
+    "state": "COMPLETED",
+    "exit_code": 0,
+    "elapsed": "00:00:17",
+    "gpu_count": 0
+  },
+  "torch": "2.14.0+cu130",
+  "vllm": "0.34.0",
+  "packages_sha256": "8a42fd1d3947cf2fc343e2a0c5d77c933622895453df82d3c2f8a7533e2e2c73",
+  "package_freeze_matches_original": true,
+  "model_initialization_seconds": {
+    "reference": 45.67618630900688,
+    "candidate": 34.028313817994785
+  },
+  "editor": {
+    "precision": "fp32",
+    "initial_sha256": "c79b8c59c1e2cf73a7adf7aa9738b1b273779d330fe32f8d2c4a15fd56b7e8d2",
+    "gate_sha256": "5ab048b622beffb10ab8d282027cb2510f5439e4621793d5a82e687e696d679b",
+    "kernels": "standard",
+    "generator_dtype": "torch.float32",
+    "parameters": 40750601
+  },
+  "gate_parameters": 265,
+  "frozen_generator_parameters": 40750336,
+  "target_revision": "b968826d9c46dd6066d109eabc6255188de91218",
+  "dflash_revision": "9b41424b7109f9c5413454f481b09a82b85333f4",
+  "benchmark_source_commit": "30f1850",
+  "benchmark_archive_sha256": "7639be0e3517dc5558bb89109479cf00660b30c6764bb6bab9e6c02ba2eb564c",
+  "analysis_source_sha256": "3d7ca48bbae1854c34d7396e4a8cd7b1585ad3a987a9af0969a419e182a8bba8",
+  "local_tests_passed": 28,
+  "remote_benchmark_tests_passed": 10,
+  "peak_pytorch_allocated_gib": 20.516335010528564,
+  "drain_and_rpc_mean_ms_by_arm": {
+    "off": 7.6613147626176215,
+    "editor": 0.3770771453901034
+  },
+  "generate_call_only": {
+    "HuggingFaceH4/ultrachat_200k": {
+      "seconds": {
+        "off": 536.139252244946,
+        "editor": 590.2924788439996
+      },
+      "throughput_ratio": 0.9082603479802002
+    },
+    "openai/gsm8k": {
+      "seconds": {
+        "off": 320.5814646119543,
+        "editor": 353.8395993550221
+      },
+      "throughput_ratio": 0.9060078781354868
+    }
+  },
+  "raw_legacy_economics": "Frozen runtime includes callback-based arithmetic that can double-count pending native waits. Use independent mac-audit.json round_economics. Current reusable reporting code is corrected; raw artifact preserved.",
+  "final_test_evaluated": false,
+  "optimizer_updates": 0
+}

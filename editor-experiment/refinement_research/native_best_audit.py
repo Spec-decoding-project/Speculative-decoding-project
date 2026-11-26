@@ -37,6 +37,7 @@ def audit(path):
     assert Counter((p['source'],p['length_group']) for p in prompts)=={
         (s,q):16 for s in SOURCES for q in ('Q1','Q2','Q3','Q4')}
     assert all(p['split']=='development' for p in prompts)
+    assert len({p['family_id'] for p in prompts})==128
     mapping={p['id']:p for p in prompts}
     baselines={r['prompt_id']:r for r in rows if r['phase']=='correctness' and r['mode']=='off'}
     assert len(baselines)==128
@@ -112,7 +113,7 @@ def audit(path):
     for result in public_groups.values():
         for name in ('measured_editor_ms_per_round','required_extra_committed_tokens_per_round',
                      'required_committed_tokens_per_round','noneditor_round_cost_change_ms'):
-            result.pop(name)
+            result.pop(name,None)
         for arm in result['arms'].values():
             for old,new in (('editor_total_ms','callback_total_ms_including_native_wait'),
                             ('editor_ms_per_verification_round','callback_ms_per_round_including_native_wait'),
@@ -128,6 +129,10 @@ def audit(path):
                                  for mode in ('off','editor')}))
     return dict(passed=True, prompts=128, candidate_generations=len(rows),target_only_controls=len(references),
         native_argmax_positions_checked=native_positions,full_logit_hash_comparisons=hashes,
+        natural_stops={source:sum(r['source']==source and r['generated']['finish_reason']=='stop'
+                                 for r in baselines.values()) for source in SOURCES},
+        one_pass_output_tokens={source:sum(len(r['generated']['tokens']) for r in baselines.values()
+                                 if r['source']==source) for source in SOURCES},
         warm_graph_hits=hits,warm_graph_misses=0,
         native_edited_trajectory=dict(complete_windows=len(changes),repaired=sum(x>0 for x in changes),
             damaged=sum(x<0 for x in changes),prefix_delta_sum=sum(changes),

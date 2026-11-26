@@ -33,8 +33,9 @@ def test_economics_uses_actual_commits_and_all_editor_calls():
     assert result['arms']['off']['average_committed_per_round']==3.6
     assert result['arms']['editor']['average_committed_per_round']==4.
     assert result['editing_budget_ms_per_round']==pytest.approx(50*(4/3.6-1))
-    assert result['measured_editor_ms_per_round']==pytest.approx(190/18)
-    assert result['required_extra_committed_tokens_per_round']==pytest.approx(3.6*(190/18)/50)
+    assert result['callback_ms_per_round_including_native_wait']==pytest.approx(190/18)
+    assert result['measured_added_round_ms']==pytest.approx(10.)
+    assert result['required_extra_committed_tokens_per_round']==pytest.approx(3.6*10/50)
     assert result['latency_increase_percent']==pytest.approx(100*(1.3/1.2-1))
 
 

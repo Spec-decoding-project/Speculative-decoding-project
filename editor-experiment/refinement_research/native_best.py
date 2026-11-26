@@ -78,7 +78,9 @@ def aggregate(rows):
     b,e = totals['off'],totals['editor']
     gain = e['average_committed_per_round']/b['average_committed_per_round']-1
     budget = b['average_decode_round_ms']*gain
-    cost = e['editor_ms_per_verification_round']
+    # Callback time can include pending native drafter work. The incremental
+    # cost relevant to throughput is the measured complete-round difference.
+    cost = e['average_decode_round_ms']-b['average_decode_round_ms']
     extra = b['average_committed_per_round']*cost/b['average_decode_round_ms']
     return dict(arms=totals, end_to_end_speedup=b['seconds']/e['seconds'],
         latency_increase_percent=100*(e['seconds']/b['seconds']-1),
@@ -86,12 +88,12 @@ def aggregate(rows):
         decode_speedup=e['decode_tokens_per_second']/b['decode_tokens_per_second'],
         committed_gain_percent=100*gain,
         editing_budget_ms_per_round=budget,
-        measured_editor_ms_per_round=cost,
+        measured_added_round_ms=cost,
+        callback_ms_per_round_including_native_wait=e['editor_ms_per_verification_round'],
         required_extra_committed_tokens_per_round=extra,
         required_committed_tokens_per_round=b['average_committed_per_round']+extra,
         observed_extra_committed_tokens_per_round=e['average_committed_per_round']-b['average_committed_per_round'],
-        observed_round_cost_increase_ms=e['average_decode_round_ms']-b['average_decode_round_ms'],
-        noneditor_round_cost_change_ms=e['average_decode_round_ms']-cost-b['average_decode_round_ms'])
+        observed_round_cost_increase_ms=cost)
 
 
 def summarize(records, prompts):
@@ -128,7 +130,7 @@ def summarize(records, prompts):
             groups[source+('/'+q if q else '')]=result
     cold=[r for r in records if r['phase']=='cold']
     return dict(schema='native-earlier-gate-v1', groups=groups, repeats=REPEATS,
-        prompts=len(prompts), matched_tokens=True, optimizer_updates=0, final_test_loaded=False,
+        prompts=len(prompts), matched_tokens=True, optimizer_updates=0, final_test_evaluated=False,
         graph_setup=dict(empty_cache_requests=len(cold),
             total_capture_and_warmup_ms=sum(r['observed']['graph_preparation_ms'] for r in cold),
             total_new_graphs=sum(r['observed']['graph_misses'] for r in cold),
@@ -142,7 +144,7 @@ def summarize(records, prompts):
         timed_generations=len(rows),
         peak_allocated_bytes=max(r['observed']['peak_allocated_bytes'] for r in records),
         scope='FP32 earlier linear gate; canonical invariant target/drafter eager; standard editor kernels with reusable CUDA graphs. Development, not fresh confirmation. 64-token cap, batch one.',
-        economics_assumption='Break-even editor budget holds baseline noneditor round work constant. Measured noneditor changes reported separately. Decode begins before first draft, after synchronized prefill anchor; includes last unused proposal and all engine gaps/copies.')
+        economics_assumption='Break-even uses actual committed tokens and complete-round cost, including last unused proposal, scheduling and copies. Required acceptance is conditional on the measured edited-round duration. Callback timing includes pending native waits and is not entirely incremental editor work.')
 
 
 def child(args):
@@ -253,7 +255,7 @@ def main():
         selection='16 deterministic hash samples per source-specific development length quartile; 64/source',
         baseline_configuration=configuration(args.project,False),budget_tokens=64,precision='fp32',
         editor_kernels='standard',source_hashes={str(p.relative_to(Path(__file__).parent)):sha(p)
-             for p in sorted(Path(__file__).parent.glob('*.py'))},optimizer_updates=0,final_test_loaded=False))
+             for p in sorted(Path(__file__).parent.glob('*.py'))},optimizer_updates=0,final_test_evaluated=False))
     for phase,timeout in [('reference',600),('candidate',4200)]:
         subprocess.run([sys.executable,'-u','-m','refinement_research.native_best','--project',str(args.project),
             '--output',str(args.output),'--phase',phase],check=True,timeout=timeout)
