@@ -14,9 +14,9 @@ from copy_action_fit.data import digest, save, sha
 def select(prompts):
     development = [p for p in prompts if p['split'] == 'development']
     selected = []
-    for label, lo, hi in [('short', 1, 128), ('long', 1024, 1900)]:
+    for label, lo, hi in [('short', 1, 128), ('long', 512, 1900)]:
         candidates = sorted((p for p in development if lo <= len(p['prompt']) <= hi),
-                            key=lambda p:digest(p['id']))
+                            key=lambda p:(-len(p['prompt']) if label=='long' else 0, digest(p['id'])))
         if len(candidates) < 4:
             raise ValueError('Insufficient prespecified prompt-length stratum')
         selected.extend(dict(p, length_group=label) for p in candidates[:4])

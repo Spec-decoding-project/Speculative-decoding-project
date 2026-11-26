@@ -290,8 +290,11 @@ speedup claim. [Detailed results](docs/research/refinement-2026-11-25/GRAPH_REPL
 inserted before native DFlash verification? The user explicitly requested this
 measurement. No training, data expansion or target determinism investigation.
 
-**Predeclared protocol:** eight development prompts selected by stable hash, four
-with 1–128 input tokens and four with 1,024–1,900; 64 generated tokens maximum.
+**Predeclared protocol:** eight development prompts: four with 1–128 input tokens
+selected by stable hash, and the four longest available in 512–1,900; 64 generated
+tokens maximum. Before any GPU inference, the data-only preflight found just two
+prompts in the initially proposed 1,024–1,900 stratum. The revised selection uses
+input lengths only, without inspecting candidate results, and retains both.
 Use the canonical invariant vLLM 0.34 environment, frozen target/drafter, and
 broader linear checkpoint `b6f1c27a…`. Batch one, unchanged target/drafter eager
 execution, 2 GiB native KV cache. Original DFlash, identity replacement and FP32
