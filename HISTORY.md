@@ -141,7 +141,13 @@ three arms. The generator hash must remain identical before/after every fit.
 Reload and cached/full checks are required. Passing training memorization is not
 the selection criterion for this stage.
 
-**Status:** implementation and tests in progress; no training job submitted yet.
+**Status:** submitted Slurm job **8579153** on November 25 from frozen source
+`08a4fff91e5810d22c1fc54ad6219820352c9781`. All 47 local tests passed; the job
+runs pinned-environment tests and full-size COPY/forced-generator controls before
+optimization. Remote output is `research/frozen-gates-20261125/`. The job runs
+independently of SSH, writes progress/checkpoints/results, and has a two-hour cap.
+Archive SHA256: `5bd18c7efa70ee331fd2d6a3660c4f30884aa167ddbc5ae5eae88eb8de9931a0`.
+Training/evaluation results are pending.
 
 ## How to read future entries
 
