@@ -1,0 +1,122 @@
+{
+  "schema": "cheap-selector-v1",
+  "features": [
+    "gap_first",
+    "gap_second",
+    "gap_third",
+    "gap_fourth",
+    "gap_tail_min",
+    "gap_tail_mean",
+    "gap_first_four_mean",
+    "unique_proposals",
+    "adjacent_repeats",
+    "first_token_repeats",
+    "previous_committed",
+    "prompt_length",
+    "generated_length",
+    "first_round"
+  ],
+  "tree": {
+    "feature": 12,
+    "name": "generated_length",
+    "threshold": 1.5,
+    "left": {
+      "value": 1.0546875,
+      "samples": 96,
+      "mean_gain": 1.40625
+    },
+    "right": {
+      "feature": 4,
+      "name": "gap_tail_min",
+      "threshold": 0.21875,
+      "left": {
+        "feature": 7,
+        "name": "unique_proposals",
+        "threshold": 12.5,
+        "left": {
+          "value": 0.11538461538461539,
+          "samples": 1112,
+          "mean_gain": 0.11870503597122302
+        },
+        "right": {
+          "value": -0.10476190476190476,
+          "samples": 73,
+          "mean_gain": -0.1506849315068493
+        },
+        "value": 0.09942481511914544,
+        "samples": 1185,
+        "mean_gain": 0.1021097046413502
+      },
+      "right": {
+        "value": 0.3310810810810811,
+        "samples": 116,
+        "mean_gain": 0.4224137931034483
+      },
+      "value": 0.1275318829707427,
+      "samples": 1301,
+      "mean_gain": 0.13066871637202152
+    },
+    "value": 0.21343596920923724,
+    "samples": 1397,
+    "mean_gain": 0.21832498210450965
+  },
+  "threshold": 0.5,
+  "calibration": [
+    {
+      "threshold": 0.0,
+      "edits": 423,
+      "gain": 148,
+      "token_net": -42.349999999999994
+    },
+    {
+      "threshold": 0.25,
+      "edits": 73,
+      "gain": 55,
+      "token_net": 22.15
+    },
+    {
+      "threshold": 0.5,
+      "edits": 32,
+      "gain": 46,
+      "token_net": 31.6
+    },
+    {
+      "threshold": 0.75,
+      "edits": 32,
+      "gain": 46,
+      "token_net": 31.6
+    },
+    {
+      "threshold": 1.0,
+      "edits": 32,
+      "gain": 46,
+      "token_net": 31.6
+    },
+    {
+      "threshold": 1.5,
+      "edits": 0,
+      "gain": 0,
+      "token_net": 0.0
+    },
+    {
+      "threshold": 2.0,
+      "edits": 0,
+      "gain": 0,
+      "token_net": 0.0
+    },
+    {
+      "threshold": null,
+      "edits": 0,
+      "gain": 0,
+      "token_net": 0.0
+    }
+  ],
+  "fit_rows": 1397,
+  "calibration_rows": 455,
+  "edit_token_cost": 0.45,
+  "fit_digest": "edec3e7f112d32c0b4f211801411c06145d95b7ae230c12ac71c7bcc6ff2accb",
+  "calibration_digest": "be0df680f40eb038754718ee6e7babcfe6cc011747fadc4c0b6f3ee7727640c8",
+  "depth": 3,
+  "minimum_leaf": 64,
+  "shrinkage": 32
+}

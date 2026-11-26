@@ -1,0 +1,2043 @@
+{
+  "schema": "native-selector-v1",
+  "groups": {
+    "all": {
+      "prompts": 64,
+      "prompt_length_range": [
+        24,
+        576
+      ],
+      "arms": {
+        "off": {
+          "requests": 192,
+          "seconds": 254.8382337326184,
+          "output_tokens": 12288,
+          "tokens_per_second": 48.218824232210096,
+          "verification_rounds": 3531,
+          "decode_ms": 243885.9780585626,
+          "average_round_ms": 69.06994564105426,
+          "committed_tokens": 12096,
+          "committed_per_round": 3.4256584536958368,
+          "editor_calls": 0,
+          "selector_calls": 0,
+          "selected_fraction": null,
+          "graph_hits": 0,
+          "graph_misses": 0
+        },
+        "selector_probe": {
+          "requests": 192,
+          "seconds": 259.49680042429827,
+          "output_tokens": 12288,
+          "tokens_per_second": 47.35318501001988,
+          "verification_rounds": 3531,
+          "decode_ms": 248532.91873203125,
+          "average_round_ms": 70.3859866134328,
+          "committed_tokens": 12096,
+          "committed_per_round": 3.4256584536958368,
+          "editor_calls": 0,
+          "selector_calls": 3666,
+          "selected_fraction": 0.0,
+          "graph_hits": 0,
+          "graph_misses": 0
+        },
+        "editor": {
+          "requests": 192,
+          "seconds": 277.6382253749762,
+          "output_tokens": 12288,
+          "tokens_per_second": 44.259035236966795,
+          "verification_rounds": 3432,
+          "decode_ms": 266662.24822285585,
+          "average_round_ms": 77.6987902747249,
+          "committed_tokens": 12096,
+          "committed_per_round": 3.5244755244755246,
+          "editor_calls": 3573,
+          "selector_calls": 0,
+          "selected_fraction": null,
+          "graph_hits": 3573,
+          "graph_misses": 0
+        },
+        "selected": {
+          "requests": 192,
+          "seconds": 256.7766836164519,
+          "output_tokens": 12288,
+          "tokens_per_second": 47.854812309806995,
+          "verification_rounds": 3474,
+          "decode_ms": 245814.00383403525,
+          "average_round_ms": 70.75820490329167,
+          "committed_tokens": 12096,
+          "committed_per_round": 3.481865284974093,
+          "editor_calls": 192,
+          "selector_calls": 3612,
+          "selected_fraction": 0.053156146179401995,
+          "graph_hits": 192,
+          "graph_misses": 0
+        },
+        "first_only": {
+          "requests": 192,
+          "seconds": 252.4601090385113,
+          "output_tokens": 12288,
+          "tokens_per_second": 48.673036095875005,
+          "verification_rounds": 3474,
+          "decode_ms": 241494.6929187281,
+          "average_round_ms": 69.51487994206336,
+          "committed_tokens": 12096,
+          "committed_per_round": 3.481865284974093,
+          "editor_calls": 192,
+          "selector_calls": 0,
+          "selected_fraction": null,
+          "graph_hits": 192,
+          "graph_misses": 0
+        }
+      },
+      "comparisons": {
+        "selector_probe": {
+          "speedup": 0.9820476912082817,
+          "throughput_change_percent": -1.7952308791718274,
+          "repeat_speedups": [
+            0.9824441144773642,
+            0.9817833844902383,
+            0.9819158400644095
+          ],
+          "prompt_bootstrap_ci95": [
+            0.9817487879056204,
+            0.9823527479754286
+          ],
+          "prompts_faster": 0,
+          "economics": {
+            "affordable_added_ms": 0.0,
+            "measured_added_round_ms": 1.316040972378545,
+            "observed_extra_committed_tokens": 0.0,
+            "required_extra_committed_tokens": 0.06527161474641395,
+            "required_total_committed_tokens": 3.4909300684422506,
+            "decode_speedup": 0.9813025143824952,
+            "scope": "At the measured complete-round cost, including all copies and scheduling. No standalone-editor or callback-wait attribution."
+          }
+        },
+        "editor": {
+          "speedup": 0.9178787733152944,
+          "throughput_change_percent": -8.212122668470556,
+          "repeat_speedups": [
+            0.918067845434428,
+            0.9177242602488859,
+            0.9178442821795647
+          ],
+          "prompt_bootstrap_ci95": [
+            0.9002495029743816,
+            0.9367782836820798
+          ],
+          "prompts_faster": 11,
+          "economics": {
+            "affordable_added_ms": 1.9924022781073427,
+            "measured_added_round_ms": 8.628844633670639,
+            "observed_extra_committed_tokens": 0.09881707077968782,
+            "required_extra_committed_tokens": 0.4279643525213956,
+            "required_total_committed_tokens": 3.853622806217232,
+            "decode_speedup": 0.914587571671343,
+            "scope": "At the measured complete-round cost, including all copies and scheduling. No standalone-editor or callback-wait attribution."
+          }
+        },
+        "selected": {
+          "speedup": 0.992450833710708,
+          "throughput_change_percent": -0.7549166289292031,
+          "repeat_speedups": [
+            0.9927003387111588,
+            0.9923301637907773,
+            0.9923221132051375
+          ],
+          "prompt_bootstrap_ci95": [
+            0.9835526176538988,
+            1.0028961473620794
+          ],
+          "prompts_faster": 18,
+          "economics": {
+            "affordable_added_ms": 1.1332719923834453,
+            "measured_added_round_ms": 1.688259262237409,
+            "observed_extra_committed_tokens": 0.05620683127825643,
+            "required_extra_committed_tokens": 0.0837325056511456,
+            "required_total_committed_tokens": 3.509390959346982,
+            "decode_speedup": 0.9921565665690293,
+            "scope": "At the measured complete-round cost, including all copies and scheduling. No standalone-editor or callback-wait attribution."
+          }
+        },
+        "first_only": {
+          "speedup": 1.0094198037985649,
+          "throughput_change_percent": 0.9419803798564885,
+          "repeat_speedups": [
+            1.0093519822376502,
+            1.0094684045358338,
+            1.0094390297814724
+          ],
+          "prompt_bootstrap_ci95": [
+            1.0004250655115117,
+            1.0199721747225245
+          ],
+          "prompts_faster": 18,
+          "economics": {
+            "affordable_added_ms": 1.1332719923834453,
+            "measured_added_round_ms": 0.4449343010090985,
+            "observed_extra_committed_tokens": 0.05620683127825643,
+            "required_extra_committed_tokens": 0.022067383077323765,
+            "required_total_committed_tokens": 3.4477258367731602,
+            "decode_speedup": 1.0099020194230075,
+            "scope": "At the measured complete-round cost, including all copies and scheduling. No standalone-editor or callback-wait attribution."
+          }
+        }
+      }
+    },
+    "HuggingFaceH4/ultrachat_200k": {
+      "prompts": 32,
+      "prompt_length_range": [
+        24,
+        576
+      ],
+      "arms": {
+        "off": {
+          "requests": 96,
+          "seconds": 160.11804048612248,
+          "output_tokens": 6144,
+          "tokens_per_second": 38.371691168257236,
+          "verification_rounds": 2226,
+          "decode_ms": 153674.46891742293,
+          "average_round_ms": 69.03614955859071,
+          "committed_tokens": 6048,
+          "committed_per_round": 2.7169811320754715,
+          "editor_calls": 0,
+          "selector_calls": 0,
+          "selected_fraction": null,
+          "graph_hits": 0,
+          "graph_misses": 0
+        },
+        "selector_probe": {
+          "requests": 96,
+          "seconds": 163.06713854614645,
+          "output_tokens": 6144,
+          "tokens_per_second": 37.6777323425057,
+          "verification_rounds": 2226,
+          "decode_ms": 156606.4312387025,
+          "average_round_ms": 70.35329345853661,
+          "committed_tokens": 6048,
+          "committed_per_round": 2.7169811320754715,
+          "editor_calls": 0,
+          "selector_calls": 2283,
+          "selected_fraction": 0.0,
+          "graph_hits": 0,
+          "graph_misses": 0
+        },
+        "editor": {
+          "requests": 96,
+          "seconds": 176.34863756212872,
+          "output_tokens": 6144,
+          "tokens_per_second": 34.840076367674975,
+          "verification_rounds": 2187,
+          "decode_ms": 169886.39380945824,
+          "average_round_ms": 77.68010690876005,
+          "committed_tokens": 6048,
+          "committed_per_round": 2.765432098765432,
+          "editor_calls": 2247,
+          "selector_calls": 0,
+          "selected_fraction": null,
+          "graph_hits": 2247,
+          "graph_misses": 0
+        },
+        "selected": {
+          "requests": 96,
+          "seconds": 163.02463219780475,
+          "output_tokens": 6144,
+          "tokens_per_second": 37.687556273982096,
+          "verification_rounds": 2217,
+          "decode_ms": 156569.19950805604,
+          "average_round_ms": 70.62210171766172,
+          "committed_tokens": 6048,
+          "committed_per_round": 2.7280108254397835,
+          "editor_calls": 96,
+          "selector_calls": 2274,
+          "selected_fraction": 0.04221635883905013,
+          "graph_hits": 96,
+          "graph_misses": 0
+        },
+        "first_only": {
+          "requests": 96,
+          "seconds": 160.25344925862737,
+          "output_tokens": 6144,
+          "tokens_per_second": 38.33926838032931,
+          "verification_rounds": 2217,
+          "decode_ms": 153797.7880568942,
+          "average_round_ms": 69.37202889350212,
+          "committed_tokens": 6048,
+          "committed_per_round": 2.7280108254397835,
+          "editor_calls": 96,
+          "selector_calls": 0,
+          "selected_fraction": null,
+          "graph_hits": 96,
+          "graph_misses": 0
+        }
+      },
+      "comparisons": {
+        "selector_probe": {
+          "speedup": 0.9819148230212588,
+          "throughput_change_percent": -1.8085176978741235,
+          "repeat_speedups": [
+            0.9825337882925627,
+            0.9814871513230102,
+            0.9817241193534209
+          ],
+          "prompt_bootstrap_ci95": [
+            0.981498617591878,
+            0.982320488798266
+          ],
+          "prompts_faster": 0,
+          "economics": {
+            "affordable_added_ms": 0.0,
+            "measured_added_round_ms": 1.3171438999459042,
+            "observed_extra_committed_tokens": 0.0,
+            "required_extra_committed_tokens": 0.05183740905689009,
+            "required_total_committed_tokens": 2.768818541132362,
+            "decode_speedup": 0.9812781486808122,
+            "scope": "At the measured complete-round cost, including all copies and scheduling. No standalone-editor or callback-wait attribution."
+          }
+        },
+        "editor": {
+          "speedup": 0.9079630140590789,
+          "throughput_change_percent": -9.203698594092113,
+          "repeat_speedups": [
+            0.9082272907002138,
+            0.907728785784183,
+            0.9079330759579708
+          ],
+          "prompt_bootstrap_ci95": [
+            0.8874076141506174,
+            0.9299196910512665
+          ],
+          "prompts_faster": 3,
+          "economics": {
+            "affordable_added_ms": 1.2310973172313915,
+            "measured_added_round_ms": 8.643957350169345,
+            "observed_extra_committed_tokens": 0.048450966689960406,
+            "required_extra_committed_tokens": 0.34019088806427644,
+            "required_total_committed_tokens": 3.0571720201397485,
+            "decode_speedup": 0.9045719640725416,
+            "scope": "At the measured complete-round cost, including all copies and scheduling. No standalone-editor or callback-wait attribution."
+          }
+        },
+        "selected": {
+          "speedup": 0.9821708433106258,
+          "throughput_change_percent": -1.7829156689374237,
+          "repeat_speedups": [
+            0.9824139667311715,
+            0.9823263795467216,
+            0.9817725342161194
+          ],
+          "prompt_bootstrap_ci95": [
+            0.9735830812652342,
+            0.9929442836159827
+          ],
+          "prompts_faster": 4,
+          "economics": {
+            "affordable_added_ms": 0.2802550049739847,
+            "measured_added_round_ms": 1.585952159071013,
+            "observed_extra_committed_tokens": 0.011029693364311921,
+            "required_extra_committed_tokens": 0.06241660521511665,
+            "required_total_committed_tokens": 2.779397737290588,
+            "decode_speedup": 0.9815114939609552,
+            "scope": "At the measured complete-round cost, including all copies and scheduling. No standalone-editor or callback-wait attribution."
+          }
+        },
+        "first_only": {
+          "speedup": 0.9991550336474421,
+          "throughput_change_percent": -0.08449663525579298,
+          "repeat_speedups": [
+            0.9991041649451855,
+            0.999258718048764,
+            0.9991022600028269
+          ],
+          "prompt_bootstrap_ci95": [
+            0.9904571399265205,
+            1.0099168018263422
+          ],
+          "prompts_faster": 4,
+          "economics": {
+            "affordable_added_ms": 0.2802550049739847,
+            "measured_added_round_ms": 0.33587933491141087,
+            "observed_extra_committed_tokens": 0.011029693364311921,
+            "required_extra_committed_tokens": 0.013218840005464739,
+            "required_total_committed_tokens": 2.7301999720809365,
+            "decode_speedup": 0.9991981735171273,
+            "scope": "At the measured complete-round cost, including all copies and scheduling. No standalone-editor or callback-wait attribution."
+          }
+        }
+      }
+    },
+    "HuggingFaceH4/ultrachat_200k/Q1": {
+      "prompts": 8,
+      "prompt_length_range": [
+        24,
+        43
+      ],
+      "arms": {
+        "off": {
+          "requests": 24,
+          "seconds": 34.31174690183252,
+          "output_tokens": 1536,
+          "tokens_per_second": 44.76600985646596,
+          "verification_rounds": 480,
+          "decode_ms": 32996.23090273235,
+          "average_round_ms": 68.74214771402573,
+          "committed_tokens": 1512,
+          "committed_per_round": 3.15,
+          "editor_calls": 0,
+          "selector_calls": 0,
+          "selected_fraction": null,
+          "graph_hits": 0,
+          "graph_misses": 0
+        },
+        "selector_probe": {
+          "requests": 24,
+          "seconds": 34.95094115694519,
+          "output_tokens": 1536,
+          "tokens_per_second": 43.94731441143975,
+          "verification_rounds": 480,
+          "decode_ms": 33632.85213476047,
+          "average_round_ms": 70.06844194741764,
+          "committed_tokens": 1512,
+          "committed_per_round": 3.15,
+          "editor_calls": 0,
+          "selector_calls": 498,
+          "selected_fraction": 0.0,
+          "graph_hits": 0,
+          "graph_misses": 0
+        },
+        "editor": {
+          "requests": 24,
+          "seconds": 36.64487387461122,
+          "output_tokens": 1536,
+          "tokens_per_second": 41.91582171235665,
+          "verification_rounds": 459,
+          "decode_ms": 35325.21543081384,
+          "average_round_ms": 76.9612536619038,
+          "committed_tokens": 1512,
+          "committed_per_round": 3.2941176470588234,
+          "editor_calls": 477,
+          "selector_calls": 0,
+          "selected_fraction": null,
+          "graph_hits": 477,
+          "graph_misses": 0
+        },
+        "selected": {
+          "requests": 24,
+          "seconds": 34.703362282249145,
+          "output_tokens": 1536,
+          "tokens_per_second": 44.26084099596505,
+          "verification_rounds": 474,
+          "decode_ms": 33383.393294061534,
+          "average_round_ms": 70.42909977650113,
+          "committed_tokens": 1512,
+          "committed_per_round": 3.189873417721519,
+          "editor_calls": 24,
+          "selector_calls": 492,
+          "selected_fraction": 0.04878048780487805,
+          "graph_hits": 24,
+          "graph_misses": 0
+        },
+        "first_only": {
+          "requests": 24,
+          "seconds": 34.096519534359686,
+          "output_tokens": 1536,
+          "tokens_per_second": 45.048586218665065,
+          "verification_rounds": 474,
+          "decode_ms": 32776.60917059984,
+          "average_round_ms": 69.14896449493638,
+          "committed_tokens": 1512,
+          "committed_per_round": 3.189873417721519,
+          "editor_calls": 24,
+          "selector_calls": 0,
+          "selected_fraction": null,
+          "graph_hits": 24,
+          "graph_misses": 0
+        }
+      },
+      "comparisons": {
+        "selector_probe": {
+          "speedup": 0.9817116725915218,
+          "throughput_change_percent": -1.8288327408478189,
+          "repeat_speedups": [
+            0.9820016625055917,
+            0.9812855595718596,
+            0.9818480209602323
+          ],
+          "prompt_bootstrap_ci95": [
+            0.9810346476202875,
+            0.9824284380135657
+          ],
+          "prompts_faster": 0,
+          "economics": {
+            "affordable_added_ms": 0.0,
+            "measured_added_round_ms": 1.3262942333919057,
+            "observed_extra_committed_tokens": 0.0,
+            "required_extra_committed_tokens": 0.06077533178865302,
+            "required_total_committed_tokens": 3.210775331788653,
+            "decode_speedup": 0.9810714467664742,
+            "scope": "At the measured complete-round cost, including all copies and scheduling. No standalone-editor or callback-wait attribution."
+          }
+        },
+        "editor": {
+          "speedup": 0.9363314230317172,
+          "throughput_change_percent": -6.366857696828276,
+          "repeat_speedups": [
+            0.9364668471474555,
+            0.9358983529041959,
+            0.9366292430351888
+          ],
+          "prompt_bootstrap_ci95": [
+            0.9066863811818278,
+            0.9717193776590407
+          ],
+          "prompts_faster": 1,
+          "economics": {
+            "affordable_added_ms": 3.1450655816874558,
+            "measured_added_round_ms": 8.219105947878063,
+            "observed_extra_committed_tokens": 0.14411764705882346,
+            "required_extra_committed_tokens": 0.3766275072393969,
+            "required_total_committed_tokens": 3.526627507239396,
+            "decode_speedup": 0.9340701960433073,
+            "scope": "At the measured complete-round cost, including all copies and scheduling. No standalone-editor or callback-wait attribution."
+          }
+        },
+        "selected": {
+          "speedup": 0.9887153476014359,
+          "throughput_change_percent": -1.1284652398564132,
+          "repeat_speedups": [
+            0.9891690304792079,
+            0.9883924307527069,
+            0.9885849741379595
+          ],
+          "prompt_bootstrap_ci95": [
+            0.9767384538219476,
+            1.005130262792224
+          ],
+          "prompts_faster": 2,
+          "economics": {
+            "affordable_added_ms": 0.8701537685319759,
+            "measured_added_round_ms": 1.6869520624753989,
+            "observed_extra_committed_tokens": 0.0398734177215192,
+            "required_extra_committed_tokens": 0.0773019053594869,
+            "required_total_committed_tokens": 3.227301905359487,
+            "decode_speedup": 0.9884025453039235,
+            "scope": "At the measured complete-round cost, including all copies and scheduling. No standalone-editor or callback-wait attribution."
+          }
+        },
+        "first_only": {
+          "speedup": 1.0063122972787866,
+          "throughput_change_percent": 0.6312297278786572,
+          "repeat_speedups": [
+            1.0060892827464718,
+            1.0062784676562566,
+            1.0065691360900495
+          ],
+          "prompt_bootstrap_ci95": [
+            0.9941673922501388,
+            1.0226372902307401
+          ],
+          "prompts_faster": 2,
+          "economics": {
+            "affordable_added_ms": 0.8701537685319759,
+            "measured_added_round_ms": 0.40681678091064555,
+            "observed_extra_committed_tokens": 0.0398734177215192,
+            "required_extra_committed_tokens": 0.01864173440142689,
+            "required_total_committed_tokens": 3.168641734401427,
+            "decode_speedup": 1.0067005629224608,
+            "scope": "At the measured complete-round cost, including all copies and scheduling. No standalone-editor or callback-wait attribution."
+          }
+        }
+      }
+    },
+    "HuggingFaceH4/ultrachat_200k/Q2": {
+      "prompts": 8,
+      "prompt_length_range": [
+        63,
+        102
+      ],
+      "arms": {
+        "off": {
+          "requests": 24,
+          "seconds": 42.32932772254571,
+          "output_tokens": 1536,
+          "tokens_per_second": 36.28689805961378,
+          "verification_rounds": 600,
+          "decode_ms": 41318.18674132228,
+          "average_round_ms": 68.86364456887047,
+          "committed_tokens": 1512,
+          "committed_per_round": 2.52,
+          "editor_calls": 0,
+          "selector_calls": 0,
+          "selected_fraction": null,
+          "graph_hits": 0,
+          "graph_misses": 0
+        },
+        "selector_probe": {
+          "requests": 24,
+          "seconds": 43.13847495603841,
+          "output_tokens": 1536,
+          "tokens_per_second": 35.6062656727042,
+          "verification_rounds": 600,
+          "decode_ms": 42123.8151678117,
+          "average_round_ms": 70.2063586130195,
+          "committed_tokens": 1512,
+          "committed_per_round": 2.52,
+          "editor_calls": 0,
+          "selector_calls": 612,
+          "selected_fraction": 0.0,
+          "graph_hits": 0,
+          "graph_misses": 0
+        },
+        "editor": {
+          "requests": 24,
+          "seconds": 46.845168879721314,
+          "output_tokens": 1536,
+          "tokens_per_second": 32.7888667440564,
+          "verification_rounds": 594,
+          "decode_ms": 45831.444765790366,
+          "average_round_ms": 77.1573144205225,
+          "committed_tokens": 1512,
+          "committed_per_round": 2.5454545454545454,
+          "editor_calls": 606,
+          "selector_calls": 0,
+          "selected_fraction": null,
+          "graph_hits": 606,
+          "graph_misses": 0
+        },
+        "selected": {
+          "requests": 24,
+          "seconds": 43.279608257929794,
+          "output_tokens": 1536,
+          "tokens_per_second": 35.490154874924734,
+          "verification_rounds": 600,
+          "decode_ms": 42266.64013613481,
+          "average_round_ms": 70.44440022689135,
+          "committed_tokens": 1512,
+          "committed_per_round": 2.52,
+          "editor_calls": 24,
+          "selector_calls": 612,
+          "selected_fraction": 0.0392156862745098,
+          "graph_hits": 24,
+          "graph_misses": 0
+        },
+        "first_only": {
+          "requests": 24,
+          "seconds": 42.52562901284546,
+          "output_tokens": 1536,
+          "tokens_per_second": 36.1193951895698,
+          "verification_rounds": 600,
+          "decode_ms": 41513.95848416723,
+          "average_round_ms": 69.18993080694538,
+          "committed_tokens": 1512,
+          "committed_per_round": 2.52,
+          "editor_calls": 24,
+          "selector_calls": 0,
+          "selected_fraction": null,
+          "graph_hits": 24,
+          "graph_misses": 0
+        }
+      },
+      "comparisons": {
+        "selector_probe": {
+          "speedup": 0.9812430264556806,
+          "throughput_change_percent": -1.8756973544319377,
+          "repeat_speedups": [
+            0.9819150561915725,
+            0.9809526310538389,
+            0.9808624087257464
+          ],
+          "prompt_bootstrap_ci95": [
+            0.9806045214497551,
+            0.981987118215253
+          ],
+          "prompts_faster": 0,
+          "economics": {
+            "affordable_added_ms": 0.0,
+            "measured_added_round_ms": 1.3427140441490337,
+            "observed_extra_committed_tokens": 0.0,
+            "required_extra_committed_tokens": 0.04913535164220934,
+            "required_total_committed_tokens": 2.5691353516422093,
+            "decode_speedup": 0.9808747516510559,
+            "scope": "At the measured complete-round cost, including all copies and scheduling. No standalone-editor or callback-wait attribution."
+          }
+        },
+        "editor": {
+          "speedup": 0.903600707070341,
+          "throughput_change_percent": -9.639929292965899,
+          "repeat_speedups": [
+            0.9036698579294239,
+            0.9031742568377796,
+            0.9039582505817251
+          ],
+          "prompt_bootstrap_ci95": [
+            0.8708062088921474,
+            0.9375674014576683
+          ],
+          "prompts_faster": 0,
+          "economics": {
+            "affordable_added_ms": 0.6955923693825344,
+            "measured_added_round_ms": 8.293669851652027,
+            "observed_extra_committed_tokens": 0.025454545454545396,
+            "required_extra_committed_tokens": 0.3034990110821247,
+            "required_total_committed_tokens": 2.823499011082125,
+            "decode_speedup": 0.9015248581507325,
+            "scope": "At the measured complete-round cost, including all copies and scheduling. No standalone-editor or callback-wait attribution."
+          }
+        },
+        "selected": {
+          "speedup": 0.9780432269691358,
+          "throughput_change_percent": -2.1956773030864185,
+          "repeat_speedups": [
+            0.9775556468749069,
+            0.9784057388112785,
+            0.9781685064925659
+          ],
+          "prompt_bootstrap_ci95": [
+            0.9774049964389205,
+            0.9785520394650937
+          ],
+          "prompts_faster": 0,
+          "economics": {
+            "affordable_added_ms": 0.0,
+            "measured_added_round_ms": 1.5807556580208768,
+            "observed_extra_committed_tokens": 0.0,
+            "required_extra_committed_tokens": 0.057846259563399956,
+            "required_total_committed_tokens": 2.5778462595634,
+            "decode_speedup": 0.9775602368260715,
+            "scope": "At the measured complete-round cost, including all copies and scheduling. No standalone-editor or callback-wait attribution."
+          }
+        },
+        "first_only": {
+          "speedup": 0.9953839297652611,
+          "throughput_change_percent": -0.4616070234738867,
+          "repeat_speedups": [
+            0.994939098116519,
+            0.9954723472560583,
+            0.9957404282604907
+          ],
+          "prompt_bootstrap_ci95": [
+            0.9941893733033975,
+            0.9963128432868451
+          ],
+          "prompts_faster": 0,
+          "economics": {
+            "affordable_added_ms": 0.0,
+            "measured_added_round_ms": 0.3262862380749141,
+            "observed_extra_committed_tokens": 0.0,
+            "required_extra_committed_tokens": 0.0119401365567641,
+            "required_total_committed_tokens": 2.531940136556764,
+            "decode_speedup": 0.9952841947625976,
+            "scope": "At the measured complete-round cost, including all copies and scheduling. No standalone-editor or callback-wait attribution."
+          }
+        }
+      }
+    },
+    "HuggingFaceH4/ultrachat_200k/Q3": {
+      "prompts": 8,
+      "prompt_length_range": [
+        107,
+        170
+      ],
+      "arms": {
+        "off": {
+          "requests": 24,
+          "seconds": 45.467288955813274,
+          "output_tokens": 1536,
+          "tokens_per_second": 33.78252883062237,
+          "verification_rounds": 642,
+          "decode_ms": 44193.059543846175,
+          "average_round_ms": 68.83654134555479,
+          "committed_tokens": 1512,
+          "committed_per_round": 2.3551401869158877,
+          "editor_calls": 0,
+          "selector_calls": 0,
+          "selected_fraction": null,
+          "graph_hits": 0,
+          "graph_misses": 0
+        },
+        "selector_probe": {
+          "requests": 24,
+          "seconds": 46.291374563239515,
+          "output_tokens": 1536,
+          "tokens_per_second": 33.181127466881364,
+          "verification_rounds": 642,
+          "decode_ms": 45015.714092878625,
+          "average_round_ms": 70.11793472411,
+          "committed_tokens": 1512,
+          "committed_per_round": 2.3551401869158877,
+          "editor_calls": 0,
+          "selector_calls": 651,
+          "selected_fraction": 0.0,
+          "graph_hits": 0,
+          "graph_misses": 0
+        },
+        "editor": {
+          "requests": 24,
+          "seconds": 49.70340725092683,
+          "output_tokens": 1536,
+          "tokens_per_second": 30.903313976957946,
+          "verification_rounds": 627,
+          "decode_ms": 48430.562873370945,
+          "average_round_ms": 77.24172707076706,
+          "committed_tokens": 1512,
+          "committed_per_round": 2.411483253588517,
+          "editor_calls": 636,
+          "selector_calls": 0,
+          "selected_fraction": null,
+          "graph_hits": 636,
+          "graph_misses": 0
+        },
+        "selected": {
+          "requests": 24,
+          "seconds": 46.6563670320902,
+          "output_tokens": 1536,
+          "tokens_per_second": 32.92155171326436,
+          "verification_rounds": 645,
+          "decode_ms": 45381.29295804538,
+          "average_round_ms": 70.3585937334037,
+          "committed_tokens": 1512,
+          "committed_per_round": 2.344186046511628,
+          "editor_calls": 24,
+          "selector_calls": 654,
+          "selected_fraction": 0.03669724770642202,
+          "graph_hits": 24,
+          "graph_misses": 0
+        },
+        "first_only": {
+          "requests": 24,
+          "seconds": 45.85420714644715,
+          "output_tokens": 1536,
+          "tokens_per_second": 33.49747156448242,
+          "verification_rounds": 645,
+          "decode_ms": 44579.971420113,
+          "average_round_ms": 69.11623475986511,
+          "committed_tokens": 1512,
+          "committed_per_round": 2.344186046511628,
+          "editor_calls": 24,
+          "selector_calls": 0,
+          "selected_fraction": null,
+          "graph_hits": 24,
+          "graph_misses": 0
+        }
+      },
+      "comparisons": {
+        "selector_probe": {
+          "speedup": 0.9821978583439893,
+          "throughput_change_percent": -1.7802141656010684,
+          "repeat_speedups": [
+            0.9826869724746644,
+            0.9821835702203449,
+            0.9817235070455205
+          ],
+          "prompt_bootstrap_ci95": [
+            0.981320037589357,
+            0.9830317688416438
+          ],
+          "prompts_faster": 0,
+          "economics": {
+            "affordable_added_ms": 0.0,
+            "measured_added_round_ms": 1.281393378555208,
+            "observed_extra_committed_tokens": 0.0,
+            "required_extra_committed_tokens": 0.04384097431528149,
+            "required_total_committed_tokens": 2.3989811612311693,
+            "decode_speedup": 0.9817251694078406,
+            "scope": "At the measured complete-round cost, including all copies and scheduling. No standalone-editor or callback-wait attribution."
+          }
+        },
+        "editor": {
+          "speedup": 0.9147720744027148,
+          "throughput_change_percent": -8.52279255972852,
+          "repeat_speedups": [
+            0.9152788533335535,
+            0.914603857803477,
+            0.9144338806427849
+          ],
+          "prompt_bootstrap_ci95": [
+            0.8747222134178434,
+            0.9632273763180396
+          ],
+          "prompts_faster": 1,
+          "economics": {
+            "affordable_added_ms": 1.646807209223815,
+            "measured_added_round_ms": 8.405185725212263,
+            "observed_extra_committed_tokens": 0.05634306667262923,
+            "required_extra_committed_tokens": 0.2875709658416399,
+            "required_total_committed_tokens": 2.6427111527575273,
+            "decode_speedup": 0.912503529215542,
+            "scope": "At the measured complete-round cost, including all copies and scheduling. No standalone-editor or callback-wait attribution."
+          }
+        },
+        "selected": {
+          "speedup": 0.9745141306124611,
+          "throughput_change_percent": -2.548586938753894,
+          "repeat_speedups": [
+            0.9751177963942884,
+            0.9746031976113331,
+            0.9738223220832267
+          ],
+          "prompt_bootstrap_ci95": [
+            0.9651023453172225,
+            0.9794684990356205
+          ],
+          "prompts_faster": 0,
+          "economics": {
+            "affordable_added_ms": -0.3201699597467579,
+            "measured_added_round_ms": 1.5220523878489018,
+            "observed_extra_committed_tokens": -0.010954140404259682,
+            "required_extra_committed_tokens": 0.052074765453707726,
+            "required_total_committed_tokens": 2.407214952369596,
+            "decode_speedup": 0.9738166690116627,
+            "scope": "At the measured complete-round cost, including all copies and scheduling. No standalone-editor or callback-wait attribution."
+          }
+        },
+        "first_only": {
+          "speedup": 0.9915619914788155,
+          "throughput_change_percent": -0.8438008521184481,
+          "repeat_speedups": [
+            0.9917739937673863,
+            0.9917835373846811,
+            0.9911288320199858
+          ],
+          "prompt_bootstrap_ci95": [
+            0.9821988335717045,
+            0.9965234833665378
+          ],
+          "prompts_faster": 0,
+          "economics": {
+            "affordable_added_ms": -0.3201699597467579,
+            "measured_added_round_ms": 0.2796934143103158,
+            "observed_extra_committed_tokens": -0.010954140404259682,
+            "required_extra_committed_tokens": 0.00956929542335988,
+            "required_total_committed_tokens": 2.3647094823392476,
+            "decode_speedup": 0.9913209483106072,
+            "scope": "At the measured complete-round cost, including all copies and scheduling. No standalone-editor or callback-wait attribution."
+          }
+        }
+      }
+    },
+    "HuggingFaceH4/ultrachat_200k/Q4": {
+      "prompts": 8,
+      "prompt_length_range": [
+        232,
+        576
+      ],
+      "arms": {
+        "off": {
+          "requests": 24,
+          "seconds": 38.009676905930974,
+          "output_tokens": 1536,
+          "tokens_per_second": 40.41076181208804,
+          "verification_rounds": 504,
+          "decode_ms": 35166.991729522124,
+          "average_round_ms": 69.77577724111532,
+          "committed_tokens": 1512,
+          "committed_per_round": 3.0,
+          "editor_calls": 0,
+          "selector_calls": 0,
+          "selected_fraction": null,
+          "graph_hits": 0,
+          "graph_misses": 0
+        },
+        "selector_probe": {
+          "requests": 24,
+          "seconds": 38.68634786992334,
+          "output_tokens": 1536,
+          "tokens_per_second": 39.703928764859235,
+          "verification_rounds": 504,
+          "decode_ms": 35834.049843251705,
+          "average_round_ms": 71.09930524454704,
+          "committed_tokens": 1512,
+          "committed_per_round": 3.0,
+          "editor_calls": 0,
+          "selector_calls": 522,
+          "selected_fraction": 0.0,
+          "graph_hits": 0,
+          "graph_misses": 0
+        },
+        "editor": {
+          "requests": 24,
+          "seconds": 43.15518755686935,
+          "output_tokens": 1536,
+          "tokens_per_second": 35.592476523844994,
+          "verification_rounds": 507,
+          "decode_ms": 40299.17073948309,
+          "average_round_ms": 79.48554386485816,
+          "committed_tokens": 1512,
+          "committed_per_round": 2.9822485207100593,
+          "editor_calls": 528,
+          "selector_calls": 0,
+          "selected_fraction": null,
+          "graph_hits": 528,
+          "graph_misses": 0
+        },
+        "selected": {
+          "requests": 24,
+          "seconds": 38.38529462553561,
+          "output_tokens": 1536,
+          "tokens_per_second": 40.015323966751176,
+          "verification_rounds": 498,
+          "decode_ms": 35537.87311981432,
+          "average_round_ms": 71.36119100364321,
+          "committed_tokens": 1512,
+          "committed_per_round": 3.036144578313253,
+          "editor_calls": 24,
+          "selector_calls": 516,
+          "selected_fraction": 0.046511627906976744,
+          "graph_hits": 24,
+          "graph_misses": 0
+        },
+        "first_only": {
+          "requests": 24,
+          "seconds": 37.777093564975075,
+          "output_tokens": 1536,
+          "tokens_per_second": 40.6595599356563,
+          "verification_rounds": 498,
+          "decode_ms": 34927.248982014135,
+          "average_round_ms": 70.13503811649424,
+          "committed_tokens": 1512,
+          "committed_per_round": 3.036144578313253,
+          "editor_calls": 24,
+          "selector_calls": 0,
+          "selected_fraction": null,
+          "graph_hits": 24,
+          "graph_misses": 0
+        }
+      },
+      "comparisons": {
+        "selector_probe": {
+          "speedup": 0.9825087918283845,
+          "throughput_change_percent": -1.7491208171615535,
+          "repeat_speedups": [
+            0.9835211267345277,
+            0.9814324918699991,
+            0.9825745640274274
+          ],
+          "prompt_bootstrap_ci95": [
+            0.9819760498206161,
+            0.9830941493111346
+          ],
+          "prompts_faster": 0,
+          "economics": {
+            "affordable_added_ms": 0.0,
+            "measured_added_round_ms": 1.3235280034317185,
+            "observed_extra_committed_tokens": 0.0,
+            "required_extra_committed_tokens": 0.056904905502872305,
+            "required_total_committed_tokens": 3.0569049055028725,
+            "decode_speedup": 0.9813847969557589,
+            "scope": "At the measured complete-round cost, including all copies and scheduling. No standalone-editor or callback-wait attribution."
+          }
+        },
+        "editor": {
+          "speedup": 0.8807672740581259,
+          "throughput_change_percent": -11.923272594187406,
+          "repeat_speedups": [
+            0.8810788841963528,
+            0.8808239140589292,
+            0.880399208514048
+          ],
+          "prompt_bootstrap_ci95": [
+            0.8402707090555592,
+            0.9273712150680788
+          ],
+          "prompts_faster": 1,
+          "economics": {
+            "affordable_added_ms": -0.41287442154505544,
+            "measured_added_round_ms": 9.709766623742837,
+            "observed_extra_committed_tokens": -0.017751479289940697,
+            "required_extra_committed_tokens": 0.41747008808759034,
+            "required_total_committed_tokens": 3.417470088087591,
+            "decode_speedup": 0.8726480243690794,
+            "scope": "At the measured complete-round cost, including all copies and scheduling. No standalone-editor or callback-wait attribution."
+          }
+        },
+        "selected": {
+          "speedup": 0.9902145411864377,
+          "throughput_change_percent": -0.9785458813562298,
+          "repeat_speedups": [
+            0.9906552799516953,
+            0.99064885555765,
+            0.9893405710456904
+          ],
+          "prompt_bootstrap_ci95": [
+            0.959026255516612,
+            1.032557073918768
+          ],
+          "prompts_faster": 2,
+          "economics": {
+            "affordable_added_ms": 0.8406720149531915,
+            "measured_added_round_ms": 1.5854137625278923,
+            "observed_extra_committed_tokens": 0.03614457831325302,
+            "required_extra_committed_tokens": 0.06816464789991716,
+            "required_total_committed_tokens": 3.0681646478999167,
+            "decode_speedup": 0.9895637707681102,
+            "scope": "At the measured complete-round cost, including all copies and scheduling. No standalone-editor or callback-wait attribution."
+          }
+        },
+        "first_only": {
+          "speedup": 1.006156729356531,
+          "throughput_change_percent": 0.6156729356530999,
+          "repeat_speedups": [
+            1.006385218956951,
+            1.0062561583230776,
+            1.005828925230223
+          ],
+          "prompt_bootstrap_ci95": [
+            0.9746381145104526,
+            1.0489431859765108
+          ],
+          "prompts_faster": 2,
+          "economics": {
+            "affordable_added_ms": 0.8406720149531915,
+            "measured_added_round_ms": 0.35926087537892215,
+            "observed_extra_committed_tokens": 0.03614457831325302,
+            "required_extra_committed_tokens": 0.015446372204675152,
+            "required_total_committed_tokens": 3.0154463722046754,
+            "decode_speedup": 1.0068640604254702,
+            "scope": "At the measured complete-round cost, including all copies and scheduling. No standalone-editor or callback-wait attribution."
+          }
+        }
+      }
+    },
+    "openai/gsm8k": {
+      "prompts": 32,
+      "prompt_length_range": [
+        46,
+        120
+      ],
+      "arms": {
+        "off": {
+          "requests": 96,
+          "seconds": 94.72019324649591,
+          "output_tokens": 6144,
+          "tokens_per_second": 64.86473252869226,
+          "verification_rounds": 1305,
+          "decode_ms": 90211.50914113969,
+          "average_round_ms": 69.1275932116013,
+          "committed_tokens": 6048,
+          "committed_per_round": 4.63448275862069,
+          "editor_calls": 0,
+          "selector_calls": 0,
+          "selected_fraction": null,
+          "graph_hits": 0,
+          "graph_misses": 0
+        },
+        "selector_probe": {
+          "requests": 96,
+          "seconds": 96.42966187815182,
+          "output_tokens": 6144,
+          "tokens_per_second": 63.71483504488003,
+          "verification_rounds": 1305,
+          "decode_ms": 91926.48749332875,
+          "average_round_ms": 70.44175286845115,
+          "committed_tokens": 6048,
+          "committed_per_round": 4.63448275862069,
+          "editor_calls": 0,
+          "selector_calls": 1383,
+          "selected_fraction": 0.0,
+          "graph_hits": 0,
+          "graph_misses": 0
+        },
+        "editor": {
+          "requests": 96,
+          "seconds": 101.28958781284746,
+          "output_tokens": 6144,
+          "tokens_per_second": 60.65776485686026,
+          "verification_rounds": 1245,
+          "decode_ms": 96775.85441339761,
+          "average_round_ms": 77.73160997060049,
+          "committed_tokens": 6048,
+          "committed_per_round": 4.857831325301205,
+          "editor_calls": 1326,
+          "selector_calls": 0,
+          "selected_fraction": null,
+          "graph_hits": 1326,
+          "graph_misses": 0
+        },
+        "selected": {
+          "requests": 96,
+          "seconds": 93.75205141864717,
+          "output_tokens": 6144,
+          "tokens_per_second": 65.5345659858059,
+          "verification_rounds": 1257,
+          "decode_ms": 89244.8043259792,
+          "average_round_ms": 70.99825324262467,
+          "committed_tokens": 6048,
+          "committed_per_round": 4.81145584725537,
+          "editor_calls": 96,
+          "selector_calls": 1338,
+          "selected_fraction": 0.07174887892376682,
+          "graph_hits": 96,
+          "graph_misses": 0
+        },
+        "first_only": {
+          "requests": 96,
+          "seconds": 92.20665977988392,
+          "output_tokens": 6144,
+          "tokens_per_second": 66.63293101243424,
+          "verification_rounds": 1257,
+          "decode_ms": 87696.9048618339,
+          "average_round_ms": 69.76682964346372,
+          "committed_tokens": 6048,
+          "committed_per_round": 4.81145584725537,
+          "editor_calls": 96,
+          "selector_calls": 0,
+          "selected_fraction": null,
+          "graph_hits": 96,
+          "graph_misses": 0
+        }
+      },
+      "comparisons": {
+        "selector_probe": {
+          "speedup": 0.9822723776236405,
+          "throughput_change_percent": -1.7727622376359498,
+          "repeat_speedups": [
+            0.98229255080665,
+            0.9822844430782102,
+            0.9822401438522959
+          ],
+          "prompt_bootstrap_ci95": [
+            0.9818792178280359,
+            0.9826714950948814
+          ],
+          "prompts_faster": 0,
+          "economics": {
+            "affordable_added_ms": 0.0,
+            "measured_added_round_ms": 1.3141596568498528,
+            "observed_extra_committed_tokens": 0.0,
+            "required_extra_committed_tokens": 0.08810447447667519,
+            "required_total_committed_tokens": 4.722587233097365,
+            "decode_speedup": 0.9813440239157019,
+            "scope": "At the measured complete-round cost, including all copies and scheduling. No standalone-editor or callback-wait attribution."
+          }
+        },
+        "editor": {
+          "speedup": 0.9351424494046733,
+          "throughput_change_percent": -6.485755059532671,
+          "repeat_speedups": [
+            0.9351981379226747,
+            0.9351271003621058,
+            0.9351021242436461
+          ],
+          "prompt_bootstrap_ci95": [
+            0.904549403585429,
+            0.9696297142081186
+          ],
+          "prompts_faster": 8,
+          "economics": {
+            "affordable_added_ms": 3.331450275257889,
+            "measured_added_round_ms": 8.604016758999194,
+            "observed_extra_committed_tokens": 0.22334856668051462,
+            "required_extra_committed_tokens": 0.5768343069952735,
+            "required_total_committed_tokens": 5.2113170656159635,
+            "decode_speedup": 0.9321695963104908,
+            "scope": "At the measured complete-round cost, including all copies and scheduling. No standalone-editor or callback-wait attribution."
+          }
+        },
+        "selected": {
+          "speedup": 1.0103266201986933,
+          "throughput_change_percent": 1.0326620198693348,
+          "repeat_speedups": [
+            1.0105890224004612,
+            1.0097084392475106,
+            1.0106830141935688
+          ],
+          "prompt_bootstrap_ci95": [
+            0.9930817635039269,
+            1.029334263206348
+          ],
+          "prompts_faster": 14,
+          "economics": {
+            "affordable_added_ms": 2.6397171632114986,
+            "measured_added_round_ms": 1.8706600310233767,
+            "observed_extra_committed_tokens": 0.1769730886346803,
+            "required_extra_committed_tokens": 0.12541361934128128,
+            "required_total_committed_tokens": 4.759896377961971,
+            "decode_speedup": 1.010832057086813,
+            "scope": "At the measured complete-round cost, including all copies and scheduling. No standalone-editor or callback-wait attribution."
+          }
+        },
+        "first_only": {
+          "speedup": 1.0272597822392906,
+          "throughput_change_percent": 2.7259782239290598,
+          "repeat_speedups": [
+            1.0271633065832535,
+            1.0272059768433763,
+            1.0274100816293885
+          ],
+          "prompt_bootstrap_ci95": [
+            1.0097050923632003,
+            1.0465354567283909
+          ],
+          "prompts_faster": 14,
+          "economics": {
+            "affordable_added_ms": 2.6397171632114986,
+            "measured_added_round_ms": 0.6392364318624288,
+            "observed_extra_committed_tokens": 0.1769730886346803,
+            "required_extra_committed_tokens": 0.04285597233336671,
+            "required_total_committed_tokens": 4.677338730954057,
+            "decode_speedup": 1.0286738087651728,
+            "scope": "At the measured complete-round cost, including all copies and scheduling. No standalone-editor or callback-wait attribution."
+          }
+        }
+      }
+    },
+    "openai/gsm8k/Q1": {
+      "prompts": 8,
+      "prompt_length_range": [
+        46,
+        54
+      ],
+      "arms": {
+        "off": {
+          "requests": 24,
+          "seconds": 22.347871232777834,
+          "output_tokens": 1536,
+          "tokens_per_second": 68.73137866246223,
+          "verification_rounds": 306,
+          "decode_ms": 21111.406332813203,
+          "average_round_ms": 68.99152396344184,
+          "committed_tokens": 1512,
+          "committed_per_round": 4.9411764705882355,
+          "editor_calls": 0,
+          "selector_calls": 0,
+          "selected_fraction": null,
+          "graph_hits": 0,
+          "graph_misses": 0
+        },
+        "selector_probe": {
+          "requests": 24,
+          "seconds": 22.74402346694842,
+          "output_tokens": 1536,
+          "tokens_per_second": 67.5342250781667,
+          "verification_rounds": 306,
+          "decode_ms": 21509.110906743445,
+          "average_round_ms": 70.29121211354067,
+          "committed_tokens": 1512,
+          "committed_per_round": 4.9411764705882355,
+          "editor_calls": 0,
+          "selector_calls": 324,
+          "selected_fraction": 0.0,
+          "graph_hits": 0,
+          "graph_misses": 0
+        },
+        "editor": {
+          "requests": 24,
+          "seconds": 22.63839392468799,
+          "output_tokens": 1536,
+          "tokens_per_second": 67.84933618126223,
+          "verification_rounds": 276,
+          "decode_ms": 21400.556060718372,
+          "average_round_ms": 77.53824659680569,
+          "committed_tokens": 1512,
+          "committed_per_round": 5.478260869565218,
+          "editor_calls": 294,
+          "selector_calls": 0,
+          "selected_fraction": null,
+          "graph_hits": 294,
+          "graph_misses": 0
+        },
+        "selected": {
+          "requests": 24,
+          "seconds": 22.269303894252516,
+          "output_tokens": 1536,
+          "tokens_per_second": 68.97386677616026,
+          "verification_rounds": 297,
+          "decode_ms": 21036.133467103355,
+          "average_round_ms": 70.8287322124692,
+          "committed_tokens": 1512,
+          "committed_per_round": 5.090909090909091,
+          "editor_calls": 24,
+          "selector_calls": 315,
+          "selected_fraction": 0.0761904761904762,
+          "graph_hits": 24,
+          "graph_misses": 0
+        },
+        "first_only": {
+          "requests": 24,
+          "seconds": 21.91569223778788,
+          "output_tokens": 1536,
+          "tokens_per_second": 70.08676629212604,
+          "verification_rounds": 297,
+          "decode_ms": 20677.718913881108,
+          "average_round_ms": 69.62194920498689,
+          "committed_tokens": 1512,
+          "committed_per_round": 5.090909090909091,
+          "editor_calls": 24,
+          "selector_calls": 0,
+          "selected_fraction": null,
+          "graph_hits": 24,
+          "graph_misses": 0
+        }
+      },
+      "comparisons": {
+        "selector_probe": {
+          "speedup": 0.9825821392267611,
+          "throughput_change_percent": -1.7417860773238925,
+          "repeat_speedups": [
+            0.9824284594296067,
+            0.9825050069103236,
+            0.9828131606826659
+          ],
+          "prompt_bootstrap_ci95": [
+            0.9818587087619262,
+            0.9831533415721544
+          ],
+          "prompts_faster": 0,
+          "economics": {
+            "affordable_added_ms": 0.0,
+            "measured_added_round_ms": 1.2996881500988309,
+            "observed_extra_committed_tokens": 0.0,
+            "required_extra_committed_tokens": 0.09308373170266053,
+            "required_total_committed_tokens": 5.034260202290896,
+            "decode_speedup": 0.9815099482421862,
+            "scope": "At the measured complete-round cost, including all copies and scheduling. No standalone-editor or callback-wait attribution."
+          }
+        },
+        "editor": {
+          "speedup": 0.9871668152397803,
+          "throughput_change_percent": -1.2833184760219662,
+          "repeat_speedups": [
+            0.9875137256899925,
+            0.9870866582227928,
+            0.9869001089314141
+          ],
+          "prompt_bootstrap_ci95": [
+            0.9147208337833488,
+            1.0658609008919155
+          ],
+          "prompts_faster": 3,
+          "economics": {
+            "affordable_added_ms": 7.499078691678463,
+            "measured_added_round_ms": 8.546722633363856,
+            "observed_extra_committed_tokens": 0.5370843989769822,
+            "required_extra_committed_tokens": 0.6121167115977794,
+            "required_total_committed_tokens": 5.553293182186015,
+            "decode_speedup": 0.9864886815517884,
+            "scope": "At the measured complete-round cost, including all copies and scheduling. No standalone-editor or callback-wait attribution."
+          }
+        },
+        "selected": {
+          "speedup": 1.0035280554299497,
+          "throughput_change_percent": 0.3528055429949717,
+          "repeat_speedups": [
+            1.0036363228081575,
+            1.0034130225411302,
+            1.00353484351926
+          ],
+          "prompt_bootstrap_ci95": [
+            0.9749272426206795,
+            1.0399579594112718
+          ],
+          "prompts_faster": 2,
+          "economics": {
+            "affordable_added_ms": 2.0906522413164175,
+            "measured_added_round_ms": 1.8372082490273698,
+            "observed_extra_committed_tokens": 0.14973262032085533,
+            "required_extra_committed_tokens": 0.13158094864631517,
+            "required_total_committed_tokens": 5.07275741923455,
+            "decode_speedup": 1.0035782652656942,
+            "scope": "At the measured complete-round cost, including all copies and scheduling. No standalone-editor or callback-wait attribution."
+          }
+        },
+        "first_only": {
+          "speedup": 1.0197200704545748,
+          "throughput_change_percent": 1.97200704545748,
+          "repeat_speedups": [
+            1.0199312365367312,
+            1.0199008943624415,
+            1.019328097505511
+          ],
+          "prompt_bootstrap_ci95": [
+            0.9905849001646381,
+            1.0567145651626981
+          ],
+          "prompts_faster": 2,
+          "economics": {
+            "affordable_added_ms": 2.0906522413164175,
+            "measured_added_round_ms": 0.6304252415450549,
+            "observed_extra_committed_tokens": 0.14973262032085533,
+            "required_extra_committed_tokens": 0.045151088003766084,
+            "required_total_committed_tokens": 4.986327558592002,
+            "decode_speedup": 1.0209736586873204,
+            "scope": "At the measured complete-round cost, including all copies and scheduling. No standalone-editor or callback-wait attribution."
+          }
+        }
+      }
+    },
+    "openai/gsm8k/Q2": {
+      "prompts": 8,
+      "prompt_length_range": [
+        56,
+        66
+      ],
+      "arms": {
+        "off": {
+          "requests": 24,
+          "seconds": 25.871235818136483,
+          "output_tokens": 1536,
+          "tokens_per_second": 59.37095586764431,
+          "verification_rounds": 357,
+          "decode_ms": 24705.962539999746,
+          "average_round_ms": 69.20437686274438,
+          "committed_tokens": 1512,
+          "committed_per_round": 4.235294117647059,
+          "editor_calls": 0,
+          "selector_calls": 0,
+          "selected_fraction": null,
+          "graph_hits": 0,
+          "graph_misses": 0
+        },
+        "selector_probe": {
+          "requests": 24,
+          "seconds": 26.343052443116903,
+          "output_tokens": 1536,
+          "tokens_per_second": 58.30759375044773,
+          "verification_rounds": 357,
+          "decode_ms": 25177.300762967207,
+          "average_round_ms": 70.52465199710701,
+          "committed_tokens": 1512,
+          "committed_per_round": 4.235294117647059,
+          "editor_calls": 0,
+          "selector_calls": 381,
+          "selected_fraction": 0.0,
+          "graph_hits": 0,
+          "graph_misses": 0
+        },
+        "editor": {
+          "requests": 24,
+          "seconds": 26.86600982910022,
+          "output_tokens": 1536,
+          "tokens_per_second": 57.17261363971751,
+          "verification_rounds": 330,
+          "decode_ms": 25696.930335834622,
+          "average_round_ms": 77.86948586616552,
+          "committed_tokens": 1512,
+          "committed_per_round": 4.581818181818182,
+          "editor_calls": 354,
+          "selector_calls": 0,
+          "selected_fraction": null,
+          "graph_hits": 354,
+          "graph_misses": 0
+        },
+        "selected": {
+          "requests": 24,
+          "seconds": 25.47090377321001,
+          "output_tokens": 1536,
+          "tokens_per_second": 60.30410281772358,
+          "verification_rounds": 342,
+          "decode_ms": 24302.567955222912,
+          "average_round_ms": 71.06014021995003,
+          "committed_tokens": 1512,
+          "committed_per_round": 4.421052631578948,
+          "editor_calls": 24,
+          "selector_calls": 366,
+          "selected_fraction": 0.06557377049180328,
+          "graph_hits": 24,
+          "graph_misses": 0
+        },
+        "first_only": {
+          "requests": 24,
+          "seconds": 25.032250866875984,
+          "output_tokens": 1536,
+          "tokens_per_second": 61.36084238563291,
+          "verification_rounds": 342,
+          "decode_ms": 23865.643836092204,
+          "average_round_ms": 69.78258431605907,
+          "committed_tokens": 1512,
+          "committed_per_round": 4.421052631578948,
+          "editor_calls": 24,
+          "selector_calls": 0,
+          "selected_fraction": null,
+          "graph_hits": 24,
+          "graph_misses": 0
+        }
+      },
+      "comparisons": {
+        "selector_probe": {
+          "speedup": 0.9820895233762593,
+          "throughput_change_percent": -1.7910476623740679,
+          "repeat_speedups": [
+            0.9820616805583156,
+            0.9820731649162447,
+            0.9821337140339751
+          ],
+          "prompt_bootstrap_ci95": [
+            0.9816698993840801,
+            0.9826248718945939
+          ],
+          "prompts_faster": 0,
+          "economics": {
+            "affordable_added_ms": 0.0,
+            "measured_added_round_ms": 1.3202751343626318,
+            "observed_extra_committed_tokens": 0.0,
+            "required_extra_committed_tokens": 0.0808005759712574,
+            "required_total_committed_tokens": 4.316094693618317,
+            "decode_speedup": 0.981279239287607,
+            "scope": "At the measured complete-round cost, including all copies and scheduling. No standalone-editor or callback-wait attribution."
+          }
+        },
+        "editor": {
+          "speedup": 0.9629727668049076,
+          "throughput_change_percent": -3.702723319509238,
+          "repeat_speedups": [
+            0.9625783337120678,
+            0.9630426867314072,
+            0.9632974245507454
+          ],
+          "prompt_bootstrap_ci95": [
+            0.9204010386742548,
+            1.004142818684864
+          ],
+          "prompts_faster": 3,
+          "economics": {
+            "affordable_added_ms": 5.662176288769993,
+            "measured_added_round_ms": 8.665109003421136,
+            "observed_extra_committed_tokens": 0.34652406417112314,
+            "required_extra_committed_tokens": 0.5303029498227716,
+            "required_total_committed_tokens": 4.76559706746983,
+            "decode_speedup": 0.9614363356679626,
+            "scope": "At the measured complete-round cost, including all copies and scheduling. No standalone-editor or callback-wait attribution."
+          }
+        },
+        "selected": {
+          "speedup": 1.0157172296865076,
+          "throughput_change_percent": 1.5717229686507572,
+          "repeat_speedups": [
+            1.016719191048329,
+            1.014270705676101,
+            1.0161651118175354
+          ],
+          "prompt_bootstrap_ci95": [
+            0.991336796991072,
+            1.0447128733156084
+          ],
+          "prompts_faster": 5,
+          "economics": {
+            "affordable_added_ms": 3.0352796869624825,
+            "measured_added_round_ms": 1.855763357205646,
+            "observed_extra_committed_tokens": 0.1857585139318889,
+            "required_extra_committed_tokens": 0.11357234884299953,
+            "required_total_committed_tokens": 4.348866466490058,
+            "decode_speedup": 1.0165988460775044,
+            "scope": "At the measured complete-round cost, including all copies and scheduling. No standalone-editor or callback-wait attribution."
+          }
+        },
+        "first_only": {
+          "speedup": 1.0335161610405035,
+          "throughput_change_percent": 3.351616104050348,
+          "repeat_speedups": [
+            1.032965745199519,
+            1.0334517087700066,
+            1.034131475596693
+          ],
+          "prompt_bootstrap_ci95": [
+            1.0083575577075619,
+            1.0628950965270083
+          ],
+          "prompts_faster": 5,
+          "economics": {
+            "affordable_added_ms": 3.0352796869624825,
+            "measured_added_round_ms": 0.5782074533146897,
+            "observed_extra_committed_tokens": 0.1857585139318889,
+            "required_extra_committed_tokens": 0.03538618129110999,
+            "required_total_committed_tokens": 4.270680298938169,
+            "decode_speedup": 1.0352103932195922,
+            "scope": "At the measured complete-round cost, including all copies and scheduling. No standalone-editor or callback-wait attribution."
+          }
+        }
+      }
+    },
+    "openai/gsm8k/Q3": {
+      "prompts": 8,
+      "prompt_length_range": [
+        71,
+        80
+      ],
+      "arms": {
+        "off": {
+          "requests": 24,
+          "seconds": 22.43888646492269,
+          "output_tokens": 1536,
+          "tokens_per_second": 68.45259466868522,
+          "verification_rounds": 309,
+          "decode_ms": 21324.717056937516,
+          "average_round_ms": 69.0120293104774,
+          "committed_tokens": 1512,
+          "committed_per_round": 4.893203883495145,
+          "editor_calls": 0,
+          "selector_calls": 0,
+          "selected_fraction": null,
+          "graph_hits": 0,
+          "graph_misses": 0
+        },
+        "selector_probe": {
+          "requests": 24,
+          "seconds": 22.848333169240505,
+          "output_tokens": 1536,
+          "tokens_per_second": 67.2259104689455,
+          "verification_rounds": 309,
+          "decode_ms": 21738.436305779032,
+          "average_round_ms": 70.3509265559192,
+          "committed_tokens": 1512,
+          "committed_per_round": 4.893203883495145,
+          "editor_calls": 0,
+          "selector_calls": 327,
+          "selected_fraction": 0.0,
+          "graph_hits": 0,
+          "graph_misses": 0
+        },
+        "editor": {
+          "requests": 24,
+          "seconds": 25.3363384550903,
+          "output_tokens": 1536,
+          "tokens_per_second": 60.62438748687475,
+          "verification_rounds": 312,
+          "decode_ms": 24224.151188856922,
+          "average_round_ms": 77.64151022069527,
+          "committed_tokens": 1512,
+          "committed_per_round": 4.846153846153846,
+          "editor_calls": 333,
+          "selector_calls": 0,
+          "selected_fraction": null,
+          "graph_hits": 333,
+          "graph_misses": 0
+        },
+        "selected": {
+          "requests": 24,
+          "seconds": 22.39992994919885,
+          "output_tokens": 1536,
+          "tokens_per_second": 68.5716430133272,
+          "verification_rounds": 300,
+          "decode_ms": 21287.454723147675,
+          "average_round_ms": 70.95818241049226,
+          "committed_tokens": 1512,
+          "committed_per_round": 5.04,
+          "editor_calls": 24,
+          "selector_calls": 321,
+          "selected_fraction": 0.07476635514018691,
+          "graph_hits": 24,
+          "graph_misses": 0
+        },
+        "first_only": {
+          "requests": 24,
+          "seconds": 22.035009769140743,
+          "output_tokens": 1536,
+          "tokens_per_second": 69.70725296210733,
+          "verification_rounds": 300,
+          "decode_ms": 20924.66408200562,
+          "average_round_ms": 69.74888027335207,
+          "committed_tokens": 1512,
+          "committed_per_round": 5.04,
+          "editor_calls": 24,
+          "selector_calls": 0,
+          "selected_fraction": null,
+          "graph_hits": 24,
+          "graph_misses": 0
+        }
+      },
+      "comparisons": {
+        "selector_probe": {
+          "speedup": 0.9820797998136235,
+          "throughput_change_percent": -1.7920200186376523,
+          "repeat_speedups": [
+            0.98160971061014,
+            0.9828088795958656,
+            0.9818208930083114
+          ],
+          "prompt_bootstrap_ci95": [
+            0.9811703123718426,
+            0.9829034984963505
+          ],
+          "prompts_faster": 0,
+          "economics": {
+            "affordable_added_ms": 0.0,
+            "measured_added_round_ms": 1.3388972454417996,
+            "observed_extra_committed_tokens": 0.0,
+            "required_extra_committed_tokens": 0.09493268443856766,
+            "required_total_committed_tokens": 4.988136567933713,
+            "decode_speedup": 0.9809683068725815,
+            "scope": "At the measured complete-round cost, including all copies and scheduling. No standalone-editor or callback-wait attribution."
+          }
+        },
+        "editor": {
+          "speedup": 0.8856404608225666,
+          "throughput_change_percent": -11.435953917743335,
+          "repeat_speedups": [
+            0.8853860186068132,
+            0.8859004511722881,
+            0.8856346839516566
+          ],
+          "prompt_bootstrap_ci95": [
+            0.8276421496514005,
+            0.9724699475262635
+          ],
+          "prompts_faster": 2,
+          "economics": {
+            "affordable_added_ms": -0.6635772049084342,
+            "measured_added_round_ms": 8.629480910217865,
+            "observed_extra_committed_tokens": -0.04705003734129942,
+            "required_extra_committed_tokens": 0.6118615830358518,
+            "required_total_committed_tokens": 5.505065466530997,
+            "decode_speedup": 0.8803081226947946,
+            "scope": "At the measured complete-round cost, including all copies and scheduling. No standalone-editor or callback-wait attribution."
+          }
+        },
+        "selected": {
+          "speedup": 1.0017391356049858,
+          "throughput_change_percent": 0.1739135604985842,
+          "repeat_speedups": [
+            1.0011823445950074,
+            1.001796572653832,
+            1.0022383296718436
+          ],
+          "prompt_bootstrap_ci95": [
+            0.962987270856492,
+            1.0563947424857731
+          ],
+          "prompts_faster": 3,
+          "economics": {
+            "affordable_added_ms": 2.070360879314324,
+            "measured_added_round_ms": 1.946153100014854,
+            "observed_extra_committed_tokens": 0.1467961165048548,
+            "required_extra_committed_tokens": 0.13798933319329382,
+            "required_total_committed_tokens": 5.031193216688439,
+            "decode_speedup": 1.001750436314461,
+            "scope": "At the measured complete-round cost, including all copies and scheduling. No standalone-editor or callback-wait attribution."
+          }
+        },
+        "first_only": {
+          "speedup": 1.0183288639312318,
+          "throughput_change_percent": 1.8328863931231787,
+          "repeat_speedups": [
+            1.0177399971646277,
+            1.0186031333972223,
+            1.0186431653420356
+          ],
+          "prompt_bootstrap_ci95": [
+            0.9791740367203972,
+            1.0731212268744537
+          ],
+          "prompts_faster": 3,
+          "economics": {
+            "affordable_added_ms": 2.070360879314324,
+            "measured_added_round_ms": 0.7368509628746693,
+            "observed_extra_committed_tokens": 0.1467961165048548,
+            "required_extra_committed_tokens": 0.05224541328692751,
+            "required_total_committed_tokens": 4.945449296782073,
+            "decode_speedup": 1.0191187286622165,
+            "scope": "At the measured complete-round cost, including all copies and scheduling. No standalone-editor or callback-wait attribution."
+          }
+        }
+      }
+    },
+    "openai/gsm8k/Q4": {
+      "prompts": 8,
+      "prompt_length_range": [
+        82,
+        120
+      ],
+      "arms": {
+        "off": {
+          "requests": 24,
+          "seconds": 24.062199730658904,
+          "output_tokens": 1536,
+          "tokens_per_second": 63.834562807776145,
+          "verification_rounds": 333,
+          "decode_ms": 23069.42321138922,
+          "average_round_ms": 69.27754718134901,
+          "committed_tokens": 1512,
+          "committed_per_round": 4.54054054054054,
+          "editor_calls": 0,
+          "selector_calls": 0,
+          "selected_fraction": null,
+          "graph_hits": 0,
+          "graph_misses": 0
+        },
+        "selector_probe": {
+          "requests": 24,
+          "seconds": 24.49425279884599,
+          "output_tokens": 1536,
+          "tokens_per_second": 62.70858770888354,
+          "verification_rounds": 333,
+          "decode_ms": 23501.639517839067,
+          "average_round_ms": 70.57549404756476,
+          "committed_tokens": 1512,
+          "committed_per_round": 4.54054054054054,
+          "editor_calls": 0,
+          "selector_calls": 351,
+          "selected_fraction": 0.0,
+          "graph_hits": 0,
+          "graph_misses": 0
+        },
+        "editor": {
+          "requests": 24,
+          "seconds": 26.448845603968948,
+          "output_tokens": 1536,
+          "tokens_per_second": 58.07436827297695,
+          "verification_rounds": 327,
+          "decode_ms": 25454.216827987693,
+          "average_round_ms": 77.84164167580334,
+          "committed_tokens": 1512,
+          "committed_per_round": 4.623853211009174,
+          "editor_calls": 345,
+          "selector_calls": 0,
+          "selected_fraction": null,
+          "graph_hits": 345,
+          "graph_misses": 0
+        },
+        "selected": {
+          "requests": 24,
+          "seconds": 23.611913801985793,
+          "output_tokens": 1536,
+          "tokens_per_second": 65.05190612168084,
+          "verification_rounds": 318,
+          "decode_ms": 22618.64818050526,
+          "average_round_ms": 71.12782446699768,
+          "committed_tokens": 1512,
+          "committed_per_round": 4.754716981132075,
+          "editor_calls": 24,
+          "selector_calls": 336,
+          "selected_fraction": 0.07142857142857142,
+          "graph_hits": 24,
+          "graph_misses": 0
+        },
+        "first_only": {
+          "requests": 24,
+          "seconds": 23.223706906079315,
+          "output_tokens": 1536,
+          "tokens_per_second": 66.13931213530422,
+          "verification_rounds": 318,
+          "decode_ms": 22228.87802985497,
+          "average_round_ms": 69.90213216935524,
+          "committed_tokens": 1512,
+          "committed_per_round": 4.754716981132075,
+          "editor_calls": 24,
+          "selector_calls": 0,
+          "selected_fraction": null,
+          "graph_hits": 24,
+          "graph_misses": 0
+        }
+      },
+      "comparisons": {
+        "selector_probe": {
+          "speedup": 0.9823610431501939,
+          "throughput_change_percent": -1.7638956849806098,
+          "repeat_speedups": [
+            0.9830514467638044,
+            0.9818177642768396,
+            0.9822141903085138
+          ],
+          "prompt_bootstrap_ci95": [
+            0.9813982908820923,
+            0.9834740186546764
+          ],
+          "prompts_faster": 0,
+          "economics": {
+            "affordable_added_ms": 0.0,
+            "measured_added_round_ms": 1.297946866215753,
+            "observed_extra_committed_tokens": 0.0,
+            "required_extra_committed_tokens": 0.085069125644604,
+            "required_total_committed_tokens": 4.625609666185144,
+            "decode_speedup": 0.9816090998195351,
+            "scope": "At the measured complete-round cost, including all copies and scheduling. No standalone-editor or callback-wait attribution."
+          }
+        },
+        "editor": {
+          "speedup": 0.9097637035261795,
+          "throughput_change_percent": -9.023629647382048,
+          "repeat_speedups": [
+            0.9102908126479843,
+            0.9094558148875203,
+            0.9095445832606209
+          ],
+          "prompt_bootstrap_ci95": [
+            0.8790602579451442,
+            0.9426113478846744
+          ],
+          "prompts_faster": 0,
+          "economics": {
+            "affordable_added_ms": 1.2711476547036593,
+            "measured_added_round_ms": 8.564094494454338,
+            "observed_extra_committed_tokens": 0.08331267046863378,
+            "required_extra_committed_tokens": 0.5613018911206309,
+            "required_total_committed_tokens": 5.101842431661172,
+            "decode_speedup": 0.906310469785253,
+            "scope": "At the measured complete-round cost, including all copies and scheduling. No standalone-editor or callback-wait attribution."
+          }
+        },
+        "selected": {
+          "speedup": 1.0190702851301805,
+          "throughput_change_percent": 1.9070285130180498,
+          "repeat_speedups": [
+            1.0194620650084154,
+            1.0182252568976082,
+            1.01952404798251
+          ],
+          "prompt_bootstrap_ci95": [
+            0.9843855126805384,
+            1.0660153000554975
+          ],
+          "prompts_faster": 4,
+          "economics": {
+            "affordable_added_ms": 3.2678088293089225,
+            "measured_added_round_ms": 1.8502772856486729,
+            "observed_extra_committed_tokens": 0.21417644059153496,
+            "required_extra_committed_tokens": 0.12126957966246985,
+            "required_total_committed_tokens": 4.66181012020301,
+            "decode_speedup": 1.0199293533055822,
+            "scope": "At the measured complete-round cost, including all copies and scheduling. No standalone-editor or callback-wait attribution."
+          }
+        },
+        "first_only": {
+          "speedup": 1.0361050381823453,
+          "throughput_change_percent": 3.610503818234534,
+          "repeat_speedups": [
+            1.0366705086152268,
+            1.035530917390017,
+            1.0361138200826348
+          ],
+          "prompt_bootstrap_ci95": [
+            1.0011832760536568,
+            1.0830637801565224
+          ],
+          "prompts_faster": 4,
+          "economics": {
+            "affordable_added_ms": 3.2678088293089225,
+            "measured_added_round_ms": 0.6245849880062337,
+            "observed_extra_committed_tokens": 0.21417644059153496,
+            "required_extra_committed_tokens": 0.040936112412172945,
+            "required_total_committed_tokens": 4.581476652952714,
+            "decode_speedup": 1.0378132076844067,
+            "scope": "At the measured complete-round cost, including all copies and scheduling. No standalone-editor or callback-wait attribution."
+          }
+        }
+      }
+    }
+  },
+  "matched_tokens": true,
+  "repeats": 3,
+  "timed_generations": 960,
+  "editor_optimizer_updates": 0,
+  "final_test_evaluated": false,
+  "cold": {
+    "editor": {
+      "requests": 64,
+      "capture_ms": 119198.16361938138,
+      "captures": 1191,
+      "seconds": 210.07753837795462
+    },
+    "selected": {
+      "requests": 64,
+      "capture_ms": 6425.6343063898385,
+      "captures": 64,
+      "seconds": 91.51820627436973
+    },
+    "first_only": {
+      "requests": 64,
+      "capture_ms": 6475.122468080372,
+      "captures": 64,
+      "seconds": 90.1389140865067
+    }
+  }
+}

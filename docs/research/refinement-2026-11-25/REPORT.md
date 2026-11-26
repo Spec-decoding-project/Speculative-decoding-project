@@ -1,4 +1,17 @@
-# November 25 project update
+# November 26 project update
+
+**Cheap first-block selection now gives a small native warm-cache win on GSM8K:
++2.73% throughput, with UltraChat effectively unchanged at −0.08%.** A small tree
+fitted on training/calibration data simplifies exactly to calling the frozen
+autoregressive editor only on the first proposal, then skipping it with a flag.
+Across 64 development prompts and three repeats, this removes 94.63% of editor
+calls versus always-on editing while preserving every tested final sequence.
+GSM8K's prompt-bootstrap 95% speed ratio is 1.00971–1.04654; UltraChat's spans 1.
+Cold graph setup still makes the selected path slower, and no production cache
+hit rate or long-response benefit is established. All jobs/audits/backups are
+complete; no new editor training ran. [Complete selector result](CHEAP_SELECTOR.md).
+
+## Earlier always-on comparison
 
 **The exact earlier 3.6997 linear gate now has a completed native benchmark on
 128 development prompts. It lowers end-to-end throughput by 8.86% on UltraChat
@@ -37,7 +50,7 @@ Training computes which candidate is correct under the reference preceding token
 
 The earlier 3.78× latency result is for a **warm, fixed-shape editor invocation**. Graph preparation costs about 102 ms per captured shape; that prototype lacked a serving cache. The graphed checkpoint's development prefix is 3.6797, and its warm break-even screening threshold is about 302 ms of baseline round time under stated assumptions. Target/drafter were unloaded during that timing. These numbers must not be described as a 3.78× faster DFlash generator. The native report now measures bounded graph reuse, cold cost and complete generation directly.
 
-All five earlier GPU jobs completed successfully and all artifacts are backed up. Their 54-test local suite passes. Full-size GPU controls, reloads, generator hashes, calibration simulations, cache/output checks and independent saved-result audits passed. The subsequent native GPU jobs, CPU pin audits and independent native audits also pass their correctness checks; their aggregate performance result is negative. Original data, old experiments and original workspace changes are preserved. The final test split remains unused.
+All five earlier GPU jobs completed successfully and all artifacts are backed up. Their 54-test local suite passes. Full-size GPU controls, reloads, generator hashes, calibration simulations, cache/output checks and independent saved-result audits passed. The subsequent native GPU jobs, CPU pin audits and independent native audits also pass their correctness checks; their always-on aggregate performance result is negative; the newer first-block result is summarized above. Original data, old experiments and original workspace changes are preserved. The final test split remains unused.
 
 The earlier proposed native milestone has now run for replacement; see the current report above. The serving-fidelity ticket remains open for its untested requirements. Nothing additional is needed from the user to reproduce the completed measurements.
 

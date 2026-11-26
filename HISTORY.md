@@ -4,14 +4,15 @@ This is the running, plain-English record of what we tried, why we tried it, and
 what the evidence actually supports. New experiments are described before launch
 and updated when results arrive. Failed attempts stay in this record.
 
-## Current state — November 25, 2026
+## Current state — November 26, 2026
 
-The completed native comparison of the earlier 3.6997 gate loses throughput by
-8.86% on UltraChat and 8.59% on GSM8K across 128 development prompts. Correctness
-checks pass, but the always-on editor's cost exceeds its acceptance benefit. The
-user has requested a cheap pre-editor selector. That bounded follow-up is being
-prepared; larger editor training remains paused. Prior results are backed up and
-audited. See the concise
+The cheap-selector experiment is complete. A rule learned on training/calibration
+data simplifies exactly to editing only the first proposal. With warm graphs it
+improves native GSM8K throughput by 2.73% and leaves UltraChat effectively unchanged
+(−0.08%), across 64 development prompts and three repeats. All tested outputs
+match; empty-cache generation still loses. All jobs, audits and backups are done;
+larger editor training remains paused. See the [selector result](docs/research/refinement-2026-11-25/CHEAP_SELECTOR.md)
+and the concise
 [project update](docs/research/refinement-2026-11-25/REPORT.md).
 
 Our objective is an autoregressive module that improves DFlash's proposals enough
@@ -583,3 +584,63 @@ same native round trajectory. Reuse the existing collection, selector and greedy
 references byte for byte; do not repeat them. The replacement evaluation job has
 a 68-minute cap, keeping combined allocation time below 80 minutes. This change
 is prompted by the frozen rule itself, before any native evaluation outcome.
+
+## November 26: first-block selection gives a small warm-cache win
+
+The bounded experiment finished. The new component is a tiny fitted tree that
+compiles to a flag: call the existing autoregressive editor on the first proposal,
+then skip it on subsequent rounds. The editor still generates its fourteen
+editable tokens sequentially when called. Its 40.75M generator and earlier
+265-parameter gate remain frozen; no neural-network training ran in this phase.
+
+On the same 64 development prompts, compare baseline, confidence features with
+editing always skipped, always-on editing, the general selector, and its proven
+equivalent cheap implementation. Each gets three rotated timing repeats on one
+A5000, batch one, 64-token output cap. Timing includes all editor/feature work
+and token copies, and drains the GPU before stopping. All warm calls reuse graphs.
+
+| Source, 32 prompts each | Baseline tokens/s | First-block tokens/s | Change |
+|---|---:|---:|---:|
+| UltraChat | 38.372 | 38.339 | −0.08% |
+| GSM8K | 64.865 | 66.633 | +2.73% |
+
+GSM8K's three speed ratios are 1.02716/1.02721/1.02741; its paired-prompt 95%
+interval is 1.00971–1.04654. UltraChat's interval spans 0.99046–1.00992, so it is
+effectively unchanged. Across both sources the workload throughput improves
+0.94%, whereas always-on editing loses 8.21%. Confidence extraction with no edits
+alone costs 1.316ms/round and loses 1.80%; eliminating those unused features is
+essential. The general selector loses 0.75% overall despite identical edits.
+
+The cheap rule makes 192 editor calls instead of 3,573 across all timed repeats,
+94.63% fewer. In one pass it saves 19 of 1,177 baseline verification rounds:
+UltraChat 742→739, GSM8K 435→419. It reduces rounds on 18 prompts, increases them
+on four, and leaves 42 unchanged. The very first timed case is a loss: baseline
+1.31968s/19 rounds, cheap selector 1.39541s/20 rounds. We retain that example in
+the report rather than selecting only a favorable pair.
+
+This is a warm-cache result. Empty-cache first-only editing captures one graph
+per request, about 101ms/request, versus 1,191 captures across the always-on
+64-prompt pass. Cold first-only throughput is still 5.76% below baseline overall
+(−5.23% UltraChat, −6.64% GSM8K). Since there is only one edit per response, useful
+graph reuse must come from compatible shapes across requests. No production hit
+rate was measured. Inputs span 24–576 tokens for UltraChat and 46–120 for GSM8K;
+all outputs reach the 64-token cap. This does not establish long-response,
+long-context or fresh final-test performance.
+
+Independent reconstruction passes all 960 timed generations and 1,576 evaluation/
+reference sequences, checks 3,584 emitted-token positions and 3,072 aligned full
+target-logit hashes, and proves general/cheap trajectories identical. Eighteen
+local and eighteen GPU-host checks pass. Model-file pins are unchanged; all 1,901
+backup files match remote hashes. Original data and workspace changes are intact.
+Evaluation 8581045 completed in 39m56s; CPU pin audit 8581059 in 25s. Total GPU
+allocation across attempts was 51m01s, below the 80-minute budget. Queue empty.
+
+Retain first-block editing as an experimental option, especially for math prompts
+with graph reuse. The next useful milestone is fresh confirmation on longer
+responses with measured cache behavior or cheaper shape reuse, before more
+editor training. That follow-up has not started. Serving-fidelity remains open
+for union/concurrency and fresh confirmation.
+
+[Full measurements, economics, length groups, setup and artifacts](docs/research/refinement-2026-11-25/CHEAP_SELECTOR.md).
+Runtime source: e210c22. Raw evidence: `~/.local/share/wayfinder-artifacts/selector-8581045/`;
+completed collection: `selector-8580943/`; preserved failed startup: `selector-8580929/`.

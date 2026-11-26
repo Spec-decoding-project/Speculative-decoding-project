@@ -27,12 +27,22 @@ def progress(a,b):
     return n
 
 
-def audit(path):
+def audit(path, previous_native=None, collection=None):
     groups=read(path/'prompts.json');manifest=read(path/'run.json')
     model=read(path/'selector.json');complete=read(path/'complete.json')
     assert digest(groups)==manifest['prompt_digest']
     assert read(path/'frozen-selector.json')==dict(sha256=sha(path/'selector.json'),digest=digest(model))
     assert read(path/'selector-loaded.json')['selector_digest']==digest(model)
+    if previous_native is not None:
+        old=read(previous_native)
+        for field in ('id','family_id'):
+            assert not {p[field] for p in old} & {p[field] for p in groups['evaluation']}
+    if collection is not None:
+        assert sha(collection/'run.json')==manifest['parent_manifest_sha256']
+        for name in ('prompts.json','selector.json','frozen-selector.json','fit-labels.json',
+                     'calibration-labels.json','reference-results.json'):
+            assert sha(collection/name)==sha(path/name)
+        assert not list((collection/'records').glob('evaluation-*.json'))
     for phase in ('collection','evaluation'):
         loaded=read(path/(phase+'-editor-loaded.json'))
         assert loaded['initial_sha256']==CHECKPOINT_SHA256 and loaded['gate_sha256']==GATE_SHA
@@ -46,12 +56,12 @@ def audit(path):
         assert len({p['family_id'] for p in ps})==n
         assert not ids & {p['id'] for p in ps} and not families & {p['family_id'] for p in ps}
         ids.update(p['id'] for p in ps);families.update(p['family_id'] for p in ps)
-    collection=[read(p) for p in sorted((path/'records').glob('collection-*.json'))]
+    collection_records=[read(p) for p in sorted((path/'records').glob('collection-*.json'))]
     label_summary={};positions=hashes=0
     for phase in ('fit','calibration'):
         mapping={p['id']:p for p in groups[phase]}
         expected=[];discarded=0
-        for r in (r for r in collection if r['phase']==phase):
+        for r in (r for r in collection_records if r['phase']==phase):
             p=mapping[r['prompt_id']];full=p['prompt']+r['generated']['tokens']
             assert r['mode']=='shadow' and len(r['observed']['edits'])==len(r['observed']['selector_decisions'])
             for e,d in zip(r['observed']['edits'],r['observed']['selector_decisions']):
@@ -133,15 +143,40 @@ def audit(path):
         b=aggregate['off']
         economic[source]={mode:round_economics(b['average_round_ms'],a['average_round_ms'],
             b['committed_per_round'],a['committed_per_round']) for mode,a in aggregate.items() if mode!='off'}
+    per_prompt=[];first_prefix=[]
+    for pid,p in mapping.items():
+        arms={mode:[r for r in timing if r['prompt_id']==pid and r['mode']==mode]
+              for mode in ('off','editor','selected','first_only','selector_probe')}
+        per_prompt.append(dict(prompt_sha256=digest(pid),source=p['source'],prompt_tokens=len(p['prompt']),
+            length_group=p['length_group'],output_tokens=len(baselines[pid]['generated']['tokens']),
+            finish_reason=baselines[pid]['generated']['finish_reason'],
+            arms={mode:dict(mean_seconds=sum(r['seconds'] for r in arm)/3,
+                           verification_rounds=arm[0]['metrics']['verification_rounds']) for mode,arm in arms.items()}))
+        audited=[r for r in rows if r['prompt_id']==pid and r['mode']=='first_only' and r['phase']=='correctness']
+        if audited:
+            r=audited[0];e=r['observed']['edits'][0]
+            full=r['generated']['prompt']+r['generated']['tokens'];at=e['anchor']+1
+            if at+15<=len(full):
+                original=progress(e['original'][1:],full[at:at+15]);edited=progress(e['edited'][1:],full[at:at+15])
+                first_prefix.append(dict(prompt_sha256=digest(pid),source=p['source'],original=original,edited=edited,gain=edited-original))
+    round_changes={}
+    for source in ('all',*SOURCES):
+        subset=[p for p in per_prompt if source=='all' or p['source']==source]
+        changes=[p['arms']['off']['verification_rounds']-p['arms']['first_only']['verification_rounds'] for p in subset]
+        round_changes[source]=dict(prompts=len(changes),rounds_saved_per_pass=sum(changes),
+            fewer_rounds=sum(v>0 for v in changes),more_rounds=sum(v<0 for v in changes),same_rounds=sum(v==0 for v in changes))
     return dict(passed=True,labels=label_summary,native_positions_checked=positions,
         aligned_target_hashes=hashes,timed_generations=len(timing),exact_output_generations=len(rows)+len(references),
         selector_sha256=sha(path/'selector.json'),threshold=model['threshold'],economics=economic,
-        gate_sha256=GATE_SHA,editor_optimizer_updates=0,final_test_evaluated=False)
+        gate_sha256=GATE_SHA,editor_optimizer_updates=0,final_test_evaluated=False,
+        excluded_prior_native_prompts=previous_native is not None,reused_collection_byte_exact=collection is not None,
+        per_prompt=per_prompt,round_changes=round_changes,first_prefix_audited_subset=first_prefix)
 
 
 def main():
     parser=argparse.ArgumentParser();parser.add_argument('path',type=Path);parser.add_argument('output',type=Path)
-    args=parser.parse_args();save(args.output,audit(args.path))
+    parser.add_argument('--previous-native',type=Path);parser.add_argument('--collection',type=Path)
+    args=parser.parse_args();save(args.output,audit(args.path,args.previous_native,args.collection))
 
 
 if __name__=='__main__':main()
