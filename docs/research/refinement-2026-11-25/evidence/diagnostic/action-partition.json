@@ -1,0 +1,14 @@
+{
+  "counts": {
+    "control_repairs": 267,
+    "lost_by_copying_original_error": 231,
+    "repairs_retained": 23,
+    "lost_by_earlier_damage": 5,
+    "new_copy_repairs": 15,
+    "lost_by_wrong_generated_token": 8,
+    "entire_suffix_copied": 813,
+    "original_suffix_token_matches": 9298
+  },
+  "blocks": 2048,
+  "scope": "Observed action choices, not proof of why weights learned those choices"
+}

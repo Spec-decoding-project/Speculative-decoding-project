@@ -65,7 +65,7 @@ def choose(rows, per_group=16, loader=None):
     return selected
 
 
-def read_bank(path):
+def read_bank(path, *, per_group=16):
     if sha(path) != BANK_SHA256:
         raise ValueError('Full-corpus bank fingerprint differs from verified input')
     connection = sqlite3.connect(f'file:{Path(path)}?mode=ro', uri=True)
@@ -84,7 +84,7 @@ def read_bank(path):
             return json.loads(connection.execute('SELECT payload FROM examples WHERE id=?',
                                                 (candidate['bank_id'],)).fetchone()[0])
 
-        training = choose(candidates(), loader=load)
+        training = choose(candidates(), per_group=per_group, loader=load)
         development = [json.loads(record[0]) for record in connection.execute(
             "SELECT payload FROM examples WHERE split='development' ORDER BY id")]
     finally:

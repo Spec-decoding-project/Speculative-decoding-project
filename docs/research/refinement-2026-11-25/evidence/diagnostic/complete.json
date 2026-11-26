@@ -1,0 +1,214 @@
+{
+  "passed": true,
+  "diagnostic_counts": {
+    "cases": 231,
+    "copy_vocabulary_incorrect": 145,
+    "starting_vocabulary_incorrect": 20,
+    "starting_vocabulary_correct": 211,
+    "correct_starting_prediction_lost": 131,
+    "copy_overrules_correct_vocabulary": 86
+  },
+  "replays": {
+    "initial": {
+      "passed": true,
+      "blocks": 2048,
+      "weights_sha256": "8babb2bfe3f4c11ef283312e22ccd2e20878438c96957302ff2c462748bbd382"
+    },
+    "baseline": {
+      "passed": true,
+      "blocks": 2048,
+      "weights_sha256": "676d3e39a5daa53854c1af5ef156b7f3bb0b23ffb3e726f3190e87d44b57b8a4"
+    },
+    "copy": {
+      "passed": true,
+      "blocks": 2048,
+      "weights_sha256": "10776d4d00fafeb1c646b4102a6d2c4c05835becda2bf0777e6eee074b10ea9e"
+    }
+  },
+  "vocabulary_only": {
+    "training": {
+      "teacher_forced_action_ce": 3.95249787463607,
+      "teacher_forced_ce": 3.95249787463607,
+      "free_running_token_accuracy": 0.14508928571428573,
+      "free_running_exact_suffix": 0.03125,
+      "repaired": 6,
+      "damaged": 58,
+      "wrong_first": 0,
+      "blocks": 64,
+      "mean_original_progress": 9.609375,
+      "mean_edited_progress": 1.75,
+      "mean_union_progress": 10.171875,
+      "copy_actions": 0,
+      "editable_tokens": 896,
+      "scope": "Saved-context coverage; no native acceptance or full-generation speedup",
+      "groups": {
+        "source/HuggingFaceH4/ultrachat_200k": {
+          "blocks": 32,
+          "mean_original_progress": 8.9375,
+          "mean_edited_progress": 1.71875,
+          "repaired": 4,
+          "damaged": 28,
+          "prefix_positions_gained": 17,
+          "prefix_positions_lost": 248,
+          "exact_suffixes": 1
+        },
+        "kind/preservation": {
+          "blocks": 32,
+          "mean_original_progress": 15,
+          "mean_edited_progress": 1.125,
+          "repaired": 0,
+          "damaged": 32,
+          "prefix_positions_gained": 0,
+          "prefix_positions_lost": 444,
+          "exact_suffixes": 0
+        },
+        "first/correct": {
+          "blocks": 64,
+          "mean_original_progress": 9.609375,
+          "mean_edited_progress": 1.75,
+          "repaired": 6,
+          "damaged": 58,
+          "prefix_positions_gained": 36,
+          "prefix_positions_lost": 539,
+          "exact_suffixes": 2
+        },
+        "source/openai/gsm8k": {
+          "blocks": 32,
+          "mean_original_progress": 10.28125,
+          "mean_edited_progress": 1.78125,
+          "repaired": 2,
+          "damaged": 30,
+          "prefix_positions_gained": 19,
+          "prefix_positions_lost": 291,
+          "exact_suffixes": 1
+        },
+        "kind/repairable": {
+          "blocks": 32,
+          "mean_original_progress": 4.21875,
+          "mean_edited_progress": 2.375,
+          "repaired": 6,
+          "damaged": 26,
+          "prefix_positions_gained": 36,
+          "prefix_positions_lost": 95,
+          "exact_suffixes": 2
+        }
+      }
+    },
+    "development": {
+      "teacher_forced_action_ce": 5.347279471810907,
+      "teacher_forced_ce": 5.347279471810907,
+      "free_running_token_accuracy": 0.04701450892857143,
+      "free_running_exact_suffix": 0.0,
+      "repaired": 43,
+      "damaged": 1254,
+      "wrong_first": 320,
+      "blocks": 2048,
+      "mean_original_progress": 3.57763671875,
+      "mean_edited_progress": 1.07958984375,
+      "mean_union_progress": 3.611328125,
+      "copy_actions": 0,
+      "editable_tokens": 28672,
+      "scope": "Saved-context coverage; no native acceptance or full-generation speedup",
+      "groups": {
+        "source/HuggingFaceH4/ultrachat_200k": {
+          "blocks": 1024,
+          "mean_original_progress": 2.474609375,
+          "mean_edited_progress": 0.9892578125,
+          "repaired": 16,
+          "damaged": 516,
+          "prefix_positions_gained": 26,
+          "prefix_positions_lost": 1547,
+          "exact_suffixes": 0
+        },
+        "kind/repairable": {
+          "blocks": 1684,
+          "mean_original_progress": 3.959026128266033,
+          "mean_edited_progress": 1.2802850356294537,
+          "repaired": 43,
+          "damaged": 1210,
+          "prefix_positions_gained": 69,
+          "prefix_positions_lost": 4580,
+          "exact_suffixes": 0
+        },
+        "first/correct": {
+          "blocks": 1728,
+          "mean_original_progress": 4.240162037037037,
+          "mean_edited_progress": 1.2795138888888888,
+          "repaired": 43,
+          "damaged": 1254,
+          "prefix_positions_gained": 69,
+          "prefix_positions_lost": 5185,
+          "exact_suffixes": 0
+        },
+        "kind/wrong_first": {
+          "blocks": 320,
+          "mean_original_progress": 0,
+          "mean_edited_progress": 0,
+          "repaired": 0,
+          "damaged": 0,
+          "prefix_positions_gained": 0,
+          "prefix_positions_lost": 0,
+          "exact_suffixes": 0
+        },
+        "first/wrong": {
+          "blocks": 320,
+          "mean_original_progress": 0,
+          "mean_edited_progress": 0,
+          "repaired": 0,
+          "damaged": 0,
+          "prefix_positions_gained": 0,
+          "prefix_positions_lost": 0,
+          "exact_suffixes": 0
+        },
+        "source/openai/gsm8k": {
+          "blocks": 1024,
+          "mean_original_progress": 4.6806640625,
+          "mean_edited_progress": 1.169921875,
+          "repaired": 27,
+          "damaged": 738,
+          "prefix_positions_gained": 43,
+          "prefix_positions_lost": 3638,
+          "exact_suffixes": 0
+        },
+        "kind/preservation": {
+          "blocks": 44,
+          "mean_original_progress": 15,
+          "mean_edited_progress": 1.25,
+          "repaired": 0,
+          "damaged": 44,
+          "prefix_positions_gained": 0,
+          "prefix_positions_lost": 605,
+          "exact_suffixes": 0
+        }
+      }
+    }
+  },
+  "uncertainty": {
+    "disabled_minus_original": {
+      "mean_delta": -2.498046875,
+      "ci95": [
+        -2.66212158203125,
+        -2.337890625
+      ],
+      "prompts": 512,
+      "bootstrap_draws": 10000,
+      "seed": 0,
+      "scope": "Exploratory development comparison, paired resampling by prompt"
+    },
+    "disabled_minus_copy": {
+      "mean_delta": -2.388671875,
+      "ci95": [
+        -2.55030517578125,
+        -2.2275390625
+      ],
+      "prompts": 512,
+      "bootstrap_draws": 10000,
+      "seed": 0,
+      "scope": "Exploratory development comparison, paired resampling by prompt"
+    }
+  },
+  "elapsed_seconds": 226.912697458989,
+  "optimizer_updates": 0,
+  "final_test_loaded": false,
+  "scope": "Frozen counterfactual diagnosis; oracle error positions are not an inference policy"
+}

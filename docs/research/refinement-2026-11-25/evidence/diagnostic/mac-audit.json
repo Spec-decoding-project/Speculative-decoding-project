@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "counts": {
+    "correct_vocabulary": 86,
+    "incorrect_vocabulary": 145,
+    "starting_correct_lost": 131
+  },
+  "files": {
+    "vocabulary-only-training-audit.json": "1acf622ce2bc9ae0d713652c164411f92dca244eb97c5cffe5a31f13afe62a90",
+    "vocabulary-only-development-audit.json": "302b66a8d3b5ee019a1cdc8c082c4e0201b4b14aa1fe53bba863939f9a4fe185",
+    "vocabulary-only-summary.json": "d2eb497b5f8c2dc9124ca5ae65b817650bb0487beccd137019d0a9825fc21749",
+    "probes.json": "005e96411025a90506d8333814571052919c81d9ca9899e122ad866492bbc528",
+    "vocabulary-only-development.json": "1a44b122d2c8cabdc3cbe73bc74f4047cb03c9e9f36b48ebfc5b92aa1632d30b",
+    "vocabulary-only-training.json": "7b6534f04335f045f0bc387f368f4b7171fd552dccd39079f7f7d73eb1068f77",
+    "complete.json": "f9567a69cd5ffdce2c0978acca5f63fa283007607367f928f040ab18c6962bf4",
+    "action-partition.json": "e1ddf141925ee048252c605f735dadc200b3f2567beaa5c72a79e6e29869c48b",
+    "run.json": "99df94968b96f00e9ef62f6ad3c7c51cc2bd9c11ec3857b76faa7d738223bdc9"
+  }
+}
