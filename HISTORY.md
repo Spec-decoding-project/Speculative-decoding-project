@@ -326,6 +326,12 @@ does not repay its cost, report that plainly before more training is proposed.
 Output: `research/native-speed-8579825/`. CPU-only staging completed; environment
 package freeze and original checkpoint hash match on tron59. No native result yet.
 
+**Result:** completed in 9m14s, exit 0. Native replacement, identity and stopping
+checks pass. All warm repeats match greedy output. Initial FP32 integration is
+32.9% slower overall (13.267 → 17.626 seconds for the 512-token workload), despite
+196 → 193 total native rounds. Warm native editor latency is materially higher
+than the isolated graph prototype, motivating the bounded kernel diagnosis below.
+
 ## November 25 — diagnose native editor kernel overhead
 
 The first native correctness gate passed. During its unchanged timing phase,
@@ -359,6 +365,29 @@ definition are unchanged during every target call.
 One sequential follow-up job, one A5000/four CPUs/32 GiB, at most 30 minutes;
 180-second isolated probe and 720-second bound per precision. Original job and
 its source remain immutable. All results, including failures, will be retained.
+
+Follow-up Slurm **8579890** is dependent on successful completion of **8579825**.
+Source `40b5260ce98c40bd7a1dcba4de9af6d6bcc16bfc`; source archive SHA256
+`3b335bd8151902c7da894ac6c3e9a2ea1b5dee50489b08e1a5472dece16e7421`.
+Twenty-four relevant local tests pass, including restoring target dispatch after
+an editor exception. Output: `research/native-kernels-8579890/`.
+
+**Result:** completed in 12m22s, exit 0. Controlled dispatch changes reduce
+isolated editor cost 24.44 → 8.81 ms with unchanged outputs. All 173 native FP32
+proposals also remain identical. Corrected FP32 is 11.9% slower overall; BF16 is
+7.5% slower. BF16's short group is effectively tied (0.5% faster), longer inputs
+15.2% slower. One 94-token input improves 1.269 → 1.022 seconds (1.24×); two of
+eight prompts improve. All 394 candidate generations across the three arms match
+the greedy reference; 2,560 full target-logit comparisons pass. BF16 changes some
+unaccepted proposal tokens but preserves measured native output and round counts.
+The empty-cache BF16 workload takes 27.05 seconds versus 13.24 for DFlash.
+
+CPU-only job 8579976 verifies original generator/target/drafter pinned files in
+17 seconds. Independent Mac audits and all 37 output-file backup hashes pass.
+All jobs are finished. No final-test data or additional training was used.
+The always-on design does not pass aggregate speed; test cheap round selection
+and broader graph reuse before scaling. Replacement's correctness subset passes;
+union and natural EOS remain open. [Complete report and evidence](docs/research/refinement-2026-11-25/NATIVE_SPEED.md).
 
 ## How to read future entries
 
