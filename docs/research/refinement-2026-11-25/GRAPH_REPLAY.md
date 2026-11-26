@@ -6,13 +6,13 @@ Job **8579567** completed November 25 in **1m01s**, exit 0, source `11423488bcc3
 
 ## What changed
 
-The model, FP32 arithmetic and autoregressive decisions remain fixed. The proposal method now separates tensor decoding from host input/output handling. A CUDA graph records the complete GPU operation sequence and replays it using persistent input/output buffers. New context/proposal tokens are copied into those buffers before replay. The method follows [PyTorch's documented CUDA graph workflow](https://docs.pytorch.org/docs/stable/notes/cuda.html#cuda-graphs), including three warmup iterations on a side stream.
+The weights, FP32 precision and fourteen-step decision rule remain fixed. The proposal method now separates tensor decoding from host input/output handling. A CUDA graph records the complete GPU operation sequence and replays it using persistent input/output buffers. New context/proposal tokens are copied into those buffers before replay. The method follows [PyTorch's documented CUDA graph workflow](https://docs.pytorch.org/docs/stable/notes/cuda.html#cuda-graphs), including three warmup iterations on a side stream.
 
 This prototype captures a graph for each tested input length, then releases it after that case. It does **not** implement a production graph cache, padding/bucketing policy, concurrent execution or native verifier integration.
 
 ## Measurements and checks
 
-The same 64 development blocks used in earlier latency measurements cover **52 distinct prefix lengths**. Each case uses two warmups and ten timed calls per method, interleaving and alternating the method order. Warm calls include CPU input construction, host-to-device copies, GPU replay and conversion of output tokens back to a host list. Target and drafter are unloaded.
+The same 64 development blocks used in earlier latency measurements cover **52 distinct prefix lengths**. Each case uses two warmups and ten timed calls per method, interleaving and alternating the method order. Warm calls include CPU input construction, host-to-device copies, GPU replay and conversion of output tokens back to a host list. Target and drafter are unloaded. The editor-only scripts set `VLLM_BATCH_INVARIANT=0` and instantiate no target engine; these timings do not benchmark the adopted invariant target.
 
 | Measurement | Result |
 |---|---:|
