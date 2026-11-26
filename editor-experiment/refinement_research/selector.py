@@ -30,6 +30,21 @@ def selected(model, x):
     return model['threshold'] is not None and predict(model['tree'], x) >= model['threshold']
 
 
+def compile_first_only(model):
+    """Prove the frozen classification ignores every feature except first round."""
+    def simplify(node):
+        if 'feature' not in node:
+            return model['threshold'] is not None and node['value'] >= model['threshold']
+        left,right=simplify(node['left']),simplify(node['right'])
+        if isinstance(left,bool) and isinstance(right,bool) and left==right:return left
+        return dict(feature=node['feature'],threshold=node['threshold'],left=left,right=right)
+    decision=simplify(model['tree'])
+    expected=dict(feature=FEATURES.index('generated_length'),threshold=1.5,left=True,right=False)
+    if decision != expected:
+        raise ValueError('Frozen tree is not exactly equivalent to first-proposal-only editing')
+    return dict(policy='first_proposal_only',proof=decision,selector_digest=digest(model))
+
+
 def fit_tree(rows, depth=3, minimum=64, shrinkage=32):
     import numpy as np
     x = np.asarray([r['features'] for r in rows], dtype=float)

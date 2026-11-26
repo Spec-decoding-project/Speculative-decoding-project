@@ -1,7 +1,7 @@
 import copy
 import pytest
 
-from refinement_research.selector import features, fit, fit_tree, label_shadow, predict, selected
+from refinement_research.selector import compile_first_only, features, fit, fit_tree, label_shadow, predict, selected, select_prompts
 
 
 def row(i, x, gain, prefix='fit'):
@@ -80,3 +80,32 @@ def test_skip_hook_never_copies_full_context_or_invokes_editor():
                                   torch.arange(15).reshape(1,15),SimpleNamespace(req_ids=['r']),args)
     assert not worker.selector_decisions[0]['selected']
     assert worker.selector_gaps is None
+
+
+def test_selection_is_disjoint_reproducible_and_excludes_previous_native_prompts():
+    from copy_action_fit.data import SOURCES
+    from refinement_research.native_best import select as previous
+    rows=[dict(id=f'{s}-{split}-{i}',family_id=f'{s}-{split}-{i}',source=s,
+               split=split,prompt=[1]*(i+10))
+          for s in SOURCES for split,n in [('train',64),('development',256),('test',256)]
+          for i in range(n)]
+    chosen=select_prompts(rows)
+    assert chosen==select_prompts(list(reversed(rows)))
+    assert {k:len(v) for k,v in chosen.items()}==dict(fit=96,calibration=32,evaluation=64)
+    old={p['id'] for p in previous(rows)}
+    assert not old & {p['id'] for p in chosen['evaluation']}
+    assert all(p['split']=='train' for p in chosen['fit']+chosen['calibration'])
+    assert all(p['split']=='development' for p in chosen['evaluation'])
+    assert len({p['family_id'] for group in chosen.values() for p in group})==192
+
+
+def test_compilation_proves_first_only_policy_and_rejects_other_decisions():
+    model=dict(threshold=.5,tree=dict(feature=12,threshold=1.5,left=dict(value=1.),
+        right=dict(feature=4,threshold=.25,left=dict(value=.1),right=dict(value=.3))))
+    assert compile_first_only(model)['policy']=='first_proposal_only'
+    for generated in (1,2,16,64):
+        for gap in (0.,10.):
+            x=[0.]*14;x[12]=generated;x[4]=gap
+            assert selected(model,x)==(generated==1)
+    model['tree']['right']['right']['value']=.6
+    with pytest.raises(ValueError,match='not exactly equivalent'):compile_first_only(model)

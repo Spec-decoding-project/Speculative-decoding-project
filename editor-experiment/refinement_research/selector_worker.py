@@ -3,7 +3,7 @@ import functools
 import time
 
 from refinement_research.native_speed_worker import NativeSpeedWorker
-from refinement_research.selector import features, predict, selected
+from refinement_research.selector import compile_first_only, features, predict, selected
 
 
 class SelectorWorker(NativeSpeedWorker):
@@ -33,7 +33,8 @@ class SelectorWorker(NativeSpeedWorker):
         if model['features'] != FEATURES or model['schema'] != 'cheap-selector-v1':
             raise ValueError('Incompatible selector artifact')
         self.selector_model=model
-        return dict(selector_digest=digest(model))
+        self.compiled_selector=compile_first_only(model)
+        return dict(selector_digest=digest(model),compiled=self.compiled_selector)
 
     def selector_request(self, prompt_length):
         self.selector_prompt_length=prompt_length

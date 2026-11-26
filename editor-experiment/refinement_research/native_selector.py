@@ -3,6 +3,7 @@ import argparse
 import json
 from pathlib import Path
 import random
+import shutil
 import statistics
 import subprocess
 import sys
@@ -14,7 +15,7 @@ from refinement_research.native_best_audit import round_economics
 from refinement_research.native_speed import compare, configuration
 from refinement_research.selector import fit, label_shadow, select_prompts
 
-MODES=('off','selector_probe','editor','selected')
+MODES=('off','selector_probe','editor','selected','first_only')
 REPEATS=3
 
 
@@ -82,7 +83,7 @@ def summarize(records):
         cold={mode:dict(requests=sum(r['phase']=='cold' and r['mode']==mode for r in records),
             capture_ms=sum(r['observed']['graph_preparation_ms'] for r in records if r['phase']=='cold' and r['mode']==mode),
             captures=sum(r['observed']['graph_misses'] for r in records if r['phase']=='cold' and r['mode']==mode),
-            seconds=sum(r['seconds'] for r in records if r['phase']=='cold' and r['mode']==mode)) for mode in ('editor','selected')})
+            seconds=sum(r['seconds'] for r in records if r['phase']=='cold' and r['mode']==mode)) for mode in ('editor','selected','first_only')})
 
 
 def child(args):
@@ -126,6 +127,8 @@ def child(args):
             raise ValueError('Skip control unexpectedly invoked the editor')
         if mode=='selected' and observed['edit_calls']!=sum(d['selected'] for d in observed['selector_decisions']):
             raise ValueError('Selector decisions do not match actual editor calls')
+        if mode=='first_only' and observed['edit_calls']!=1:
+            raise ValueError('Compiled selector did not invoke exactly one edit')
         generated=dict(request_id=out.request_id,prompt=list(out.prompt_token_ids),
                        tokens=list(out.outputs[0].token_ids),finish_reason=out.outputs[0].finish_reason)
         metrics={}
@@ -181,7 +184,7 @@ def child(args):
                 compare(baseline['generated'],r['generated'])
                 if baseline['observed']['audit']['aligned_hashes']!=r['observed']['audit']['aligned_hashes']:
                     raise ValueError('Target full logits differ between arms')
-        for mode in ('selected','editor'):
+        for mode in ('first_only','selected','editor'):
             r=run(p,mode,'cold',clear=True)
             compare(baseline['generated'],r['generated'])
         # Warm both trajectories into the shared cache, outside timing.
@@ -201,10 +204,32 @@ def main():
     parser=argparse.ArgumentParser(description=__doc__)
     for name in ('project','output'):parser.add_argument('--'+name,type=Path,required=True)
     parser.add_argument('--phase',choices=['collection','reference','evaluation'])
+    parser.add_argument('--resume-from',type=Path)
     args=parser.parse_args()
     if args.phase:child(args);return
     if args.output.exists():raise ValueError('Fresh output directory required')
     (args.output/'records').mkdir(parents=True)
+    if args.resume_from:
+        # Preserve the completed collection and frozen model byte for byte.
+        # No development timing existed when the exact-policy optimization was registered.
+        if list((args.resume_from/'records').glob('evaluation-*.json')):
+            raise ValueError('Resume requires no prior native evaluation results')
+        names=['prompts.json','run.json','fit-labels.json','calibration-labels.json','selector.json',
+               'frozen-selector.json','collection-editor-loaded.json','collection-startup.json',
+               'reference-startup.json','reference-results.json']
+        for name in names:shutil.copy2(args.resume_from/name,args.output/name)
+        for pattern in ('collection-*.json','reference-*.json'):
+            for p in (args.resume_from/'records').glob(pattern):shutil.copy2(p,args.output/'records'/p.name)
+        frozen=json.loads((args.output/'frozen-selector.json').read_text())
+        if sha(args.output/'selector.json')!=frozen['sha256']:raise ValueError('Frozen selector changed')
+        manifest=json.loads((args.output/'run.json').read_text())
+        manifest.update(parent_collection=str(args.resume_from),parent_manifest_sha256=sha(args.resume_from/'run.json'),
+            evaluation_source_hashes={p.name:sha(p) for p in Path(__file__).parent.glob('*.py')},modes=MODES,
+            exact_policy_optimization='Frozen threshold classifier simplifies to first-proposal-only; no refitting')
+        save(args.output/'run.json',manifest)
+        subprocess.run([sys.executable,'-u','-m','refinement_research.native_selector','--project',str(args.project),
+                        '--output',str(args.output),'--phase','evaluation'],check=True,timeout=3500)
+        return
     from full_corpus_fit.collect import load_prompts
     preflight=args.project/'research/full-corpus-preflight-8454304'
     groups=select_prompts(load_prompts(preflight))

@@ -47,6 +47,13 @@ class NativeSpeedWorker(CorpusCaptureWorker):
             result = original_propose(speculator, *args, **kwargs)
             if not worker.measuring or worker.mode == 'off' or kwargs.get('dummy_run', False):
                 return result
+            # The frozen selector can simplify exactly to one edit per request.
+            # Once used, skip before all GPU scalar reads and context copies.
+            if worker.mode == 'first_only':
+                if getattr(worker, 'compiled_selector', {}).get('policy') != 'first_proposal_only':
+                    raise RuntimeError('First-only path requires a proven equivalent frozen selector')
+                if worker.edit_calls:
+                    return result
             batch = args[0]
             if batch.num_reqs != 1 or result.shape != (1, 15):
                 raise RuntimeError('Native editor pilot only supports batch one / b16')
@@ -79,7 +86,7 @@ class NativeSpeedWorker(CorpusCaptureWorker):
                 edited = [draft[0], *continuation, *draft[1+len(continuation):]]
                 if worker.mode == 'reject_first':
                     edited[1] = (edited[1]+1) % 151936
-            elif worker.mode in ('editor', 'selected', 'shadow'):
+            elif worker.mode in ('editor', 'selected', 'shadow', 'first_only'):
                 from refinement_research.graph_replay import CapturedEditor
                 key = len(prefix)
                 if key not in worker.graphs:

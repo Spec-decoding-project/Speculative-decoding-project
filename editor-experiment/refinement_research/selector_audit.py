@@ -97,22 +97,29 @@ def audit(path):
         assert len(commits)==r['metrics']['verification_rounds'] and sum(commits)==r['metrics']['verification_tokens']
         if r['mode'] in ('off','selector_probe'):assert obs['edit_calls']==0
         if r['mode'] in ('selected','selector_probe'):
-            assert len(obs['selector_decisions'])==len(commits)+1
+            # Native scheduling sometimes suppresses the final unused proposal.
+            assert len(obs['selector_decisions']) in (len(commits),len(commits)+1)
             for d in obs['selector_decisions']:
                 assert d['score']==score(model['tree'],d['features'])
                 assert d['selected']==(r['mode']=='selected' and model['threshold'] is not None and d['score']>=model['threshold'])
-        if r['mode']=='selected':assert obs['edit_calls']==sum(d['selected'] for d in obs['selector_decisions'])
+        if r['mode']=='selected':assert obs['edit_calls']==sum(d['selected'] for d in obs['selector_decisions'])==1
+        if r['mode']=='first_only':
+            assert obs['edit_calls']==1 and obs['selector_decisions']==[]
+            if obs['edits']:assert obs['edits'][0]['anchor']==len(p['prompt'])
         if obs['native']:
             checked=audit_chunk([p],[r['generated']],obs['native'],hashes=True)
             positions+=checked['positions_checked'];hashes+=len(checked['aligned_hashes'])
             assert checked['aligned_hashes']==b['observed']['audit']['aligned_hashes']
         if r['phase']=='timing':assert obs['graph_misses']==0
-    timing=[r for r in rows if r['phase']=='timing'];assert len(timing)==64*4*3
+    timing=[r for r in rows if r['phase']=='timing'];assert len(timing)==64*5*3
+    for r in (r for r in timing if r['mode']=='first_only'):
+        general=next(s for s in timing if s['mode']=='selected' and s['prompt_id']==r['prompt_id'] and s['repeat']==r['repeat'])
+        assert r['metrics']['committed_per_round']==general['metrics']['committed_per_round']
     economic={}
     for source in ('all',*SOURCES):
         subset=[r for r in timing if source=='all' or r['source']==source]
         aggregate={}
-        for mode in ('off','selector_probe','editor','selected'):
+        for mode in ('off','selector_probe','editor','selected','first_only'):
             arm=[r for r in subset if r['mode']==mode]
             for pid in {r['prompt_id'] for r in arm}:
                 repeats=[r for r in arm if r['prompt_id']==pid]

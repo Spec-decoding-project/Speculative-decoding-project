@@ -563,3 +563,23 @@ validate the entire known prefix, retain the alignment/anchor guards, and omit
 any window without 15 observed future tokens. A synthetic overshoot regression
 test and the saved real failure fixture now pass. No selector fit or development
 evaluation occurred in that failed launch; its source/log/output remain intact.
+
+Collection job 8580943 then completed 96 fit and 32 calibration prompts. There
+are 1,397 fully labelled fit rounds (143 repairs, 37 damage, 1,217 unchanged) and
+455 calibration rounds. The frozen threshold is 0.5. Crucially, its classification
+simplifies exactly to **edit only the first proposal of a response**: that branch
+scores 1.0546875; every later-round leaf scores below 0.5. Calibration selects 32
+edits with net prefix gain 46 (31.6 after the fixed 0.45/edit charge). Eight greedy
+reference controls also completed. No native development evaluation request had
+started when the job was stopped at 9m47s to avoid measuring needless features.
+
+Before native evaluation, added a fifth arm that compiles the frozen classifier
+to its equivalent first-proposal-only policy. The compiler proves all discarded
+branches give the same false decision. It adds no fitting or threshold changes.
+Once the first edit has run, a host-side counter skips before confidence reduction,
+GPU scalar reads or context copies. The general selector remains as a measured
+control; both implementations must edit exactly once per prompt and follow the
+same native round trajectory. Reuse the existing collection, selector and greedy
+references byte for byte; do not repeat them. The replacement evaluation job has
+a 68-minute cap, keeping combined allocation time below 80 minutes. This change
+is prompted by the frozen rule itself, before any native evaluation outcome.
