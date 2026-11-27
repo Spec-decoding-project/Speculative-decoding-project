@@ -25,6 +25,13 @@ preparation. Implementation and local checks are in progress; no new training
 result is claimed yet. Original responses, checkpoints and prior evidence stay
 unchanged.
 
+Launch: source`dd31481`, Slurm8600245 on tron61/A5000, four CPUs/16GiB/two hours.
+All18 local and remote implementation checks pass; package pins match. Local and
+remote authenticated training selection hashes agree. Logs/results are in
+`research/whole-draft-8600245/`; selected and resumable checkpoints use its scratch
+symlink. A separate CPU recount implementation has three additional passing
+tests. It will audit saved output tokens and checkpoint selection after the run.
+
 ## Completed state — November 26, 2026
 
 The cheap-selector experiment is complete. A rule learned on training/calibration
