@@ -1,0 +1,18 @@
+{
+  "scope": "Arithmetic on existing development predictions; no model inference or training",
+  "source_artifact": "frozen-gates-20261125/output/linear/development.json",
+  "verified_source_sha256": "45ed6b975fca1a43d9cfa211bfe6f840232649620a6f6ce5abf2bd2b27dbc62a",
+  "blocks": 2048,
+  "editable_positions_per_block": 14,
+  "editable_positions": 28672,
+  "original_correct_editable_tokens": 9298,
+  "edited_correct_editable_tokens": 8790,
+  "original_editable_token_accuracy": 0.3242885044642857,
+  "edited_editable_token_accuracy": 0.3065708705357143,
+  "original_mean_correct_prefix": 3.57763671875,
+  "edited_mean_correct_prefix": 3.69970703125,
+  "prefix_positions_gained": 876,
+  "prefix_positions_lost": 626,
+  "net_prefix_positions": 250,
+  "note": "Token accuracy excludes the preserved anchor and first proposal. Correct-prefix length counts consecutive matches after the anchor, including the first proposal. The first proposal is unchanged, so its inclusion does not change the prefix gain. These metrics are not downstream answer correctness."
+}

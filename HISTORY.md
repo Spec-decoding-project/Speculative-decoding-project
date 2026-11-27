@@ -4,7 +4,28 @@ This is the running, plain-English record of what we tried, why we tried it, and
 what the evidence actually supports. New experiments are described before launch
 and updated when results arrive. Failed attempts stay in this record.
 
-## Current state — November 26, 2026
+## Current state — November 27, 2026
+
+The user authorized a new bounded comparison to improve the editor that reads
+the entire DFlash block. This is already the stronger existing conditioning
+variant, so the new experiment tests three full-generator training objectives:
+ordinary cross-entropy, early-position weighting, and extra protection of the
+correct original prefix plus emphasis on its first error. Each starts from the
+same original checkpoint and uses the same8,192 training-origin blocks, including
+1,024 naturally perfect proposals. After checkpoint selection, each generator
+gets a separately fitted linear COPY gate. All inputs remain tokens and all
+fourteen suffix predictions remain autoregressive. Target/DFlash stay frozen.
+
+The [fixed protocol](docs/research/whole-draft-training-2026-11-27/PROTOCOL.md)
+records three768-update fits, calibration-only selection, reload/causal/cache
+checks, dual token-accuracy/prefix criteria, independent recount and a two-hour
+GPU-job cap. The [whole-block training investigation](https://github.com/Spec-decoding-project/Speculative-decoding-project/issues/28)
+is claimed. Nexus authentication succeeded and the user queue was empty before
+preparation. Implementation and local checks are in progress; no new training
+result is claimed yet. Original responses, checkpoints and prior evidence stay
+unchanged.
+
+## Completed state — November 26, 2026
 
 The cheap-selector experiment is complete. A rule learned on training/calibration
 data simplifies exactly to editing only the first proposal. With warm graphs it
@@ -14,6 +35,31 @@ match; empty-cache generation still loses. All jobs, audits and backups are done
 larger editor training remains paused. See the [selector result](docs/research/refinement-2026-11-25/CHEAP_SELECTOR.md)
 and the concise
 [project update](docs/research/refinement-2026-11-25/REPORT.md).
+
+November 26 explanation audit: the latest editor is the original 40,750,336-
+parameter whole-draft generator plus a 265-parameter gate, not a 265-parameter
+generator. Later gate fits do not update the generator. The full generator's
+development results improved through its third and final epoch; the experiments
+do not establish that better or longer training cannot help. Native timing
+rejects the current always-on cost/acceptance trade-off, not all possible editors.
+No experiment, training run or remote job was started for this explanation.
+Primary-source architecture/training alternatives and their limitations are
+recorded in [the research notes](docs/research/refinement-2026-11-25/EDITOR_DESIGN_SOURCES.md).
+
+Evaluation wording correction: the original reserved test was evaluated after
+full-corpus training on November 19. Later references to it as "unused" or
+"untouched" mean it was not evaluated again in those later experiments, not that
+it has never been inspected. A new confirmatory result requires fresh prompts.
+The original full-corpus report already records this limitation.
+
+November 27 accuracy clarification: a hash-verified recount of the existing
+linear-gate development predictions finds 32.4289% editable-token accuracy for
+DFlash and 30.6571% for the gated editor. Mean correct prefix improves from
+3.5776367 to 3.6997070 on those same blocks, with 876 prefix positions gained
+and 626 lost. Thus the positive result concerns consecutive usable proposals,
+not all-position token accuracy or final-answer correctness. No model inference,
+training or remote job ran for this recount. Details are in
+[the gate report](docs/research/refinement-2026-11-25/GATES.md).
 
 Our objective is an autoregressive module that improves DFlash's proposals enough
 to repay its own computation. The target still verifies all accepted output.
@@ -83,7 +129,8 @@ the generator that would otherwise supply it?
 scores at the same actual prefix for those 231 skipped repairs. Also generate with
 COPY disabled, keeping every learned weight fixed. Compare with the full-trained
 starting checkpoint and the matched control. No target inference or optimizer
-updates are needed. The existing final test stays unused.
+updates are needed. This diagnostic does not re-evaluate the existing final test,
+which was already inspected after full-corpus training.
 
 **Budget and checks:** one A5000, four CPUs, 5 GiB, at most 15 minutes; immutable
 input hashes, exact replay, prefix/action alignment, and an independent recount.

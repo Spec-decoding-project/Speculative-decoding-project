@@ -28,6 +28,17 @@ Calibration DFlash prefix is 9.458984. Its balanced bank contains many more perf
 
 DFlash mean correct prefix is **3.577637**. The first proposal is preserved, so all 320 wrong-first blocks remain at zero accepted proposals under every gate.
 
+Accuracy clarification, November 27: a recount of the existing, hash-verified
+linear-gate predictions shows that editable-token accuracy decreases from
+**32.4289% (9,298 / 28,672)** for DFlash to **30.6571% (8,790 / 28,672)**
+for the gated editor on these same 2,048 development blocks. Correct-prefix
+length nevertheless increases: 876 prefix positions gained minus 626 lost gives
+250 net positions, or 0.1220703125 per block. The gate improves this prefix
+metric, not accuracy averaged over all editable positions. Neither metric is
+final-answer task accuracy; native verification preserves the tested final tokens.
+This is arithmetic on saved outputs, not a new model run. See the
+[recount](evidence/gates/accuracy-recount-2026-11-27.json).
+
 | Gate | Trainable parameters | Mean prefix | Blocks improved / damaged | Change and descriptive 95% interval | Editor ms |
 |---|---:|---:|---:|---|---:|
 | scores | 9 | 3.655762 | 246 / 136 | +0.078125 [-0.000012, +0.155273] | 25.92 |

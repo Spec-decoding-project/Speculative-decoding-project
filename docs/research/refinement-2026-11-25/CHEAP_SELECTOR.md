@@ -57,7 +57,9 @@ One RTX A5000 on tron59; batch one; three rotated repeats per prompt; 32 prompts
 per source, eight per source-specific length quartile. Evaluation prompt IDs and
 families are disjoint from the preceding 128-prompt native benchmark and from this
 selector's fit/calibration sets. They remain part of the previously inspected
-project development split; the final test is untouched.
+project development split; this selector experiment did not re-evaluate the
+original final-test split. The original split was evaluated after full-corpus
+training on November 19, so it is not a fresh confirmation set.
 
 Pinned vLLM 0.34.0 / Torch 2.14.0+cu130; invariant BF16 target/drafter, TP1,
 FlashAttention, eager target/drafter, synchronous scheduling, maximum context 4,096 tokens,
