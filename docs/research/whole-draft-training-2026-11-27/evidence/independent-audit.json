@@ -1,0 +1,525 @@
+{
+  "passed": true,
+  "incumbent": {
+    "blocks": 2048,
+    "prompts": 512,
+    "original_prefix": 3.57763671875,
+    "edited_prefix": 3.69970703125,
+    "original_token_accuracy": 0.3242885044642857,
+    "edited_token_accuracy": 0.3065708705357143,
+    "improved": 269,
+    "damaged": 187,
+    "prefix_gained": 876,
+    "prefix_lost": 626,
+    "perfect_damaged": 9,
+    "wrong_first": 320,
+    "exact_suffixes": 44
+  },
+  "arms": {
+    "uniform/plain": {
+      "blocks": 2048,
+      "prompts": 512,
+      "original_prefix": 3.57763671875,
+      "edited_prefix": 3.43212890625,
+      "original_token_accuracy": 0.3242885044642857,
+      "edited_token_accuracy": 0.2570103236607143,
+      "improved": 320,
+      "damaged": 369,
+      "prefix_gained": 1109,
+      "prefix_lost": 1407,
+      "perfect_damaged": 23,
+      "wrong_first": 320,
+      "exact_suffixes": 35,
+      "by_source": {
+        "HuggingFaceH4/ultrachat_200k": {
+          "blocks": 1024,
+          "prompts": 256,
+          "original_prefix": 2.474609375,
+          "edited_prefix": 2.2958984375,
+          "original_token_accuracy": 0.23751395089285715,
+          "edited_token_accuracy": 0.16936383928571427,
+          "improved": 105,
+          "damaged": 156,
+          "prefix_gained": 282,
+          "prefix_lost": 465,
+          "perfect_damaged": 3,
+          "wrong_first": 235,
+          "exact_suffixes": 5
+        },
+        "openai/gsm8k": {
+          "blocks": 1024,
+          "prompts": 256,
+          "original_prefix": 4.6806640625,
+          "edited_prefix": 4.568359375,
+          "original_token_accuracy": 0.4110630580357143,
+          "edited_token_accuracy": 0.3446568080357143,
+          "improved": 215,
+          "damaged": 213,
+          "prefix_gained": 827,
+          "prefix_lost": 942,
+          "perfect_damaged": 20,
+          "wrong_first": 85,
+          "exact_suffixes": 30
+        }
+      },
+      "versus_incumbent": {
+        "prefix_delta_ci95": [
+          -0.35107421875,
+          -0.18505859375
+        ],
+        "token_accuracy_delta_ci95": [
+          -0.056919642857142856,
+          -0.04209681919642857
+        ],
+        "draws": 10000,
+        "scope": "Exploratory paired prompt bootstrap stratified by source; no correction for multiple arms/seeds"
+      },
+      "versus_dflash": {
+        "prefix_delta_ci95": [
+          -0.2568359375,
+          -0.0380859375
+        ],
+        "token_accuracy_delta_ci95": [
+          -0.07582310267857142,
+          -0.05845424107142857
+        ],
+        "draws": 10000,
+        "scope": "Exploratory paired prompt bootstrap stratified by source; no correction for multiple arms/seeds"
+      },
+      "meets_point_criteria": false
+    },
+    "uniform/gated": {
+      "blocks": 2048,
+      "prompts": 512,
+      "original_prefix": 3.57763671875,
+      "edited_prefix": 3.61767578125,
+      "original_token_accuracy": 0.3242885044642857,
+      "edited_token_accuracy": 0.2880859375,
+      "improved": 286,
+      "damaged": 241,
+      "prefix_gained": 968,
+      "prefix_lost": 886,
+      "perfect_damaged": 13,
+      "wrong_first": 320,
+      "exact_suffixes": 41,
+      "by_source": {
+        "HuggingFaceH4/ultrachat_200k": {
+          "blocks": 1024,
+          "prompts": 256,
+          "original_prefix": 2.474609375,
+          "edited_prefix": 2.390625,
+          "original_token_accuracy": 0.23751395089285715,
+          "edited_token_accuracy": 0.19538225446428573,
+          "improved": 92,
+          "damaged": 105,
+          "prefix_gained": 221,
+          "prefix_lost": 307,
+          "perfect_damaged": 1,
+          "wrong_first": 235,
+          "exact_suffixes": 5
+        },
+        "openai/gsm8k": {
+          "blocks": 1024,
+          "prompts": 256,
+          "original_prefix": 4.6806640625,
+          "edited_prefix": 4.8447265625,
+          "original_token_accuracy": 0.4110630580357143,
+          "edited_token_accuracy": 0.3807896205357143,
+          "improved": 194,
+          "damaged": 136,
+          "prefix_gained": 747,
+          "prefix_lost": 579,
+          "perfect_damaged": 12,
+          "wrong_first": 85,
+          "exact_suffixes": 36
+        }
+      },
+      "versus_incumbent": {
+        "prefix_delta_ci95": [
+          -0.14794921875,
+          -0.0185546875
+        ],
+        "token_accuracy_delta_ci95": [
+          -0.023821149553571428,
+          -0.013009207589285714
+        ],
+        "draws": 10000,
+        "scope": "Exploratory paired prompt bootstrap stratified by source; no correction for multiple arms/seeds"
+      },
+      "versus_dflash": {
+        "prefix_delta_ci95": [
+          -0.0537109375,
+          0.13134765625
+        ],
+        "token_accuracy_delta_ci95": [
+          -0.043178013392857144,
+          -0.029330880301339297
+        ],
+        "draws": 10000,
+        "scope": "Exploratory paired prompt bootstrap stratified by source; no correction for multiple arms/seeds"
+      },
+      "meets_point_criteria": false
+    },
+    "early/plain": {
+      "blocks": 2048,
+      "prompts": 512,
+      "original_prefix": 3.57763671875,
+      "edited_prefix": 3.455078125,
+      "original_token_accuracy": 0.3242885044642857,
+      "edited_token_accuracy": 0.25889369419642855,
+      "improved": 328,
+      "damaged": 364,
+      "prefix_gained": 1130,
+      "prefix_lost": 1381,
+      "perfect_damaged": 23,
+      "wrong_first": 320,
+      "exact_suffixes": 34,
+      "by_source": {
+        "HuggingFaceH4/ultrachat_200k": {
+          "blocks": 1024,
+          "prompts": 256,
+          "original_prefix": 2.474609375,
+          "edited_prefix": 2.3037109375,
+          "original_token_accuracy": 0.23751395089285715,
+          "edited_token_accuracy": 0.16901506696428573,
+          "improved": 104,
+          "damaged": 149,
+          "prefix_gained": 276,
+          "prefix_lost": 451,
+          "perfect_damaged": 3,
+          "wrong_first": 235,
+          "exact_suffixes": 4
+        },
+        "openai/gsm8k": {
+          "blocks": 1024,
+          "prompts": 256,
+          "original_prefix": 4.6806640625,
+          "edited_prefix": 4.6064453125,
+          "original_token_accuracy": 0.4110630580357143,
+          "edited_token_accuracy": 0.34877232142857145,
+          "improved": 224,
+          "damaged": 215,
+          "prefix_gained": 854,
+          "prefix_lost": 930,
+          "perfect_damaged": 20,
+          "wrong_first": 85,
+          "exact_suffixes": 30
+        }
+      },
+      "versus_incumbent": {
+        "prefix_delta_ci95": [
+          -0.32130126953125,
+          -0.16796875
+        ],
+        "token_accuracy_delta_ci95": [
+          -0.05528041294642857,
+          -0.04017857142857143
+        ],
+        "draws": 10000,
+        "scope": "Exploratory paired prompt bootstrap stratified by source; no correction for multiple arms/seeds"
+      },
+      "versus_dflash": {
+        "prefix_delta_ci95": [
+          -0.23243408203125,
+          -0.0146484375
+        ],
+        "token_accuracy_delta_ci95": [
+          -0.07414899553571429,
+          -0.056360735212053585
+        ],
+        "draws": 10000,
+        "scope": "Exploratory paired prompt bootstrap stratified by source; no correction for multiple arms/seeds"
+      },
+      "meets_point_criteria": false
+    },
+    "early/gated": {
+      "blocks": 2048,
+      "prompts": 512,
+      "original_prefix": 3.57763671875,
+      "edited_prefix": 3.67236328125,
+      "original_token_accuracy": 0.3242885044642857,
+      "edited_token_accuracy": 0.30050223214285715,
+      "improved": 281,
+      "damaged": 223,
+      "prefix_gained": 968,
+      "prefix_lost": 774,
+      "perfect_damaged": 11,
+      "wrong_first": 320,
+      "exact_suffixes": 44,
+      "by_source": {
+        "HuggingFaceH4/ultrachat_200k": {
+          "blocks": 1024,
+          "prompts": 256,
+          "original_prefix": 2.474609375,
+          "edited_prefix": 2.439453125,
+          "original_token_accuracy": 0.23751395089285715,
+          "edited_token_accuracy": 0.21184430803571427,
+          "improved": 85,
+          "damaged": 83,
+          "prefix_gained": 205,
+          "prefix_lost": 241,
+          "perfect_damaged": 1,
+          "wrong_first": 235,
+          "exact_suffixes": 6
+        },
+        "openai/gsm8k": {
+          "blocks": 1024,
+          "prompts": 256,
+          "original_prefix": 4.6806640625,
+          "edited_prefix": 4.9052734375,
+          "original_token_accuracy": 0.4110630580357143,
+          "edited_token_accuracy": 0.38916015625,
+          "improved": 196,
+          "damaged": 140,
+          "prefix_gained": 763,
+          "prefix_lost": 533,
+          "perfect_damaged": 10,
+          "wrong_first": 85,
+          "exact_suffixes": 38
+        }
+      },
+      "versus_incumbent": {
+        "prefix_delta_ci95": [
+          -0.08349609375,
+          0.03125
+        ],
+        "token_accuracy_delta_ci95": [
+          -0.010672433035714286,
+          -0.0016043526785714285
+        ],
+        "draws": 10000,
+        "scope": "Exploratory paired prompt bootstrap stratified by source; no correction for multiple arms/seeds"
+      },
+      "versus_dflash": {
+        "prefix_delta_ci95": [
+          0.00439453125,
+          0.18262939453124982
+        ],
+        "token_accuracy_delta_ci95": [
+          -0.030099923270089285,
+          -0.017368861607142856
+        ],
+        "draws": 10000,
+        "scope": "Exploratory paired prompt bootstrap stratified by source; no correction for multiple arms/seeds"
+      },
+      "meets_point_criteria": false
+    },
+    "protect_repair/plain": {
+      "blocks": 2048,
+      "prompts": 512,
+      "original_prefix": 3.57763671875,
+      "edited_prefix": 3.46630859375,
+      "original_token_accuracy": 0.3242885044642857,
+      "edited_token_accuracy": 0.2605678013392857,
+      "improved": 335,
+      "damaged": 360,
+      "prefix_gained": 1114,
+      "prefix_lost": 1342,
+      "perfect_damaged": 24,
+      "wrong_first": 320,
+      "exact_suffixes": 31,
+      "by_source": {
+        "HuggingFaceH4/ultrachat_200k": {
+          "blocks": 1024,
+          "prompts": 256,
+          "original_prefix": 2.474609375,
+          "edited_prefix": 2.314453125,
+          "original_token_accuracy": 0.23751395089285715,
+          "edited_token_accuracy": 0.16852678571428573,
+          "improved": 112,
+          "damaged": 154,
+          "prefix_gained": 296,
+          "prefix_lost": 460,
+          "perfect_damaged": 4,
+          "wrong_first": 235,
+          "exact_suffixes": 3
+        },
+        "openai/gsm8k": {
+          "blocks": 1024,
+          "prompts": 256,
+          "original_prefix": 4.6806640625,
+          "edited_prefix": 4.6181640625,
+          "original_token_accuracy": 0.4110630580357143,
+          "edited_token_accuracy": 0.3526088169642857,
+          "improved": 223,
+          "damaged": 206,
+          "prefix_gained": 818,
+          "prefix_lost": 882,
+          "perfect_damaged": 20,
+          "wrong_first": 85,
+          "exact_suffixes": 28
+        }
+      },
+      "versus_incumbent": {
+        "prefix_delta_ci95": [
+          -0.30859375,
+          -0.16162109375
+        ],
+        "token_accuracy_delta_ci95": [
+          -0.05259573800223214,
+          -0.03941127232142857
+        ],
+        "draws": 10000,
+        "scope": "Exploratory paired prompt bootstrap stratified by source; no correction for multiple arms/seeds"
+      },
+      "versus_dflash": {
+        "prefix_delta_ci95": [
+          -0.2216796875,
+          -0.00244140625
+        ],
+        "token_accuracy_delta_ci95": [
+          -0.07209123883928571,
+          -0.0552097865513393
+        ],
+        "draws": 10000,
+        "scope": "Exploratory paired prompt bootstrap stratified by source; no correction for multiple arms/seeds"
+      },
+      "meets_point_criteria": false
+    },
+    "protect_repair/gated": {
+      "blocks": 2048,
+      "prompts": 512,
+      "original_prefix": 3.57763671875,
+      "edited_prefix": 3.69970703125,
+      "original_token_accuracy": 0.3242885044642857,
+      "edited_token_accuracy": 0.3065708705357143,
+      "improved": 269,
+      "damaged": 187,
+      "prefix_gained": 876,
+      "prefix_lost": 626,
+      "perfect_damaged": 9,
+      "wrong_first": 320,
+      "exact_suffixes": 44,
+      "by_source": {
+        "HuggingFaceH4/ultrachat_200k": {
+          "blocks": 1024,
+          "prompts": 256,
+          "original_prefix": 2.474609375,
+          "edited_prefix": 2.48046875,
+          "original_token_accuracy": 0.23751395089285715,
+          "edited_token_accuracy": 0.21219308035714285,
+          "improved": 86,
+          "damaged": 66,
+          "prefix_gained": 186,
+          "prefix_lost": 180,
+          "perfect_damaged": 2,
+          "wrong_first": 235,
+          "exact_suffixes": 5
+        },
+        "openai/gsm8k": {
+          "blocks": 1024,
+          "prompts": 256,
+          "original_prefix": 4.6806640625,
+          "edited_prefix": 4.9189453125,
+          "original_token_accuracy": 0.4110630580357143,
+          "edited_token_accuracy": 0.4009486607142857,
+          "improved": 183,
+          "damaged": 121,
+          "prefix_gained": 690,
+          "prefix_lost": 446,
+          "perfect_damaged": 7,
+          "wrong_first": 85,
+          "exact_suffixes": 39
+        }
+      },
+      "versus_incumbent": {
+        "prefix_delta_ci95": [
+          0.0,
+          0.0
+        ],
+        "token_accuracy_delta_ci95": [
+          0.0,
+          0.0
+        ],
+        "draws": 10000,
+        "scope": "Exploratory paired prompt bootstrap stratified by source; no correction for multiple arms/seeds"
+      },
+      "versus_dflash": {
+        "prefix_delta_ci95": [
+          0.0390625,
+          0.2021484375
+        ],
+        "token_accuracy_delta_ci95": [
+          -0.0234375,
+          -0.012032645089285714
+        ],
+        "draws": 10000,
+        "scope": "Exploratory paired prompt bootstrap stratified by source; no correction for multiple arms/seeds"
+      },
+      "meets_point_criteria": false
+    },
+    "original_generator": {
+      "blocks": 2048,
+      "prompts": 512,
+      "original_prefix": 3.57763671875,
+      "edited_prefix": 3.46630859375,
+      "original_token_accuracy": 0.3242885044642857,
+      "edited_token_accuracy": 0.2605678013392857,
+      "improved": 335,
+      "damaged": 360,
+      "prefix_gained": 1114,
+      "prefix_lost": 1342,
+      "perfect_damaged": 24,
+      "wrong_first": 320,
+      "exact_suffixes": 31,
+      "by_source": {
+        "HuggingFaceH4/ultrachat_200k": {
+          "blocks": 1024,
+          "prompts": 256,
+          "original_prefix": 2.474609375,
+          "edited_prefix": 2.314453125,
+          "original_token_accuracy": 0.23751395089285715,
+          "edited_token_accuracy": 0.16852678571428573,
+          "improved": 112,
+          "damaged": 154,
+          "prefix_gained": 296,
+          "prefix_lost": 460,
+          "perfect_damaged": 4,
+          "wrong_first": 235,
+          "exact_suffixes": 3
+        },
+        "openai/gsm8k": {
+          "blocks": 1024,
+          "prompts": 256,
+          "original_prefix": 4.6806640625,
+          "edited_prefix": 4.6181640625,
+          "original_token_accuracy": 0.4110630580357143,
+          "edited_token_accuracy": 0.3526088169642857,
+          "improved": 223,
+          "damaged": 206,
+          "prefix_gained": 818,
+          "prefix_lost": 882,
+          "perfect_damaged": 20,
+          "wrong_first": 85,
+          "exact_suffixes": 28
+        }
+      },
+      "versus_incumbent": {
+        "prefix_delta_ci95": [
+          -0.30859375,
+          -0.16162109375
+        ],
+        "token_accuracy_delta_ci95": [
+          -0.05259573800223214,
+          -0.03941127232142857
+        ],
+        "draws": 10000,
+        "scope": "Exploratory paired prompt bootstrap stratified by source; no correction for multiple arms/seeds"
+      },
+      "versus_dflash": {
+        "prefix_delta_ci95": [
+          -0.2216796875,
+          -0.00244140625
+        ],
+        "token_accuracy_delta_ci95": [
+          -0.07209123883928571,
+          -0.0552097865513393
+        ],
+        "draws": 10000,
+        "scope": "Exploratory paired prompt bootstrap stratified by source; no correction for multiple arms/seeds"
+      },
+      "meets_point_criteria": false
+    }
+  },
+  "scope": "Existing development prompts, full-model accuracy and prefix comparison; no native speed claim"
+}

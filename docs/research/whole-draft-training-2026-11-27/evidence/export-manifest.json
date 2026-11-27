@@ -1,0 +1,256 @@
+{
+  "passed": true,
+  "files": {
+    "selected-checkpoints/uniform/generator-best.pt": {
+      "bytes": 163009741,
+      "sha256": "611fa6a73a46ba6ab3d7f5376cf0e92d310ba02684639ec74b2f246ff08fe73c"
+    },
+    "selected-checkpoints/uniform/gate-best.pt": {
+      "bytes": 2997,
+      "sha256": "af22f5cc3791b4bcfafde013ed35888229d0805cd8de3cd5a62395e25dc6beea"
+    },
+    "selected-checkpoints/early/generator-best.pt": {
+      "bytes": 163009741,
+      "sha256": "69714a4b6e4d26a8bbfca3e1a9aba7c4c2d334f5cfd25d54240dfa6e130160ba"
+    },
+    "selected-checkpoints/early/gate-best.pt": {
+      "bytes": 2997,
+      "sha256": "8f8a2dd0e1f51625f12dbcf4a8d234ea90dba69f11a4e30bc9da87c4907fdb5a"
+    },
+    "selected-checkpoints/protect_repair/generator-best.pt": {
+      "bytes": 163009741,
+      "sha256": "0443a59d40ecfe4da368782b9218c50bb9ee7dc52bc85bebf837c59998d66c86"
+    },
+    "selected-checkpoints/protect_repair/gate-best.pt": {
+      "bytes": 2997,
+      "sha256": "0c22a2c82fe127b2c6d376ca62323320aaca3cec437328325672a9600a9b8055"
+    },
+    "output/complete.json": {
+      "bytes": 23739,
+      "sha256": "f00f8e3829da4390b40cb883f286f01e0072082454da2830129f4d9001e7f5ea"
+    },
+    "output/early/calibration-0000.json": {
+      "bytes": 646078,
+      "sha256": "12a7c1c92fd490cc6c6dd47ebc771c3064d7c3b7117263ce42cbb56031c7efd6"
+    },
+    "output/early/calibration-0128.json": {
+      "bytes": 646055,
+      "sha256": "112f4320ecbc22904961b7b72e2f01825bdb74d1ee5fee920de7e0efc7f38093"
+    },
+    "output/early/calibration-0256.json": {
+      "bytes": 646110,
+      "sha256": "f970ca0fea659d49b1a7a805643b2c50c740e1ff67ce8d3bad2b7e33a8cf8d30"
+    },
+    "output/early/calibration-0384.json": {
+      "bytes": 646090,
+      "sha256": "1126d2390361ca5b89d877b975200aa7262b152af0a5d5d7ac20b759c9546a81"
+    },
+    "output/early/calibration-0512.json": {
+      "bytes": 646105,
+      "sha256": "93608397e4894081ca3f3ee447bfb7bfdabb67259c8468f7e3c70ecffdb55790"
+    },
+    "output/early/calibration-0640.json": {
+      "bytes": 646092,
+      "sha256": "9efa3fc90da52594a82d27f700fe26bad1b562ab49b3deba6a015b1af338ace1"
+    },
+    "output/early/calibration-0768.json": {
+      "bytes": 646106,
+      "sha256": "cbe5ec04b898cb5c1dfebe200465b387497d41cded07f9e5743b76556d5c5a4c"
+    },
+    "output/early/development-gated.json": {
+      "bytes": 2615045,
+      "sha256": "f1d888f9a1a5a883a1e50b72bab83ef21a44cc92034f4e3c3542fbeeada4bb84"
+    },
+    "output/early/development-plain.json": {
+      "bytes": 2584409,
+      "sha256": "aaa8b37d2554b8a55a3ee4740fc508182c05acdc191128209112ec9d2576564a"
+    },
+    "output/early/gate-calibration.json": {
+      "bytes": 655584,
+      "sha256": "259db6038c73e5c2e139e3a63b9c3158377ef23e0e1ddb19ebb13cd3f6e1be9e"
+    },
+    "output/early/gate-complete.json": {
+      "bytes": 475,
+      "sha256": "7c4244420dd2a3f327b7e5e8355fed21afa978852c682030ecd93b5918418e80"
+    },
+    "output/early/gate-features.json": {
+      "bytes": 532,
+      "sha256": "6db80857337262cb9548fc3a3cce987185cac2f908071c28bb11163dcf6e5562"
+    },
+    "output/early/gate-history.json": {
+      "bytes": 2995,
+      "sha256": "b3fd2dc93c16ea55b8048b0a5b58e01810506ce3bd9460db02049e7f58785c30"
+    },
+    "output/early/generator-complete.json": {
+      "bytes": 443,
+      "sha256": "7d7572ca12f3abc458328ac45c15ffd057eea564564391f1c48ad335c9b97c4b"
+    },
+    "output/early/timing.json": {
+      "bytes": 4393,
+      "sha256": "e00640850909eaac8314c98e5ee39949a97106caca90629dcb51c586f5d29ef1"
+    },
+    "output/early/updates-1795798809218152794.jsonl": {
+      "bytes": 112007,
+      "sha256": "f5702d6b8de81d94414154fb9428378c6c13f536f3524d664f920b535eb78811"
+    },
+    "output/generator-fit-identities.json": {
+      "bytes": 578931,
+      "sha256": "66816eabd77ce3030d58d994ba902362db1d86e3b949046ee9a87efaef2e2df5"
+    },
+    "output/incumbent-development.json": {
+      "bytes": 2621121,
+      "sha256": "45ed6b975fca1a43d9cfa211bfe6f840232649620a6f6ce5abf2bd2b27dbc62a"
+    },
+    "output/incumbent-timing.json": {
+      "bytes": 4397,
+      "sha256": "da4f47ff74d5cb775b4eb10ca91958f825ddc8375f5c02963f3a4ed1fa44400a"
+    },
+    "output/independent-audit.json": {
+      "bytes": 16329,
+      "sha256": "f8c0ed0c0473c834cfe6f26a9ba161cb53cac64d60fee5e6c1e36fd26d0ebde4"
+    },
+    "output/original-generator-development.json": {
+      "bytes": 2584390,
+      "sha256": "59b6cb2c9da969e498e5a64f2d2e7a87d852ab3d2a0b1aea9f33f26b9a247875"
+    },
+    "output/progress.json": {
+      "bytes": 142,
+      "sha256": "376c44670b1a3b3b925754ae351555bc683f4758b057f75702a0ced9d33ecf39"
+    },
+    "output/protect_repair/calibration-0000.json": {
+      "bytes": 646078,
+      "sha256": "12a7c1c92fd490cc6c6dd47ebc771c3064d7c3b7117263ce42cbb56031c7efd6"
+    },
+    "output/protect_repair/calibration-0128.json": {
+      "bytes": 646024,
+      "sha256": "3716bd128c72f809385189a9b5ebd68286c68cfb754de6bc4786fae6c000109d"
+    },
+    "output/protect_repair/calibration-0256.json": {
+      "bytes": 646173,
+      "sha256": "c7c76264482b39bc7877584e441a87a14b8925b4fedcf4ad6f5e24def7c16c2b"
+    },
+    "output/protect_repair/calibration-0384.json": {
+      "bytes": 646090,
+      "sha256": "807913f282a72adffb9532ef53e4585d3215c2055e10697ed6dc070f65c1b70e"
+    },
+    "output/protect_repair/calibration-0512.json": {
+      "bytes": 646171,
+      "sha256": "8adc20059e77e244f9ae489741f6c0e55aba857a9c9fb3ad098bb365886d6fe0"
+    },
+    "output/protect_repair/calibration-0640.json": {
+      "bytes": 646129,
+      "sha256": "021189e205136749df56e6e10c5bb728d8161d8247c58d94482d8ff62aa6b9b4"
+    },
+    "output/protect_repair/calibration-0768.json": {
+      "bytes": 646061,
+      "sha256": "5ae147cff11dc5704b2e0123ed6c7280f143091d5b011788e8e3307b4ad6505b"
+    },
+    "output/protect_repair/development-gated.json": {
+      "bytes": 2621121,
+      "sha256": "45ed6b975fca1a43d9cfa211bfe6f840232649620a6f6ce5abf2bd2b27dbc62a"
+    },
+    "output/protect_repair/development-plain.json": {
+      "bytes": 2584390,
+      "sha256": "59b6cb2c9da969e498e5a64f2d2e7a87d852ab3d2a0b1aea9f33f26b9a247875"
+    },
+    "output/protect_repair/gate-calibration.json": {
+      "bytes": 658000,
+      "sha256": "679ed88596a6b7df2e93218f7ed6eac45a4f245f96358083021ecf39e1de055a"
+    },
+    "output/protect_repair/gate-complete.json": {
+      "bytes": 476,
+      "sha256": "1e045b35f501727da37eba507cd66ddd055a4f80e781311a1a1ec3d3d8f148a0"
+    },
+    "output/protect_repair/gate-features.json": {
+      "bytes": 533,
+      "sha256": "d029f74fa4987a09f4cc71df2d20f17dde266396c0abafa7268607983ec99aa8"
+    },
+    "output/protect_repair/gate-history.json": {
+      "bytes": 4719,
+      "sha256": "74fc36ccf96ac3fc32194c9a1b464c240f807be1c05a255e88d647a166f936d6"
+    },
+    "output/protect_repair/generator-complete.json": {
+      "bytes": 441,
+      "sha256": "ae53181f3e0ad18a4903ffe9791d22a70f0162db1c95e699e7d673ec37cc8966"
+    },
+    "output/protect_repair/timing.json": {
+      "bytes": 4393,
+      "sha256": "16ae9f6fd994407d34c9b5691a093ad47088e1e36fcb5437ac8bfe067d731c0d"
+    },
+    "output/protect_repair/updates-1795799037857456830.jsonl": {
+      "bytes": 111969,
+      "sha256": "c5fe00db1ae25ceab5d21befc82c5a7079aa6b14740eba517fb5baea5e7098dd"
+    },
+    "output/run.json": {
+      "bytes": 7794,
+      "sha256": "35f095f3036066647d3303d95543118e317700655602ff86637650aaaa9b5d00"
+    },
+    "output/uniform/calibration-0000.json": {
+      "bytes": 646078,
+      "sha256": "12a7c1c92fd490cc6c6dd47ebc771c3064d7c3b7117263ce42cbb56031c7efd6"
+    },
+    "output/uniform/calibration-0128.json": {
+      "bytes": 646057,
+      "sha256": "156b6bb49e724ebd4ce55f8b5c9a8e645bf5b5e403f6f3f6b1bd1d216053a6fe"
+    },
+    "output/uniform/calibration-0256.json": {
+      "bytes": 646135,
+      "sha256": "e9dff83ae98ede1af77732f6aa348176f2988222e70d7ea127358f7e818709a5"
+    },
+    "output/uniform/calibration-0384.json": {
+      "bytes": 646125,
+      "sha256": "3c1bd002f4ad95e6ed501e6ca92728d0d4d9504078a9a03dac69022093750eaf"
+    },
+    "output/uniform/calibration-0512.json": {
+      "bytes": 646084,
+      "sha256": "f3caa201407aabe7555e4d54116776c43c911f8298e1dd4eef0b15cf136574cd"
+    },
+    "output/uniform/calibration-0640.json": {
+      "bytes": 646086,
+      "sha256": "4243d0bccbd3ab17e8fd34d74b1d403c8fd73318093ef9ac4dd01b1492cb3197"
+    },
+    "output/uniform/calibration-0768.json": {
+      "bytes": 646057,
+      "sha256": "ff84ca15fa9c808e59c782377886d6854ed57149fab121deaed6d8e1af6f1c83"
+    },
+    "output/uniform/development-gated.json": {
+      "bytes": 2610366,
+      "sha256": "193b6c17b65512673504b46296667049f27f2b73c873aad6aa299616834216e7"
+    },
+    "output/uniform/development-plain.json": {
+      "bytes": 2584665,
+      "sha256": "eacae4905aed9af24b39a2084b95ecfe34da06203dd499711d33557ecee4c08e"
+    },
+    "output/uniform/gate-calibration.json": {
+      "bytes": 655450,
+      "sha256": "b3afbdd4a02ba50a342ab36c0e0fe1058dd520576b2587ca794548b5f6425717"
+    },
+    "output/uniform/gate-complete.json": {
+      "bytes": 476,
+      "sha256": "b9e8e522ad1aae85dd51baec720915fff99af12125f8782966c1a06a0978038c"
+    },
+    "output/uniform/gate-features.json": {
+      "bytes": 532,
+      "sha256": "dcb84e5ac07e74dcdbb4b7e75396c9c44142d5cc4ea6b172f1a376dcd3869a8c"
+    },
+    "output/uniform/gate-history.json": {
+      "bytes": 9976,
+      "sha256": "ca01534868afd094ca48d404c1330d4014af76f426a546a8f714b8290b649d1f"
+    },
+    "output/uniform/generator-complete.json": {
+      "bytes": 442,
+      "sha256": "6e0e9e6cfeb81e1f6a0a61fe64c9458373677a0133486798618af2afb90ec8b3"
+    },
+    "output/uniform/timing.json": {
+      "bytes": 4390,
+      "sha256": "ece4b6254b4e5aacddcc507db17b994c922d0b5a54a6d3d9bef6cfb040249a8e"
+    },
+    "output/uniform/updates-1795798580661816427.jsonl": {
+      "bytes": 112027,
+      "sha256": "0bd3cadaf3ec0b69d09cf73a01ada0d3050481169a551737f4c769ade4fa8432"
+    }
+  },
+  "bytes": 526383290,
+  "checkpoint_scope": "Selected pairs inventoried on node scratch for direct streaming; no home weight copies",
+  "resumable_state": "Latest optimizer checkpoints retained on node scratch"
+}

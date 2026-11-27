@@ -1,0 +1,14 @@
+JobID|JobName|State|ExitCode|Elapsed|NodeList|MaxRSS
+8600245|ar-whole-draft|COMPLETED|0:0|00:24:07|tron61|
+8600245.batch|batch|COMPLETED|0:0|00:24:07|tron61|5993580K
+8600245.extern|extern|COMPLETED|0:0|00:24:07|tron61|
+8600354|ar-whole-draft-audit|FAILED|1:0|00:00:09|tron61|
+8600354.batch|batch|FAILED|1:0|00:00:09|tron61|423236K
+8600354.extern|extern|COMPLETED|0:0|00:00:09|tron61|
+8600808|ar-whole-draft-stream|COMPLETED|0:0|00:03:27|tron61|
+8600808.extern|extern|COMPLETED|0:0|00:03:27|tron61|
+8600808.0|ar-whole-draft-stream|COMPLETED|0:0|00:03:26|tron61|712K
+8600874|ar-whole-draft-inventory|COMPLETED|0:0|00:00:00|tron61|
+8600874.extern|extern|COMPLETED|0:0|00:00:01|tron61|
+8600874.0|ar-whole-draft-inventory|COMPLETED|0:0|00:00:00|tron61|22936K
+             JOBID                         NAME      STATE       TIME NODELIST(REASON)

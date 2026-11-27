@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "verified_backup_files": 62,
+  "verified_backup_bytes": 526383290,
+  "source_commit": "dd31481",
+  "verified_source_files": 59,
+  "source_archive_sha256": "e11b3be145329793c4c1efe676c6056721187dda4a2bdfc3053c2b4456e15b5d",
+  "independent_remote_mac_audits_identical": true
+}

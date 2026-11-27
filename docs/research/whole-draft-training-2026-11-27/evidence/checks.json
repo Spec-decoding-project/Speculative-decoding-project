@@ -1,0 +1,12 @@
+{
+  "local_targeted_checks": {
+    "passed": 22,
+    "seconds": 1.54
+  },
+  "remote_pinned_pretraining_checks": {
+    "passed": 18
+  },
+  "independent_result_recount": "passed on Nexus CPU and Mac; identical parsed results",
+  "backup_files_sha256_verified": 62,
+  "training_source_files_matched_frozen_commit": 59
+}

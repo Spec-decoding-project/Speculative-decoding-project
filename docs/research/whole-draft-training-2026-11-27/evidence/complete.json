@@ -1,0 +1,716 @@
+{
+  "passed_checks": true,
+  "contract": "ccf6b90b6dfd579b3b12d0492a0dd13d9dac40881d8faaf9b1e779433ce77402",
+  "results": {
+    "uniform/plain": {
+      "teacher_forced_action_ce": 2.861288877905151,
+      "teacher_forced_ce": 2.861288877905151,
+      "free_running_token_accuracy": 0.2570103236607143,
+      "free_running_exact_suffix": 0.01708984375,
+      "repaired": 320,
+      "damaged": 369,
+      "wrong_first": 320,
+      "blocks": 2048,
+      "mean_original_progress": 3.57763671875,
+      "mean_edited_progress": 3.43212890625,
+      "mean_union_progress": 4.119140625,
+      "copy_actions": 0,
+      "editable_tokens": 28672,
+      "scope": "Saved-context coverage; no native acceptance or full-generation speedup",
+      "groups": {
+        "source/HuggingFaceH4/ultrachat_200k": {
+          "blocks": 1024,
+          "mean_original_progress": 2.474609375,
+          "mean_edited_progress": 2.2958984375,
+          "repaired": 105,
+          "damaged": 156,
+          "prefix_positions_gained": 282,
+          "prefix_positions_lost": 465,
+          "exact_suffixes": 5
+        },
+        "kind/repairable": {
+          "blocks": 1684,
+          "mean_original_progress": 3.959026128266033,
+          "mean_edited_progress": 3.9073634204275534,
+          "repaired": 320,
+          "damaged": 346,
+          "prefix_positions_gained": 1109,
+          "prefix_positions_lost": 1196,
+          "exact_suffixes": 13
+        },
+        "first/correct": {
+          "blocks": 1728,
+          "mean_original_progress": 4.240162037037037,
+          "mean_edited_progress": 4.067708333333333,
+          "repaired": 320,
+          "damaged": 369,
+          "prefix_positions_gained": 1109,
+          "prefix_positions_lost": 1407,
+          "exact_suffixes": 34
+        },
+        "kind/wrong_first": {
+          "blocks": 320,
+          "mean_original_progress": 0,
+          "mean_edited_progress": 0,
+          "repaired": 0,
+          "damaged": 0,
+          "prefix_positions_gained": 0,
+          "prefix_positions_lost": 0,
+          "exact_suffixes": 1
+        },
+        "first/wrong": {
+          "blocks": 320,
+          "mean_original_progress": 0,
+          "mean_edited_progress": 0,
+          "repaired": 0,
+          "damaged": 0,
+          "prefix_positions_gained": 0,
+          "prefix_positions_lost": 0,
+          "exact_suffixes": 1
+        },
+        "source/openai/gsm8k": {
+          "blocks": 1024,
+          "mean_original_progress": 4.6806640625,
+          "mean_edited_progress": 4.568359375,
+          "repaired": 215,
+          "damaged": 213,
+          "prefix_positions_gained": 827,
+          "prefix_positions_lost": 942,
+          "exact_suffixes": 30
+        },
+        "kind/preservation": {
+          "blocks": 44,
+          "mean_original_progress": 15,
+          "mean_edited_progress": 10.204545454545455,
+          "repaired": 0,
+          "damaged": 23,
+          "prefix_positions_gained": 0,
+          "prefix_positions_lost": 211,
+          "exact_suffixes": 21
+        }
+      }
+    },
+    "uniform/gated": {
+      "teacher_forced_action_ce": 3.471167242773975,
+      "teacher_forced_ce": 3.1252448379278315,
+      "free_running_token_accuracy": 0.2880859375,
+      "free_running_exact_suffix": 0.02001953125,
+      "repaired": 286,
+      "damaged": 241,
+      "wrong_first": 320,
+      "blocks": 2048,
+      "mean_original_progress": 3.57763671875,
+      "mean_edited_progress": 3.61767578125,
+      "mean_union_progress": 4.05029296875,
+      "copy_actions": 9594,
+      "editable_tokens": 28672,
+      "scope": "Saved-context coverage; no native acceptance or full-generation speedup",
+      "groups": {
+        "source/HuggingFaceH4/ultrachat_200k": {
+          "blocks": 1024,
+          "mean_original_progress": 2.474609375,
+          "mean_edited_progress": 2.390625,
+          "repaired": 92,
+          "damaged": 105,
+          "prefix_positions_gained": 221,
+          "prefix_positions_lost": 307,
+          "exact_suffixes": 5
+        },
+        "kind/repairable": {
+          "blocks": 1684,
+          "mean_original_progress": 3.959026128266033,
+          "mean_edited_progress": 4.07125890736342,
+          "repaired": 286,
+          "damaged": 228,
+          "prefix_positions_gained": 968,
+          "prefix_positions_lost": 779,
+          "exact_suffixes": 9
+        },
+        "first/correct": {
+          "blocks": 1728,
+          "mean_original_progress": 4.240162037037037,
+          "mean_edited_progress": 4.2876157407407405,
+          "repaired": 286,
+          "damaged": 241,
+          "prefix_positions_gained": 968,
+          "prefix_positions_lost": 886,
+          "exact_suffixes": 40
+        },
+        "kind/wrong_first": {
+          "blocks": 320,
+          "mean_original_progress": 0,
+          "mean_edited_progress": 0,
+          "repaired": 0,
+          "damaged": 0,
+          "prefix_positions_gained": 0,
+          "prefix_positions_lost": 0,
+          "exact_suffixes": 1
+        },
+        "first/wrong": {
+          "blocks": 320,
+          "mean_original_progress": 0,
+          "mean_edited_progress": 0,
+          "repaired": 0,
+          "damaged": 0,
+          "prefix_positions_gained": 0,
+          "prefix_positions_lost": 0,
+          "exact_suffixes": 1
+        },
+        "source/openai/gsm8k": {
+          "blocks": 1024,
+          "mean_original_progress": 4.6806640625,
+          "mean_edited_progress": 4.8447265625,
+          "repaired": 194,
+          "damaged": 136,
+          "prefix_positions_gained": 747,
+          "prefix_positions_lost": 579,
+          "exact_suffixes": 36
+        },
+        "kind/preservation": {
+          "blocks": 44,
+          "mean_original_progress": 15,
+          "mean_edited_progress": 12.568181818181818,
+          "repaired": 0,
+          "damaged": 13,
+          "prefix_positions_gained": 0,
+          "prefix_positions_lost": 107,
+          "exact_suffixes": 31
+        }
+      },
+      "median_warm_editor_ms": 6.89684902317822
+    },
+    "early/plain": {
+      "teacher_forced_action_ce": 2.8146016499085817,
+      "teacher_forced_ce": 2.8146016499085817,
+      "free_running_token_accuracy": 0.25889369419642855,
+      "free_running_exact_suffix": 0.0166015625,
+      "repaired": 328,
+      "damaged": 364,
+      "wrong_first": 320,
+      "blocks": 2048,
+      "mean_original_progress": 3.57763671875,
+      "mean_edited_progress": 3.455078125,
+      "mean_union_progress": 4.12939453125,
+      "copy_actions": 0,
+      "editable_tokens": 28672,
+      "scope": "Saved-context coverage; no native acceptance or full-generation speedup",
+      "groups": {
+        "source/HuggingFaceH4/ultrachat_200k": {
+          "blocks": 1024,
+          "mean_original_progress": 2.474609375,
+          "mean_edited_progress": 2.3037109375,
+          "repaired": 104,
+          "damaged": 149,
+          "prefix_positions_gained": 276,
+          "prefix_positions_lost": 451,
+          "exact_suffixes": 4
+        },
+        "kind/repairable": {
+          "blocks": 1684,
+          "mean_original_progress": 3.959026128266033,
+          "mean_edited_progress": 3.9352731591448933,
+          "repaired": 328,
+          "damaged": 341,
+          "prefix_positions_gained": 1130,
+          "prefix_positions_lost": 1170,
+          "exact_suffixes": 12
+        },
+        "first/correct": {
+          "blocks": 1728,
+          "mean_original_progress": 4.240162037037037,
+          "mean_edited_progress": 4.094907407407407,
+          "repaired": 328,
+          "damaged": 364,
+          "prefix_positions_gained": 1130,
+          "prefix_positions_lost": 1381,
+          "exact_suffixes": 33
+        },
+        "kind/wrong_first": {
+          "blocks": 320,
+          "mean_original_progress": 0,
+          "mean_edited_progress": 0,
+          "repaired": 0,
+          "damaged": 0,
+          "prefix_positions_gained": 0,
+          "prefix_positions_lost": 0,
+          "exact_suffixes": 1
+        },
+        "first/wrong": {
+          "blocks": 320,
+          "mean_original_progress": 0,
+          "mean_edited_progress": 0,
+          "repaired": 0,
+          "damaged": 0,
+          "prefix_positions_gained": 0,
+          "prefix_positions_lost": 0,
+          "exact_suffixes": 1
+        },
+        "source/openai/gsm8k": {
+          "blocks": 1024,
+          "mean_original_progress": 4.6806640625,
+          "mean_edited_progress": 4.6064453125,
+          "repaired": 224,
+          "damaged": 215,
+          "prefix_positions_gained": 854,
+          "prefix_positions_lost": 930,
+          "exact_suffixes": 30
+        },
+        "kind/preservation": {
+          "blocks": 44,
+          "mean_original_progress": 15,
+          "mean_edited_progress": 10.204545454545455,
+          "repaired": 0,
+          "damaged": 23,
+          "prefix_positions_gained": 0,
+          "prefix_positions_lost": 211,
+          "exact_suffixes": 21
+        }
+      }
+    },
+    "early/gated": {
+      "teacher_forced_action_ce": 3.3859692742199905,
+      "teacher_forced_ce": 3.123805396183473,
+      "free_running_token_accuracy": 0.30050223214285715,
+      "free_running_exact_suffix": 0.021484375,
+      "repaired": 281,
+      "damaged": 223,
+      "wrong_first": 320,
+      "blocks": 2048,
+      "mean_original_progress": 3.57763671875,
+      "mean_edited_progress": 3.67236328125,
+      "mean_union_progress": 4.05029296875,
+      "copy_actions": 11937,
+      "editable_tokens": 28672,
+      "scope": "Saved-context coverage; no native acceptance or full-generation speedup",
+      "groups": {
+        "source/HuggingFaceH4/ultrachat_200k": {
+          "blocks": 1024,
+          "mean_original_progress": 2.474609375,
+          "mean_edited_progress": 2.439453125,
+          "repaired": 85,
+          "damaged": 83,
+          "prefix_positions_gained": 205,
+          "prefix_positions_lost": 241,
+          "exact_suffixes": 6
+        },
+        "kind/repairable": {
+          "blocks": 1684,
+          "mean_original_progress": 3.959026128266033,
+          "mean_edited_progress": 4.125296912114014,
+          "repaired": 281,
+          "damaged": 212,
+          "prefix_positions_gained": 968,
+          "prefix_positions_lost": 688,
+          "exact_suffixes": 10
+        },
+        "first/correct": {
+          "blocks": 1728,
+          "mean_original_progress": 4.240162037037037,
+          "mean_edited_progress": 4.352430555555555,
+          "repaired": 281,
+          "damaged": 223,
+          "prefix_positions_gained": 968,
+          "prefix_positions_lost": 774,
+          "exact_suffixes": 43
+        },
+        "kind/wrong_first": {
+          "blocks": 320,
+          "mean_original_progress": 0,
+          "mean_edited_progress": 0,
+          "repaired": 0,
+          "damaged": 0,
+          "prefix_positions_gained": 0,
+          "prefix_positions_lost": 0,
+          "exact_suffixes": 1
+        },
+        "first/wrong": {
+          "blocks": 320,
+          "mean_original_progress": 0,
+          "mean_edited_progress": 0,
+          "repaired": 0,
+          "damaged": 0,
+          "prefix_positions_gained": 0,
+          "prefix_positions_lost": 0,
+          "exact_suffixes": 1
+        },
+        "source/openai/gsm8k": {
+          "blocks": 1024,
+          "mean_original_progress": 4.6806640625,
+          "mean_edited_progress": 4.9052734375,
+          "repaired": 196,
+          "damaged": 140,
+          "prefix_positions_gained": 763,
+          "prefix_positions_lost": 533,
+          "exact_suffixes": 38
+        },
+        "kind/preservation": {
+          "blocks": 44,
+          "mean_original_progress": 15,
+          "mean_edited_progress": 13.045454545454545,
+          "repaired": 0,
+          "damaged": 11,
+          "prefix_positions_gained": 0,
+          "prefix_positions_lost": 86,
+          "exact_suffixes": 33
+        }
+      },
+      "median_warm_editor_ms": 6.891985016409308
+    },
+    "protect_repair/plain": {
+      "teacher_forced_action_ce": 2.7711915290606806,
+      "teacher_forced_ce": 2.7711915290606806,
+      "free_running_token_accuracy": 0.2605678013392857,
+      "free_running_exact_suffix": 0.01513671875,
+      "repaired": 335,
+      "damaged": 360,
+      "wrong_first": 320,
+      "blocks": 2048,
+      "mean_original_progress": 3.57763671875,
+      "mean_edited_progress": 3.46630859375,
+      "mean_union_progress": 4.12158203125,
+      "copy_actions": 0,
+      "editable_tokens": 28672,
+      "scope": "Saved-context coverage; no native acceptance or full-generation speedup",
+      "groups": {
+        "source/HuggingFaceH4/ultrachat_200k": {
+          "blocks": 1024,
+          "mean_original_progress": 2.474609375,
+          "mean_edited_progress": 2.314453125,
+          "repaired": 112,
+          "damaged": 154,
+          "prefix_positions_gained": 296,
+          "prefix_positions_lost": 460,
+          "exact_suffixes": 3
+        },
+        "kind/repairable": {
+          "blocks": 1684,
+          "mean_original_progress": 3.959026128266033,
+          "mean_edited_progress": 3.9435866983372923,
+          "repaired": 335,
+          "damaged": 336,
+          "prefix_positions_gained": 1114,
+          "prefix_positions_lost": 1140,
+          "exact_suffixes": 10
+        },
+        "first/correct": {
+          "blocks": 1728,
+          "mean_original_progress": 4.240162037037037,
+          "mean_edited_progress": 4.108217592592593,
+          "repaired": 335,
+          "damaged": 360,
+          "prefix_positions_gained": 1114,
+          "prefix_positions_lost": 1342,
+          "exact_suffixes": 30
+        },
+        "kind/wrong_first": {
+          "blocks": 320,
+          "mean_original_progress": 0,
+          "mean_edited_progress": 0,
+          "repaired": 0,
+          "damaged": 0,
+          "prefix_positions_gained": 0,
+          "prefix_positions_lost": 0,
+          "exact_suffixes": 1
+        },
+        "first/wrong": {
+          "blocks": 320,
+          "mean_original_progress": 0,
+          "mean_edited_progress": 0,
+          "repaired": 0,
+          "damaged": 0,
+          "prefix_positions_gained": 0,
+          "prefix_positions_lost": 0,
+          "exact_suffixes": 1
+        },
+        "source/openai/gsm8k": {
+          "blocks": 1024,
+          "mean_original_progress": 4.6806640625,
+          "mean_edited_progress": 4.6181640625,
+          "repaired": 223,
+          "damaged": 206,
+          "prefix_positions_gained": 818,
+          "prefix_positions_lost": 882,
+          "exact_suffixes": 28
+        },
+        "kind/preservation": {
+          "blocks": 44,
+          "mean_original_progress": 15,
+          "mean_edited_progress": 10.409090909090908,
+          "repaired": 0,
+          "damaged": 24,
+          "prefix_positions_gained": 0,
+          "prefix_positions_lost": 202,
+          "exact_suffixes": 20
+        }
+      }
+    },
+    "protect_repair/gated": {
+      "teacher_forced_action_ce": 3.463147905634417,
+      "teacher_forced_ce": 3.2048874994318015,
+      "free_running_token_accuracy": 0.3065708705357143,
+      "free_running_exact_suffix": 0.021484375,
+      "repaired": 269,
+      "damaged": 187,
+      "wrong_first": 320,
+      "blocks": 2048,
+      "mean_original_progress": 3.57763671875,
+      "mean_edited_progress": 3.69970703125,
+      "mean_union_progress": 4.00537109375,
+      "copy_actions": 14219,
+      "editable_tokens": 28672,
+      "scope": "Saved-context coverage; no native acceptance or full-generation speedup",
+      "groups": {
+        "source/HuggingFaceH4/ultrachat_200k": {
+          "blocks": 1024,
+          "mean_original_progress": 2.474609375,
+          "mean_edited_progress": 2.48046875,
+          "repaired": 86,
+          "damaged": 66,
+          "prefix_positions_gained": 186,
+          "prefix_positions_lost": 180,
+          "exact_suffixes": 5
+        },
+        "kind/repairable": {
+          "blocks": 1684,
+          "mean_original_progress": 3.959026128266033,
+          "mean_edited_progress": 4.145486935866983,
+          "repaired": 269,
+          "damaged": 178,
+          "prefix_positions_gained": 876,
+          "prefix_positions_lost": 562,
+          "exact_suffixes": 8
+        },
+        "first/correct": {
+          "blocks": 1728,
+          "mean_original_progress": 4.240162037037037,
+          "mean_edited_progress": 4.384837962962963,
+          "repaired": 269,
+          "damaged": 187,
+          "prefix_positions_gained": 876,
+          "prefix_positions_lost": 626,
+          "exact_suffixes": 43
+        },
+        "kind/wrong_first": {
+          "blocks": 320,
+          "mean_original_progress": 0,
+          "mean_edited_progress": 0,
+          "repaired": 0,
+          "damaged": 0,
+          "prefix_positions_gained": 0,
+          "prefix_positions_lost": 0,
+          "exact_suffixes": 1
+        },
+        "first/wrong": {
+          "blocks": 320,
+          "mean_original_progress": 0,
+          "mean_edited_progress": 0,
+          "repaired": 0,
+          "damaged": 0,
+          "prefix_positions_gained": 0,
+          "prefix_positions_lost": 0,
+          "exact_suffixes": 1
+        },
+        "source/openai/gsm8k": {
+          "blocks": 1024,
+          "mean_original_progress": 4.6806640625,
+          "mean_edited_progress": 4.9189453125,
+          "repaired": 183,
+          "damaged": 121,
+          "prefix_positions_gained": 690,
+          "prefix_positions_lost": 446,
+          "exact_suffixes": 39
+        },
+        "kind/preservation": {
+          "blocks": 44,
+          "mean_original_progress": 15,
+          "mean_edited_progress": 13.545454545454545,
+          "repaired": 0,
+          "damaged": 9,
+          "prefix_positions_gained": 0,
+          "prefix_positions_lost": 64,
+          "exact_suffixes": 35
+        }
+      },
+      "median_warm_editor_ms": 6.892365461681038
+    },
+    "original_generator": {
+      "teacher_forced_action_ce": 2.7711915290606806,
+      "teacher_forced_ce": 2.7711915290606806,
+      "free_running_token_accuracy": 0.2605678013392857,
+      "free_running_exact_suffix": 0.01513671875,
+      "repaired": 335,
+      "damaged": 360,
+      "wrong_first": 320,
+      "blocks": 2048,
+      "mean_original_progress": 3.57763671875,
+      "mean_edited_progress": 3.46630859375,
+      "mean_union_progress": 4.12158203125,
+      "copy_actions": 0,
+      "editable_tokens": 28672,
+      "scope": "Saved-context coverage; no native acceptance or full-generation speedup",
+      "groups": {
+        "source/HuggingFaceH4/ultrachat_200k": {
+          "blocks": 1024,
+          "mean_original_progress": 2.474609375,
+          "mean_edited_progress": 2.314453125,
+          "repaired": 112,
+          "damaged": 154,
+          "prefix_positions_gained": 296,
+          "prefix_positions_lost": 460,
+          "exact_suffixes": 3
+        },
+        "kind/repairable": {
+          "blocks": 1684,
+          "mean_original_progress": 3.959026128266033,
+          "mean_edited_progress": 3.9435866983372923,
+          "repaired": 335,
+          "damaged": 336,
+          "prefix_positions_gained": 1114,
+          "prefix_positions_lost": 1140,
+          "exact_suffixes": 10
+        },
+        "first/correct": {
+          "blocks": 1728,
+          "mean_original_progress": 4.240162037037037,
+          "mean_edited_progress": 4.108217592592593,
+          "repaired": 335,
+          "damaged": 360,
+          "prefix_positions_gained": 1114,
+          "prefix_positions_lost": 1342,
+          "exact_suffixes": 30
+        },
+        "kind/wrong_first": {
+          "blocks": 320,
+          "mean_original_progress": 0,
+          "mean_edited_progress": 0,
+          "repaired": 0,
+          "damaged": 0,
+          "prefix_positions_gained": 0,
+          "prefix_positions_lost": 0,
+          "exact_suffixes": 1
+        },
+        "first/wrong": {
+          "blocks": 320,
+          "mean_original_progress": 0,
+          "mean_edited_progress": 0,
+          "repaired": 0,
+          "damaged": 0,
+          "prefix_positions_gained": 0,
+          "prefix_positions_lost": 0,
+          "exact_suffixes": 1
+        },
+        "source/openai/gsm8k": {
+          "blocks": 1024,
+          "mean_original_progress": 4.6806640625,
+          "mean_edited_progress": 4.6181640625,
+          "repaired": 223,
+          "damaged": 206,
+          "prefix_positions_gained": 818,
+          "prefix_positions_lost": 882,
+          "exact_suffixes": 28
+        },
+        "kind/preservation": {
+          "blocks": 44,
+          "mean_original_progress": 15,
+          "mean_edited_progress": 10.409090909090908,
+          "repaired": 0,
+          "damaged": 24,
+          "prefix_positions_gained": 0,
+          "prefix_positions_lost": 202,
+          "exact_suffixes": 20
+        }
+      }
+    },
+    "incumbent": {
+      "teacher_forced_action_ce": 3.463147905634417,
+      "teacher_forced_ce": 3.2048874994318015,
+      "free_running_token_accuracy": 0.3065708705357143,
+      "free_running_exact_suffix": 0.021484375,
+      "repaired": 269,
+      "damaged": 187,
+      "wrong_first": 320,
+      "blocks": 2048,
+      "mean_original_progress": 3.57763671875,
+      "mean_edited_progress": 3.69970703125,
+      "mean_union_progress": 4.00537109375,
+      "copy_actions": 14219,
+      "editable_tokens": 28672,
+      "scope": "Saved-context coverage; no native acceptance or full-generation speedup",
+      "groups": {
+        "source/HuggingFaceH4/ultrachat_200k": {
+          "blocks": 1024,
+          "mean_original_progress": 2.474609375,
+          "mean_edited_progress": 2.48046875,
+          "repaired": 86,
+          "damaged": 66,
+          "prefix_positions_gained": 186,
+          "prefix_positions_lost": 180,
+          "exact_suffixes": 5
+        },
+        "kind/repairable": {
+          "blocks": 1684,
+          "mean_original_progress": 3.959026128266033,
+          "mean_edited_progress": 4.145486935866983,
+          "repaired": 269,
+          "damaged": 178,
+          "prefix_positions_gained": 876,
+          "prefix_positions_lost": 562,
+          "exact_suffixes": 8
+        },
+        "first/correct": {
+          "blocks": 1728,
+          "mean_original_progress": 4.240162037037037,
+          "mean_edited_progress": 4.384837962962963,
+          "repaired": 269,
+          "damaged": 187,
+          "prefix_positions_gained": 876,
+          "prefix_positions_lost": 626,
+          "exact_suffixes": 43
+        },
+        "kind/wrong_first": {
+          "blocks": 320,
+          "mean_original_progress": 0,
+          "mean_edited_progress": 0,
+          "repaired": 0,
+          "damaged": 0,
+          "prefix_positions_gained": 0,
+          "prefix_positions_lost": 0,
+          "exact_suffixes": 1
+        },
+        "first/wrong": {
+          "blocks": 320,
+          "mean_original_progress": 0,
+          "mean_edited_progress": 0,
+          "repaired": 0,
+          "damaged": 0,
+          "prefix_positions_gained": 0,
+          "prefix_positions_lost": 0,
+          "exact_suffixes": 1
+        },
+        "source/openai/gsm8k": {
+          "blocks": 1024,
+          "mean_original_progress": 4.6806640625,
+          "mean_edited_progress": 4.9189453125,
+          "repaired": 183,
+          "damaged": 121,
+          "prefix_positions_gained": 690,
+          "prefix_positions_lost": 446,
+          "exact_suffixes": 39
+        },
+        "kind/preservation": {
+          "blocks": 44,
+          "mean_original_progress": 15,
+          "mean_edited_progress": 13.545454545454545,
+          "repaired": 0,
+          "damaged": 9,
+          "prefix_positions_gained": 0,
+          "prefix_positions_lost": 64,
+          "exact_suffixes": 35
+        }
+      }
+    }
+  },
+  "original_token_accuracy": 0.3242885044642857,
+  "final_test_loaded": false,
+  "scope": "Exploratory saved-context comparison; not native generation speed"
+}

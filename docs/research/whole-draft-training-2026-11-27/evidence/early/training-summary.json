@@ -1,0 +1,20 @@
+[
+  {
+    "epoch": 1,
+    "updates": 256,
+    "mean_weighted_ce": 1.344737237508781,
+    "mean_seconds_per_update": 0.17527820895429613
+  },
+  {
+    "epoch": 2,
+    "updates": 256,
+    "mean_weighted_ce": 1.1637380142535392,
+    "mean_seconds_per_update": 0.17590113902042503
+  },
+  {
+    "epoch": 3,
+    "updates": 256,
+    "mean_weighted_ce": 1.0597633058878557,
+    "mean_seconds_per_update": 0.17547359154559672
+  }
+]

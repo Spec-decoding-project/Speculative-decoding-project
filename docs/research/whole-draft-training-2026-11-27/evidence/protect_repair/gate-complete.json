@@ -1,0 +1,11 @@
+{
+  "contract": "ccf6b90b6dfd579b3b12d0492a0dd13d9dac40881d8faaf9b1e779433ce77402",
+  "base_sha256": "0443a59d40ecfe4da368782b9218c50bb9ee7dc52bc85bebf837c59998d66c86",
+  "checkpoint_sha256": "0c22a2c82fe127b2c6d376ca62323320aaca3cec437328325672a9600a9b8055",
+  "updates": 380,
+  "selected_step": 180,
+  "generator_weights_sha256": "8babb2bfe3f4c11ef283312e22ccd2e20878438c96957302ff2c462748bbd382",
+  "reload": "passed",
+  "simulation": "passed",
+  "cached_full": "passed"
+}

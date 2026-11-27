@@ -1,0 +1,30 @@
+{
+  "passed": true,
+  "independent_cpu_audits_identical": true,
+  "files": {
+    "selected-checkpoints/uniform/generator-best.pt": {
+      "bytes": 163009741,
+      "sha256": "611fa6a73a46ba6ab3d7f5376cf0e92d310ba02684639ec74b2f246ff08fe73c"
+    },
+    "selected-checkpoints/uniform/gate-best.pt": {
+      "bytes": 2997,
+      "sha256": "af22f5cc3791b4bcfafde013ed35888229d0805cd8de3cd5a62395e25dc6beea"
+    },
+    "selected-checkpoints/early/generator-best.pt": {
+      "bytes": 163009741,
+      "sha256": "69714a4b6e4d26a8bbfca3e1a9aba7c4c2d334f5cfd25d54240dfa6e130160ba"
+    },
+    "selected-checkpoints/early/gate-best.pt": {
+      "bytes": 2997,
+      "sha256": "8f8a2dd0e1f51625f12dbcf4a8d234ea90dba69f11a4e30bc9da87c4907fdb5a"
+    },
+    "selected-checkpoints/protect_repair/generator-best.pt": {
+      "bytes": 163009741,
+      "sha256": "0443a59d40ecfe4da368782b9218c50bb9ee7dc52bc85bebf837c59998d66c86"
+    },
+    "selected-checkpoints/protect_repair/gate-best.pt": {
+      "bytes": 2997,
+      "sha256": "0c22a2c82fe127b2c6d376ca62323320aaca3cec437328325672a9600a9b8055"
+    }
+  }
+}

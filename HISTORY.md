@@ -4,33 +4,69 @@ This is the running, plain-English record of what we tried, why we tried it, and
 what the evidence actually supports. New experiments are described before launch
 and updated when results arrive. Failed attempts stay in this record.
 
-## Current state — November 27, 2026
+## Completed state — November 27, 2026
 
 The user authorized a new bounded comparison to improve the editor that reads
 the entire DFlash block. This is already the stronger existing conditioning
 variant, so the new experiment tests three full-generator training objectives:
 ordinary cross-entropy, early-position weighting, and extra protection of the
 correct original prefix plus emphasis on its first error. Each starts from the
-same original checkpoint and uses the same8,192 training-origin blocks, including
+same original checkpoint and uses the same 8,192 training-origin blocks, including
 1,024 naturally perfect proposals. After checkpoint selection, each generator
 gets a separately fitted linear COPY gate. All inputs remain tokens and all
 fourteen suffix predictions remain autoregressive. Target/DFlash stay frozen.
 
 The [fixed protocol](docs/research/whole-draft-training-2026-11-27/PROTOCOL.md)
-records three768-update fits, calibration-only selection, reload/causal/cache
+records three 768-update fits, calibration-only selection, reload/causal/cache
 checks, dual token-accuracy/prefix criteria, independent recount and a two-hour
 GPU-job cap. The [whole-block training investigation](https://github.com/Spec-decoding-project/Speculative-decoding-project/issues/28)
-is claimed. Nexus authentication succeeded and the user queue was empty before
-preparation. Implementation and local checks are in progress; no new training
-result is claimed yet. Original responses, checkpoints and prior evidence stay
-unchanged.
+is complete. All three fits, gate fits, development evaluations, graph checks,
+independent recounts and verified backups finished. Original responses,
+checkpoints and prior evidence stay unchanged.
 
-Launch: source`dd31481`, Slurm8600245 on tron61/A5000, four CPUs/16GiB/two hours.
-All18 local and remote implementation checks pass; package pins match. Local and
+Launch: source `dd31481`, Slurm 8600245 on tron61/A5000, four CPUs/16 GiB/two hours.
+All 18 local and remote implementation checks pass; package pins match. Local and
 remote authenticated training selection hashes agree. Logs/results are in
 `research/whole-draft-8600245/`; selected and resumable checkpoints use its scratch
-symlink. A separate CPU recount implementation has three additional passing
-tests. It will audit saved output tokens and checkpoint selection after the run.
+symlink. The GPU job completed in 24m07s. Independent CPU recounts on Nexus and
+the Mac agree. All 22 targeted local checks pass, including three auditor tests
+and a regression for storage export.
+
+| Development candidate | Correct prefix | Editable-token accuracy |
+|---|---:|---:|
+| DFlash | 3.577637 | 32.4289% |
+| Earlier gated editor | 3.699707 | 30.6571% |
+| Ordinary continuation + gate | 3.617676 | 28.8086% |
+| Early-position emphasis + gate | 3.672363 | 30.0502% |
+| Preserve/repair, selected original + gate | 3.699707 | 30.6571% |
+
+None beats the earlier editor. Ordinary training selects update 640; early
+weighting selects 256; preservation/repair selects unchanged step zero because
+no trained checkpoint improves its calibration prefix. All arms nevertheless
+complete 768 updates. The last row reproduces the old editor, not a new trained
+winner. Both newly selected models lose on both sources relative to that editor.
+Training loss falls, but calibration improvements do not transfer to development.
+The calibration distribution and fixed-first-proposal limitation remain concrete
+issues for a future design, rather than reasons to hide the negative result.
+
+Warm isolated editor time remains about 6.9ms, with roughly 100ms graph setup.
+Input/output copies are included. No new native throughput claim follows from
+this measurement. These are repeatedly inspected development prompts, not fresh
+confirmation; the old reserved test was not rerun. The existing whole-draft
+input was retained throughout, all generator parameters trained, and no target
+or drafter inference/training ran in this comparison.
+
+Postprocessing 8600354 passed its numerical audit, then ran out of Nexus home
+write space while staging redundant checkpoints. Direct scratch-to-Mac streaming
+8600808 recovered all six selected files; only the three new verified home
+duplicates were removed. The exporter now inventories scratch without copies;
+CPU inventory 8600874 passes. All 62 output/checkpoint files and 59 frozen source
+hashes verify. Optimizer states remain on node scratch; selected pairs and raw
+evidence are backed up privately under
+`~/.local/share/wayfinder-artifacts/whole-draft-8600245/`. Queue empty. No automatic
+larger sweep or further training was started.
+
+[Complete comparison, process, source results, limitations and artifacts](docs/research/whole-draft-training-2026-11-27/REPORT.md).
 
 ## Completed state — November 26, 2026
 
